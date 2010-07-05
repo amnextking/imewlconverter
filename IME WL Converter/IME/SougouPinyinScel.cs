@@ -113,7 +113,7 @@ namespace Studyzy.IMEWLConverter
                 word = word.Substring(0, word.IndexOf('\0'));
                 pyAndWord.Add(wordPY, word);
                 //接下来这是干啥的呢？
-                str = new byte[256];
+                str = new byte[512];
                 for (i = 0; i < (12 + offset * (12 + count + 2)); i++)
                 {
                     str[i] = (byte)fs.ReadByte();

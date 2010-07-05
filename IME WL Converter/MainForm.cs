@@ -152,6 +152,7 @@ namespace Studyzy.IMEWLConverter
             this.cbxFrom.Items.Add("搜狗五笔");
             this.cbxFrom.Items.Add("QQ拼音");
             this.cbxFrom.Items.Add("谷歌拼音");
+            this.cbxFrom.Items.Add("紫光拼音");
             this.cbxFrom.Items.Add("搜狗细胞词库Txt");
             this.cbxFrom.Items.Add("搜狗细胞词库scel");
 
@@ -161,6 +162,7 @@ namespace Studyzy.IMEWLConverter
             this.cbxTo.Items.Add("搜狗五笔");
             this.cbxTo.Items.Add("QQ拼音");
             this.cbxTo.Items.Add("谷歌拼音");
+            this.cbxTo.Items.Add("紫光拼音");
             this.cbxTo.Items.Add("搜狗细胞词库Txt");
         }
         private IWordLibraryExport GetExportInterface(string str)
@@ -174,7 +176,7 @@ namespace Studyzy.IMEWLConverter
                 case "QQ拼音": return new QQPinyin();
                 case "谷歌拼音": return new GooglePinyin();
                 case "搜狗细胞词库Txt": return new SougouPinyinWL();
-               
+                case "紫光拼音": return new ZiGuangPinyin();
                 default: throw new ArgumentException("导出词库的输入法错误");
             }
         }
@@ -188,6 +190,7 @@ namespace Studyzy.IMEWLConverter
                 case "搜狗五笔": return new SougouWubi();
                 case "QQ拼音": return new QQPinyin();
                 case "谷歌拼音": return new GooglePinyin();
+                case "紫光拼音": return new ZiGuangPinyin();
                 case "搜狗细胞词库Txt": return new SougouPinyinWL();
                 case "搜狗细胞词库scel": return new SougouPinyinScel();
                 default: throw new ArgumentException("导入词库的输入法错误");

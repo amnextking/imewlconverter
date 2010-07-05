@@ -57,6 +57,7 @@
     <Compile Include="IME\BaiduShouji.cs" />
     <Compile Include="IME\GooglePinyin.cs" />
     <Compile Include="IME\SougouPinyinScel.cs" />
+    <Compile Include="IME\ZiGuangPinyin.cs" />
     <Compile Include="Interface.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
