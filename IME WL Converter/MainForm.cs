@@ -153,6 +153,7 @@ namespace Studyzy.IMEWLConverter
             this.cbxFrom.Items.Add("QQ拼音");
             this.cbxFrom.Items.Add("谷歌拼音");
             this.cbxFrom.Items.Add("紫光拼音");
+            this.cbxFrom.Items.Add("拼音加加");
             this.cbxFrom.Items.Add("搜狗细胞词库Txt");
             this.cbxFrom.Items.Add("搜狗细胞词库scel");
 
@@ -191,6 +192,7 @@ namespace Studyzy.IMEWLConverter
                 case "QQ拼音": return new QQPinyin();
                 case "谷歌拼音": return new GooglePinyin();
                 case "紫光拼音": return new ZiGuangPinyin();
+                case "拼音加加": return new PinyinJiaJia();
                 case "搜狗细胞词库Txt": return new SougouPinyinWL();
                 case "搜狗细胞词库scel": return new SougouPinyinScel();
                 default: throw new ArgumentException("导入词库的输入法错误");
