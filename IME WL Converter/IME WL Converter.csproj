@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Studyzy.IMEWLConverter</RootNamespace>
-    <AssemblyName>深蓝词库转换小工具</AssemblyName>
+    <AssemblyName>深蓝词库转换</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkSubset>

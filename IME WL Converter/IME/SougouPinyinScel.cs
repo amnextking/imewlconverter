@@ -40,12 +40,30 @@ namespace Studyzy.IMEWLConverter
         public static string ReadScel(string path)
         {
             Dictionary<int, string> pyDic = new Dictionary<int, string>();
-            Dictionary<string, string> pyAndWord = new Dictionary<string, string>();
+            //Dictionary<string, string> pyAndWord = new Dictionary<string, string>();
+            List<WordLibrary> pyAndWord = new List<WordLibrary>();
             FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
             byte[] str = new byte[128];
             byte[] outstr = new byte[128];
             byte[] num;
-            //fs.Read(str, 0, 128);//\x40\x15\x00\x00\x44\x43\x53\x01
+            //以下代码调试用的
+            //fs.Position = 0x2628;
+            //byte[] debug = new byte[50000];
+            //fs.Read(debug, 0, 50000);
+            //string txt = Encoding.Unicode.GetString(debug);
+            
+            //调试用代码结束
+
+            int hzPosition = 0;
+            fs.Read(str, 0, 128);//\x40\x15\x00\x00\x44\x43\x53\x01
+            if (str[4] == 0x44)
+            {
+                hzPosition = 0x2628;
+            }
+            if (str[4] == 0x45)
+            {
+                hzPosition = 0x26C4;
+            }
             //fs.Position = 0x130;
             //fs.Read(str, 0, 64);
             //string txt = Encoding.Unicode.GetString(str);
@@ -81,17 +99,19 @@ namespace Studyzy.IMEWLConverter
                 }
             }
 
-            fs.Position = 0x2628;
-            int i = 0, count = 0, offset = 0;
+            //fs.Position = 0x2628;
+            fs.Position = hzPosition;
+            int i = 0, count = 0, samePYcount = 0;
             //byte[] pybuf = new byte[128];
             //byte[] hzbuf = new byte[128];
-            byte[] buf = new byte[256];
+            //byte[] buf = new byte[256];
             while (true)
             {
                 num = new byte[4];
                 fs.Read(num, 0, 4);
+                samePYcount = (int)num[0] + (int)num[1] * 256;
                 count = (int)num[2] + (int)num[3] * 256;
-                offset = (int)num[0] + (int)num[1] * 256 - 1;
+               //接下来读拼音
                 str = new byte[256];
                 for (i = 0; i < count; i++)
                 {
@@ -104,21 +124,24 @@ namespace Studyzy.IMEWLConverter
                     wordPY += pyDic[key] + "'";
                 }
                 wordPY = wordPY.Remove(wordPY.Length - 1);//移除最后一个单引号
-                num = new byte[2];
-                fs.Read(num, 0, 2);
-                count = num[0] + num[1] * 256;
-                str = new byte[256];
-                fs.Read(str, 0, count);
-                string word = Encoding.Unicode.GetString(str);
-                word = word.Substring(0, word.IndexOf('\0'));
-                pyAndWord.Add(wordPY, word);
-                //接下来这是干啥的呢？
-                str = new byte[512];
-                for (i = 0; i < (12 + offset * (12 + count + 2)); i++)
+                //接下来读词语
+                for (int s = 0; s < samePYcount; s++)//同音词，使用前面相同的拼音
                 {
-                    str[i] = (byte)fs.ReadByte();
-                }
+                    num = new byte[2];
+                    fs.Read(num, 0, 2);
+                    int hzBytecount = num[0] + num[1] * 256;
+                    str = new byte[hzBytecount];
+                    fs.Read(str, 0, hzBytecount);
+                    string word = Encoding.Unicode.GetString(str);
 
+                    pyAndWord.Add(new WordLibrary() { Word = word, PinYinString = wordPY });
+                    //接下来12个字节什么意思呢？难道是词频？暂时先忽略了
+                    byte[] temp = new byte[12];
+                    for (i = 0; i < 12; i++)
+                    {
+                        temp[i] = (byte)fs.ReadByte();
+                    }
+                }
                 if (fs.Length == fs.Position)//判断文件结束
                 {
                     fs.Close();
@@ -127,9 +150,9 @@ namespace Studyzy.IMEWLConverter
 
             }
             StringBuilder sb = new StringBuilder();
-            foreach (string key in pyAndWord.Keys)
+            foreach (WordLibrary w in pyAndWord)
             {
-               sb.AppendLine("'"+key + " " + pyAndWord[key]);//以搜狗文本词库的方式返回
+                sb.AppendLine("'" + w.PinYinString + " " + w.Word);//以搜狗文本词库的方式返回
             }
             return sb.ToString();
         }

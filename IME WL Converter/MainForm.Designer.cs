@@ -45,6 +45,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemIgnoreLongWord = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBoxIgnoreWordLength = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripMenuItemEnableMutiConvert = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
@@ -138,6 +139,7 @@
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemIgnoreMutiPinyin,
             this.toolStripMenuItemIgnoreSingleWord,
+            this.toolStripMenuItemEnableMutiConvert,
             this.toolStripSeparator1,
             this.toolStripMenuItemIgnoreLongWord,
             this.toolStripComboBoxIgnoreWordLength});
@@ -186,6 +188,14 @@
             this.toolStripComboBoxIgnoreWordLength.Size = new System.Drawing.Size(121, 20);
             this.toolStripComboBoxIgnoreWordLength.Text = "5";
             this.toolStripComboBoxIgnoreWordLength.ToolTipText = "忽略词的长度";
+            // 
+            // toolStripMenuItemEnableMutiConvert
+            // 
+            this.toolStripMenuItemEnableMutiConvert.CheckOnClick = true;
+            this.toolStripMenuItemEnableMutiConvert.Name = "toolStripMenuItemEnableMutiConvert";
+            this.toolStripMenuItemEnableMutiConvert.Size = new System.Drawing.Size(181, 22);
+            this.toolStripMenuItemEnableMutiConvert.Text = "允许批量词库转换";
+            this.toolStripMenuItemEnableMutiConvert.Click += new System.EventHandler(this.toolStripMenuItemEnableMutiConvert_Click);
             // 
             // 关于ToolStripMenuItem
             // 
@@ -240,7 +250,7 @@
             this.MaximizeBox = false;
             this.Name = "MainiForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "深蓝词库转换1.1";
+            this.Text = "深蓝词库转换1.2";
             this.Load += new System.EventHandler(this.MainiForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -271,6 +281,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemIgnoreLongWord;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBoxIgnoreWordLength;
         private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemEnableMutiConvert;
     }
 }
 

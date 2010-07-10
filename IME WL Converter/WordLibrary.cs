@@ -27,13 +27,22 @@ namespace Studyzy.IMEWLConverter
         }
         private List<string> pinYin;
         /// <summary>
-        /// 拼音
+        /// 词中每个字的拼音
         /// </summary>
         public List<string> PinYin
         {
             get { return pinYin; }
             set { pinYin = value; }
         }
+        /// <summary>
+        /// 词的拼音字符串，单独的一个属性，与PinYin属性无关联
+        /// </summary>
+        public string PinYinString
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// 获得拼音字符串
         /// </summary>

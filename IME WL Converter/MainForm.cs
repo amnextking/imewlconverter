@@ -19,8 +19,14 @@ namespace Studyzy.IMEWLConverter
         {            
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                this.txbWLPath.Text = openFileDialog1.FileName;
-                if (Path.GetExtension(txbWLPath.Text) == ".scel")
+                //this.txbWLPath.Text = openFileDialog1.FileName;
+                string files = "";
+                foreach (string file in openFileDialog1.FileNames)
+                {
+                    files += file + " | ";
+                }
+                this.txbWLPath.Text = files.Remove(files.Length - 3);
+                if (Path.GetExtension(openFileDialog1.FileName) == ".scel")
                 {
                     cbxFrom.Text = "搜狗细胞词库scel";
                 }
@@ -33,18 +39,24 @@ namespace Studyzy.IMEWLConverter
         {
             try
             {
-                string wlTxt = ReadFile(txbWLPath.Text);
-                import = GetImportInterface(cbxFrom.Text);
+                WordLibraryList allWlList = new WordLibraryList();
+                string[] files = txbWLPath.Text.Split('|');
+                foreach (string file in files)
+                {
+                    string wlTxt = ReadFile(file.Trim());
+                    import = GetImportInterface(cbxFrom.Text);
 
-                import.OnlySinglePinyin = toolStripMenuItemIgnoreMutiPinyin.Checked;
+                    import.OnlySinglePinyin = toolStripMenuItemIgnoreMutiPinyin.Checked;
 
-                var wlList = import.Import(wlTxt);
-                export = GetExportInterface(cbxTo.Text);
-                wlList = Filter(wlList);
+                    var wlList = import.Import(wlTxt);
+                    export = GetExportInterface(cbxTo.Text);
+                    wlList = Filter(wlList);
+                    allWlList.AddRange(wlList);
+                }
                 richTextBox1.Clear();
-                richTextBox1.AppendText(export.Export(wlList));
+                richTextBox1.AppendText(export.Export(allWlList));
                 btnExport.Enabled = true;
-                if (MessageBox.Show("是否将导入的" + wlList.Count + "条词库保存到本地硬盘上？", "是否保存", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("是否将导入的" + allWlList.Count + "条词库保存到本地硬盘上？", "是否保存", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     saveFileDialog1.DefaultExt = ".txt";
                     if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -164,6 +176,7 @@ namespace Studyzy.IMEWLConverter
             this.cbxTo.Items.Add("QQ拼音");
             this.cbxTo.Items.Add("谷歌拼音");
             this.cbxTo.Items.Add("紫光拼音");
+            this.cbxTo.Items.Add("拼音加加");
             this.cbxTo.Items.Add("搜狗细胞词库Txt");
         }
         private IWordLibraryExport GetExportInterface(string str)
@@ -178,6 +191,7 @@ namespace Studyzy.IMEWLConverter
                 case "谷歌拼音": return new GooglePinyin();
                 case "搜狗细胞词库Txt": return new SougouPinyinWL();
                 case "紫光拼音": return new ZiGuangPinyin();
+                case "拼音加加": return new PinyinJiaJia();
                 default: throw new ArgumentException("导出词库的输入法错误");
             }
         }
@@ -241,6 +255,11 @@ namespace Studyzy.IMEWLConverter
             {
                 this.openFileDialog1.Filter = "文本文件|*.txt|细胞词库|*.scel|所有文件|*.*";
             }
+        }
+
+        private void toolStripMenuItemEnableMutiConvert_Click(object sender, EventArgs e)
+        {
+            this.openFileDialog1.Multiselect = toolStripMenuItemEnableMutiConvert.Checked;
         }
 
     }
