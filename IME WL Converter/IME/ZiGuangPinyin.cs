@@ -41,11 +41,14 @@ namespace Studyzy.IMEWLConverter
         public string Export(WordLibraryList wlList)
         {
             StringBuilder sb = new StringBuilder();
+            sb.Append("名称=用户词库\r\n");
+            sb.Append("作者=深蓝词库转换\r\n");
+            sb.Append("编辑=1\r\n\r\n");
             for (int i = 0; i < wlList.Count; i++)
             {
                 sb.Append(wlList[i].Word);
                 sb.Append("\t");
-                sb.Append(wlList[i].GetPinYinString("'", BuildType.None));          
+                sb.Append(wlList[i].GetPinYinString("'", BuildType.None));
                 sb.Append("\t100000");
                 sb.Append("\r\n");
             }

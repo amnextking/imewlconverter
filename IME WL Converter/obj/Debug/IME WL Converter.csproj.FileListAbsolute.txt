@@ -1,5 +1,3 @@
-E:\MyDoc\Visual Studio 2008\imewlconverter\IME WL Converter\bin\Debug\深蓝词库转换小工具.exe
-E:\MyDoc\Visual Studio 2008\imewlconverter\IME WL Converter\bin\Debug\深蓝词库转换小工具.pdb
 E:\MyDoc\Visual Studio 2008\imewlconverter\IME WL Converter\obj\Debug\ResolveAssemblyReference.cache
 E:\MyDoc\Visual Studio 2008\imewlconverter\IME WL Converter\obj\Debug\Studyzy.IMEWLConverter.AboutBox.resources
 E:\MyDoc\Visual Studio 2008\imewlconverter\IME WL Converter\obj\Debug\Studyzy.IMEWLConverter.HelpForm.resources
@@ -7,5 +5,7 @@ E:\MyDoc\Visual Studio 2008\imewlconverter\IME WL Converter\obj\Debug\Studyzy.IM
 E:\MyDoc\Visual Studio 2008\imewlconverter\IME WL Converter\obj\Debug\Studyzy.IMEWLConverter.PinyinDic.resources
 E:\MyDoc\Visual Studio 2008\imewlconverter\IME WL Converter\obj\Debug\Studyzy.IMEWLConverter.Properties.Resources.resources
 E:\MyDoc\Visual Studio 2008\imewlconverter\IME WL Converter\obj\Debug\IME WL Converter.csproj.GenerateResource.Cache
-E:\MyDoc\Visual Studio 2008\imewlconverter\IME WL Converter\obj\Debug\深蓝词库转换小工具.exe
-E:\MyDoc\Visual Studio 2008\imewlconverter\IME WL Converter\obj\Debug\深蓝词库转换小工具.pdb
+E:\MyDoc\Visual Studio 2008\imewlconverter\IME WL Converter\bin\Debug\深蓝词库转换.exe
+E:\MyDoc\Visual Studio 2008\imewlconverter\IME WL Converter\bin\Debug\深蓝词库转换.pdb
+E:\MyDoc\Visual Studio 2008\imewlconverter\IME WL Converter\obj\Debug\深蓝词库转换.exe
+E:\MyDoc\Visual Studio 2008\imewlconverter\IME WL Converter\obj\Debug\深蓝词库转换.pdb

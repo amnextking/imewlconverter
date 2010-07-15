@@ -58,13 +58,13 @@ namespace Studyzy.IMEWLConverter
                     {
                         string word = "";
                         List<string> pinyin = new List<string>();
-                        for (int j = 0; j < ws.Length; j++)
+                        for (int j = 0; j < ws.Length; j++)//第几个词
                         {
                             word += ws[j];
-                            for (int k = 0; k < ws[j].Length; k++)
+                            for (int k = 0; k < ws[j].Length; k++)//词的第几个字
                             {
                                 char c = ws[j][k];
-                                if (k == ws[j].Length - 1&&py.Count-1==j)//最后一个字(多音字)
+                                if (k == ws[j].Length - 1&&py.Count-1>=j)//最后一个字(多音字)
                                 {
                                     pinyin.Add(py[j].Value);
                                 }

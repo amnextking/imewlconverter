@@ -54,14 +54,16 @@ namespace Studyzy.IMEWLConverter
                     allWlList.AddRange(wlList);
                 }
                 richTextBox1.Clear();
-                richTextBox1.AppendText(export.Export(allWlList));
+                string newWl=export.Export(allWlList);
+                richTextBox1.Text=newWl;
                 btnExport.Enabled = true;
                 if (MessageBox.Show("是否将导入的" + allWlList.Count + "条词库保存到本地硬盘上？", "是否保存", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     saveFileDialog1.DefaultExt = ".txt";
                     if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                     {
-                        if (WriteFile(saveFileDialog1.FileName, export.Encoding, richTextBox1.Text))
+                        
+                        if (WriteFile(saveFileDialog1.FileName, export.Encoding,newWl))
                         {
                             MessageBox.Show("保存成功，词库路径：" + saveFileDialog1.FileName);
                         }
