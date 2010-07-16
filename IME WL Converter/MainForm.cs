@@ -27,10 +27,8 @@ namespace Studyzy.IMEWLConverter
                     files += file + " | ";
                 }
                 this.txbWLPath.Text = files.Remove(files.Length - 3);
-                if (Path.GetExtension(openFileDialog1.FileName) == ".scel")
-                {
-                    cbxFrom.Text = "搜狗细胞词库scel";
-                }
+
+                cbxFrom.Text = AutoMatchSourceWLType(openFileDialog1.FileName);
             }
 
         }
@@ -85,6 +83,58 @@ namespace Studyzy.IMEWLConverter
 #endif
         }
 
+        /// <summary>
+        /// 根据词库的格式或内容判断源词库的类型
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        private string AutoMatchSourceWLType(string filePath)
+        {
+            if (Path.GetExtension(filePath) == ".scel")
+            {
+               return ConstantString.SOUGOU_XIBAO_SCEL;
+            }
+            string example = "";
+            using (StreamReader sr = new StreamReader(filePath, Encoding.Default))
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    example = sr.ReadLine();
+                }
+            }
+            Regex reg=new Regex(@"^('[a-z]+)+\s[\u4E00-\u9FA5]+$");
+            if (reg.IsMatch(example))
+            {
+                return ConstantString.SOUGOU_PINYIN;
+            }
+            reg = new Regex(@"^[a-z']+\s[\u4E00-\u9FA5]+\s\d+$");
+            if (reg.IsMatch(example))
+            {
+                return ConstantString.QQ_PINYIN;
+            }
+            reg = new Regex(@"^[a-z\u4E00-\u9FA5]+$");
+            if (reg.IsMatch(example))
+            {
+                return ConstantString.PINYIN_JIAJIA;
+            }
+            reg = new Regex(@"^[\u4E00-\u9FA5]+\t[a-z']+\t\d+$");
+            if (reg.IsMatch(example))
+            {
+                return ConstantString.ZIGUANG_PINYIN;
+            }
+            reg = new Regex(@"^[\u4E00-\u9FA5]+\t\d+[a-z\s]+$");
+            if (reg.IsMatch(example))
+            {
+                return ConstantString.GOOGLE_PINYIN;
+            }
+            reg = new Regex(@"^[\u4E00-\u9FA5]+\s[a-z\|]+\s\d+$");
+            if (reg.IsMatch(example))
+            {
+                return ConstantString.BAIDU_SHOUJI;
+            }
+            return "";
+
+        }
         /// <summary>
         /// 词库过滤
         /// </summary>
@@ -141,7 +191,7 @@ namespace Studyzy.IMEWLConverter
         private string ReadFile(string path)
         {
             string ext=Path.GetExtension(path);
-            if (ext == ".scel" && cbxFrom.Text == "搜狗细胞词库scel")//搜狗细胞词库
+            if (ext == ".scel" && cbxFrom.Text == ConstantString.SOUGOU_XIBAO_TXT)//搜狗细胞词库
             {
                 return SougouPinyinScel.ReadScel(path);
             }
@@ -172,41 +222,41 @@ namespace Studyzy.IMEWLConverter
 
         private void MainiForm_Load(object sender, EventArgs e)
         {
-            this.cbxFrom.Items.Add("百度手机");
-            this.cbxFrom.Items.Add("QQ手机");
-            this.cbxFrom.Items.Add("搜狗拼音");
-            this.cbxFrom.Items.Add("搜狗五笔");
-            this.cbxFrom.Items.Add("QQ拼音");
-            this.cbxFrom.Items.Add("谷歌拼音");
-            this.cbxFrom.Items.Add("紫光拼音");
-            this.cbxFrom.Items.Add("拼音加加");
-            this.cbxFrom.Items.Add("搜狗细胞词库Txt");
-            this.cbxFrom.Items.Add("搜狗细胞词库scel");
+            this.cbxFrom.Items.Add(ConstantString.BAIDU_SHOUJI);
+            this.cbxFrom.Items.Add(ConstantString.QQ_SHOUJI);
+            this.cbxFrom.Items.Add(ConstantString.SOUGOU_PINYIN);
+            this.cbxFrom.Items.Add(ConstantString.SOUGOU_WUBI);
+            this.cbxFrom.Items.Add(ConstantString.QQ_PINYIN);
+            this.cbxFrom.Items.Add(ConstantString.GOOGLE_PINYIN);
+            this.cbxFrom.Items.Add(ConstantString.ZIGUANG_PINYIN);
+            this.cbxFrom.Items.Add(ConstantString.PINYIN_JIAJIA);
+            this.cbxFrom.Items.Add(ConstantString.SOUGOU_XIBAO_TXT);
+            this.cbxFrom.Items.Add(ConstantString.SOUGOU_XIBAO_SCEL);
 
-            this.cbxTo.Items.Add("百度手机");
-            this.cbxTo.Items.Add("QQ手机");
-            this.cbxTo.Items.Add("搜狗拼音");
-            this.cbxTo.Items.Add("搜狗五笔");
-            this.cbxTo.Items.Add("QQ拼音");
-            this.cbxTo.Items.Add("谷歌拼音");
-            this.cbxTo.Items.Add("紫光拼音");
-            this.cbxTo.Items.Add("拼音加加");
+            this.cbxTo.Items.Add(ConstantString.BAIDU_SHOUJI);
+            this.cbxTo.Items.Add(ConstantString.QQ_SHOUJI);
+            this.cbxTo.Items.Add(ConstantString.SOUGOU_PINYIN);
+            this.cbxTo.Items.Add(ConstantString.SOUGOU_WUBI);
+            this.cbxTo.Items.Add(ConstantString.QQ_PINYIN);
+            this.cbxTo.Items.Add(ConstantString.GOOGLE_PINYIN);
+            this.cbxTo.Items.Add(ConstantString.ZIGUANG_PINYIN);
+            this.cbxTo.Items.Add(ConstantString.PINYIN_JIAJIA);
             //this.cbxTo.Items.Add("FIT");
-            this.cbxTo.Items.Add("搜狗细胞词库Txt");
+            this.cbxTo.Items.Add(ConstantString.SOUGOU_XIBAO_TXT);
         }
         private IWordLibraryExport GetExportInterface(string str)
         {
              switch (str)
             {
-                case "百度手机": return new BaiduShouji();
-                case "QQ手机": return new QQShouji();
-                case "搜狗拼音": return new SougouPinyin();
-                case "搜狗五笔": return new SougouWubi();
-                case "QQ拼音": return new QQPinyin();
-                case "谷歌拼音": return new GooglePinyin();
-                case "搜狗细胞词库Txt": return new SougouPinyinWL();
-                case "紫光拼音": return new ZiGuangPinyin();
-                case "拼音加加": return new PinyinJiaJia();
+                case ConstantString.BAIDU_SHOUJI: return new BaiduShouji();
+                case ConstantString.QQ_SHOUJI: return new QQShouji();
+                case ConstantString.SOUGOU_PINYIN: return new SougouPinyin();
+                case ConstantString.SOUGOU_WUBI: return new SougouWubi();
+                case ConstantString.QQ_PINYIN: return new QQPinyin();
+                case ConstantString.GOOGLE_PINYIN: return new GooglePinyin();
+                case ConstantString.SOUGOU_XIBAO_TXT: return new SougouPinyinWL();
+                case ConstantString.ZIGUANG_PINYIN: return new ZiGuangPinyin();
+                case ConstantString.PINYIN_JIAJIA: return new PinyinJiaJia();
                 case "FIT": return new FIT();
                 default: throw new ArgumentException("导出词库的输入法错误");
             }
@@ -215,16 +265,16 @@ namespace Studyzy.IMEWLConverter
         {
             switch (str)
             {
-                case "百度手机": return new BaiduShouji();
-                case "QQ手机": return new QQShouji();
-                case "搜狗拼音": return new SougouPinyin();
-                case "搜狗五笔": return new SougouWubi();
-                case "QQ拼音": return new QQPinyin();
-                case "谷歌拼音": return new GooglePinyin();
-                case "紫光拼音": return new ZiGuangPinyin();
-                case "拼音加加": return new PinyinJiaJia();
-                case "搜狗细胞词库Txt": return new SougouPinyinWL();
-                case "搜狗细胞词库scel": return new SougouPinyinScel();
+                case ConstantString.BAIDU_SHOUJI: return new BaiduShouji();
+                case ConstantString.QQ_SHOUJI: return new QQShouji();
+                case ConstantString.SOUGOU_PINYIN: return new SougouPinyin();
+                case ConstantString.SOUGOU_WUBI: return new SougouWubi();
+                case ConstantString.QQ_PINYIN: return new QQPinyin();
+                case ConstantString.GOOGLE_PINYIN: return new GooglePinyin();
+                case ConstantString.ZIGUANG_PINYIN: return new ZiGuangPinyin();
+                case ConstantString.PINYIN_JIAJIA: return new PinyinJiaJia();
+                case ConstantString.SOUGOU_XIBAO_TXT: return new SougouPinyinWL();
+                case ConstantString.SOUGOU_XIBAO_SCEL: return new SougouPinyinScel();
                 default: throw new ArgumentException("导入词库的输入法错误");
             }
         }
@@ -263,7 +313,7 @@ namespace Studyzy.IMEWLConverter
 
         private void cbxFrom_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.cbxFrom.Text == "搜狗细胞词库scel")
+            if (this.cbxFrom.Text == ConstantString.SOUGOU_XIBAO_TXT)
             {
                 this.openFileDialog1.Filter = "细胞词库|*.scel|文本文件|*.txt|所有文件|*.*";
             }
