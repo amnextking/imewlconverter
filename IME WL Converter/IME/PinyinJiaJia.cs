@@ -14,8 +14,12 @@ namespace Studyzy.IMEWLConverter
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < wlList.Count; i++)
             {
-                sb.Append(wlList[i].Word);
-                sb.Append("\r\n");
+                string str=wlList[i].Word;
+                for(int j=0;j<str.Length;j++)
+                {
+                   sb.Append( str[j]+wlList[i].PinYin[j]);
+                }
+                sb.Append( "\r\n");
             }
             return sb.ToString();
         }

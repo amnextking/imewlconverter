@@ -10,17 +10,14 @@ namespace Studyzy.IMEWLConverter
        public SinglePinyin()
        {
            dic = new Dictionary<char, string>();
-           string list = PinyinDic.SinglePinYin;
-           string[] pyList = list.Split(' ');
+           string[] pyList = PinyinDic.SinglePinYin.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 
            for (int i = 0; i < pyList.Length; i++)
            {
-               var py = pyList[i].Split(';')[0];
-               var words = pyList[i].Split(';')[1];
-               for (int j = 0; j < words.Length; j++)
-               {
-                   dic.Add(words[j], py);
-               }
+               string[] hzpy = pyList[i].Split(',');
+               char hz = Convert.ToChar(hzpy[0]);
+               string py = hzpy[1];
+               dic.Add(hz, py);
            }
        }
         /// <summary>

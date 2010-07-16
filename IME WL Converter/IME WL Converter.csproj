@@ -55,6 +55,7 @@
       <DependentUpon>HelpForm.cs</DependentUpon>
     </Compile>
     <Compile Include="IME\BaiduShouji.cs" />
+    <Compile Include="IME\FIT.cs" />
     <Compile Include="IME\GooglePinyin.cs" />
     <Compile Include="IME\PinyinJiaJia.cs" />
     <Compile Include="IME\SougouPinyinScel.cs" />
@@ -121,7 +122,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
-    <None Include="Resources\First.txt" />
     <None Include="Resources\SinglePinYin.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

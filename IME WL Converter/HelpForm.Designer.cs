@@ -61,7 +61,7 @@
             this.MaximizeBox = false;
             this.Name = "HelpForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HelpForm";
+            this.Text = "帮助";
             this.Load += new System.EventHandler(this.HelpForm_Load);
             this.ResumeLayout(false);
 

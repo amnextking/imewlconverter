@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.IO;
 namespace Studyzy.IMEWLConverter
@@ -37,8 +38,10 @@ namespace Studyzy.IMEWLConverter
         IWordLibraryExport export;
         private void btnConvert_Click(object sender, EventArgs e)
         {
+#if !DEBUG
             try
             {
+#endif
                 WordLibraryList allWlList = new WordLibraryList();
                 string[] files = txbWLPath.Text.Split('|');
                 foreach (string file in files)
@@ -73,11 +76,13 @@ namespace Studyzy.IMEWLConverter
                         }
                     }
                 }
+#if !DEBUG
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+#endif
         }
 
         /// <summary>
@@ -119,6 +124,13 @@ namespace Studyzy.IMEWLConverter
                 temp= temp.FindAll(delegate(WordLibrary wl)
                 {
                     return wl.Word.Length >= minLength && wl.Word.Length <= maxLength;
+                });
+            }
+            if (toolStripMenuItemFilterEnglish.Checked)//过滤英文单词
+            {
+                Regex r = new Regex("[a-z]", RegexOptions.IgnoreCase);
+                temp.RemoveAll(delegate(WordLibrary wl) {
+                    return r.IsMatch(wl.Word);
                 });
             }
             WordLibraryList newList = new WordLibraryList();
@@ -179,6 +191,7 @@ namespace Studyzy.IMEWLConverter
             this.cbxTo.Items.Add("谷歌拼音");
             this.cbxTo.Items.Add("紫光拼音");
             this.cbxTo.Items.Add("拼音加加");
+            //this.cbxTo.Items.Add("FIT");
             this.cbxTo.Items.Add("搜狗细胞词库Txt");
         }
         private IWordLibraryExport GetExportInterface(string str)
@@ -194,6 +207,7 @@ namespace Studyzy.IMEWLConverter
                 case "搜狗细胞词库Txt": return new SougouPinyinWL();
                 case "紫光拼音": return new ZiGuangPinyin();
                 case "拼音加加": return new PinyinJiaJia();
+                case "FIT": return new FIT();
                 default: throw new ArgumentException("导出词库的输入法错误");
             }
         }

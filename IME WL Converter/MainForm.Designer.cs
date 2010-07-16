@@ -42,14 +42,15 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemIgnoreMutiPinyin = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemIgnoreSingleWord = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemEnableMutiConvert = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemIgnoreLongWord = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBoxIgnoreWordLength = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripMenuItemEnableMutiConvert = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExport = new System.Windows.Forms.Button();
+            this.toolStripMenuItemFilterEnglish = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -139,6 +140,7 @@
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemIgnoreMutiPinyin,
             this.toolStripMenuItemIgnoreSingleWord,
+            this.toolStripMenuItemFilterEnglish,
             this.toolStripMenuItemEnableMutiConvert,
             this.toolStripSeparator1,
             this.toolStripMenuItemIgnoreLongWord,
@@ -162,6 +164,14 @@
             this.toolStripMenuItemIgnoreSingleWord.Name = "toolStripMenuItemIgnoreSingleWord";
             this.toolStripMenuItemIgnoreSingleWord.Size = new System.Drawing.Size(181, 22);
             this.toolStripMenuItemIgnoreSingleWord.Text = "忽略一个字的词";
+            // 
+            // toolStripMenuItemEnableMutiConvert
+            // 
+            this.toolStripMenuItemEnableMutiConvert.CheckOnClick = true;
+            this.toolStripMenuItemEnableMutiConvert.Name = "toolStripMenuItemEnableMutiConvert";
+            this.toolStripMenuItemEnableMutiConvert.Size = new System.Drawing.Size(181, 22);
+            this.toolStripMenuItemEnableMutiConvert.Text = "允许批量词库转换";
+            this.toolStripMenuItemEnableMutiConvert.Click += new System.EventHandler(this.toolStripMenuItemEnableMutiConvert_Click);
             // 
             // toolStripSeparator1
             // 
@@ -188,14 +198,6 @@
             this.toolStripComboBoxIgnoreWordLength.Size = new System.Drawing.Size(121, 20);
             this.toolStripComboBoxIgnoreWordLength.Text = "5";
             this.toolStripComboBoxIgnoreWordLength.ToolTipText = "忽略词的长度";
-            // 
-            // toolStripMenuItemEnableMutiConvert
-            // 
-            this.toolStripMenuItemEnableMutiConvert.CheckOnClick = true;
-            this.toolStripMenuItemEnableMutiConvert.Name = "toolStripMenuItemEnableMutiConvert";
-            this.toolStripMenuItemEnableMutiConvert.Size = new System.Drawing.Size(181, 22);
-            this.toolStripMenuItemEnableMutiConvert.Text = "允许批量词库转换";
-            this.toolStripMenuItemEnableMutiConvert.Click += new System.EventHandler(this.toolStripMenuItemEnableMutiConvert_Click);
             // 
             // 关于ToolStripMenuItem
             // 
@@ -230,6 +232,15 @@
             this.btnExport.Text = "导出";
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // toolStripMenuItemFilterEnglish
+            // 
+            this.toolStripMenuItemFilterEnglish.Checked = true;
+            this.toolStripMenuItemFilterEnglish.CheckOnClick = true;
+            this.toolStripMenuItemFilterEnglish.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.toolStripMenuItemFilterEnglish.Name = "toolStripMenuItemFilterEnglish";
+            this.toolStripMenuItemFilterEnglish.Size = new System.Drawing.Size(181, 22);
+            this.toolStripMenuItemFilterEnglish.Text = "忽略包含英文的词";
             // 
             // MainiForm
             // 
@@ -282,6 +293,7 @@
         private System.Windows.Forms.ToolStripComboBox toolStripComboBoxIgnoreWordLength;
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemEnableMutiConvert;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemFilterEnglish;
     }
 }
 
