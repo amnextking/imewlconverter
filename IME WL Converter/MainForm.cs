@@ -328,5 +328,10 @@ namespace Studyzy.IMEWLConverter
             this.openFileDialog1.Multiselect = toolStripMenuItemEnableMutiConvert.Checked;
         }
 
+        private void ToolStripMenuItemAccessWebSite_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://code.google.com/p/imewlconverter/"); 
+        }
+
     }
 }
