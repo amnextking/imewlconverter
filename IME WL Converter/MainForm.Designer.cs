@@ -40,18 +40,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemIgnoreMutiPinyin = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemIgnoreSingleWord = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemFilterEnglish = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemEnableMutiConvert = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemIgnoreLongWord = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBoxIgnoreWordLength = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItemExportDirectly = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnExport = new System.Windows.Forms.Button();
             this.ToolStripMenuItemAccessWebSite = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnExport = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -139,31 +140,23 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemIgnoreMutiPinyin,
             this.toolStripMenuItemIgnoreSingleWord,
             this.toolStripMenuItemFilterEnglish,
             this.toolStripMenuItemEnableMutiConvert,
             this.toolStripSeparator1,
             this.toolStripMenuItemIgnoreLongWord,
-            this.toolStripComboBoxIgnoreWordLength});
+            this.toolStripComboBoxIgnoreWordLength,
+            this.toolStripSeparator2,
+            this.toolStripMenuItemExportDirectly});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(65, 20);
             this.toolStripMenuItem1.Text = "高级设置";
-            // 
-            // toolStripMenuItemIgnoreMutiPinyin
-            // 
-            this.toolStripMenuItemIgnoreMutiPinyin.Checked = true;
-            this.toolStripMenuItemIgnoreMutiPinyin.CheckOnClick = true;
-            this.toolStripMenuItemIgnoreMutiPinyin.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolStripMenuItemIgnoreMutiPinyin.Name = "toolStripMenuItemIgnoreMutiPinyin";
-            this.toolStripMenuItemIgnoreMutiPinyin.Size = new System.Drawing.Size(181, 22);
-            this.toolStripMenuItemIgnoreMutiPinyin.Text = "忽略多音字";
             // 
             // toolStripMenuItemIgnoreSingleWord
             // 
             this.toolStripMenuItemIgnoreSingleWord.CheckOnClick = true;
             this.toolStripMenuItemIgnoreSingleWord.Name = "toolStripMenuItemIgnoreSingleWord";
-            this.toolStripMenuItemIgnoreSingleWord.Size = new System.Drawing.Size(181, 22);
+            this.toolStripMenuItemIgnoreSingleWord.Size = new System.Drawing.Size(190, 22);
             this.toolStripMenuItemIgnoreSingleWord.Text = "忽略一个字的词";
             // 
             // toolStripMenuItemFilterEnglish
@@ -172,27 +165,27 @@
             this.toolStripMenuItemFilterEnglish.CheckOnClick = true;
             this.toolStripMenuItemFilterEnglish.CheckState = System.Windows.Forms.CheckState.Checked;
             this.toolStripMenuItemFilterEnglish.Name = "toolStripMenuItemFilterEnglish";
-            this.toolStripMenuItemFilterEnglish.Size = new System.Drawing.Size(181, 22);
+            this.toolStripMenuItemFilterEnglish.Size = new System.Drawing.Size(190, 22);
             this.toolStripMenuItemFilterEnglish.Text = "忽略包含英文的词";
             // 
             // toolStripMenuItemEnableMutiConvert
             // 
             this.toolStripMenuItemEnableMutiConvert.CheckOnClick = true;
             this.toolStripMenuItemEnableMutiConvert.Name = "toolStripMenuItemEnableMutiConvert";
-            this.toolStripMenuItemEnableMutiConvert.Size = new System.Drawing.Size(181, 22);
+            this.toolStripMenuItemEnableMutiConvert.Size = new System.Drawing.Size(190, 22);
             this.toolStripMenuItemEnableMutiConvert.Text = "允许批量词库转换";
             this.toolStripMenuItemEnableMutiConvert.Click += new System.EventHandler(this.toolStripMenuItemEnableMutiConvert_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(178, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(187, 6);
             // 
             // toolStripMenuItemIgnoreLongWord
             // 
             this.toolStripMenuItemIgnoreLongWord.CheckOnClick = true;
             this.toolStripMenuItemIgnoreLongWord.Name = "toolStripMenuItemIgnoreLongWord";
-            this.toolStripMenuItemIgnoreLongWord.Size = new System.Drawing.Size(181, 22);
+            this.toolStripMenuItemIgnoreLongWord.Size = new System.Drawing.Size(190, 22);
             this.toolStripMenuItemIgnoreLongWord.Text = "忽略过长的词";
             // 
             // toolStripComboBoxIgnoreWordLength
@@ -208,6 +201,19 @@
             this.toolStripComboBoxIgnoreWordLength.Size = new System.Drawing.Size(121, 20);
             this.toolStripComboBoxIgnoreWordLength.Text = "5";
             this.toolStripComboBoxIgnoreWordLength.ToolTipText = "忽略词的长度";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(187, 6);
+            // 
+            // toolStripMenuItemExportDirectly
+            // 
+            this.toolStripMenuItemExportDirectly.CheckOnClick = true;
+            this.toolStripMenuItemExportDirectly.Name = "toolStripMenuItemExportDirectly";
+            this.toolStripMenuItemExportDirectly.Size = new System.Drawing.Size(190, 22);
+            this.toolStripMenuItemExportDirectly.Text = "不显示结果，直接导出";
+            this.toolStripMenuItemExportDirectly.Click += new System.EventHandler(this.toolStripMenuItemExportDirectly_Click);
             // 
             // 关于ToolStripMenuItem
             // 
@@ -233,6 +239,13 @@
             this.ToolStripMenuItemAbout.Text = "关于";
             this.ToolStripMenuItemAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
+            // ToolStripMenuItemAccessWebSite
+            // 
+            this.ToolStripMenuItemAccessWebSite.Name = "ToolStripMenuItemAccessWebSite";
+            this.ToolStripMenuItemAccessWebSite.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItemAccessWebSite.Text = "查看最新版本";
+            this.ToolStripMenuItemAccessWebSite.Click += new System.EventHandler(this.ToolStripMenuItemAccessWebSite_Click);
+            // 
             // btnExport
             // 
             this.btnExport.Enabled = false;
@@ -243,13 +256,6 @@
             this.btnExport.Text = "导出";
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
-            // 
-            // ToolStripMenuItemAccessWebSite
-            // 
-            this.ToolStripMenuItemAccessWebSite.Name = "ToolStripMenuItemAccessWebSite";
-            this.ToolStripMenuItemAccessWebSite.Size = new System.Drawing.Size(152, 22);
-            this.ToolStripMenuItemAccessWebSite.Text = "查看最新版本";
-            this.ToolStripMenuItemAccessWebSite.Click += new System.EventHandler(this.ToolStripMenuItemAccessWebSite_Click);
             // 
             // MainiForm
             // 
@@ -270,7 +276,7 @@
             this.MaximizeBox = false;
             this.Name = "MainiForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "深蓝词库转换1.2";
+            this.Text = "深蓝词库转换1.3";
             this.Load += new System.EventHandler(this.MainiForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -292,7 +298,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemIgnoreMutiPinyin;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemIgnoreSingleWord;
         private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemHelp;
@@ -304,6 +309,8 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemEnableMutiConvert;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemFilterEnglish;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemAccessWebSite;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemExportDirectly;
     }
 }
 

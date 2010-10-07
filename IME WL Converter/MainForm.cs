@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using System.IO;
+
 namespace Studyzy.IMEWLConverter
 {
     public partial class MainiForm : Form
@@ -15,6 +15,8 @@ namespace Studyzy.IMEWLConverter
         {
             InitializeComponent();
         }
+
+        private bool exportDirectly = false;
 
         private void btnOpenFileDialog_Click(object sender, EventArgs e)
         {            
@@ -28,7 +30,7 @@ namespace Studyzy.IMEWLConverter
                 }
                 this.txbWLPath.Text = files.Remove(files.Length - 3);
 
-                cbxFrom.Text = AutoMatchSourceWLType(openFileDialog1.FileName);
+                cbxFrom.Text =FileOperationHelper.AutoMatchSourceWLType(openFileDialog1.FileName);
             }
 
         }
@@ -44,27 +46,36 @@ namespace Studyzy.IMEWLConverter
                 string[] files = txbWLPath.Text.Split('|');
                 foreach (string file in files)
                 {
-                    string wlTxt = ReadFile(file.Trim());
+                    string wlTxt =FileOperationHelper. ReadFile(file.Trim());
                     import = GetImportInterface(cbxFrom.Text);
 
-                    import.OnlySinglePinyin = toolStripMenuItemIgnoreMutiPinyin.Checked;
+                    //import.OnlySinglePinyin = toolStripMenuItemIgnoreMutiPinyin.Checked;
 
                     var wlList = import.Import(wlTxt);
                     export = GetExportInterface(cbxTo.Text);
                     wlList = Filter(wlList);
                     allWlList.AddRange(wlList);
                 }
+                string newWl = export.Export(allWlList);
                 richTextBox1.Clear();
-                string newWl=export.Export(allWlList);
-                richTextBox1.Text=newWl;
-                btnExport.Enabled = true;
+                if (exportDirectly)
+                {
+                    richTextBox1.Text = "为提高处理速度，高级设置中默认设置为直接导出，本文本框中不显示转换后的结果，若要查看、修改转换后的结果再导出请取消该设置。";
+                }
+                else
+                {
+                   
+                    richTextBox1.Text = newWl;
+                    btnExport.Enabled = true;
+                }
+           
                 if (MessageBox.Show("是否将导入的" + allWlList.Count + "条词库保存到本地硬盘上？", "是否保存", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     saveFileDialog1.DefaultExt = ".txt";
                     if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                     {
                         
-                        if (WriteFile(saveFileDialog1.FileName, export.Encoding,newWl))
+                        if (FileOperationHelper. WriteFile(saveFileDialog1.FileName, export.Encoding,newWl))
                         {
                             MessageBox.Show("保存成功，词库路径：" + saveFileDialog1.FileName);
                         }
@@ -83,58 +94,7 @@ namespace Studyzy.IMEWLConverter
 #endif
         }
 
-        /// <summary>
-        /// 根据词库的格式或内容判断源词库的类型
-        /// </summary>
-        /// <param name="filePath"></param>
-        /// <returns></returns>
-        private string AutoMatchSourceWLType(string filePath)
-        {
-            if (Path.GetExtension(filePath) == ".scel")
-            {
-               return ConstantString.SOUGOU_XIBAO_SCEL;
-            }
-            string example = "";
-            using (StreamReader sr = new StreamReader(filePath, Encoding.Default))
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    example = sr.ReadLine();
-                }
-            }
-            Regex reg=new Regex(@"^('[a-z]+)+\s[\u4E00-\u9FA5]+$");
-            if (reg.IsMatch(example))
-            {
-                return ConstantString.SOUGOU_PINYIN;
-            }
-            reg = new Regex(@"^[a-z']+\s[\u4E00-\u9FA5]+\s\d+$");
-            if (reg.IsMatch(example))
-            {
-                return ConstantString.QQ_PINYIN;
-            }
-            reg = new Regex(@"^[a-z\u4E00-\u9FA5]+$");
-            if (reg.IsMatch(example))
-            {
-                return ConstantString.PINYIN_JIAJIA;
-            }
-            reg = new Regex(@"^[\u4E00-\u9FA5]+\t[a-z']+\t\d+$");
-            if (reg.IsMatch(example))
-            {
-                return ConstantString.ZIGUANG_PINYIN;
-            }
-            reg = new Regex(@"^[\u4E00-\u9FA5]+\t\d+[a-z\s]+$");
-            if (reg.IsMatch(example))
-            {
-                return ConstantString.GOOGLE_PINYIN;
-            }
-            reg = new Regex(@"^[\u4E00-\u9FA5]+\s[a-z\|]+\s\d+$");
-            if (reg.IsMatch(example))
-            {
-                return ConstantString.BAIDU_SHOUJI;
-            }
-            return "";
 
-        }
         /// <summary>
         /// 词库过滤
         /// </summary>
@@ -188,37 +148,7 @@ namespace Studyzy.IMEWLConverter
              return newList;
 
         }
-        private string ReadFile(string path)
-        {
-            string ext=Path.GetExtension(path);
-            if (ext == ".scel" && cbxFrom.Text == ConstantString.SOUGOU_XIBAO_TXT)//搜狗细胞词库
-            {
-                return SougouPinyinScel.ReadScel(path);
-            }
-            else//文本
-            {
-                using (StreamReader sr = new StreamReader(path, Encoding.Default))
-                {
-                    return sr.ReadToEnd();
-                }
-            }
-        }
-        private bool WriteFile(string path,Encoding coding, string content)
-        {
-            try
-            {
-                using (StreamWriter sw = new StreamWriter(path,false, coding))
-                {
-                    sw.Write(content);
-                    sw.Close();
-                }
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
+       
 
         private void MainiForm_Load(object sender, EventArgs e)
         {
@@ -230,7 +160,7 @@ namespace Studyzy.IMEWLConverter
             this.cbxFrom.Items.Add(ConstantString.GOOGLE_PINYIN);
             this.cbxFrom.Items.Add(ConstantString.ZIGUANG_PINYIN);
             this.cbxFrom.Items.Add(ConstantString.PINYIN_JIAJIA);
-            this.cbxFrom.Items.Add(ConstantString.SOUGOU_XIBAO_TXT);
+            this.cbxFrom.Items.Add(ConstantString.WORD_ONLY);
             this.cbxFrom.Items.Add(ConstantString.SOUGOU_XIBAO_SCEL);
 
             this.cbxTo.Items.Add(ConstantString.BAIDU_SHOUJI);
@@ -242,7 +172,7 @@ namespace Studyzy.IMEWLConverter
             this.cbxTo.Items.Add(ConstantString.ZIGUANG_PINYIN);
             this.cbxTo.Items.Add(ConstantString.PINYIN_JIAJIA);
             //this.cbxTo.Items.Add("FIT");
-            this.cbxTo.Items.Add(ConstantString.SOUGOU_XIBAO_TXT);
+            this.cbxTo.Items.Add(ConstantString.WORD_ONLY);
         }
         private IWordLibraryExport GetExportInterface(string str)
         {
@@ -254,10 +184,9 @@ namespace Studyzy.IMEWLConverter
                 case ConstantString.SOUGOU_WUBI: return new SougouWubi();
                 case ConstantString.QQ_PINYIN: return new QQPinyin();
                 case ConstantString.GOOGLE_PINYIN: return new GooglePinyin();
-                case ConstantString.SOUGOU_XIBAO_TXT: return new SougouPinyinWL();
+                case ConstantString.WORD_ONLY: return new SougouPinyinWL();
                 case ConstantString.ZIGUANG_PINYIN: return new ZiGuangPinyin();
                 case ConstantString.PINYIN_JIAJIA: return new PinyinJiaJia();
-                case "FIT": return new FIT();
                 default: throw new ArgumentException("导出词库的输入法错误");
             }
         }
@@ -273,7 +202,7 @@ namespace Studyzy.IMEWLConverter
                 case ConstantString.GOOGLE_PINYIN: return new GooglePinyin();
                 case ConstantString.ZIGUANG_PINYIN: return new ZiGuangPinyin();
                 case ConstantString.PINYIN_JIAJIA: return new PinyinJiaJia();
-                case ConstantString.SOUGOU_XIBAO_TXT: return new SougouPinyinWL();
+                case ConstantString.WORD_ONLY: return new SougouPinyinWL();
                 case ConstantString.SOUGOU_XIBAO_SCEL: return new SougouPinyinScel();
                 default: throw new ArgumentException("导入词库的输入法错误");
             }
@@ -288,7 +217,7 @@ namespace Studyzy.IMEWLConverter
                 saveFileDialog1.DefaultExt = ".txt";
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    if (WriteFile(saveFileDialog1.FileName, export.Encoding, richTextBox1.Text))
+                    if (FileOperationHelper. WriteFile(saveFileDialog1.FileName, export.Encoding, richTextBox1.Text))
                     {
                         MessageBox.Show("保存成功，词库路径：" + saveFileDialog1.FileName);
                     }
@@ -313,7 +242,7 @@ namespace Studyzy.IMEWLConverter
 
         private void cbxFrom_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.cbxFrom.Text == ConstantString.SOUGOU_XIBAO_TXT)
+            if (this.cbxFrom.Text == ConstantString.WORD_ONLY)
             {
                 this.openFileDialog1.Filter = "细胞词库|*.scel|文本文件|*.txt|所有文件|*.*";
             }
@@ -331,6 +260,11 @@ namespace Studyzy.IMEWLConverter
         private void ToolStripMenuItemAccessWebSite_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("http://code.google.com/p/imewlconverter/"); 
+        }
+
+        private void toolStripMenuItemExportDirectly_Click(object sender, EventArgs e)
+        {
+            exportDirectly = this.toolStripMenuItemExportDirectly.Checked;
         }
 
     }

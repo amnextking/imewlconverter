@@ -156,95 +156,143 @@ namespace Studyzy.IMEWLConverter {
         
         /// <summary>
         ///   Looks up a localized string similar to 〇,ling
-        ///啊,a
-        ///阿,a
-        ///吖,a
-        ///嗄,a
-        ///腌,a
-        ///锕,a
-        ///埃,ai
+        ///爱,ai
+        ///矮,ai
         ///挨,ai
         ///哎,ai
+        ///碍,ai
+        ///癌,ai
         ///唉,ai
         ///哀,ai
-        ///皑,ai
-        ///癌,ai
         ///蔼,ai
-        ///矮,ai
-        ///艾,ai
-        ///碍,ai
-        ///爱,ai
-        ///隘,ai
-        ///捱,ai
-        ///嗳,ai
-        ///嗌,ai
+        ///皑,ai
         ///嫒,ai
         ///瑷,ai
         ///暧,ai
+        ///捱,ai
         ///砹,ai
+        ///嗳,ai
         ///锿,ai
         ///霭,ai
-        ///鞍,an
-        ///氨,an
-        ///安,an
-        ///俺,an
+        ///伌,ai
+        ///僾,ai
+        ///凒,ai
+        ///啀,ai
+        ///嘊,ai
+        ///噯,ai
+        ///塧,ai
+        ///壒,ai
+        ///嬡,ai
+        ///愛,ai
+        ///懓,ai
+        ///昹,ai
+        ///曖,ai
+        ///毐,ai
+        ///溰,ai
+        ///溾,ai
+        ///璦,ai
+        ///皚,ai
+        ///皧,ai
+        ///瞹,ai
+        ///硋,ai
+        ///薆,ai
+        ///藹,ai
+        ///譪,ai
+        ///躷,ai
+        ///鎄,ai
+        ///鑀,ai
+        ///靄,ai
+        ///馤,ai
+        ///鱫,ai
+        ///鴱,ai
         ///按,an
+        ///安,an
         ///暗,an
         ///岸,an
-        ///胺,an
         ///案,an
-        ///谙,an
-        ///埯,an
-        ///揞,an
-        ///庵,an
-        ///桉,an
+        ///鞍,an
+        ///氨,an
         ///铵,an
-        ///鹌,an
+        ///桉,an
         ///黯,an
-        ///肮,ang
-        ///昂,ang
-        ///盎,ang
-        ///凹,ao
-        ///敖,ao
-        ///熬,ao
-        ///翱,ao
-        ///袄,ao
-        ///傲,ao
-        ///奥,ao
-        ///懊,ao
-        ///澳,ao
-        ///坳,ao
-        ///嗷,ao
-        ///岙,ao
-        ///廒,ao
-        ///遨,ao
-        ///媪,ao
-        ///骜,ao
-        ///獒,ao
-        ///聱,ao
-        ///螯,ao
-        ///鏊,ao
-        ///鳌,ao
-        ///鏖,ao
-        ///芭,ba
-        ///捌,ba
-        ///扒,ba
-        ///叭,ba
-        ///吧,ba
-        ///笆,ba
-        ///八,ba
-        ///疤,ba
-        ///巴,ba
-        ///拔,ba
-        ///跋,ba
-        ///靶,ba
-        ///把,ba
-        ///耙,ba
-        ///坝,b [rest of string was truncated]&quot;;.
+        ///侒,an
+        ///儑,an
+        ///唵,an
+        ///啽,an
+        ///垵,an
+        ///堓,an
+        ///峖,an
+        ///盦,an
+        ///盫,an
+        ///罯,an
+        ///腤,an
+        ///荌,an
+        ///萻,an
+        ///蓭,an
+        ///誝,an
+        ///豻,an
+        ///貋,an
+        ///銨,an
+        ///錌,an
+        ///隌,an
+        ///雸,an
+        ///鞌,an
+        ///韽,an
+        ///馣,an
+        ///鮟,an
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SinglePinYin {
             get {
                 return ResourceManager.GetString("SinglePinYin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;yun&apos;diao 韵调
+        ///&apos;yun&apos;huo 匀和
+        ///&apos;bian&apos;diao 变调
+        ///&apos;bo&apos;hou 薄厚
+        ///&apos;bo&apos;jiu 薄酒
+        ///&apos;bian&apos;jiao 编校
+        ///&apos;bian&apos;qia 边卡
+        ///&apos;kui&apos;duo 揆度
+        ///&apos;kui&apos;duo 窥度
+        ///&apos;yun&apos;jie 蕴藉
+        ///&apos;kui&apos;she 亏折
+        ///&apos;yun&apos;chen 匀称
+        ///&apos;yu&apos;diao 语调
+        ///&apos;bo&apos;le 伯乐
+        ///&apos;yu&apos;dou 于都
+        ///&apos;bing&apos;zu 兵卒
+        ///&apos;bo&apos;li 薄利
+        ///&apos;bo&apos;li 薄礼
+        ///&apos;yu&apos;chi 尉迟
+        ///&apos;bo&apos;lin 柏林
+        ///&apos;bo&apos;he 薄荷
+        ///&apos;bo&apos;le 博乐
+        ///&apos;lao&apos;ren 落忍
+        ///&apos;hui&apos;nong 溃脓
+        ///&apos;kuang&apos;zhang 矿长
+        ///&apos;ji&apos;bo 瘠薄
+        ///&apos;bi&apos;yang 泌阳
+        ///&apos;yun&apos;xing 运行
+        ///&apos;bi&apos;zhong 比重
+        ///&apos;ji&apos;cha 级差
+        ///&apos;kuan&apos;zhi 款识
+        ///&apos;yuan&apos;xing 远行
+        ///&apos;huo&apos;de 霍地
+        ///&apos;bie&apos;zhuan 别传
+        ///&apos;bie&apos;jie 别价
+        ///&apos;la&apos;li 癞痢
+        ///&apos;la&apos;qian 拉纤
+        ///&apos;za&apos;jia 咱家
+        ///&apos;bi&apos;xie 辟邪
+        ///&apos;bi&apos;xie 鼻 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string WordPinyin {
+            get {
+                return ResourceManager.GetString("WordPinyin", resourceCulture);
             }
         }
     }

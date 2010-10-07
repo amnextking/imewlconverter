@@ -8,11 +8,11 @@ namespace Studyzy.IMEWLConverter
     {
         #region IWordLibraryImport 成员
 
-        public bool OnlySinglePinyin
-        {
-            get;
-            set;
-        }
+        //public bool OnlySinglePinyin
+        //{
+        //    get;
+        //    set;
+        //}
 
         public WordLibraryList Import(string str)
         {

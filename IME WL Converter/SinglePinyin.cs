@@ -10,7 +10,10 @@ namespace Studyzy.IMEWLConverter
        public SinglePinyin()
        {
            dic = new Dictionary<char, string>();
-           string[] pyList = PinyinDic.SinglePinYin.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+           //string singlePinYin = FileOperationHelper.ReadFile("SinglePinYin.txt");
+           
+           string singlePinYin = PinyinDic.SinglePinYin;
+           string[] pyList = singlePinYin.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 
            for (int i = 0; i < pyList.Length; i++)
            {
@@ -39,10 +42,14 @@ namespace Studyzy.IMEWLConverter
         public override List<List<string>> GetPinYinListOfString(string str)
         {
             List<List<string>> pyList = new List<List<string>>();
-            List<string> pys = new List<string>();
+            List<string> pys = MutiPinYinWord.GenerateMutiWordPinYin(str);
+             
             for (int i = 0; i < str.Length; i++)
             {
-                pys.Add(dic[str[i]]);
+                if (string.IsNullOrEmpty(pys[i]))
+                {
+                    pys[i]=dic[str[i]];
+                }
             }
             pyList.Add(pys);
             return pyList;

@@ -6,7 +6,7 @@ namespace Studyzy.IMEWLConverter
 {
     interface IWordLibraryImport
     {
-        bool OnlySinglePinyin { get; set; }
+        //bool OnlySinglePinyin { get; set; }
         WordLibraryList Import(string str);
     }
     interface IWordLibraryExport

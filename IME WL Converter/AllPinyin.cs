@@ -27,14 +27,23 @@ namespace Studyzy.IMEWLConverter
        /// 获得一个词的拼音
        /// </summary>
        /// <param name="str"></param>
+       /// <param name="split">拼音间的分隔符</param>
        /// <returns></returns>       
        public List<string> GetPinYinOfString(string str, string split)
        {
            List<string> pinyinList = new List<string>();
-
+           List<string> pinyin = MutiPinYinWord.GenerateMutiWordPinYin(str);
            for (int i = 0; i < str.Length; i++)
            {
-               var py = GetPinYinOfChar(str[i]);
+               List<string> py=new List<string>();
+               if (string.IsNullOrEmpty(pinyin[i]))
+               {
+                   py = GetPinYinOfChar(str[i]);
+               }
+               else
+               {
+                   py.Add(pinyin[i]);
+               }
                if (pinyinList.Count == 0)
                {
                    py.ForEach(delegate(string p)
@@ -102,7 +111,9 @@ namespace Studyzy.IMEWLConverter
            {
                if (dictionary.Count == 0)
                {
-                   string[] pyList = PinyinDic.AllPinYin.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                   //string allPinYin = FileOperationHelper.ReadFile("AllPinYin.txt");
+                   string allPinYin = PinyinDic.AllPinYin;
+                   string[] pyList = allPinYin.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
                    for (int i = 0; i < pyList.Length; i++)
                    {
                        string[] hzpy = pyList[i].Split(',');

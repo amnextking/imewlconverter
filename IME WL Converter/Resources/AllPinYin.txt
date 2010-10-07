@@ -18,7 +18,6 @@
 锕,ke
 錒,a
 錒,ke
-厑,aes
 爱,ai
 矮,ai
 挨,ai
@@ -94,9 +93,11 @@
 懓,ai
 懝,ai
 懝,ni
+懝,yi
 敱,ai
 敱,zhu
 敳,ai
+敳,zhu
 昹,ai
 曖,ai
 欬,ai
@@ -197,6 +198,7 @@
 揞,yan
 揞,ye
 犴,an
+犴,han
 铵,an
 桉,an
 谙,an
@@ -211,6 +213,7 @@
 匼,an
 匼,e
 匼,ke
+匼,qia
 厈,an
 厈,han
 咹,an
@@ -314,9 +317,11 @@
 枊,ang
 醃,ang
 醃,yan
+醃,a
 醠,ang
 骯,ang
 骯,kang
+骯,hang
 袄,ao
 凹,ao
 凹,wa
@@ -371,6 +376,7 @@
 墽,qiao
 奡,ao
 奧,ao
+奧,yu
 媼,ao
 媼,wo
 媼,yun
@@ -380,6 +386,7 @@
 嶴,ao
 慠,ao
 扷,ao
+扷,ba
 抝,ao
 抝,niu
 摮,ao
@@ -452,6 +459,7 @@
 拔,bo
 拔,fa
 罢,ba
+罢,pi
 跋,ba
 跋,bei
 巴,ba
@@ -497,10 +505,12 @@
 哱,po
 哵,ba
 坺,ba
+坺,fa
 垻,ba
 垻,bei
 墢,ba
 墢,fei
+墢,fa
 壩,ba
 夿,ba
 妭,ba
@@ -522,11 +532,13 @@
 柭,bie
 柭,bo
 柭,fu
+柭,pei
 欛,ba
 湃,ba
 湃,pai
 炦,ba
 犮,ba
+犮,quan
 玐,ba
 癹,ba
 皅,ba
@@ -537,6 +549,7 @@
 笩,fa
 笩,pei
 紦,ba
+紦,ha
 罷,ba
 罷,bi
 罷,pi
@@ -552,13 +565,16 @@
 萆,pi
 蚆,ba
 覇,ba
+覇,po
 詙,ba
 詙,bo
 豝,ba
 跁,ba
 跁,pa
+跁,pao
 軷,ba
 釛,ba
+釛,he
 釟,ba
 鈀,ba
 鈀,pa
@@ -602,6 +618,7 @@
 擺,bai
 敗,bai
 栢,bai
+栢,bo
 派,bai
 派,mai
 派,pa
@@ -622,6 +639,7 @@
 贁,bai
 鞁,bai
 鞁,bi
+鞁,bei
 鞴,bai
 鞴,bei
 鞴,bu
@@ -629,7 +647,6 @@
 韛,bai
 韛,fu
 兡,baike
-瓸,baiwa
 半,ban
 半,pan
 办,ban
@@ -692,6 +709,7 @@
 籓,ban
 籓,fan
 籓,pan
+籓,bian
 粄,ban
 絆,ban
 肦,ban
@@ -768,6 +786,7 @@
 嫎,bang
 嫎,pang
 峀,bang
+峀,xiu
 崗,bang
 崗,gang
 幇,bang
@@ -810,6 +829,7 @@
 蛖,bang
 蛖,mang
 蜯,bang
+蜯,beng
 螃,bang
 螃,pang
 謗,bang
@@ -879,7 +899,6 @@
 剝,bo
 剝,pu
 勹,bao
-勹,pianpang
 勽,bao
 嘐,bao
 嘐,jiao
@@ -893,6 +912,7 @@
 報,fu
 媬,bao
 嫑,bao
+嫑,biao
 寚,bao
 寳,bao
 寶,bao
@@ -923,6 +943,7 @@
 袍,pao
 裒,bao
 裒,pou
+裒,you
 裦,bao
 裦,pou
 裦,xiu
@@ -932,11 +953,13 @@
 鉋,bao
 鉋,pao
 鑤,bao
+鑤,pao
 铇,bao
 铇,pao
 闁,bao
 靌,bao
 靤,bao
+靤,pao
 飹,bao
 飽,bao
 駂,bao
@@ -947,7 +970,7 @@
 鳵,bao
 鴇,bao
 齙,bao
-萡,be
+萡,bo
 被,bei
 被,bi
 被,pi
@@ -993,6 +1016,7 @@
 備,bei
 僃,bei
 喺,bei
+喺,xi
 埤,bei
 埤,bi
 埤,pi
@@ -1053,6 +1077,7 @@
 蜚,fei
 蜚,pei
 誖,bei
+誖,bo
 諀,bei
 諀,pi
 貝,bei
@@ -1067,6 +1092,7 @@
 鐴,bei
 鐴,bi
 骳,bei
+骳,mo
 鵯,bei
 本,ben
 本,pen
@@ -1094,6 +1120,7 @@
 捹,ben
 撪,ben
 桳,ben
+桳,fan
 楍,ben
 泍,ben
 渀,ben
@@ -1112,6 +1139,7 @@
 賁,bi
 賁,fen
 輽,ben
+輽,fan
 逩,ben
 錛,ben
 鐼,ben
@@ -1130,6 +1158,7 @@
 甏,beng
 嘣,beng
 伻,beng
+伻,peng
 俸,beng
 俸,feng
 傰,beng
@@ -1236,6 +1265,7 @@
 襞,bi
 庳,bi
 庳,pi
+庳,bei
 铋,bi
 铋,se
 跸,bi
@@ -1262,6 +1292,7 @@
 偪,bi
 偪,fu
 匂,bi
+匂,xiong
 咇,bi
 咇,bie
 啚,bi
@@ -1276,6 +1307,7 @@
 妼,bi
 娝,bi
 娝,po
+娝,pou
 媲,bi
 媲,pi
 嬶,bi
@@ -1312,6 +1344,7 @@
 枇,pi
 枈,bi
 枈,pi
+枈,mi
 柀,bi
 柲,bi
 柲,bie
@@ -1332,6 +1365,7 @@
 獙,bi
 珌,bi
 畁,bi
+畁,qi
 畐,bi
 畐,fu
 畢,bi
@@ -1343,6 +1377,7 @@
 瞥,bi
 瞥,pie
 禆,bi
+禆,pi
 稫,bi
 稫,pi
 笓,bi
@@ -1350,6 +1385,7 @@
 筆,bi
 箄,bi
 箄,pai
+箄,bei
 箆,bi
 箆,pi
 篳,bi
@@ -1444,6 +1480,7 @@
 鞞,bi
 鞞,bing
 鞞,pi
+鞞,bei
 鞸,bi
 鞸,bing
 韠,bi
@@ -1455,6 +1492,7 @@
 駜,bi
 驆,bi
 髲,bi
+髲,po
 魓,bi
 魮,bi
 魮,pi
@@ -1531,9 +1569,11 @@
 猵,bian
 猵,pian
 獱,bian
+獱,pian
 甂,bian
 疺,bian
 疺,fa
+疺,yun
 稨,bian
 稹,bian
 稹,zhen
@@ -1580,6 +1620,7 @@
 杓,biao
 杓,di
 杓,zhuo
+杓,shao
 婊,biao
 飑,biao
 飑,pao
@@ -1618,7 +1659,6 @@
 瀌,biao
 灬,biao
 灬,huo
-灬,pianpang
 熛,biao
 爂,biao
 猋,biao
@@ -1656,6 +1696,7 @@
 骉,biao
 骉,piao
 鰾,biao
+鰾,piao
 麃,biao
 麃,pao
 别,bie
@@ -1673,9 +1714,11 @@
 猰,bie
 猰,jia
 猰,ya
+猰,qie
 癟,bie
 穪,bie
 穪,cheng
+穪,chen
 莂,bie
 虌,bie
 蛂,bie
@@ -1707,12 +1750,14 @@
 椕,bin
 殯,bin
 氞,bin
+氞,nei
 汃,bin
 汃,pa
 濱,bin
 濵,bin
 瀕,bin
 瑸,bin
+瑸,pian
 璸,bin
 璸,pian
 砏,bin
@@ -1722,6 +1767,7 @@
 臏,bin
 虨,bin
 蠙,bin
+蠙,pin
 訜,bin
 訜,fen
 豩,bin
@@ -1765,11 +1811,11 @@
 偋,bing
 傡,bing
 冫,bing
-冫,pianpang
 垪,bing
 寎,bing
 幷,bing
 庰,bing
+庰,ping
 怲,bing
 抦,bing
 拼,bing
@@ -1781,12 +1827,16 @@
 枋,bing
 枋,fang
 栟,bing
+栟,ben
 栤,bing
 梹,bing
+梹,bin
 棅,bing
 檳,bing
+檳,bin
 氷,bing
 燷,bing
+燷,lan
 燹,bing
 燹,xian
 琕,bing
@@ -1812,6 +1862,7 @@
 鉼,bing
 鉼,ping
 鋲,bing
+鋲,biao
 陃,bing
 靐,bing
 鞆,bing
@@ -1826,6 +1877,7 @@
 驳,bo
 玻,bo
 勃,bo
+勃,bei
 菠,bo
 钵,bo
 搏,bo
@@ -1857,6 +1909,7 @@
 钹,bo
 饽,bo
 擘,bo
+擘,bai
 仢,bo
 侼,bo
 僠,bo
@@ -1895,6 +1948,7 @@
 殕,bo
 殕,tou
 殕,ye
+殕,fou
 泼,bo
 泼,po
 浡,bo
@@ -1909,6 +1963,7 @@
 煿,bo
 牔,bo
 犦,bo
+犦,bao
 犻,bo
 犻,fei
 犻,pei
@@ -1924,6 +1979,7 @@
 癶,bo
 發,bo
 發,fa
+發,fei
 皪,bo
 皪,li
 皪,luo
@@ -1939,6 +1995,7 @@
 穛,bo
 穛,zhuo
 箥,bo
+箥,po
 簙,bo
 糪,bo
 缽,bo
@@ -1955,6 +2012,7 @@
 蒲,bo
 蒲,pu
 蔔,bo
+蔔,bu
 蔢,bo
 蔢,po
 蘖,bo
@@ -2117,6 +2175,7 @@
 攃,sa
 橴,ca
 橴,zi
+橴,za
 磣,ca
 磣,chen
 礸,ca
@@ -2145,12 +2204,14 @@
 婇,cai
 寀,cai
 戝,cai
+戝,zei
 扐,cai
 扐,le
 扐,li
 採,cai
 揌,cai
 揌,sai
+揌,zong
 棌,cai
 綵,cai
 縩,cai
@@ -2158,7 +2219,6 @@
 纔,shan
 財,cai
 跴,cai
-乲,cal
 蚕,can
 蚕,tian
 残,can
@@ -2166,6 +2226,7 @@
 掺,chan
 掺,sen
 掺,shan
+掺,xian
 参,can
 参,cen
 参,san
@@ -2202,6 +2263,7 @@
 嘇,shan
 嘇,shen
 噆,can
+噆,zan
 囋,can
 囋,za
 囋,zan
@@ -2283,6 +2345,7 @@
 匨,zang
 嵢,cang
 欌,cang
+欌,zang
 滄,cang
 濸,cang
 獊,cang
@@ -2292,6 +2355,7 @@
 篬,cang
 篬,qiang
 罉,cang
+罉,cheng
 臧,cang
 臧,zang
 艙,cang
@@ -2320,7 +2384,6 @@
 傮,zao
 屮,cao
 屮,che
-屮,pianpang
 嶆,cao
 愺,cao
 慅,cao
@@ -2336,7 +2399,7 @@
 肏,cao
 艸,cao
 艹,cao
-艹,pianpang
+艹,ao
 蓸,cao
 褿,cao
 襙,cao
@@ -2373,6 +2436,7 @@
 厠,si
 厠,ze
 墄,ce
+墄,qi
 嫧,ce
 嫧,ze
 帻,ce
@@ -2394,6 +2458,7 @@
 栅,ce
 栅,shan
 栅,zha
+栅,shi
 測,ce
 畟,ce
 畟,ji
@@ -2421,6 +2486,7 @@
 涔,qian
 涔,zan
 梣,cen
+梣,chen
 汵,cen
 汵,gan
 汵,han
@@ -2430,6 +2496,7 @@
 笒,han
 笒,jin
 膥,cen
+膥,cun
 曾,ceng
 曾,zeng
 层,ceng
@@ -2446,16 +2513,13 @@
 橧,ceng
 橧,zeng
 竲,ceng
+竲,zeng
 繒,ceng
 繒,zeng
 缯,ceng
 缯,zeng
 驓,ceng
-硛,ceok
-硳,ceok
-岾,ceom
-猠,ceon
-乽,ceor
+岾,zai
 查,cha
 查,chai
 查,zha
@@ -2481,6 +2545,7 @@
 楂,cha
 楂,zha
 槎,cha
+槎,zha
 镲,cha
 衩,cha
 汊,cha
@@ -2529,10 +2594,12 @@
 揷,zha
 摖,cha
 摖,qi
+摖,ji
 斜,cha
 斜,xie
 斜,ye
 査,cha
+査,zha
 梌,cha
 梌,tu
 猹,cha
@@ -2542,9 +2609,11 @@
 秅,na
 紁,cha
 肞,cha
+肞,chai
 臿,cha
 艖,cha
 芆,cha
+芆,chai
 苴,cha
 苴,ju
 苴,zha
@@ -2571,6 +2640,7 @@
 鍤,cha
 鎈,cha
 鎈,suo
+鎈,cuo
 鑔,cha
 钗,cha
 钗,chai
@@ -2587,6 +2657,7 @@
 儕,chai
 勑,chai
 勑,lai
+勑,chi
 喍,chai
 囆,chai
 搓,chai
@@ -2657,6 +2728,7 @@
 佔,zhan
 僝,chan
 僝,zhuan
+僝,zhan
 僤,chan
 僤,dan
 僤,shan
@@ -2700,6 +2772,7 @@
 崭,chan
 崭,zhan
 嵼,chan
+嵼,yan
 嶃,chan
 嶃,zhan
 嶄,chan
@@ -2721,15 +2794,19 @@
 摻,chan
 摻,sen
 摻,shan
+摻,can
+摻,xian
 撣,chan
 撣,dan
 撣,tan
+撣,shan
 攙,chan
 攙,shan
 斺,chan
 斺,jie
 旵,chan
 梴,chan
+梴,yan
 棎,chan
 榐,chan
 榐,nian
@@ -2831,6 +2908,7 @@
 鉆,chan
 鉆,qian
 鉆,tie
+鉆,zuan
 鋋,chan
 鋓,chan
 鏟,chan
@@ -2841,6 +2919,7 @@
 韂,chan
 顫,chan
 顫,shan
+顫,zhan
 饞,chan
 长,chang
 长,zhang
@@ -2865,6 +2944,7 @@
 氅,chang
 菖,chang
 惝,chang
+惝,tang
 嫦,chang
 徜,chang
 鬯,chang
@@ -2889,6 +2969,7 @@
 儻,chang
 儻,tang
 兏,chang
+兏,zhang
 厰,chang
 嘗,chang
 嚐,chang
@@ -2904,6 +2985,7 @@
 廠,chang
 悵,chang
 晿,chang
+晿,cheng
 暢,chang
 棖,chang
 棖,cheng
@@ -2914,6 +2996,7 @@
 焻,chang
 焻,gua
 玚,chang
+玚,yang
 琩,chang
 瑒,chang
 瑒,dang
@@ -2932,8 +3015,10 @@
 誯,chang
 鋹,chang
 鋿,chang
+鋿,shang
 錩,chang
 鏛,chang
+鏛,shang
 锠,chang
 長,chang
 長,zhang
@@ -3120,6 +3205,7 @@
 謵,che
 謵,xi
 車,che
+車,ju
 迠,che
 頙,che
 趁,chen
@@ -3176,6 +3262,7 @@
 捵,nian
 捵,tian
 揨,chen
+揨,cheng
 敐,chen
 曟,chen
 枕,chen
@@ -3216,6 +3303,7 @@
 稱,cheng
 綝,chen
 綝,shen
+綝,lin
 縝,chen
 縝,zhen
 缜,chen
@@ -3313,6 +3401,7 @@
 侱,cheng
 侱,ting
 偁,cheng
+偁,chen
 僜,cheng
 僜,deng
 僜,teng
@@ -3363,6 +3452,7 @@
 朾,zhen
 棦,cheng
 椉,cheng
+椉,sheng
 槍,cheng
 槍,qiang
 樘,cheng
@@ -3386,10 +3476,13 @@
 淨,jing
 溗,cheng
 澂,cheng
+澂,deng
 瀓,cheng
+瀓,deng
 瀞,cheng
 瀞,jing
 爯,cheng
+爯,chen
 牚,cheng
 珵,cheng
 珵,ting
@@ -3435,6 +3528,7 @@
 鎗,cheng
 鎗,qiang
 鏳,cheng
+鏳,zheng
 鏿,cheng
 鐺,cheng
 鐺,dang
@@ -3469,6 +3563,7 @@
 坻,chi
 坻,di
 茌,chi
+茌,cha
 墀,chi
 饬,chi
 饬,shi
@@ -3497,6 +3592,7 @@
 佁,chi
 佁,si
 佁,yi
+佁,ai
 侙,chi
 俿,chi
 俿,hu
@@ -3512,6 +3608,7 @@
 呬,xi
 呮,chi
 呮,qi
+呮,zhi
 呹,chi
 呹,yi
 哆,chi
@@ -3544,7 +3641,9 @@
 妛,chi
 屟,chi
 屟,xie
+屟,ti
 岻,chi
+岻,di
 彨,chi
 彲,chi
 徲,chi
@@ -3610,6 +3709,7 @@
 泜,chi
 泜,zhi
 淔,chi
+淔,zhi
 湁,chi
 滞,chi
 滞,zhi
@@ -3622,8 +3722,10 @@
 熾,chi
 狋,chi
 狋,yi
+狋,quan
 瓻,chi
 痓,chi
+痓,zhi
 痸,chi
 瘈,chi
 瘈,zhi
@@ -3655,6 +3757,7 @@
 翨,chi
 耛,chi
 耛,yi
+耛,si
 肔,chi
 胝,chi
 胝,di
@@ -3682,6 +3785,7 @@
 蛇,yi
 蝭,chi
 蝭,ti
+蝭,di
 袲,chi
 袲,nuo
 袳,chi
@@ -3727,6 +3831,7 @@
 迡,ni
 迣,chi
 迣,zhi
+迣,li
 遅,chi
 遟,chi
 遟,xi
@@ -3753,6 +3858,7 @@
 餝,chi
 餝,shi
 饎,chi
+饎,xi
 饰,chi
 饰,shi
 馳,chi
@@ -3813,6 +3919,7 @@
 僮,zhuang
 喠,chong
 喠,zhong
+喠,chuang
 嘃,chong
 埫,chong
 埫,shang
@@ -3859,6 +3966,7 @@
 蟲,chong
 蟲,tong
 蟲,zhong
+蟲,hui
 衝,chong
 褈,chong
 褈,zhong
@@ -3904,6 +4012,7 @@
 雠,chou
 丒,chou
 侴,chou
+侴,hao
 偢,chou
 偢,qiao
 偢,zou
@@ -3970,6 +4079,7 @@
 盩,zhou
 眣,chou
 眣,die
+眣,ti
 矁,chou
 篘,chou
 籌,chou
@@ -3993,7 +4103,9 @@
 譸,chou
 譸,zhou
 讎,chou
+讎,qiu
 讐,chou
+讐,qiu
 诪,chou
 诪,zhou
 跾,chou
@@ -4078,7 +4190,9 @@
 慉,chu
 慉,xu
 懨,chu
+懨,yan
 拀,chu
+拀,zhu
 摢,chu
 摢,hu
 敊,chu
@@ -4092,6 +4206,7 @@
 槒,chu
 槒,xu
 橻,chu
+橻,cu
 檚,chu
 櫉,chu
 櫖,chu
@@ -4114,6 +4229,7 @@
 犓,chu
 珿,chu
 琡,chu
+琡,shu
 璴,chu
 硫,chu
 硫,liu
@@ -4124,6 +4240,7 @@
 禇,chu
 竌,chu
 竐,chu
+竐,qi
 篨,chu
 絀,chu
 絮,chu
@@ -4181,6 +4298,7 @@
 跦,zhu
 踀,chu
 踀,cu
+踀,chuo
 踰,chu
 踰,yao
 踰,yu
@@ -4214,6 +4332,7 @@
 揣,chuai
 揣,duo
 揣,zhui
+揣,tuan
 膪,chuai
 膪,zha
 膪,zhai
@@ -4509,7 +4628,6 @@
 輟,chuo
 辵,chuo
 辶,chuo
-辶,pianpang
 逴,chuo
 酫,chuo
 醛,chuo
@@ -4661,8 +4779,9 @@
 鷀,ci
 齹,ci
 齹,cuo
-嗭,cis
+嗭,zi
 从,cong
+从,zong
 丛,cong
 匆,cong
 聪,cong
@@ -4710,6 +4829,7 @@
 潨,zong
 灇,cong
 焧,cong
+焧,zong
 熜,cong
 熜,zong
 燪,cong
@@ -4838,6 +4958,7 @@
 踧,cu
 踧,di
 蹵,cu
+蹵,jiu
 錯,cu
 錯,cuo
 錯,xi
@@ -4864,6 +4985,7 @@
 僔,zun
 巑,cuan
 攅,cuan
+攅,zan
 攛,cuan
 攢,cuan
 攢,zan
@@ -4920,6 +5042,7 @@
 啐,e
 啐,za
 啐,zu
+啐,qi
 悴,cui
 萃,cui
 毳,cui
@@ -4940,12 +5063,15 @@
 崪,zu
 嶉,cui
 嶉,zui
+嶉,wei
 忰,cui
 慛,cui
 椊,cui
 椊,zuo
+椊,zu
 槯,cui
 槯,zui
+槯,zhi
 漼,cui
 濢,cui
 濢,zui
@@ -4953,6 +5079,7 @@
 熣,cui
 熣,sui
 獕,cui
+獕,suo
 琗,cui
 琗,se
 疩,cui
@@ -5004,8 +5131,10 @@
 刌,cun
 吋,cun
 吋,duo
+吋,dou
 墫,cun
 墫,zun
+墫,dun
 拵,cun
 拵,zun
 洊,cun
@@ -5042,6 +5171,7 @@
 最,cuo
 最,zui
 棤,cuo
+棤,que
 澨,cuo
 澨,shi
 營,cuo
@@ -5117,14 +5247,17 @@
 墶,da
 搨,da
 搨,ta
+搨,tuo
 撘,da
 撘,ta
 橽,da
+橽,ta
 毼,da
 毼,he
 毼,ke
 汏,da
 汏,dai
+汏,tai
 溚,da
 溚,ta
 炟,da
@@ -5206,8 +5339,8 @@
 叇,dai
 嘚,dai
 嘚,de
+嘚,dei
 垈,dai
-垈,tae
 帒,dai
 帯,dai
 帶,dai
@@ -5232,6 +5365,7 @@
 艜,dai
 蚮,dai
 蚮,te
+蚮,de
 蝳,dai
 蝳,du
 螮,dai
@@ -5303,6 +5437,7 @@
 郸,dan
 郸,duo
 惮,dan
+惮,da
 石,dan
 石,shi
 澹,dan
@@ -5383,6 +5518,7 @@
 潭,xun
 潭,yin
 澸,dan
+澸,gan
 狚,dan
 玬,dan
 瓭,dan
@@ -5475,6 +5611,7 @@
 愓,dang
 愓,shang
 愓,tang
+愓,yang
 擋,dang
 攩,dang
 攩,tang
@@ -5487,6 +5624,7 @@
 潒,yang
 澢,dang
 灙,dang
+灙,tang
 烫,dang
 烫,tang
 燙,dang
@@ -5543,7 +5681,6 @@
 叨,dao
 叨,tao
 刂,dao
-刂,pianpang
 受,dao
 受,shou
 啁,dao
@@ -5556,8 +5693,10 @@
 壔,dao
 宲,dao
 宲,shi
+宲,bao
 導,dao
 屶,dao
+屶,hui
 島,dao
 嶋,dao
 嶌,dao
@@ -5639,7 +5778,8 @@
 哋,dei
 哋,die
 哋,mi
-揼,dem
+哋,di
+揼,beng
 扥,den
 扽,den
 等,deng
@@ -5668,7 +5808,6 @@
 鄧,deng
 鐙,deng
 隥,deng
-哣,deo
 哣,pou
 第,di
 低,di
@@ -5777,6 +5916,7 @@
 摕,zhi
 敵,di
 旳,di
+旳,de
 杕,di
 杕,duo
 枤,di
@@ -5820,6 +5960,7 @@
 约,yao
 约,yue
 聜,di
+聜,zhi
 腣,di
 芍,di
 芍,que
@@ -5873,6 +6014,7 @@
 適,ti
 適,zhe
 釱,di
+釱,dai
 鉪,di
 鏑,di
 阺,di
@@ -5958,6 +6100,7 @@
 槇,dian
 槇,zhen
 槙,dian
+槙,zhen
 橂,dian
 橝,dian
 橝,tan
@@ -6030,6 +6173,7 @@
 挑,tao
 挑,tiao
 殦,diao
+殦,chi
 汈,diao
 淍,diao
 淍,zhou
@@ -6077,6 +6221,7 @@
 雿,diao
 颩,diao
 颩,diu
+颩,biao
 鮉,diao
 鯛,diao
 鳭,diao
@@ -6121,6 +6266,7 @@
 啑,jie
 啑,sha
 啑,ti
+啑,zha
 峌,die
 崼,die
 崼,shi
@@ -6192,6 +6338,7 @@
 跕,die
 跕,tie
 跕,zhan
+跕,dian
 踢,die
 踢,ti
 軼,die
@@ -6217,7 +6364,6 @@
 鰨,ta
 鳎,die
 鳎,ta
-嚸,dim
 顶,ding
 定,ding
 订,ding
@@ -6246,6 +6392,7 @@
 啶,ding
 奵,ding
 奵,ting
+奵,tian
 嵿,ding
 帄,ding
 忊,ding
@@ -6258,6 +6405,7 @@
 濎,ding
 濎,ting
 甼,ding
+甼,ting
 矴,ding
 碠,ding
 磸,ding
@@ -6397,7 +6545,6 @@
 篼,dou
 蔸,dou
 乧,dou
-乧,dul
 侸,dou
 侸,shu
 兠,dou
@@ -6430,6 +6577,7 @@
 竇,du
 脰,dou
 艔,dou
+艔,dao
 荳,dou
 讀,dou
 讀,du
@@ -6496,6 +6644,7 @@
 妬,du
 嬻,du
 帾,du
+帾,zhu
 斁,du
 斁,tu
 斁,yi
@@ -6601,7 +6750,6 @@
 躖,duan
 鍛,duan
 鍴,duan
-叾,dug
 对,dui
 队,dui
 堆,dui
@@ -6609,6 +6757,7 @@
 兑,dui
 兑,duo
 兑,rui
+兑,yue
 敦,dui
 敦,dun
 敦,tuan
@@ -6620,9 +6769,11 @@
 兊,dui
 兊,duo
 兊,rui
+兊,yue
 兌,dui
 兌,duo
 兌,rui
+兌,yue
 垖,dui
 埻,dui
 埻,guo
@@ -6635,6 +6786,7 @@
 対,dui
 對,dui
 嵟,dui
+嵟,cui
 憞,dui
 憞,dun
 憞,tun
@@ -6726,7 +6878,6 @@
 燉,tun
 犜,dun
 獤,dun
-獤,ton
 碷,dun
 腞,dun
 腞,tu
@@ -6757,6 +6908,7 @@
 掇,zhuo
 躲,duo
 沲,duo
+沲,tuo
 咄,duo
 铎,duo
 裰,duo
@@ -6783,14 +6935,18 @@
 尮,duo
 崜,duo
 嶞,duo
+嶞,tuo
 憜,duo
 挅,duo
 挆,duo
 敓,duo
+敓,dui
 敚,duo
+敚,dui
 敠,duo
 敠,que
 敪,duo
+敪,que
 朶,duo
 杂,duo
 杂,za
@@ -6804,6 +6960,7 @@
 柮,zuo
 桗,duo
 椯,duo
+椯,chuan
 橢,duo
 橢,tuo
 毲,duo
@@ -6816,6 +6973,7 @@
 痥,duo
 硾,duo
 硾,zhui
+硾,chui
 綞,duo
 茤,duo
 茤,ji
@@ -6845,6 +7003,7 @@
 飿,duo
 饳,duo
 鮵,duo
+鮵,tuo
 鵽,duo
 饿,e
 哦,e
@@ -6907,6 +7066,7 @@
 僞,gui
 僞,wei
 僫,e
+僫,wu
 匎,e
 卾,e
 吪,e
@@ -6945,6 +7105,7 @@
 娿,e
 屵,e
 屵,yan
+屵,an
 岋,e
 岋,ji
 峉,e
@@ -6969,6 +7130,7 @@
 櫮,e
 歞,e
 歺,e
+歺,dai
 涐,e
 湂,e
 玀,e
@@ -6999,7 +7161,6 @@
 覨,e
 訛,e
 詻,e
-詻,lue
 詻,luo
 誐,e
 諤,e
@@ -7023,6 +7184,7 @@
 鑩,e
 閜,e
 閜,xia
+閜,ke
 閼,e
 閼,yan
 閼,yu
@@ -7056,6 +7218,7 @@
 诶,ei
 诶,xi
 诶,yi
+诶,ai
 恩,en
 摁,en
 蒽,en
@@ -7070,11 +7233,8 @@
 饐,ye
 饐,yi
 鞥,eng
-仒,eo
-乻,eol
-欕,eom
+乻,er
 欕,yan
-旕,eos
 而,er
 而,neng
 二,er
@@ -7168,6 +7328,7 @@
 鮞,er
 鴯,er
 发,fa
+发,fei
 法,fa
 罚,fa
 伐,fa
@@ -7204,6 +7365,7 @@
 蕟,fei
 藅,fa
 醗,fa
+醗,po
 醱,fa
 醱,po
 鍅,fa
@@ -7253,6 +7415,7 @@
 忛,fan
 憣,fan
 払,fan
+払,fu
 旙,fan
 旛,fan
 杋,fan
@@ -7295,9 +7458,12 @@
 訉,fan
 販,fan
 軓,fan
+軓,gui
 軬,fan
 轓,fan
 辺,fan
+辺,bian
+辺,dao
 釩,fan
 鐇,fan
 颿,fan
@@ -7327,7 +7493,6 @@
 鲂,fang
 倣,fang
 匚,fang
-匚,pianpang
 堏,fang
 旊,fang
 昉,fang
@@ -7346,6 +7511,7 @@
 雱,fang
 雱,pang
 髣,fang
+髣,pang
 魴,fang
 鰟,fang
 鰟,pang
@@ -7437,6 +7603,7 @@
 裵,fei
 裵,pei
 裶,fei
+裶,pei
 誹,fei
 鐨,fei
 陫,fei
@@ -7482,6 +7649,7 @@
 坆,fen
 坆,mei
 坋,fen
+坋,ben
 墳,fen
 奮,fen
 妢,fen
@@ -7574,6 +7742,7 @@
 峯,feng
 崶,feng
 捀,feng
+捀,peng
 捧,feng
 捧,peng
 摓,feng
@@ -7585,6 +7754,7 @@
 浲,hong
 湗,feng
 溄,feng
+溄,hong
 灃,feng
 炐,feng
 炐,pang
@@ -7594,6 +7764,7 @@
 猦,feng
 琒,feng
 甮,feng
+甮,beng
 瘋,feng
 盽,feng
 碸,feng
@@ -7602,12 +7773,14 @@
 縫,feng
 肨,feng
 肨,pang
+肨,pan
 舽,feng
 舽,pang
 艂,feng
 莑,feng
 莑,peng
 蘕,feng
+蘕,peng
 蘴,feng
 蘴,song
 諷,feng
@@ -7754,6 +7927,7 @@
 偩,fu
 冨,fu
 冹,fu
+冹,fa
 刜,fu
 呒,fu
 呒,m
@@ -7803,6 +7977,7 @@
 椱,fu
 汱,fu
 汱,quan
+汱,tai
 沕,fu
 沕,mi
 沕,wu
@@ -7811,6 +7986,7 @@
 澓,fu
 炥,fu
 烰,fu
+烰,pao
 焤,fu
 玞,fu
 玸,fu
@@ -7913,7 +8089,6 @@
 锫,pei
 锫,pou
 阝,fu
-阝,pianpang
 陚,fu
 陚,wu
 韍,fu
@@ -7938,13 +8113,14 @@
 麩,fu
 麬,fu
 麱,fu
-猤,fui
+猤,gui
 噶,ga
 噶,ge
 胳,ga
 胳,ge
 夹,ga
 夹,jia
+夹,xia
 嘎,ga
 咖,ga
 咖,jia
@@ -7974,13 +8150,13 @@
 釓,qiu
 錷,ga
 魀,ga
-甴,gad
 甴,you
 甴,zha
 该,gai
 改,gai
 盖,gai
 盖,ge
+盖,he
 概,gai
 概,gui
 概,jie
@@ -8011,6 +8187,7 @@
 晐,gai
 杚,gai
 杚,ge
+杚,gu
 核,gai
 核,he
 核,hu
@@ -8032,6 +8209,7 @@
 葢,gai
 蓋,gai
 蓋,ge
+蓋,he
 該,gai
 豥,gai
 賅,gai
@@ -8040,6 +8218,7 @@
 郂,hai
 鈣,gai
 鎅,gai
+鎅,jie
 阣,gai
 阣,yi
 骸,gai
@@ -8086,6 +8265,7 @@
 乾,gan
 乾,qian
 亁,gan
+亁,qian
 仠,gan
 仠,han
 佄,gan
@@ -8127,6 +8307,7 @@
 盰,gan
 稈,gan
 笴,gan
+笴,ge
 筸,gan
 篢,gan
 篢,gong
@@ -8173,6 +8354,7 @@
 纲,gang
 港,gang
 港,hong
+港,jiang
 缸,gang
 岗,gang
 杠,gang
@@ -8221,6 +8403,7 @@
 綱,gang
 罁,gang
 罓,gang
+罓,wang
 釭,gang
 鋼,gang
 鎠,gang
@@ -8248,6 +8431,7 @@
 皋,gao
 皋,gu
 皋,hao
+皋,yao
 郜,gao
 诰,gao
 杲,gao
@@ -8285,7 +8469,10 @@
 獋,gao
 獋,hao
 獔,gao
+獔,hao
 皐,gao
+皐,hao
+皐,yao
 祮,gao
 祰,gao
 禞,gao
@@ -8373,6 +8560,7 @@
 纥,he
 纥,jie
 哿,ge
+哿,jia
 介,ge
 介,jie
 佫,ge
@@ -8397,11 +8585,13 @@
 扢,gu
 扢,jie
 扢,qi
+扢,xi
 挌,ge
 挌,he
 擱,ge
 敋,ge
 敋,guo
+敋,e
 槅,ge
 櫊,ge
 滆,ge
@@ -8410,14 +8600,19 @@
 牫,qiu
 牫,zang
 牱,ge
+牱,ke
 犵,ge
 犵,he
 猲,ge
 猲,hai
 猲,xie
+猲,he
 獦,ge
+獦,lie
+獦,xie
 秴,ge
 秴,he
+秴,huo
 箇,ge
 紇,ge
 紇,he
@@ -8466,6 +8661,7 @@
 閘,zha
 閣,ge
 閤,ge
+閤,he
 闸,ge
 闸,ya
 闸,zha
@@ -8490,6 +8686,7 @@
 鲄,ge
 鲄,he
 鴐,ge
+鴐,jia
 鴚,ge
 鴿,ge
 鵅,ge
@@ -8530,6 +8727,7 @@
 哽,geng
 哽,ying
 亙,geng
+亙,gen
 刯,geng
 堩,geng
 峺,geng
@@ -8537,6 +8735,7 @@
 恆,heng
 挭,geng
 掶,geng
+掶,jie
 暅,geng
 暅,xuan
 椩,geng
@@ -8566,11 +8765,10 @@
 鯁,geng
 鶊,geng
 鹒,geng
-嚿,geo
 嚿,huo
-啹,geu
-喼,gib
-嗰,go
+啹,ju
+喼,jie
+嗰,ge
 工,gong
 公,gong
 功,gong
@@ -8609,10 +8807,10 @@
 宮,gong
 幊,gong
 廾,gong
-廾,pianpang
 愩,gong
 愩,hong
 慐,gong
+慐,hong
 拲,gong
 杛,gong
 栱,gong
@@ -8692,6 +8890,7 @@
 坸,gou
 夠,gou
 姤,gou
+姤,du
 抅,gou
 抅,ju
 拘,gou
@@ -8710,6 +8909,7 @@
 耈,gou
 耉,gou
 茩,gou
+茩,hou
 蚼,gou
 蚼,qu
 蚼,xu
@@ -8796,6 +8996,7 @@
 嘏,jia
 傦,gu
 僱,gu
+僱,hu
 凅,gu
 劷,gu
 劷,yang
@@ -8815,6 +9016,7 @@
 嫴,gu
 尳,gu
 峠,gu
+峠,qia
 崓,gu
 怘,gu
 怘,hu
@@ -8848,16 +9050,19 @@
 皷,gu
 盬,gu
 硲,gu
+硲,yu
 磆,gu
 磆,hua
 磆,ke
 祻,gu
 稒,gu
 穀,gu
+穀,yu
 笟,gu
 箛,gu
 篐,gu
 糓,gu
+糓,gou
 縎,gu
 縎,hu
 罛,gu
@@ -8874,6 +9079,7 @@
 蓇,gu
 薣,gu
 蛌,gu
+蛌,tun
 蠱,gu
 蠱,ye
 角,gu
@@ -8893,6 +9099,7 @@
 鈷,hu
 錮,gu
 頋,gu
+頋,e
 顧,gu
 餶,gu
 馉,gu
@@ -8931,6 +9138,8 @@
 咼,guo
 咼,he
 咼,wai
+咼,wa
+咼,wo
 啩,gua
 坬,gua
 掛,gua
@@ -8939,6 +9148,7 @@
 絓,gua
 絓,kua
 緺,gua
+緺,wo
 罣,gua
 罫,gua
 罫,guai
@@ -8954,10 +9164,15 @@
 銛,gua
 銛,tian
 銛,xian
+銛,kuo
 銽,gua
+銽,kuo
+銽,tian
+銽,xian
 铦,gua
 铦,tian
 铦,xian
+铦,kuo
 颪,gua
 颳,gua
 颳,ji
@@ -9020,6 +9235,7 @@
 卝,kuang
 婠,guan
 婠,wan
+婠,wa
 悹,guan
 悺,guan
 慣,guan
@@ -9037,6 +9253,7 @@
 權,guan
 權,quan
 毌,guan
+毌,wan
 沦,guan
 沦,lun
 泴,guan
@@ -9107,6 +9324,7 @@
 犷,guang
 胱,guang
 侊,guang
+侊,gong
 俇,guang
 僙,guang
 垙,guang
@@ -9122,12 +9340,14 @@
 挄,guang
 挄,kuo
 撗,guang
+撗,heng
 擴,guang
 擴,kuo
 擴,tang
 横,guang
 横,heng
 欟,guang
+欟,guan
 洸,guang
 洸,huang
 潢,guang
@@ -9156,6 +9376,7 @@
 銧,guang
 黆,guang
 归,gui
+归,kui
 贵,gui
 鬼,gui
 跪,gui
@@ -9207,6 +9428,7 @@
 匭,gui
 匮,gui
 匮,kui
+匮,ju
 匱,gui
 匱,kui
 厬,gui
@@ -9257,10 +9479,10 @@
 檜,gui
 檜,hui
 櫃,gui
+櫃,ju
 櫰,gui
 櫰,huai
 櫷,gui
-櫷,kwi
 歸,gui
 歸,kui
 氿,gui
@@ -9281,6 +9503,8 @@
 癐,gui
 癐,wei
 瞆,gui
+瞆,kui
+瞆,wei
 瞡,gui
 瞶,gui
 瞶,kui
@@ -9314,6 +9538,7 @@
 螝,hui
 蟡,gui
 袿,gui
+袿,gua
 襘,gui
 襘,hui
 規,gui
@@ -9352,6 +9577,7 @@
 鮭,hua
 鮭,wa
 鮭,xie
+鮭,kui
 鱖,gui
 鱖,jue
 鱥,gui
@@ -9370,9 +9596,9 @@
 绲,gun
 绲,hun
 丨,gun
-丨,pianpang
 惃,gun
 棞,gun
+棞,jun
 浑,gun
 浑,hun
 混,gun
@@ -9382,10 +9608,12 @@
 渾,hun
 滾,gun
 璭,gun
+璭,guan
 睔,gun
 睔,huan
 睔,lun
 睴,gun
+睴,hun
 緄,gun
 緄,hun
 緷,gun
@@ -9423,6 +9651,9 @@
 呙,guo
 呙,he
 呙,wai
+呙,gua
+呙,wa
+呙,wo
 虢,guo
 蜾,guo
 蜾,luo
@@ -9438,7 +9669,6 @@
 啯,guo
 嘓,guo
 囗,guo
-囗,pianpang
 囗,wei
 囯,guo
 囶,guo
@@ -9454,6 +9684,7 @@
 惈,guo
 慖,guo
 摑,guo
+摑,guai
 楇,guo
 楇,huo
 楇,kua
@@ -9512,6 +9743,7 @@
 虾,ha
 虾,xia
 丷,ha
+丷,ba
 吓,ha
 吓,he
 吓,xia
@@ -9520,6 +9752,7 @@
 奤,tai
 妎,ha
 妎,jie
+妎,hai
 為,ha
 為,wei
 獬,ha
@@ -9545,6 +9778,7 @@
 咴,hui
 嗐,hai
 嚡,hai
+嚡,xie
 塰,hai
 烸,hai
 還,hai
@@ -9559,7 +9793,6 @@
 饚,hai
 駭,hai
 駴,hai
-乤,hal
 喊,han
 喊,jian
 喊,kan
@@ -9609,6 +9842,7 @@
 嵌,qian
 晘,han
 晥,han
+晥,wan
 暵,han
 梒,han
 椷,han
@@ -9690,6 +9924,7 @@
 馯,qian
 駻,han
 鬫,han
+鬫,kan
 魽,han
 鶾,han
 行,hang
@@ -9834,6 +10069,8 @@
 鹤,he
 涸,he
 嗬,he
+嗬,a
+嗬,ke
 劾,he
 劾,kai
 盍,he
@@ -9849,6 +10086,7 @@
 呼,xu
 咊,he
 咊,huo
+咊,hu
 哬,he
 啝,he
 喛,he
@@ -9893,6 +10131,7 @@
 渴,kai
 渴,ke
 湼,he
+湼,nie
 澕,he
 焃,he
 焃,huo
@@ -9980,6 +10219,7 @@
 鬩,he
 鬩,xi
 鶡,he
+鶡,jie
 鶮,he
 鶮,hu
 鶴,he
@@ -9994,9 +10234,9 @@
 嘿,mo
 嘿,mu
 嬒,hei
+嬒,hui
 潶,hei
 黒,hei
-冚,hem
 冚,kan
 很,hen
 狠,hen
@@ -10014,12 +10254,14 @@
 鞎,hen
 恒,heng
 哼,heng
+哼,hng
 衡,heng
 亨,heng
 亨,peng
 亨,xiang
 蘅,heng
 堼,heng
+堼,feng
 姮,heng
 悙,heng
 橫,heng
@@ -10037,9 +10279,8 @@
 鴴,heng
 鵆,heng
 鸻,heng
-囍,heui
+囍,xi
 乊,ho
-乥,hol
 轰,hong
 哄,hong
 洪,hong
@@ -10086,7 +10327,9 @@
 渹,qing
 潂,hong
 澋,hong
+澋,jing
 澒,hong
+澒,gong
 灴,hong
 焢,hong
 玒,hong
@@ -10195,6 +10438,7 @@
 乎,hu
 戏,hu
 戏,xi
+戏,hui
 瑚,hu
 鹕,hu
 冱,hu
@@ -10224,6 +10468,7 @@
 槲,hu
 乕,hu
 冴,hu
+冴,ya
 匢,hu
 匫,hu
 喖,hu
@@ -10249,10 +10494,12 @@
 恗,kua
 戯,hu
 戯,xi
+戯,hui
 戱,hu
 戱,xi
 戲,hu
 戲,xi
+戲,hui
 戶,hu
 戸,hu
 搰,hu
@@ -10264,6 +10511,7 @@
 昒,hu
 曶,hu
 枑,hu
+枑,di
 楛,hu
 楛,ku
 楜,hu
@@ -10273,6 +10521,7 @@
 殻,ke
 殻,qiang
 殻,que
+殻,qiao
 汻,hu
 汻,huang
 沍,hu
@@ -10323,7 +10572,6 @@
 蔛,hu
 蔰,hu
 虍,hu
-虍,pianpang
 虖,hu
 虝,hu
 螜,hu
@@ -10348,6 +10596,7 @@
 雐,hu
 雽,hu
 韄,hu
+韄,huo
 頀,hu
 頶,hu
 餬,hu
@@ -10360,6 +10609,7 @@
 鳸,hu
 鴩,hu
 鴩,tie
+鴩,die
 鶘,hu
 鶦,hu
 鸌,hu
@@ -10379,6 +10629,7 @@
 砉,hua
 砉,xu
 劃,hua
+劃,huai
 劐,hua
 劐,huo
 嘩,hua
@@ -10419,6 +10670,7 @@
 獪,hua
 獪,kuai
 璍,hua
+璍,ye
 畫,hua
 畵,hua
 硴,hua
@@ -10429,6 +10681,7 @@
 舙,hua
 舙,qi
 芲,hua
+芲,lun
 華,hua
 華,kua
 蕐,hua
@@ -10546,6 +10799,7 @@
 槵,huan
 欥,huan
 欥,yi
+欥,yu
 歓,huan
 歡,huan
 汍,huan
@@ -10562,6 +10816,7 @@
 瓛,huan
 瓛,yan
 瓛,ye
+瓛,ya
 瘓,huan
 皖,huan
 皖,wan
@@ -10572,6 +10827,7 @@
 瞏,huan
 瞏,qiong
 瞣,huan
+瞣,wan
 糫,huan
 綄,huan
 綄,wan
@@ -10733,6 +10989,7 @@
 哕,yue
 晖,hui
 隳,hui
+隳,duo
 麾,hui
 诙,hui
 蟪,hui
@@ -10798,6 +11055,7 @@
 洃,hui
 湏,hui
 湏,min
+湏,xu
 滙,hui
 潓,hui
 濊,hui
@@ -10828,6 +11086,7 @@
 眭,sui
 眭,wei
 眭,xie
+眭,gui
 睢,hui
 睢,sui
 睳,hui
@@ -10912,6 +11171,7 @@
 惛,hun
 惛,men
 惽,hun
+惽,min
 慁,hun
 捆,hun
 捆,kun
@@ -10926,6 +11186,7 @@
 棔,hun
 殙,hun
 殙,men
+殙,mei
 涽,hun
 湣,hun
 湣,mian
@@ -10946,6 +11207,7 @@
 緡,mian
 緡,min
 繉,hun
+繉,sheng
 缗,hun
 缗,mian
 缗,min
@@ -10991,6 +11253,7 @@
 咟,huo
 嚄,huo
 嚄,wo
+嚄,o
 奯,huo
 掝,huo
 掝,xu
@@ -11014,6 +11277,7 @@
 礊,ke
 禍,huo
 秮,huo
+秮,kuo
 秳,huo
 秳,kuo
 篧,huo
@@ -11046,10 +11310,8 @@
 騞,huo
 魊,huo
 魊,yu
-夻,hwa
-遤,hweong
+夻,hua
 遤,ma
-乁,i
 乁,ji
 乁,yi
 几,ji
@@ -11192,6 +11454,8 @@
 乩,ji
 芰,ji
 哜,ji
+哜,jie
+哜,zhai
 丮,ji
 亼,ji
 倚,ji
@@ -11218,6 +11482,7 @@
 垍,ji
 塉,ji
 墍,ji
+墍,xi
 妀,ji
 姞,ji
 姼,ji
@@ -11231,6 +11496,7 @@
 屰,ni
 屰,po
 峜,ji
+峜,fa
 嵆,ji
 嶯,ji
 帺,ji
@@ -11238,7 +11504,7 @@
 幾,ji
 廭,ji
 彐,ji
-彐,pianpang
+彐,xue
 彑,ji
 彶,ji
 徛,ji
@@ -11263,8 +11529,10 @@
 擠,ji
 攲,ji
 攲,qi
+攲,yi
 敧,ji
 敧,qi
+敧,yi
 旡,ji
 旣,ji
 暩,ji
@@ -11287,6 +11555,7 @@
 櫅,ji
 櫭,ji
 櫭,jie
+櫭,jue
 毄,ji
 毄,qi
 汥,ji
@@ -11352,6 +11621,7 @@
 箿,ji
 簊,ji
 糭,ji
+糭,zong
 紀,ji
 紒,ji
 紒,jie
@@ -11384,6 +11654,7 @@
 艻,ji
 艻,le
 芶,ji
+芶,gou
 苙,ji
 苙,li
 茍,ji
@@ -11449,6 +11720,7 @@
 谿,ji
 谿,xi
 賫,ji
+賫,lai
 賷,ji
 趌,ji
 趌,jie
@@ -11493,6 +11765,7 @@
 隮,ji
 雞,ji
 雦,ji
+雦,chou
 雧,ji
 霵,ji
 霽,ji
@@ -11541,6 +11814,7 @@
 齏,ji
 家,jia
 家,jie
+家,gu
 加,jia
 假,jia
 假,jie
@@ -11602,6 +11876,7 @@
 夾,jia
 夾,xia
 夾,xie
+夾,ga
 婽,jia
 宊,jia
 宊,tu
@@ -11693,7 +11968,6 @@
 鴶,jia
 鵊,jia
 麚,jia
-嗧,jialun
 见,jian
 见,xian
 件,jian
@@ -11799,11 +12073,13 @@
 堅,jian
 堑,jian
 堑,qian
+堑,zan
 堿,jian
 堿,kan
 堿,xian
 塹,jian
 塹,qian
+塹,zan
 墹,jian
 姦,jian
 姧,jian
@@ -11847,6 +12123,7 @@
 橏,jian
 橏,zhan
 橺,jian
+橺,xian
 檢,jian
 檻,jian
 檻,kan
@@ -11876,10 +12153,12 @@
 犍,jian
 犍,qian
 猏,jian
+猏,yan
 玪,jian
 玪,lin
 玪,qing
 玪,yin
+玪,qian
 珔,jian
 瑊,jian
 瑐,jian
@@ -11931,6 +12210,7 @@
 菺,jian
 葌,jian
 葏,jian
+葏,jing
 葥,jian
 葥,qian
 蔪,jian
@@ -11980,6 +12260,8 @@
 釰,ren
 釰,ri
 釼,jian
+釼,ren
+釼,ri
 鈃,jian
 鈃,xing
 銒,jian
@@ -12073,6 +12355,7 @@
 酱,jiang
 蒋,jiang
 疆,jiang
+疆,qiang
 匠,jiang
 强,jiang
 强,qiang
@@ -12093,6 +12376,7 @@
 塂,xing
 壃,jiang
 夅,jiang
+夅,xiang
 奨,jiang
 奬,jiang
 將,jiang
@@ -12109,6 +12393,7 @@
 摪,qiang
 摾,jiang
 杢,jiang
+杢,jie
 槳,jiang
 橿,jiang
 櫤,jiang
@@ -12132,6 +12417,7 @@
 螀,jiang
 螿,jiang
 袶,jiang
+袶,peng
 講,jiang
 謽,jiang
 醤,jiang
@@ -12184,6 +12470,7 @@
 侥,jiao
 侥,yao
 徼,jiao
+徼,yao
 艽,jiao
 艽,qiu
 僬,jiao
@@ -12277,6 +12564,7 @@
 橋,jiao
 橋,qiao
 櫵,jiao
+櫵,qiao
 湬,jiao
 湬,jiu
 湬,qiu
@@ -12297,6 +12585,7 @@
 燋,jiao
 燋,jue
 燋,qiao
+燋,zhuo
 獥,jiao
 珓,jiao
 璬,jiao
@@ -12307,6 +12596,8 @@
 窌,jiao
 窌,jiu
 窌,pao
+窌,liao
+窌,liu
 笅,jiao
 筊,jiao
 簥,jiao
@@ -12322,6 +12613,7 @@
 膲,jiao
 臫,jiao
 芁,jiao
+芁,qiu
 茮,jiao
 茮,niao
 菽,jiao
@@ -12375,6 +12667,7 @@
 鵁,jiao
 鵁,xiao
 鵤,jiao
+鵤,zan
 鷦,jiao
 鷮,jiao
 节,jie
@@ -12430,11 +12723,11 @@
 刼,jie
 劼,jie
 卩,jie
-卩,pianpang
 卪,jie
 卪,ran
 唶,jie
 唶,ze
+唶,zuo
 堦,jie
 堺,jie
 契,jie
@@ -12469,6 +12762,7 @@
 掲,jie
 搩,jie
 搩,zha
+搩,zhe
 擑,jie
 擮,jie
 擳,jie
@@ -12536,6 +12830,7 @@
 觧,jie
 觧,xie
 詰,jie
+詰,ji
 誡,jie
 誱,jie
 謯,jie
@@ -12552,6 +12847,7 @@
 階,jie
 雃,jie
 雃,qian
+雃,jian
 鞂,jie
 飷,jie
 髫,jie
@@ -12633,6 +12929,7 @@
 嬐,yan
 嬧,jin
 寖,jin
+寖,qin
 嶜,jin
 嶜,qin
 巹,jin
@@ -12700,7 +12997,6 @@
 鋟,qin
 錦,jin
 钅,jin
-钅,pianpang
 锓,jin
 锓,qian
 锓,qin
@@ -12764,6 +13060,7 @@
 儬,jing
 儬,qing
 凈,jing
+凈,cheng
 剄,jing
 坓,jing
 坓,xing
@@ -12807,6 +13104,7 @@
 烴,jing
 烴,ting
 燝,jing
+燝,zhu
 猄,jing
 璄,jing
 璟,jing
@@ -12880,7 +13178,6 @@
 侰,jiong
 僒,jiong
 冂,jiong
-冂,pianpang
 冋,jiong
 冏,jiong
 囧,jiong
@@ -12970,6 +13267,9 @@
 揫,jiu
 摎,jiu
 摎,liao
+摎,jiao
+摎,liu
+摎,nao
 朻,jiu
 杦,jiu
 柾,jiu
@@ -12978,12 +13278,14 @@
 橚,jiu
 橚,su
 橚,xiao
+橚,qiu
 殧,jiu
 汣,jiu
 牞,jiu
 牞,le
 畂,jiu
 畂,liu
+畂,mu
 稵,jiu
 稵,zi
 穋,jiu
@@ -12994,11 +13296,14 @@
 繆,miu
 繆,mou
 繆,mu
+繆,liao
+繆,miao
 缪,jiu
 缪,miao
 缪,miu
 缪,mou
 缪,mu
+缪,liao
 舊,jiu
 舏,jiu
 萛,jiu
@@ -13014,7 +13319,7 @@
 鷲,jiu
 麔,jiu
 齨,jiu
-欍,jou
+欍,jiu
 举,ju
 巨,ju
 巨,qu
@@ -13072,10 +13377,12 @@
 钜,ju
 讵,ju
 侷,ju
+侷,jv
 倶,ju
 僪,ju
 僪,yu
 冣,ju
+冣,zui
 凥,ju
 劇,ju
 勮,ju
@@ -13141,11 +13448,13 @@
 澽,ju
 焗,ju
 爠,ju
+爠,qu
 犑,ju
 狊,ju
 珇,ju
 珇,zu
 痀,ju
+痀,gou
 眗,ju
 眗,kou
 眗,xu
@@ -13176,7 +13485,6 @@
 臄,jue
 舉,ju
 艍,ju
-艍,keo
 菹,ju
 菹,zu
 萭,ju
@@ -13210,6 +13518,7 @@
 豦,ju
 貗,ju
 貗,yu
+貗,lou
 趉,ju
 趉,jue
 趜,ju
@@ -13235,6 +13544,7 @@
 邹,zou
 郥,ju
 郥,qu
+郥,bei
 郰,ju
 郰,zou
 郹,ju
@@ -13323,6 +13633,7 @@
 梋,juan
 梋,xuan
 梋,xue
+梋,xie
 棬,juan
 棬,quan
 泫,juan
@@ -13332,6 +13643,7 @@
 焆,jue
 焆,yuan
 焆,yue
+焆,ye
 獧,juan
 獧,xuan
 瓹,juan
@@ -13390,6 +13702,7 @@
 飬,yang
 餋,juan
 鵑,juan
+鵑,jian
 决,jue
 决,que
 决,xue
@@ -13453,10 +13766,13 @@
 捔,zhuo
 撧,jue
 斍,jue
+斍,jiao
 橜,jue
 欔,jue
+欔,qu
 欮,jue
 殌,jue
+殌,jing
 氒,jue
 決,jue
 決,que
@@ -13465,6 +13781,7 @@
 泬,xue
 潏,jue
 潏,shu
+潏,yu
 灍,jue
 熦,jue
 爑,jue
@@ -13495,6 +13812,7 @@
 繑,qiao
 繘,jue
 繘,yu
+繘,ju
 芵,jue
 蕝,jue
 蕞,jue
@@ -13528,6 +13846,7 @@
 鐝,jue
 钁,jue
 镼,jue
+镼,jie
 闋,jue
 闋,kui
 闋,que
@@ -13552,6 +13871,7 @@
 鶌,qu
 鷢,jue
 龣,jue
+龣,jiao
 军,jun
 君,jun
 均,jun
@@ -13593,7 +13913,6 @@
 焌,jun
 焌,qu
 焞,jun
-焞,tiu
 焞,tun
 燇,jun
 狻,jun
@@ -13659,6 +13978,7 @@
 铠,kai
 忾,kai
 忾,qi
+忾,xi
 恺,kai
 蒈,kai
 凱,kai
@@ -13695,7 +14015,6 @@
 雉,yi
 雉,zhi
 颽,kai
-乫,kal
 看,kan
 砍,kan
 刊,kan
@@ -13710,11 +14029,11 @@
 莰,kan
 偘,kan
 凵,kan
-凵,pianpang
 凵,qian
 埳,kan
 埳,xian
 塪,kan
+塪,xian
 墈,kan
 崁,kan
 嵁,kan
@@ -13765,6 +14084,7 @@
 嫝,kang
 嵻,kang
 摃,kang
+摃,gang
 槺,kang
 漮,kang
 砊,kang
@@ -13784,6 +14104,7 @@
 铐,kao
 丂,kao
 丂,yu
+丂,qiao
 嵪,kao
 嵪,qiao
 攷,kao
@@ -13840,6 +14161,7 @@
 尅,kei
 嵙,ke
 嶱,ke
+嶱,jie
 愘,ke
 愘,qia
 愙,ke
@@ -13852,6 +14174,7 @@
 牁,ke
 犐,ke
 痾,ke
+痾,e
 砢,ke
 砢,luo
 硞,ke
@@ -13861,11 +14184,13 @@
 礚,ke
 窼,ke
 窼,zhao
+窼,chao
 簻,ke
 簻,zhua
 緙,ke
 翗,ke
 胢,ke
+胢,qia
 萪,ke
 薖,ke
 課,ke
@@ -13876,9 +14201,7 @@
 顆,ke
 顆,kuan
 騍,ke
-乪,keg
 乪,nang
-蠄,kem
 蠄,qin
 肯,ken
 啃,ken
@@ -13897,6 +14220,7 @@
 硍,keng
 硍,xian
 硍,yin
+硍,gun
 肎,ken
 肻,ken
 褃,ken
@@ -13944,13 +14268,8 @@
 銵,keng
 鍞,keng
 鏗,keng
-巪,keo
-乬,keol
-迲,keop
 迲,qu
-唟,keos
-厼,keum
-怾,ki
+怾,gi
 空,kong
 孔,kong
 控,kong
@@ -13978,7 +14297,6 @@
 錓,kong
 鞚,kong
 鵼,kong
-廤,kos
 口,kou
 扣,kou
 抠,kou
@@ -14037,9 +14355,12 @@
 庫,ku
 扝,ku
 扝,wu
+扝,yu
 桍,ku
 泏,ku
 泏,zhu
+泏,chu
+泏,she
 狜,ku
 瘔,ku
 矻,ku
@@ -14052,6 +14373,7 @@
 褲,ku
 趶,ku
 趶,wu
+趶,kua
 跍,ku
 跨,ku
 跨,kua
@@ -14114,6 +14436,7 @@
 歀,kuan
 歀,xin
 窽,kuan
+窽,cuan
 鑧,kuan
 髖,kuan
 矿,kuang
@@ -14148,6 +14471,7 @@
 懭,kuang
 抂,kuang
 抂,wang
+抂,zai
 昿,kuang
 曠,kuang
 枉,kuang
@@ -14185,6 +14509,7 @@
 窥,kui
 溃,kui
 溃,xie
+溃,hui
 葵,kui
 馈,kui
 馈,tui
@@ -14208,6 +14533,7 @@
 夔,kui
 刲,kui
 卼,kui
+卼,wu
 嬇,kui
 尯,kui
 巋,kui
@@ -14220,11 +14546,15 @@
 楏,kui
 楑,kui
 樻,kui
+樻,gui
 櫆,kui
 欳,kui
+欳,kuai
 殨,kui
+殨,hui
 潰,kui
 潰,xie
+潰,hui
 煃,kui
 磈,kui
 磈,wei
@@ -14249,11 +14579,14 @@
 鍨,kui
 鍷,kui
 鐀,kui
+鐀,gui
 鑎,kui
+鑎,gui
 闚,kui
 頃,kui
 頃,qing
 頄,kui
+頄,qiu
 頍,kui
 頯,kui
 顷,kui
@@ -14276,6 +14609,7 @@
 壸,kun
 壼,kun
 尡,kun
+尡,hun
 崐,kun
 崑,kun
 晜,kun
@@ -14294,6 +14628,7 @@
 罤,kun
 罤,ti
 臗,kun
+臗,kuan
 菎,kun
 蜫,kun
 裈,kun
@@ -14315,6 +14650,7 @@
 鹍,kun
 阔,kuo
 括,kuo
+括,gua
 廓,kuo
 适,kuo
 适,shi
@@ -14323,8 +14659,10 @@
 噋,kuo
 噋,tun
 懖,kuo
+懖,guo
 拡,kuo
 桰,kuo
+桰,gua
 濶,kuo
 燭,kuo
 燭,zhu
@@ -14340,7 +14678,6 @@
 頢,kuo
 髺,kuo
 髺,yue
-穒,kweok
 拉,la
 啦,la
 辣,la
@@ -14389,11 +14726,13 @@
 翋,la
 臘,la
 臘,lie
+臘,xi
 菈,la
 藞,la
 蝋,la
 蝲,la
 蠟,la
+蠟,zha
 辢,la
 鑞,la
 镴,la
@@ -14413,6 +14752,7 @@
 籁,lai
 徕,lai
 癞,lai
+癞,la
 睐,lai
 來,lai
 俫,lai
@@ -14486,7 +14826,6 @@
 厱,lan
 厱,qian
 啉,lan
-啉,len
 啉,lin
 囒,lan
 壈,lan
@@ -14539,6 +14878,7 @@
 璼,lan
 瓓,lan
 礷,lan
+礷,jian
 籃,lan
 籣,lan
 糷,lan
@@ -14584,6 +14924,7 @@
 哴,lang
 哴,liang
 唥,lang
+唥,leng
 埌,lang
 塱,lang
 嫏,lang
@@ -14668,6 +15009,7 @@
 撩,liao
 朥,lao
 橑,lao
+橑,liao
 橯,lao
 浶,lao
 澇,lao
@@ -14677,6 +15019,7 @@
 癆,lao
 硓,lao
 磱,lao
+磱,luo
 窂,lao
 簩,lao
 粩,lao
@@ -14716,10 +15059,12 @@
 嘞,lei
 忇,le
 楽,le
+楽,yue
 樂,le
 樂,luo
 樂,yao
 樂,yun
+樂,yue
 氻,le
 玏,le
 砳,le
@@ -14727,7 +15072,9 @@
 阞,le
 韷,le
 餎,le
+餎,ge
 饹,le
+饹,ge
 鰳,le
 类,lei
 累,lei
@@ -14823,8 +15170,8 @@
 鱩,lei
 鸓,lei
 鼺,lei
-冧,lem
 冧,min
+冧,lin
 冷,leng
 冷,ling
 棱,leng
@@ -14838,6 +15185,7 @@
 睖,leng
 碐,leng
 稜,leng
+稜,ling
 薐,leng
 輘,leng
 輘,ling
@@ -14850,6 +15198,7 @@
 例,lie
 哩,li
 哩,mai
+哩,yingli
 理,li
 利,li
 梨,li
@@ -14899,6 +15248,7 @@
 嫠,li
 篥,li
 疠,li
+疠,lai
 疬,li
 猁,li
 藜,li
@@ -14939,6 +15289,7 @@
 叕,li
 叕,yi
 叕,zhuo
+叕,jue
 唎,li
 嚟,li
 嚦,li
@@ -14965,9 +15316,10 @@
 捩,lie
 搮,li
 擽,li
-擽,lue
 擽,yue
+擽,luo
 攊,li
+攊,luo
 攦,li
 攦,shai
 攭,li
@@ -14981,6 +15333,7 @@
 栃,li
 栛,li
 栵,li
+栵,lie
 梸,li
 棃,li
 棙,li
@@ -15006,6 +15359,7 @@
 泣,qi
 泣,se
 浬,li
+浬,haili
 涖,li
 濼,li
 濼,luo
@@ -15034,6 +15388,7 @@
 瓑,li
 瓥,li
 癘,li
+癘,lai
 癧,li
 盠,li
 盭,li
@@ -15108,6 +15463,7 @@
 醨,li
 釃,li
 釃,shi
+釃,shai
 鉝,li
 鋫,li
 鋰,li
@@ -15121,7 +15477,9 @@
 铄,shuo
 铄,yue
 隷,li
+隷,dai
 隸,li
+隸,dai
 霾,li
 霾,mai
 靂,li
@@ -15139,6 +15497,7 @@
 鱳,li
 鱳,lu
 鱳,luo
+鱳,le
 鱺,li
 鳨,li
 鴗,li
@@ -15212,6 +15571,7 @@
 櫣,lian
 殮,lian
 浰,lian
+浰,li
 溓,lian
 溓,nian
 溓,xian
@@ -15227,6 +15587,7 @@
 瞵,lian
 瞵,lin
 磏,lian
+磏,qian
 簾,lian
 籢,lian
 籨,lian
@@ -15295,9 +15656,12 @@
 涼,liang
 湸,liang
 煷,liang
+煷,huo
 簗,liang
+簗,zhu
 糧,liang
 綡,liang
+綡,jing
 緉,liang
 蜽,liang
 裲,liang
@@ -15407,12 +15771,14 @@
 奊,xie
 姴,lie
 峢,lie
+峢,li
 巤,lie
 忚,lie
 忚,xi
 挒,lie
 挘,lie
 毟,lie
+毟,mao
 浖,lie
 烮,lie
 煭,lie
@@ -15422,6 +15788,7 @@
 猟,lie
 獵,lie
 睙,lie
+睙,li
 聗,lie
 脟,lie
 脟,luan
@@ -15464,6 +15831,7 @@
 凜,lin
 厸,lin
 厸,mian
+厸,miao
 壣,lin
 崊,lin
 恡,lin
@@ -15477,7 +15845,6 @@
 檁,lin
 涁,lin
 涁,qin
-涁,sei
 涁,shen
 渗,lin
 渗,qin
@@ -15497,6 +15864,7 @@
 甐,lin
 疄,lin
 痳,lin
+痳,ma
 碄,lin
 箖,lin
 粦,lin
@@ -15504,6 +15872,7 @@
 翷,lin
 臨,lin
 菻,lin
+菻,ma
 藺,lin
 賃,lin
 蹸,lin
@@ -15564,6 +15933,7 @@
 淩,ling
 澪,ling
 瀮,ling
+瀮,lian
 炩,ling
 燯,ling
 爧,ling
@@ -15593,6 +15963,7 @@
 錂,ling
 閝,ling
 阾,ling
+阾,lin
 霊,ling
 霗,ling
 霛,ling
@@ -15641,6 +16012,7 @@
 偻,lv
 僂,liu
 僂,lou
+僂,lv
 劉,liu
 嚠,liu
 塯,liu
@@ -15660,6 +16032,7 @@
 橊,liu
 橮,liu
 沠,liu
+沠,pai
 泖,liu
 泖,mao
 游,liu
@@ -15677,6 +16050,7 @@
 癅,liu
 磂,liu
 磟,liu
+磟,lu
 綹,liu
 罶,liu
 羀,liu
@@ -15718,6 +16092,7 @@
 瓼,liwa
 甅,liwa
 囖,lo
+囖,luo
 龙,long
 龙,mang
 拢,long
@@ -15913,10 +16288,12 @@
 廬,lv
 彔,lu
 挔,lu
+挔,lv
 捋,lu
 捋,luo
 捋,lv
 捛,lu
+捛,lv
 摅,lu
 摅,shu
 摝,lu
@@ -15940,6 +16317,7 @@
 滷,lu
 澛,lu
 濾,lu
+濾,lv
 瀂,lu
 瀘,lu
 爐,lu
@@ -15968,6 +16346,7 @@
 纑,lu
 罏,lu
 膟,lu
+膟,lv
 臚,lu
 舮,lu
 艣,lu
@@ -15982,6 +16361,7 @@
 螰,lu
 蠦,lu
 觮,lu
+觮,jue
 賂,lu
 趢,lu
 踛,lu
@@ -16049,29 +16429,27 @@
 鑾,luan
 鵉,luan
 鸞,luan
-略,lue
-掠,lue
-锊,lue
-剠,lue
+略,lve
+掠,lve
+锊,lve
 剠,qing
-圙,lue
-寽,lue
+圙,lve
 寽,lv
-率,lue
+寽,luo
+寽,lve
 率,lv
 率,shuai
-畧,lue
-稤,lue
+畧,lve
 稤,su
-药,lue
+稤,lve
 药,shuo
 药,yao
 药,yue
-藥,lue
 藥,shuo
 藥,yao
-鋝,lue
-鋢,lue
+藥,yue
+鋝,lve
+鋢,lve
 论,lun
 轮,lun
 伦,lun
@@ -16117,6 +16495,7 @@
 瘰,luo
 摞,luo
 泺,luo
+泺,po
 镙,luo
 猡,luo
 儸,luo
@@ -16125,9 +16504,9 @@
 囉,luo
 峈,luo
 挼,luo
-挼,rua
 挼,ruo
 挼,sui
+挼,nuo
 捰,luo
 捰,wo
 攞,luo
@@ -16157,6 +16536,7 @@
 頱,luo
 饠,luo
 騾,luo
+騾,ke
 驘,luo
 鸁,luo
 铝,lv
@@ -16185,13 +16565,16 @@
 嵂,lv
 慮,lv
 曥,lv
+曥,lu
 梠,lv
 櫚,lv
 焒,lv
 爈,lv
 祣,lv
 穞,lv
+穞,lu
 穭,lv
+穭,lu
 箻,lv
 絽,lv
 綠,lv
@@ -16206,8 +16589,10 @@
 鑢,lv
 閭,lv
 馿,lv
+馿,lu
 驢,lv
 鷜,lv
+鷜,lou
 呣,m
 呣,mou
 吗,ma
@@ -16229,6 +16614,7 @@
 蟆,mo
 犸,ma
 嬷,ma
+嬷,mo
 杩,ma
 么,ma
 么,me
@@ -16245,6 +16631,7 @@
 媽,ma
 嫲,ma
 嬤,ma
+嬤,mo
 孖,ma
 孖,zi
 尛,ma
@@ -16258,6 +16645,7 @@
 睰,ma
 碼,ma
 礣,ma
+礣,mie
 祃,ma
 禡,ma
 罵,ma
@@ -16307,6 +16695,7 @@
 薶,mai
 薶,wo
 衇,mai
+衇,mo
 買,mai
 賣,mai
 邁,mai
@@ -16318,6 +16707,7 @@
 满,men
 慢,man
 瞒,man
+瞒,men
 漫,man
 蛮,man
 蔓,man
@@ -16337,6 +16727,7 @@
 熳,man
 僈,man
 姏,man
+姏,gan
 嫚,man
 嫚,yuan
 屘,man
@@ -16358,6 +16749,7 @@
 澷,man
 獌,man
 睌,man
+睌,mian
 瞞,man
 瞞,men
 矕,man
@@ -16369,6 +16761,7 @@
 蔄,man
 蘰,man
 蟃,man
+蟃,wan
 蟎,man
 蠻,man
 襔,man
@@ -16400,8 +16793,10 @@
 尨,mang
 尨,meng
 尨,pang
+尨,long
 庬,mang
 庬,meng
+庬,pang
 恾,mang
 朦,mang
 朦,meng
@@ -16413,6 +16808,7 @@
 牻,mang
 狵,mang
 狵,zhuo
+狵,dou
 甿,mang
 甿,meng
 痝,mang
@@ -16434,8 +16830,8 @@
 鸏,meng
 鹲,mang
 鹲,meng
-匁,mangmi
 毛,mao
+毛,ma
 冒,mao
 冒,mo
 帽,mao
@@ -16452,7 +16848,6 @@
 耄,mao
 茆,mao
 瑁,mao
-瑁,q
 蝥,mao
 蝥,wu
 髦,mao
@@ -16473,6 +16868,7 @@
 冃,mao
 冇,mao
 冐,mao
+冐,mo
 勖,mao
 勖,xu
 務,mao
@@ -16501,6 +16897,7 @@
 牟,mu
 獏,mao
 獏,mu
+獏,mo
 皃,mao
 眊,mao
 眊,mei
@@ -16533,16 +16930,18 @@
 髳,meng
 髳,rou
 鶜,mao
-唜,mas
 嚒,me
 嚜,me
 嚜,mei
+嚜,mo
 嚰,me
 孭,me
 孭,mie
 庅,me
+庅,mo
 濹,me
 癦,me
+癦,mo
 没,mei
 没,mo
 每,mei
@@ -16599,6 +16998,7 @@
 挴,mei
 攗,mei
 攟,mei
+攟,jun
 某,mei
 某,mou
 栂,mei
@@ -16624,6 +17024,7 @@
 睂,mei
 睸,mei
 矀,mei
+矀,wei
 祙,mei
 禖,mei
 篃,mei
@@ -16633,6 +17034,7 @@
 苺,mei
 葿,mei
 蘪,mei
+蘪,mi
 蝞,mei
 跊,mei
 躾,mei
@@ -16670,12 +17072,15 @@
 燜,men
 玟,men
 玟,min
+玟,wen
 玣,men
+玣,bian
 玧,men
 玧,yun
 璊,men
 穈,men
 穈,mi
+穈,mei
 菛,men
 虋,men
 鍆,men
@@ -16721,6 +17126,7 @@
 濛,meng
 獴,meng
 瓾,meng
+瓾,wa
 瞑,meng
 瞑,mian
 瞑,ming
@@ -16730,6 +17136,7 @@
 莔,qing
 莔,xi
 萠,meng
+萠,pan
 蕄,meng
 蝱,meng
 鄳,meng
@@ -16757,7 +17164,7 @@
 黾,mian
 黾,min
 鼆,meng
-踎,meo
+踎,mou
 米,mi
 密,mi
 迷,mi
@@ -16777,6 +17184,7 @@
 弭,mi
 谧,mi
 芈,mi
+芈,mie
 脒,mi
 敉,mi
 嘧,mi
@@ -16784,8 +17192,8 @@
 糸,si
 侎,mi
 冖,mi
-冖,pianpang
 冞,mi
+冞,shen
 冪,mi
 劘,mi
 劘,mo
@@ -16804,6 +17212,7 @@
 摵,mi
 摵,she
 摵,su
+摵,se
 擟,mi
 擵,mi
 擵,mo
@@ -16836,6 +17245,7 @@
 瓕,xi
 眫,mi
 眫,pan
+眫,pang
 眽,mi
 眽,mo
 瞇,mi
@@ -16843,10 +17253,12 @@
 瞴,mou
 瞴,wu
 祕,mi
+祕,bi
 禰,mi
 禰,ni
 禰,xian
 簚,mi
+簚,mie
 籋,mi
 籋,nie
 粎,mi
@@ -16862,6 +17274,7 @@
 蔤,mi
 藌,mi
 蝆,mi
+蝆,yang
 袮,mi
 袮,ni
 覓,mi
@@ -16869,6 +17282,7 @@
 覛,mi
 詸,mi
 謎,mi
+謎,mei
 謐,mi
 醾,mi
 醿,mi
@@ -16912,7 +17326,6 @@
 媔,mian
 嬵,mian
 宀,mian
-宀,pianpang
 愐,mian
 檰,mian
 櫋,mian
@@ -16977,6 +17390,7 @@
 蜱,miao
 蜱,pi
 鱙,miao
+鱙,yao
 鶓,miao
 灭,mie
 蔑,mie
@@ -17002,7 +17416,7 @@
 谂,mie
 谂,shen
 鱴,mie
-瓱,miliklanm
+瓱,maowa
 民,min
 抿,min
 敏,min
@@ -17098,6 +17512,7 @@
 膜,mo
 莫,mo
 莫,wu
+莫,mu
 默,mo
 魔,mo
 模,mo
@@ -17105,6 +17520,7 @@
 摹,mo
 漠,mo
 陌,mo
+陌,bai
 蘑,mo
 万,mo
 万,wan
@@ -17123,11 +17539,13 @@
 馍,mo
 耱,mo
 劰,mo
+劰,miao
 勿,mo
 勿,wu
 嗼,mo
 嚤,mo
 嚩,mo
+嚩,po
 圽,mo
 塻,mo
 妺,mo
@@ -17138,9 +17556,11 @@
 帕,pa
 帞,mo
 怽,mo
+怽,mi
 懡,mo
 昩,mo
 暯,mo
+暯,mu
 枺,mo
 橅,mo
 歾,mo
@@ -17156,6 +17576,7 @@
 砞,mo
 礳,mo
 粖,mo
+粖,yu
 糢,mo
 絈,mo
 縸,mo
@@ -17184,8 +17605,8 @@
 魩,mo
 魹,mo
 麿,mo
+麿,mi
 黙,mo
-乮,mol
 谋,mou
 眸,mou
 鍪,mou
@@ -17204,6 +17625,7 @@
 毋,mou
 毋,wu
 洠,mou
+洠,si
 蟱,mou
 蟱,wu
 謀,mou
@@ -17225,6 +17647,7 @@
 慕,mu
 睦,mu
 姆,mu
+姆,m
 钼,mu
 毪,mu
 沐,mu
@@ -17259,9 +17682,7 @@
 鉬,mu
 雮,mu
 霂,mu
-旀,myeo
-丆,myeon
-椧,myeong
+旀,mie
 那,na
 那,ne
 那,nei
@@ -17362,6 +17783,7 @@
 摨,zhi
 渿,nai
 熋,nai
+熋,xiong
 疓,nai
 能,nai
 能,neng
@@ -17398,6 +17820,7 @@
 暔,nan
 枏,nan
 枬,nan
+枬,zhan
 柟,nan
 柟,ran
 湳,nan
@@ -17438,8 +17861,10 @@
 蠰,shang
 譨,nang
 譨,nou
+譨,nong
 饢,nang
 鬞,nang
+鬞,nong
 齉,nang
 闹,nao
 脑,nao
@@ -17471,9 +17896,11 @@
 橈,nao
 橈,rao
 檂,nao
+檂,nong
 獶,nao
 獶,you
 獿,nao
+獿,you
 碯,nao
 脳,nao
 腝,nao
@@ -17494,7 +17921,6 @@
 呢,ni
 讷,ne
 疒,ne
-疒,pianpang
 眲,ne
 訥,ne
 馁,nei
@@ -17517,7 +17943,6 @@
 餧,wei
 鮾,nei
 鯘,nei
-焾,nem
 嫩,nen
 恁,nen
 恁,nin
@@ -17528,10 +17953,9 @@
 嫰,ruan
 枘,nen
 枘,rui
-莻,neus
-鈪,ngag
+鈪,e
 銰,ngai
-啱,ngam
+啱,yan
 你,ni
 泥,ni
 拟,ni
@@ -17714,6 +18138,7 @@
 幸,nie
 幸,xing
 惗,nie
+惗,nian
 揑,nie
 摂,nie
 摂,sha
@@ -17741,7 +18166,7 @@
 聶,ye
 聶,zhe
 肀,nie
-肀,pianpang
+肀,yu
 臲,nie
 苶,nie
 菍,nie
@@ -17784,6 +18209,7 @@
 泞,zhu
 佞,ning
 甯,ning
+甯,zhu
 咛,ning
 聍,ning
 侫,ning
@@ -17795,6 +18221,7 @@
 寗,ning
 寜,ning
 寧,ning
+寧,zhu
 擰,ning
 攘,ning
 攘,rang
@@ -17805,10 +18232,12 @@
 獰,ning
 疑,ning
 疑,yi
+疑,ni
 聹,ning
 苧,ning
 苧,zhu
 薴,ning
+薴,zhu
 鑏,ning
 鬡,ning
 鬤,ning
@@ -17854,6 +18283,7 @@
 齈,nong
 耨,nou
 啂,nou
+啂,gou
 嬬,nou
 嬬,ru
 搙,nou
@@ -17870,6 +18300,7 @@
 獳,ru
 羺,nou
 譳,nou
+譳,rou
 怒,nu
 努,nu
 奴,nu
@@ -17898,16 +18329,13 @@
 煖,xuan
 煗,nuan
 餪,nuan
-虐,nue
 虐,nve
-疟,nue
 疟,nve
 疟,yao
-谑,nue
 谑,xue
-硸,nue
+硸,nve
 黁,nun
-燶,nung
+燶,nong
 挪,nuo
 诺,nuo
 懦,nuo
@@ -17926,6 +18354,7 @@
 懧,nuo
 掿,nuo
 搻,nuo
+搻,na
 梛,nuo
 榒,nuo
 橠,nuo
@@ -17949,19 +18378,19 @@
 钕,nv
 恧,nv
 朒,nv
+朒,ga
 籹,nv
 衂,nv
 釹,nv
 瘧,nve
+瘧,yao
 喔,o
 喔,wo
 喔,wu
 筽,o
-夞,oes
-乯,ol
-昷,on
 昷,wen
-鞰,on
+鞰,wen
+鞰,yun
 偶,ou
 呕,ou
 呕,xu
@@ -17979,6 +18408,7 @@
 嘔,ou
 嘔,xu
 塸,ou
+塸,qiu
 慪,ou
 握,ou
 握,wo
@@ -18031,11 +18461,12 @@
 俳,pai
 蒎,pai
 犤,pai
+犤,bai
 猅,pai
 簰,pai
 輫,pai
 鎃,pai
-磗,pak
+磗,zhuan
 盘,pan
 判,pan
 攀,pan
@@ -18063,6 +18494,7 @@
 审,shen
 宷,pan
 宷,shen
+宷,cai
 審,pan
 審,shen
 幋,pan
@@ -18103,11 +18535,13 @@
 滂,pang
 滂,peng
 沗,pang
+沗,hong
 篣,pang
 篣,peng
 胮,pang
 膖,pang
 蠭,pang
+蠭,feng
 覫,pang
 霶,pang
 龎,pang
@@ -18132,6 +18566,7 @@
 褜,pao
 謈,pao
 謈,po
+謈,bo
 軳,pao
 鞄,pao
 麅,pao
@@ -18203,6 +18638,7 @@
 剻,peng
 匉,peng
 塜,peng
+塜,xi
 塳,peng
 庄,peng
 庄,zhuang
@@ -18221,6 +18657,7 @@
 淜,peng
 淜,ping
 漰,peng
+漰,ben
 皏,peng
 硑,peng
 硑,ping
@@ -18249,11 +18686,6 @@
 髼,peng
 鬅,peng
 鬔,peng
-浌,peol
-巼,phas
-闏,phdeng
-乶,phoi
-喸,phos
 批,pi
 皮,pi
 披,pi
@@ -18276,6 +18708,7 @@
 郫,pi
 甓,pi
 睥,pi
+睥,bi
 鼙,pi
 邳,pi
 铍,pi
@@ -18296,10 +18729,14 @@
 扑,pi
 扑,pu
 朇,pi
+朇,bi
 榌,pi
+榌,bi
 毘,pi
 毞,pi
+毞,bi
 渒,pi
+渒,pai
 潎,pi
 潎,piao
 潎,pie
@@ -18315,6 +18752,7 @@
 痦,pi
 痦,wu
 睤,pi
+睤,bi
 磇,pi
 礔,pi
 礕,pi
@@ -18322,6 +18760,7 @@
 秠,pi
 篺,pi
 簲,pi
+簲,pai
 羆,pi
 耚,pi
 脴,pi
@@ -18372,6 +18811,7 @@
 腁,pian
 覑,pian
 諚,pian
+諚,bian
 諞,pian
 貵,pian
 賆,pian
@@ -18381,47 +18821,29 @@
 騙,pian
 骿,pian
 魸,pian
-纟,pianpang
 纟,si
-亠,pianpang
 亠,tou
-忄,pianpang
 忄,xin
-亻,pianpang
 亻,ren
-尢,pianpang
 尢,wang
 尢,you
-丶,pianpang
 丶,zhu
-扌,pianpang
 扌,shou
-攵,pianpang
 攵,pu
-礻,pianpang
 礻,shi
-夂,pianpang
 夂,zhi
 夂,zhong
-饣,pianpang
 饣,shi
-丿,pianpang
 丿,pie
 丿,yi
-彡,pianpang
 彡,shan
 彡,xian
-犭,pianpang
 犭,quan
-廴,pianpang
 廴,yin
-衤,pianpang
 衤,yi
-丬,pianpang
 丬,zhuang
-氵,pianpang
+丬,pan
 氵,shui
-讠,pianpang
 讠,yan
 票,piao
 飘,piao
@@ -18438,6 +18860,7 @@
 旚,piao
 皫,piao
 磦,piao
+磦,biao
 縹,piao
 翲,piao
 薸,piao
@@ -18464,7 +18887,6 @@
 娉,ping
 嬪,pin
 朩,pin
-朩,teun
 玭,pin
 矉,pin
 礗,pin
@@ -18489,7 +18911,9 @@
 呯,ping
 塀,ping
 娦,ping
+娦,pin
 屛,ping
+屛,bing
 岼,ping
 帡,ping
 帲,ping
@@ -18532,6 +18956,7 @@
 岥,po
 岶,po
 廹,po
+廹,pai
 敀,po
 椺,po
 椺,xi
@@ -18544,6 +18969,7 @@
 砶,po
 蒪,po
 酦,po
+酦,fa
 釙,po
 鉕,po
 鏺,po
@@ -18555,12 +18981,13 @@
 抔,pou
 犃,pou
 颒,pou
-兺,ppun
-哛,ppun
+颒,hui
+兺,bun
 铺,pu
 谱,pu
 仆,pu
 曝,pu
+曝,bao
 圃,pu
 浦,pu
 普,pu
@@ -18577,6 +19004,7 @@
 墣,pu
 巬,pu
 巭,pu
+巭,bu
 暜,pu
 樸,pu
 檏,pu
@@ -18597,6 +19025,7 @@
 鏷,pu
 鐠,pu
 駇,pu
+駇,wen
 起,qi
 七,qi
 气,qi
@@ -18608,6 +19037,7 @@
 启,qi
 柒,qi
 岂,qi
+岂,kai
 砌,qi
 砌,qie
 弃,qi
@@ -18675,6 +19105,7 @@
 倛,qi
 傶,qi
 傶,zu
+傶,cou
 僛,qi
 切,qi
 切,qie
@@ -18712,6 +19143,7 @@
 忯,shi
 恓,qi
 恓,xu
+恓,xi
 悽,qi
 愭,qi
 慼,qi
@@ -18728,9 +19160,11 @@
 旂,qi
 暣,qi
 朞,qi
+朞,ji
 枝,qi
 枝,zhi
 栔,qi
+栔,qie
 桼,qi
 梩,qi
 梩,si
@@ -18755,6 +19189,7 @@
 渍,se
 渍,zi
 渏,qi
+渏,yi
 湆,qi
 湇,qi
 滊,qi
@@ -18776,6 +19211,7 @@
 碕,qi
 碶,qi
 磎,qi
+磎,xi
 磜,qi
 磧,qi
 磩,qi
@@ -18792,14 +19228,18 @@
 紪,qi
 綥,qi
 綨,qi
+綨,ji
 綮,qi
 綮,qing
 綺,qi
 綺,yi
 緀,qi
 緕,qi
+緕,zi
 纃,qi
+纃,zi
 缼,qi
+缼,que
 罊,qi
 肵,qi
 臍,qi
@@ -18823,6 +19263,7 @@
 褄,qi
 訖,qi
 諆,qi
+諆,ji
 諬,qi
 諿,qi
 諿,xu
@@ -18846,6 +19287,7 @@
 鬿,qi
 魌,qi
 魕,qi
+魕,ji
 鮨,qi
 鮨,yi
 鯕,qi
@@ -18926,6 +19368,7 @@
 刋,qian
 嗛,qian
 嗛,xian
+嗛,qie
 圱,qian
 圱,su
 圲,qian
@@ -18943,6 +19386,7 @@
 寨,zhai
 岒,qian
 嵰,qian
+嵰,qin
 廞,qian
 廞,qin
 廞,xin
@@ -18973,6 +19417,7 @@
 橬,qian
 橬,qin
 檶,qian
+檶,lian
 櫏,qian
 歬,qian
 汘,qian
@@ -18986,10 +19431,12 @@
 煔,shan
 燂,qian
 燂,xun
+燂,tan
 牽,qian
 皘,qian
 竏,qian
 箞,qian
+箞,quan
 篏,qian
 篟,qian
 簽,qian
@@ -19007,6 +19454,7 @@
 羥,qiang
 羬,qian
 羬,xian
+羬,yan
 膁,qian
 膁,xian
 膁,yan
@@ -19015,10 +19463,12 @@
 臤,xian
 苂,qian
 苂,yin
+苂,chan
 茾,qian
 葴,qian
 葴,zhen
 蒨,qian
+蒨,xi
 蔳,qian
 蕁,qian
 蕁,tan
@@ -19097,7 +19547,9 @@
 猐,qiang
 獇,qiang
 玱,qiang
+玱,cang
 琷,qiang
+琷,que
 繈,qiang
 繦,qiang
 羗,qiang
@@ -19109,12 +19561,14 @@
 蘠,qiang
 親,qiang
 親,qin
+親,qing
 謒,qiang
 跫,qiang
 跫,qiong
 蹌,qiang
 蹡,qiang
 錆,qiang
+錆,qing
 鏘,qiang
 鏹,qiang
 兛,qianke
@@ -19178,12 +19632,14 @@
 橾,sao
 橾,shu
 殼,qiao
+殼,ke
 毃,qiao
 毃,que
 燆,qiao
 燆,xiao
 犞,qiao
 癄,qiao
+癄,jiao
 睄,qiao
 睄,shao
 睄,xiao
@@ -19221,6 +19677,7 @@
 銚,qiao
 銚,tiao
 銚,yao
+銚,diao
 鍫,qiao
 鍬,qiao
 鐈,qiao
@@ -19244,6 +19701,7 @@
 妾,qie
 箧,qie
 倿,qie
+倿,ning
 匧,qie
 厒,qie
 唼,qie
@@ -19253,6 +19711,7 @@
 悏,qie
 愜,qie
 朅,qie
+朅,he
 癿,qie
 稧,qie
 稧,xi
@@ -19262,12 +19721,15 @@
 篋,qie
 籡,qie
 緁,qie
+緁,ji
 聺,qie
 苆,qie
 藒,qie
+藒,qi
 踥,qie
 鍥,qie
 鐑,qie
+鐑,qi
 鯜,qie
 亲,qin
 亲,qing
@@ -19298,6 +19760,7 @@
 唚,qin
 坅,qin
 埁,qin
+埁,cen
 媇,qin
 媇,qing
 嫀,qin
@@ -19324,6 +19787,8 @@
 琹,qin
 瘽,qin
 矝,qin
+矝,guan
+矝,jin
 笉,qin
 綅,qin
 綅,xian
@@ -19348,6 +19813,7 @@
 骎,qin
 鬵,qin
 鬵,xin
+鬵,zeng
 鮼,qin
 鳹,qin
 请,qing
@@ -19383,6 +19849,7 @@
 庼,qing
 廎,qing
 掅,qing
+掅,qian
 暒,qing
 棾,qing
 樈,qing
@@ -19415,6 +19882,7 @@
 卭,qiong
 嬛,qiong
 嬛,xuan
+嬛,huan
 惸,qiong
 憌,qiong
 桏,qiong
@@ -19479,6 +19947,7 @@
 櫹,xiu
 殏,qiu
 毬,qiu
+毬,pu
 氽,qiu
 氽,tun
 汓,qiu
@@ -19526,6 +19995,7 @@
 鱃,qiu
 鱃,xiu
 鵭,qiu
+鵭,qin
 鶖,qiu
 鹙,qiu
 龝,qiu
@@ -19644,9 +20114,11 @@
 勸,quan
 姾,quan
 婘,quan
+婘,juan
 峑,quan
 巏,quan
 巻,quan
+巻,juan
 恮,quan
 恮,zhuan
 拴,quan
@@ -19656,6 +20128,7 @@
 栒,shuan
 栒,xun
 椦,quan
+椦,juan
 楾,quan
 槫,quan
 槫,shuan
@@ -19672,8 +20145,10 @@
 瑔,quan
 甽,quan
 甽,zhun
+甽,zhen
 硂,quan
 絟,quan
+絟,shuan
 綣,quan
 縓,quan
 葲,quan
@@ -19738,8 +20213,8 @@
 輑,qun
 輑,yin
 亽,ra
+亽,ji
 罖,ra
-囕,ram
 染,ran
 燃,ran
 然,ran
@@ -19802,12 +20277,14 @@
 荛,rao
 荛,yao
 桡,rao
+桡,nao
 娆,rao
 娆,yao
 嬈,rao
 嬈,yao
 擾,rao
 犪,rao
+犪,kui
 穘,rao
 穘,xiao
 繞,rao
@@ -19830,6 +20307,7 @@
 捼,wo
 渃,re
 渃,ruo
+渃,luo
 熱,re
 人,ren
 忍,ren
@@ -19859,6 +20337,7 @@
 栠,ren
 栣,ren
 梕,ren
+梕,er
 棯,ren
 棯,shen
 牣,ren
@@ -19928,6 +20407,7 @@
 嶸,rong
 搈,rong
 摉,rong
+摉,sou
 曧,rong
 栄,rong
 榮,rong
@@ -19937,6 +20417,7 @@
 瀜,rong
 烿,rong
 爃,rong
+爃,ying
 瑢,rong
 穁,rong
 穃,rong
@@ -20020,6 +20501,7 @@
 桇,ru
 燸,ru
 燸,ruan
+燸,xu
 筎,ru
 繻,ru
 繻,xu
@@ -20027,6 +20509,7 @@
 蕠,ru
 袽,ru
 込,ru
+込,yu
 鄏,ru
 醹,ru
 銣,ru
@@ -20051,6 +20534,7 @@
 礝,ruan
 緛,ruan
 蝡,ruan
+蝡,ru
 軟,ruan
 瑞,rui
 睿,rui
@@ -20122,6 +20606,7 @@
 摋,sha
 摋,shai
 桬,sa
+桬,sha
 櫒,sa
 殺,sa
 殺,sha
@@ -20129,6 +20614,7 @@
 殺,xie
 泧,sa
 泧,xue
+泧,yue
 潵,sa
 潵,san
 薩,sa
@@ -20149,7 +20635,6 @@
 霅,zha
 靸,sa
 馺,sa
-栍,saeng
 塞,sai
 塞,se
 腮,sai
@@ -20160,6 +20645,7 @@
 赛,sai
 噻,sai
 僿,sai
+僿,se
 嗮,sai
 嘥,sai
 愢,sai
@@ -20175,9 +20661,7 @@
 顋,sai
 鰓,sai
 鰓,xi
-乷,sal
 乷,sha
-虄,sal
 三,san
 散,san
 伞,san
@@ -20194,12 +20678,16 @@
 壭,san
 弎,san
 橵,san
+橵,zan
 毶,san
 毿,san
 犙,san
 糂,san
+糂,shen
 糝,san
+糝,shen
 糣,san
+糣,shen
 糤,san
 繖,san
 蔘,san
@@ -20269,10 +20757,12 @@
 嗇,se
 愬,se
 愬,su
+愬,shuo
 懎,se
 擌,se
 歮,se
 歰,se
+歰,sha
 渋,se
 溹,se
 溹,suo
@@ -20306,16 +20796,15 @@
 雭,se
 雭,xi
 飋,se
-裇,sed
-聓,sei
+裇,xu
+聓,xu
 森,sen
 槮,sen
 槮,shen
 襂,sen
 襂,shan
 鬙,seng
-閪,seo
-縇,seon
+閪,se
 杀,sha
 沙,sha
 沙,suo
@@ -20346,14 +20835,17 @@
 廈,xia
 挱,sha
 挱,suo
+挱,sa
 榝,sha
 榝,xie
 樧,sha
+樧,xie
 猀,sha
 硰,sha
 箑,sha
 箑,zha
 繌,sha
+繌,zong
 繺,sha
 繺,shai
 翜,sha
@@ -20388,6 +20880,7 @@
 籭,shi
 術,shai
 術,shu
+術,zhu
 山,shan
 闪,shan
 衫,shan
@@ -20437,7 +20930,9 @@
 曏,shan
 曏,xiang
 曑,shan
+曑,shen
 杣,shan
+杣,mian
 椫,shan
 樿,shan
 檀,shan
@@ -20452,6 +20947,7 @@
 熌,shan
 狦,shan
 痁,shan
+痁,dian
 睒,shan
 磰,shan
 笘,shan
@@ -20504,6 +21000,7 @@
 殇,shang
 丄,shang
 仩,shang
+仩,chang
 傷,shang
 恦,shang
 慯,shang
@@ -20589,11 +21086,11 @@
 舍,she
 舍,shi
 折,she
-折,shw
 折,ti
 折,zhe
 慑,she
 奢,she
+奢,sha
 歙,she
 歙,xi
 歙,xie
@@ -20616,17 +21113,20 @@
 畬,yu
 磼,she
 磼,za
+磼,ji
 舎,she
 葉,she
 葉,ye
 蔎,she
 虵,she
 虵,ye
+虵,yi
 蛥,she
 蠂,she
 設,she
 輋,she
 韘,she
+韘,xie
 騇,she
 谁,shei
 谁,shui
@@ -20679,6 +21179,7 @@
 曋,shen
 柛,shen
 椮,shen
+椮,sen
 榊,shen
 氠,shen
 燊,shen
@@ -20855,6 +21356,7 @@
 谥,yi
 弑,shi
 螫,shi
+螫,zhe
 丗,shi
 乨,shi
 亊,shi
@@ -20923,6 +21425,7 @@
 汁,zhi
 洂,shi
 洂,ye
+洂,yie
 浉,shi
 液,shi
 液,ye
@@ -20958,9 +21461,11 @@
 笶,shi
 笹,shi
 笹,xiao
+笹,ti
 箷,shi
 箷,yi
 篒,shi
+篒,yi
 簭,shi
 籂,shi
 絁,shi
@@ -21153,6 +21658,7 @@
 屬,shu
 屬,zhu
 庻,shu
+庻,zhu
 忬,shu
 忬,yu
 怷,shu
@@ -21163,13 +21669,16 @@
 捒,sou
 掓,shu
 數,shu
+數,shuo
 書,shu
 朮,shu
+朮,zhu
 朱,shu
 朱,zhu
 杼,shu
 杼,zhu
 柕,shu
+柕,mao
 樹,shu
 毺,shu
 涑,shu
@@ -21241,6 +21750,7 @@
 隃,yu
 鮛,shu
 鱪,shu
+鱪,se
 鱰,shu
 鵨,shu
 鶐,shu
@@ -21285,6 +21795,7 @@
 孇,shuang
 慡,shuang
 樉,shuang
+樉,shang
 欆,shuang
 灀,shuang
 礵,shuang
@@ -21292,6 +21803,7 @@
 艭,shuang
 鏯,shuang
 雙,shuang
+雙,zhi
 騻,shuang
 驦,shuang
 骦,shuang
@@ -21335,7 +21847,9 @@
 説,tuo
 説,yue
 誰,shui
+誰,shei
 閖,shui
+閖,lao
 顺,shun
 吮,shun
 瞬,shun
@@ -21354,10 +21868,12 @@
 眴,xun
 瞚,shun
 瞤,shun
+瞤,run
 蕣,shun
 順,shun
 鬊,shun
 硕,shuo
+硕,shi
 朔,shuo
 搠,shuo
 妁,shuo
@@ -21366,6 +21882,7 @@
 蒴,shuo
 哾,shuo
 哾,yue
+哾,chuo
 嗍,shuo
 嗍,suo
 欶,shuo
@@ -21379,6 +21896,7 @@
 濯,zhuo
 矟,shuo
 碩,shuo
+碩,shi
 鎙,shuo
 四,si
 死,si
@@ -21455,6 +21973,7 @@
 絲,si
 緦,si
 罒,si
+罒,wang
 罳,si
 肂,si
 肄,si
@@ -21504,8 +22023,7 @@
 鷉,ti
 鷥,si
 鼶,si
-螦,so
-乺,sol
+螦,sao
 送,song
 松,song
 耸,song
@@ -21546,6 +22064,7 @@
 硹,song
 聳,song
 蜙,song
+蜙,zhong
 訟,song
 誦,song
 鎹,song
@@ -21725,7 +22244,6 @@
 繐,sui
 繸,sui
 膸,sui
-膸,wie
 芕,sui
 荾,sui
 蓑,sui
@@ -21759,12 +22277,15 @@
 孫,sun
 孫,xun
 巺,sun
+巺,xun
 損,sun
 搎,sun
 槂,sun
 潠,sun
+潠,xun
 猻,sun
 畃,sun
+畃,xun
 筍,sun
 筍,xun
 筍,yun
@@ -21818,6 +22339,7 @@
 鎻,suo
 鏁,suo
 髿,suo
+髿,sha
 鮻,suo
 他,ta
 他,tuo
@@ -21839,6 +22361,7 @@
 傝,ta
 傝,tan
 咜,ta
+咜,tuo
 嚃,ta
 嚺,ta
 墖,ta
@@ -21868,7 +22391,6 @@
 阘,ta
 鞜,ta
 鞳,ta
-襨,tae
 态,tai
 胎,tai
 苔,tai
@@ -21901,6 +22423,7 @@
 珆,yi
 籉,tai
 粏,tai
+粏,ta
 臺,tai
 舦,tai
 鈦,tai
@@ -21968,6 +22491,7 @@
 貚,tan
 貪,tan
 賧,tan
+賧,dan
 醓,tan
 醰,tan
 鉭,tan
@@ -22052,6 +22576,8 @@
 饕,tao
 韬,tao
 仐,tao
+仐,jin
+仐,san
 匋,tao
 匋,yao
 咷,tao
@@ -22069,6 +22595,8 @@
 抭,yao
 搯,tao
 梼,tao
+梼,chou
+梼,dao
 槄,tao
 瑫,tao
 祹,tao
@@ -22094,21 +22622,21 @@
 饀,xian
 駣,tao
 騊,tao
-畓,tap
 特,te
 铽,te
 忒,te
-忒,tei
 忒,tui
 犆,te
 犆,zhi
 職,te
 職,zhi
 脦,te
+脦,de
 螣,te
 螣,teng
 蟘,te
 貣,te
+貣,dai
 鋱,te
 疼,teng
 腾,teng
@@ -22132,8 +22660,7 @@
 驣,teng
 鰧,teng
 鼟,teng
-唞,teo
-朰,teul
+唞,dou
 替,ti
 剃,ti
 剔,ti
@@ -22176,6 +22703,7 @@
 歒,xiao
 殢,ti
 洟,ti
+洟,yi
 漽,ti
 瑅,ti
 瓋,ti
@@ -22201,6 +22729,7 @@
 軆,ti
 逷,ti
 遆,ti
+遆,di
 銻,ti
 錫,ti
 錫,xi
@@ -22212,6 +22741,7 @@
 騠,ti
 骵,ti
 體,ti
+體,ben
 髰,ti
 鬀,ti
 鮧,ti
@@ -22254,17 +22784,23 @@
 湉,tian
 琠,tian
 瑱,tian
+瑱,zhen
 璳,tian
 甛,tian
 畇,tian
 畇,yun
 畑,tian
 畠,tian
+畠,zai
+畠,zi
 睓,tian
 睼,tian
+睼,ti
 碵,tian
 磌,tian
 窴,tian
+窴,dian
+窴,yan
 胋,tian
 舚,tian
 菾,tian
@@ -22294,6 +22830,7 @@
 龆,tiao
 祧,tiao
 窕,tiao
+窕,yao
 鲦,tiao
 宨,tiao
 岧,tiao
@@ -22323,6 +22860,7 @@
 蓨,tiao
 蓨,xiu
 螩,tiao
+螩,dao
 覜,tiao
 趒,tiao
 鋚,tiao
@@ -22396,7 +22934,6 @@
 頲,ting
 颋,ting
 鼮,ting
-乭,tol
 同,tong
 通,tong
 痛,tong
@@ -22416,6 +22953,7 @@
 嗵,tong
 哃,tong
 囲,tong
+囲,wei
 峂,tong
 庝,tong
 恿,tong
@@ -22429,8 +22967,10 @@
 浵,tong
 炵,tong
 熥,tong
+熥,teng
 犝,tong
 狪,tong
+狪,dong
 獞,tong
 獞,zhuang
 痌,tong
@@ -22472,6 +23012,7 @@
 綉,xiu
 緰,tou
 緰,xu
+緰,shu
 绣,tou
 绣,xiu
 蘣,tou
@@ -22596,6 +23137,7 @@
 啍,tun
 啍,xiang
 啍,zhun
+啍,dui
 娧,tui
 尵,tui
 尵,zhuai
@@ -22631,6 +23173,7 @@
 吴,tun
 吴,wu
 坉,tun
+坉,dun
 旽,tun
 旽,zhun
 朜,tun
@@ -22640,6 +23183,7 @@
 窀,zhun
 臋,tun
 豘,tun
+豘,guan
 軘,tun
 霕,tun
 飩,tun
@@ -22678,6 +23222,8 @@
 杝,tuo
 杝,yi
 杝,zhi
+杝,duo
+杝,li
 楕,tuo
 槖,tuo
 毤,tuo
@@ -22734,42 +23280,59 @@
 屗,uu
 徚,uu
 斏,uu
+斏,lang
 曢,uu
 朑,uu
 桛,uu
 歚,uu
+歚,shan
 毜,uu
 毝,uu
 毮,uu
 洜,uu
+洜,luo
 烪,uu
 焑,uu
 焽,uu
+焽,xiong
+焽,ying
 燞,uu
 癷,uu
 皼,uu
+皼,gu
 祍,uu
+祍,ren
 稥,uu
 耂,uu
+耂,lao
 聁,uu
 聣,uu
+聣,ni
 艈,uu
 茒,uu
+茒,yuan
 蒊,uu
 蓞,uu
+蓞,dan
 藔,uu
+藔,liao
 虲,uu
 蝊,uu
 袰,uu
 贘,uu
+贘,shang
 躼,uu
+躼,lao
 辪,uu
+辪,xue
 鍂,uu
 鎼,uu
+鎼,xia
 鐢,uu
 闧,uu
 霻,uu
 鶑,uu
+鶑,ying
 挖,wa
 瓦,wa
 佤,wa
@@ -22779,11 +23342,13 @@
 咓,wa
 啘,wa
 啘,ye
+啘,yue
 嗢,wa
 媧,wa
 屲,wa
 徍,wa
 徍,wang
+徍,jia
 搲,wa
 攨,wa
 汙,wa
@@ -22822,6 +23387,7 @@
 夭,wai
 夭,wo
 夭,yao
+夭,ao
 竵,wai
 顡,wai
 顡,zhuai
@@ -22876,6 +23442,7 @@
 抏,wan
 捖,wan
 捥,wan
+捥,yu
 晩,wan
 晼,wan
 杤,wan
@@ -22903,6 +23470,7 @@
 莧,wan
 莧,xian
 萬,wan
+萬,mo
 蚖,wan
 蚖,yuan
 貦,wan
@@ -22912,10 +23480,12 @@
 踠,wo
 輓,wan
 邜,wan
+邜,xi
 鋔,wan
 鋺,wan
 鋺,yuan
 鍐,wan
+鍐,zong
 骩,wan
 骩,wei
 骪,wan
@@ -22955,6 +23525,7 @@
 棢,wang
 瀇,wang
 焹,wang
+焹,gang
 網,wang
 莣,wang
 菵,wang
@@ -23017,6 +23588,7 @@
 軎,wei
 韪,wei
 炜,wei
+炜,hui
 煨,wei
 煨,yu
 圩,wei
@@ -23057,6 +23629,7 @@
 揋,wei
 揻,wei
 斖,wei
+斖,men
 暐,wei
 有,wei
 有,you
@@ -23076,6 +23649,7 @@
 濰,wei
 烓,wei
 煀,wei
+煀,qu
 煟,wei
 熨,wei
 熨,yu
@@ -23092,11 +23666,14 @@
 琟,yu
 瑋,wei
 璏,wei
+璏,zhi
 痏,wei
 痏,you
 痏,yu
 癓,wei
 硙,wei
+硙,ai
+硙,gai
 碨,wei
 維,wei
 維,yi
@@ -23187,11 +23764,14 @@
 雯,wen
 璺,wen
 呚,wen
+呚,hua
+呚,qi
 問,wen
 塭,wen
 妏,wen
 彣,wen
 忟,wen
+忟,min
 愠,wen
 愠,yun
 慍,wen
@@ -23250,6 +23830,7 @@
 辒,wen
 辒,yun
 鈫,wen
+鈫,qin
 鎾,wen
 閺,wen
 閿,wen
@@ -23367,6 +23948,8 @@
 怃,wu
 邬,wu
 唔,wu
+唔,n
+唔,ng
 忤,wu
 骛,wu
 於,wu
@@ -23383,6 +23966,7 @@
 圬,wu
 乄,wu
 伆,wu
+伆,wen
 俉,wu
 倵,wu
 儛,wu
@@ -23440,6 +24024,7 @@
 碔,wu
 祦,wu
 禑,wu
+禑,xu
 窏,wu
 窹,wu
 箼,wu
@@ -23459,6 +24044,7 @@
 鋙,wu
 鋙,yu
 錻,wu
+錻,bu
 鎢,wu
 铻,wu
 铻,yu
@@ -23575,6 +24161,7 @@
 忥,xi
 怬,xi
 怸,xi
+怸,shu
 恄,xi
 悕,xi
 惁,xi
@@ -23609,6 +24196,7 @@
 焬,xi
 焬,yi
 煕,xi
+煕,yi
 熂,xi
 熈,xi
 熈,yi
@@ -23666,6 +24254,7 @@
 衋,xi
 襲,xi
 覀,xi
+覀,ya
 覡,xi
 覤,xi
 訢,xi
@@ -23673,6 +24262,8 @@
 訢,yin
 誒,xi
 誒,yi
+誒,ai
+誒,ei
 謑,xi
 謑,xia
 譆,xi
@@ -23742,6 +24333,7 @@
 敮,xia
 梺,xia
 溊,xia
+溊,bo
 炠,xia
 烚,xia
 煆,xia
@@ -23756,6 +24348,7 @@
 祫,xia
 筪,xia
 縀,xia
+縀,xie
 縖,xia
 翈,xia
 舝,xia
@@ -23777,6 +24370,7 @@
 先,xian
 线,xian
 县,xian
+县,xuan
 现,xian
 显,xian
 闲,xian
@@ -23813,6 +24407,7 @@
 筅,xian
 仚,xian
 伭,xian
+伭,xuan
 佡,xian
 僊,xian
 僩,xian
@@ -23829,6 +24424,7 @@
 妶,xuan
 姭,xian
 娨,xian
+娨,man
 娹,xian
 婱,xian
 嫺,xian
@@ -24064,9 +24660,12 @@
 庨,xiao
 彇,xiao
 恷,xiao
+恷,qiu
 敩,xiao
+敩,xue
 斅,xiao
 斆,xiao
+斆,xue
 暁,xiao
 曉,xiao
 梟,xiao
@@ -24077,6 +24676,7 @@
 洨,xiao
 涍,xiao
 滧,xiao
+滧,yao
 澩,xiao
 澩,xue
 瀟,xiao
@@ -24089,6 +24689,7 @@
 爻,xiao
 爻,yao
 猇,xiao
+猇,xia
 獟,xiao
 獟,yao
 獢,xiao
@@ -24140,12 +24741,14 @@
 邪,xu
 邪,ya
 邪,ye
+邪,yu
 协,xie
 械,xie
 谐,xie
 携,xie
 叶,xie
 叶,ye
+叶,she
 绁,xie
 绁,yi
 缬,xie
@@ -24178,6 +24781,7 @@
 媟,xie
 寫,xie
 屓,xie
+屓,xi
 屧,xie
 峫,xie
 峫,ye
@@ -24203,6 +24807,7 @@
 燲,xie
 爕,xie
 瑎,xie
+瑎,jie
 祄,xie
 禼,xie
 糏,xie
@@ -24280,6 +24885,7 @@
 杺,xin
 枔,xin
 潃,xin
+潃,xiu
 炘,xin
 焮,xin
 盺,xin
@@ -24338,6 +24944,7 @@
 莕,xing
 蛵,xing
 裄,xing
+裄,hang
 觪,xing
 觲,xing
 謃,xing
@@ -24362,6 +24969,7 @@
 忷,xiong
 恟,xiong
 敻,xiong
+敻,xuan
 昫,xiong
 昫,xu
 洶,xiong
@@ -24399,6 +25007,7 @@
 璓,xiu
 糔,xiu
 綇,xiu
+綇,xu
 繍,xiu
 繡,xiu
 脙,xiu
@@ -24469,6 +25078,7 @@
 媭,xu
 嬃,xu
 幁,xu
+幁,zheng
 怴,xu
 怴,xue
 惐,xu
@@ -24505,6 +25115,7 @@
 稰,xu
 稸,xu
 窢,xu
+窢,huo
 籲,xu
 籲,yu
 続,xu
@@ -24651,6 +25262,7 @@
 樰,xue
 瀥,xue
 烕,xue
+烕,mie
 燢,xue
 狘,xue
 疶,xue
@@ -24664,6 +25276,7 @@
 辥,xue
 辥,yi
 雤,xue
+雤,yu
 鞾,xue
 鱈,xue
 鷽,xue
@@ -24680,6 +25293,7 @@
 勋,xun
 询,xun
 巽,xun
+巽,zhuan
 鲟,xun
 浔,xun
 浔,yin
@@ -24691,6 +25305,7 @@
 窨,xun
 窨,yin
 曛,xun
+曛,hun
 徇,xun
 伨,xun
 侚,xun
@@ -24707,6 +25322,7 @@
 壎,xun
 壦,xun
 奞,xun
+奞,zhui
 愻,xun
 揗,xun
 攳,xun
@@ -24746,6 +25362,7 @@
 訙,xun
 詢,xun
 賐,xun
+賐,jun
 迿,xun
 遜,xun
 鄩,xun
@@ -24811,6 +25428,7 @@
 犽,ya
 玡,ya
 瑘,ya
+瑘,ye
 瘂,ya
 稏,ya
 窫,ya
@@ -24885,6 +25503,7 @@
 恹,yan
 罨,yan
 湮,yan
+湮,yin
 偃,yan
 谳,yan
 胭,yan
@@ -24901,11 +25520,13 @@
 乵,yan
 偐,yan
 偣,yan
+偣,an
 傿,yan
 傿,yin
 儼,yan
 兗,yan
 円,yan
+円,yuan
 剦,yan
 匽,yan
 厳,yan
@@ -24913,6 +25534,7 @@
 喭,yan
 噞,yan
 嚥,yan
+嚥,ye
 嚴,yan
 塩,yan
 墕,yan
@@ -24995,6 +25617,7 @@
 艷,yan
 莚,yan
 葕,yan
+葕,xing
 蔅,yan
 虤,yan
 蝘,yan
@@ -25064,14 +25687,17 @@
 鼴,yan
 齗,yan
 齗,yin
+齗,ken
 齞,yan
 齴,yan
 龂,yan
 龂,yin
+龂,ken
 龑,yan
 样,yang
 养,yang
 羊,yang
+羊,xiang
 扬,yang
 秧,yang
 氧,yang
@@ -25099,6 +25725,8 @@
 坱,yang
 垟,yang
 奍,yang
+奍,juan
+奍,quan
 姎,yang
 岟,yang
 崸,yang
@@ -25117,6 +25745,7 @@
 柍,ying
 楊,yang
 楧,yang
+楧,ying
 様,yang
 樣,yang
 氱,yang
@@ -25134,6 +25763,7 @@
 羘,yang
 羘,zang
 羪,yang
+羪,you
 胦,yang
 英,yang
 英,ying
@@ -25145,6 +25775,7 @@
 鍈,yang
 鍚,yang
 鐊,yang
+鐊,xi
 钖,yang
 阦,yang
 陽,yang
@@ -25200,6 +25831,7 @@
 幼,yao
 幼,you
 徺,yao
+徺,jiao
 怮,yao
 怮,you
 愮,yao
@@ -25208,6 +25840,7 @@
 摿,yao
 暚,yao
 曣,yao
+曣,yan
 枖,yao
 柼,yao
 楆,yao
@@ -25257,6 +25890,7 @@
 鎐,yao
 鎐,zu
 鑰,yao
+鑰,yue
 闄,yao
 靿,yao
 颻,yao
@@ -25287,6 +25921,7 @@
 僷,ye
 吔,ye
 嚈,ye
+嚈,yan
 埜,ye
 墷,ye
 壄,ye
@@ -25325,6 +25960,7 @@
 蠮,ye
 謁,ye
 鄓,ye
+鄓,yi
 鄴,ye
 鋣,ye
 鎁,ye
@@ -25340,8 +25976,8 @@
 鸈,ye
 黦,ye
 黦,yue
-岃,yen
-膶,yen
+岃,yin
+膶,run
 一,yi
 已,yi
 亿,yi
@@ -25424,6 +26060,7 @@
 亄,yi
 伇,yi
 伿,yi
+伿,zhi
 侇,yi
 俋,yi
 偯,yi
@@ -25475,6 +26112,7 @@
 恞,yi
 悘,yi
 悥,yi
+悥,nian
 憶,yi
 懌,yi
 扅,yi
@@ -25495,10 +26133,12 @@
 曀,yi
 曎,yi
 曵,yi
+曵,ye
 杙,yi
 枍,yi
 栘,yi
 栧,yi
+栧,xie
 栺,yi
 栺,zhi
 棭,yi
@@ -25580,6 +26220,7 @@
 螠,yi
 衪,yi
 衵,yi
+衵,ri
 袣,yi
 裛,yi
 襗,yi
@@ -25620,9 +26261,11 @@
 鏔,yi
 鐿,yi
 陭,yi
+陭,qi
 隿,yi
 霬,yi
 靾,yi
+靾,xie
 頉,yi
 頤,yi
 頥,yi
@@ -25632,6 +26275,7 @@
 驛,yi
 骮,yi
 鯣,yi
+鯣,si
 鳦,yi
 鶂,yi
 鶃,yi
@@ -25673,6 +26317,8 @@
 瘾,yin
 茚,yin
 乚,yin
+乚,hao
+乚,yi
 众,yin
 众,zhong
 侌,yin
@@ -25707,6 +26353,7 @@
 檼,yin
 櫽,yin
 歅,yin
+歅,yan
 殥,yin
 泿,yin
 洕,yin
@@ -25816,6 +26463,7 @@
 攍,ying
 攖,ying
 攚,ying
+攚,weng
 暎,ying
 朠,ying
 桜,ying
@@ -25876,6 +26524,7 @@
 鐛,ying
 鑍,ying
 锳,ying
+锳,yang
 韺,ying
 鴬,ying
 鶧,ying
@@ -25931,6 +26580,7 @@
 柡,yong
 栐,yong
 槦,yong
+槦,rong
 湧,yong
 滽,yong
 澭,yong
@@ -25940,6 +26590,7 @@
 癰,yong
 砽,yong
 禜,yong
+禜,ying
 苚,yong
 蒏,yong
 蒏,you
@@ -25991,6 +26642,7 @@
 囿,you
 柚,you
 柚,zhou
+柚,zhu
 蝣,you
 鼬,you
 铕,you
@@ -26024,18 +26676,23 @@
 滺,you
 瀀,you
 牗,you
+牗,yong
 狖,you
 祐,you
 禉,you
+禉,chao
 秞,you
 糿,you
+糿,gong
 纋,you
 羐,you
+羐,ling
 羑,you
 耰,you
 聈,you
 肬,you
 脜,you
+脜,rou
 苃,you
 蕕,you
 蜏,you
@@ -26049,6 +26706,7 @@
 逰,you
 遊,you
 邎,you
+邎,yao
 鄾,you
 酭,you
 鈾,you
@@ -26109,6 +26767,7 @@
 竽,yu
 瑜,yu
 禺,yu
+禺,ou
 聿,yu
 欤,yu
 俣,yu
@@ -26134,9 +26793,12 @@
 唹,yu
 喅,yu
 喐,yu
-喐,yug
+喐,guo
+喐,huo
+喐,xu
 喩,yu
 噊,yu
+噊,jue
 噳,yu
 圫,yu
 圫,zhun
@@ -26161,6 +26823,7 @@
 挧,yu
 敔,yu
 斔,yu
+斔,zhong
 斞,yu
 旟,yu
 棛,yu
@@ -26195,6 +26858,7 @@
 瑀,yu
 璵,yu
 畭,yu
+畭,she
 瘉,yu
 癒,yu
 盓,yu
@@ -26225,6 +26889,7 @@
 苑,yun
 茰,yu
 荢,yu
+荢,zi
 萮,yu
 蒮,yu
 蓹,yu
@@ -26261,6 +26926,7 @@
 閾,yu
 陓,yu
 隩,yu
+隩,ao
 雓,yu
 霱,yu
 預,yu
@@ -26271,6 +26937,7 @@
 驈,yu
 骬,yu
 髃,yu
+髃,ou
 鬰,yu
 鬱,yu
 魚,yu
@@ -26334,6 +27001,7 @@
 嬽,yuan
 寃,yuan
 杬,yuan
+杬,wan
 棩,yuan
 榞,yuan
 榬,yuan
@@ -26347,6 +27015,7 @@
 灁,yuan
 猨,yuan
 獂,yuan
+獂,huan
 盶,yuan
 禐,yuan
 笎,yuan
@@ -26406,14 +27075,15 @@
 岄,yue
 嶽,yue
 彟,yue
+彟,huo
 彠,yue
+彠,huo
 恱,yue
 悅,yue
 戉,yue
 抈,yue
 捳,yue
 曱,yue
-曱,zad
 爚,yue
 玥,yue
 矱,yue
@@ -26455,6 +27125,7 @@
 伝,yun
 傊,yun
 呍,yun
+呍,hong
 喗,yun
 囩,yun
 夽,yun
@@ -26480,6 +27151,7 @@
 紜,yun
 縜,yun
 繧,yun
+繧,wen
 腪,yun
 荺,yun
 蒀,yun
@@ -26497,6 +27169,7 @@
 韗,yun
 韻,yun
 頵,yun
+頵,jun
 馻,yun
 齫,yun
 齳,yun
@@ -26574,6 +27247,7 @@
 昝,zan
 錾,zan
 偺,zan
+偺,za
 儧,zan
 儹,zan
 兂,zan
@@ -26652,6 +27326,7 @@
 责,ze
 责,zhai
 泽,ze
+泽,shi
 箦,ze
 箦,zhai
 舴,ze
@@ -26664,13 +27339,17 @@
 笮,zuo
 赜,ze
 伬,ze
+伬,chi
 則,ze
 啫,ze
+啫,shi
 嘖,ze
 夨,ze
+夨,ce
 崱,ze
 庂,ze
 択,ze
+択,zhai
 捑,ze
 昗,ze
 柞,ze
@@ -26707,6 +27386,7 @@
 賾,ze
 飵,ze
 飵,zuo
+飵,zha
 鸅,ze
 齚,ze
 贼,zei
@@ -26717,7 +27397,9 @@
 鲗,zei
 怎,zen
 囎,zen
+囎,zeng
 譛,zen
+譛,jian
 赠,zeng
 憎,zeng
 综,zeng
@@ -26727,6 +27409,7 @@
 锃,zeng
 増,zeng
 曽,zeng
+曽,ceng
 熷,zeng
 璔,zeng
 矰,zeng
@@ -26749,6 +27432,7 @@
 诈,zha
 铡,zha
 喳,zha
+喳,cha
 砟,zha
 砟,zuo
 痄,zha
@@ -26757,6 +27441,7 @@
 蚱,zha
 揸,zha
 咤,zha
+咤,cha
 齄,zha
 偧,zha
 劄,zha
@@ -26786,7 +27471,9 @@
 譇,zha
 譗,zha
 踷,zha
+踷,zhe
 迊,zha
+迊,bi
 醡,zha
 鍘,zha
 鮓,zha
@@ -26849,6 +27536,7 @@
 讝,zhan
 趈,zhan
 輚,zhan
+輚,han
 轏,zhan
 邅,zhan
 醆,zhan
@@ -26858,6 +27546,7 @@
 飐,zhan
 饘,zhan
 驏,zhan
+驏,chan
 驙,zhan
 魙,zhan
 鸇,zhan
@@ -26905,6 +27594,7 @@
 遧,zhang
 鏱,zhang
 鐣,zhang
+鐣,cheng
 餦,zhang
 騿,zhang
 鱆,zhang
@@ -26936,9 +27626,11 @@
 炤,zhao
 燳,zhao
 爫,zhao
+爫,zhua
 狣,zhao
 瑵,zhao
 盄,zhao
+盄,diao
 瞾,zhao
 罀,zhao
 羄,zhao
@@ -27035,9 +27727,12 @@
 揕,zhen
 搸,zhen
 敒,zhen
+敒,shen
 敶,zhen
+敶,chen
 昣,zhen
 栕,zhen
+栕,chen
 栚,zhen
 楨,zhen
 樼,zhen
@@ -27080,6 +27775,7 @@
 錱,zhen
 陣,zhen
 靕,zhen
+靕,zheng
 駗,zhen
 鬒,zhen
 鱵,zhen
@@ -27093,6 +27789,7 @@
 怔,zheng
 证,zheng
 帧,zheng
+帧,zhen
 症,zheng
 郑,zheng
 拯,zheng
@@ -27112,6 +27809,7 @@
 崝,zheng
 崢,zheng
 幀,zheng
+幀,zhen
 徰,zheng
 愸,zheng
 抍,zheng
@@ -27216,6 +27914,7 @@
 娡,zhi
 嬂,zhi
 崻,zhi
+崻,shi
 巵,zhi
 帋,zhi
 幟,zhi
@@ -27224,6 +27923,7 @@
 廌,zhi
 徏,zhi
 徔,zhi
+徔,cong
 徝,zhi
 恉,zhi
 憄,zhi
@@ -27240,6 +27940,7 @@
 椥,zhi
 榰,zhi
 槜,zhi
+槜,zui
 櫍,zhi
 櫛,zhi
 汦,zhi
@@ -27263,9 +27964,11 @@
 祬,zhi
 禃,zhi
 禔,zhi
+禔,ti
 秓,zhi
 秖,zhi
 秪,zhi
+秪,di
 秷,zhi
 稙,zhi
 稺,zhi
@@ -27295,6 +27998,7 @@
 訨,zhi
 誌,zhi
 謢,zhi
+謢,lu
 豑,zhi
 豒,zhi
 貭,zhi
@@ -27366,6 +28070,7 @@
 衶,zhong
 諥,zhong
 迚,zhong
+迚,da
 鈡,zhong
 鍾,zhong
 鐘,zhong
@@ -27530,6 +28235,7 @@
 袾,zhu
 註,zhu
 詝,zhu
+詝,nuo
 誅,zhu
 豬,zhu
 貯,zhu
@@ -27543,6 +28249,7 @@
 阻,zhu
 阻,zu
 霔,zhu
+霔,shu
 馵,zhu
 駐,zhu
 駯,zhu
@@ -27581,6 +28288,7 @@
 賺,zuan
 転,zhuan
 轉,zhuan
+轉,zhuai
 鄟,zhuan
 顓,zhuan
 装,zhuang
@@ -27618,10 +28326,12 @@
 諈,zhui
 贅,zhui
 轛,zhui
+轛,dui
 醊,zhui
 錐,zhui
 鑆,zhui
 餟,zhui
+餟,chuo
 騅,zhui
 鵻,zhui
 准,zhun
@@ -27669,6 +28379,7 @@
 濁,zhuo
 烵,zhuo
 犳,zhuo
+犳,bao
 琸,zhuo
 硺,zhuo
 窡,zhuo
@@ -27758,9 +28469,8 @@
 鰦,zi
 鶅,zi
 鼒,zi
-咗,zo
 咗,zuo
-唨,zo
+唨,zu
 宗,zong
 棕,zong
 踪,zong
@@ -27777,6 +28487,8 @@
 惣,zong
 惾,zong
 愡,zong
+愡,cong
+愡,song
 搃,zong
 摠,zong
 昮,zong
@@ -27801,8 +28513,11 @@
 踨,zong
 蹤,zong
 錝,zong
+錝,cong
 鍯,zong
+鍯,cong
 鏓,zong
+鏓,cong
 鑁,zong
 騌,zong
 騣,zong
@@ -27826,6 +28541,7 @@
 箤,zu
 詛,zu
 踿,zu
+踿,cu
 錊,zu
 錊,zui
 鎺,zu
@@ -27850,6 +28566,7 @@
 嶵,zui
 晬,zui
 枠,zui
+枠,hua
 栬,zui
 樶,zui
 檇,zui
@@ -27857,6 +28574,7 @@
 璻,zui
 祽,zui
 穝,zui
+穝,zuo
 絊,zui
 纗,zui
 蟕,zui

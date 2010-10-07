@@ -6,10 +6,10 @@ namespace Studyzy.IMEWLConverter
 {
     public class SougouPinyinWL : IWordLibraryImport,IWordLibraryExport
     {
-        /// <summary>
-        /// 有多音字的时候只使用一个拼音
-        /// </summary>
-        public bool OnlySinglePinyin { get; set; }
+        ///// <summary>
+        ///// 有多音字的时候只使用一个拼音
+        ///// </summary>
+        //public bool OnlySinglePinyin { get; set; }
         private PinYinFactory pinyinFactory;
         #region IWordLibraryImport 成员
         /// <summary>
@@ -19,16 +19,16 @@ namespace Studyzy.IMEWLConverter
         /// <returns></returns>
         public WordLibraryList Import(string str)
         {
-            if (OnlySinglePinyin)
-            {
+            //if (OnlySinglePinyin)
+            //{
                 pinyinFactory = new SinglePinyin();
-            }
-            else
-            {
-                pinyinFactory = new AllPinyin();
-            }
+            //}
+            //else
+            //{
+            //    pinyinFactory = new AllPinyin();
+            //}
             WordLibraryList wlList = new WordLibraryList();
-            string[] words = str.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            string[] words = str.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
             for (int i = 0; i < words.Length; i++)
             {
                 try

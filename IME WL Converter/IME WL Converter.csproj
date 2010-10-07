@@ -53,6 +53,7 @@
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
     <Compile Include="ConstantString.cs" />
+    <Compile Include="FileOperationHelper.cs" />
     <Compile Include="HelpForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,13 +73,14 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PinYinFactory.cs" />
-    <Compile Include="AllPinyin.cs" />
+    <Compile Include="MutiPinYinWord.cs" />
     <Compile Include="PinyinDic.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PinyinDic.resx</DependentUpon>
     </Compile>
+    <Compile Include="PinYinFactory.cs" />
+    <Compile Include="AllPinyin.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AboutBox.resx">
@@ -118,7 +120,9 @@
     <Compile Include="IME\SougouPinyinWL.cs" />
     <Compile Include="IME\SougouWubi.cs" />
     <Compile Include="IME\QQShouji.cs" />
-    <Compile Include="SinglePinyin.cs" />
+    <Compile Include="SinglePinyin.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="WordLibrary.cs" />
     <Compile Include="WordLibraryList.cs" />
   </ItemGroup>
@@ -127,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <None Include="Resources\WordPinyin.txt" />
     <None Include="Resources\SinglePinYin.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
