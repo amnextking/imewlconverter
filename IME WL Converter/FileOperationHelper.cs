@@ -67,6 +67,11 @@ namespace Studyzy.IMEWLConverter
             {
                 return ConstantString.BAIDU_SHOUJI;
             }
+            reg = new Regex(@"^[a-z']+\s[\u4E00-\u9FA5]+$");
+            if (reg.IsMatch(example))
+            {
+                return ConstantString.SINA_PINYIN;
+            }
             return "";
 
         }

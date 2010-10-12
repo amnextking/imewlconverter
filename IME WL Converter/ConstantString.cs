@@ -16,5 +16,6 @@ namespace Studyzy.IMEWLConverter
         public const string PINYIN_JIAJIA = "拼音加加";
         public const string WORD_ONLY = "无拼音纯单词";
         public const string SOUGOU_XIBAO_SCEL = "搜狗细胞词库scel";
+        public const string SINA_PINYIN = "新浪拼音";
     }
 }

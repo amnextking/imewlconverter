@@ -61,6 +61,7 @@
       <DependentUpon>HelpForm.cs</DependentUpon>
     </Compile>
     <Compile Include="IME\BaiduShouji.cs" />
+    <Compile Include="IME\SinaPinyin.cs" />
     <Compile Include="IME\FIT.cs" />
     <Compile Include="IME\GooglePinyin.cs" />
     <Compile Include="IME\PinyinJiaJia.cs" />

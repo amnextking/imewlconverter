@@ -157,6 +157,7 @@ namespace Studyzy.IMEWLConverter
             this.cbxFrom.Items.Add(ConstantString.SOUGOU_PINYIN);
             this.cbxFrom.Items.Add(ConstantString.SOUGOU_WUBI);
             this.cbxFrom.Items.Add(ConstantString.QQ_PINYIN);
+            this.cbxFrom.Items.Add(ConstantString.SINA_PINYIN);
             this.cbxFrom.Items.Add(ConstantString.GOOGLE_PINYIN);
             this.cbxFrom.Items.Add(ConstantString.ZIGUANG_PINYIN);
             this.cbxFrom.Items.Add(ConstantString.PINYIN_JIAJIA);
@@ -168,6 +169,7 @@ namespace Studyzy.IMEWLConverter
             this.cbxTo.Items.Add(ConstantString.SOUGOU_PINYIN);
             this.cbxTo.Items.Add(ConstantString.SOUGOU_WUBI);
             this.cbxTo.Items.Add(ConstantString.QQ_PINYIN);
+            this.cbxTo.Items.Add(ConstantString.SINA_PINYIN);
             this.cbxTo.Items.Add(ConstantString.GOOGLE_PINYIN);
             this.cbxTo.Items.Add(ConstantString.ZIGUANG_PINYIN);
             this.cbxTo.Items.Add(ConstantString.PINYIN_JIAJIA);
@@ -187,6 +189,7 @@ namespace Studyzy.IMEWLConverter
                 case ConstantString.WORD_ONLY: return new SougouPinyinWL();
                 case ConstantString.ZIGUANG_PINYIN: return new ZiGuangPinyin();
                 case ConstantString.PINYIN_JIAJIA: return new PinyinJiaJia();
+                case ConstantString.SINA_PINYIN: return new SinaPinyin();
                 default: throw new ArgumentException("导出词库的输入法错误");
             }
         }
@@ -203,6 +206,7 @@ namespace Studyzy.IMEWLConverter
                 case ConstantString.ZIGUANG_PINYIN: return new ZiGuangPinyin();
                 case ConstantString.PINYIN_JIAJIA: return new PinyinJiaJia();
                 case ConstantString.WORD_ONLY: return new SougouPinyinWL();
+                case ConstantString.SINA_PINYIN: return new SinaPinyin();
                 case ConstantString.SOUGOU_XIBAO_SCEL: return new SougouPinyinScel();
                 default: throw new ArgumentException("导入词库的输入法错误");
             }
