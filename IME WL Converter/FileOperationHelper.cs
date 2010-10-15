@@ -106,5 +106,11 @@ namespace Studyzy.IMEWLConverter
                 return false;
             }
         }
+       public static StreamWriter GetWriteFileStream(string path, Encoding coding)
+       {
+           StreamWriter sw = new StreamWriter(path, false, coding);
+           return sw;
+       }
+      
     }
 }

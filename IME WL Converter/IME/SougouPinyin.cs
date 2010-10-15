@@ -15,12 +15,12 @@ namespace Studyzy.IMEWLConverter
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < wlList.Count; i++)
             {
-                string str = wlList[i].GetPinYinString("'", BuildType.LeftContain) + " " + wlList[i].Word + "\r\n";
-                sb.Append(str);
+
+                sb.Append(ExportLine(wlList[i]));
                 //sb.Append(" ");
                 //sb.Append(wlList[i].Word);
 
-                //sb.Append("\r\n");
+                sb.Append("\r\n");
             }
             return sb.ToString();
         }
@@ -43,13 +43,7 @@ namespace Studyzy.IMEWLConverter
                 string line = lines[i];
                 if (line.IndexOf("'") == 0)
                 {
-                    string py = line.Split(' ')[0];
-                    string word = line.Split(' ')[1];
-                    WordLibrary wl = new WordLibrary();
-                    wl.Word = word;
-                    wl.Count = 1;
-                    wl.PinYin = py.Split(new char[] { '\'' }, StringSplitOptions.RemoveEmptyEntries);
-                    wlList.Add(wl);
+                    wlList.Add(ImportLine(line));
                 }
             }
             return wlList;
@@ -57,5 +51,31 @@ namespace Studyzy.IMEWLConverter
        
 
         #endregion
+
+        public string ExportLine(WordLibrary wl)
+        {
+            //StringBuilder sb = new StringBuilder();
+
+            string str = wl.GetPinYinString("'", BuildType.LeftContain) + " " + wl.Word ;
+
+            return str;
+        }
+
+
+        public WordLibrary ImportLine(string line)
+        {
+            if (line.IndexOf("'") == 0)
+            {
+                string py = line.Split(' ')[0];
+                string word = line.Split(' ')[1];
+                WordLibrary wl = new WordLibrary();
+                wl.Word = word;
+                wl.Count = 1;
+                wl.PinYin = py.Split(new char[] { '\'' }, StringSplitOptions.RemoveEmptyEntries);
+                return wl;
+            }
+            return null;
+
+        }
     }
 }

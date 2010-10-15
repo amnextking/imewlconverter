@@ -8,12 +8,6 @@ namespace Studyzy.IMEWLConverter
     {
         #region IWordLibraryImport 成员
 
-        //public bool OnlySinglePinyin
-        //{
-        //    get;
-        //    set;
-        //}
-
         public WordLibraryList Import(string str)
         {
             WordLibraryList wlList = new WordLibraryList();
@@ -22,13 +16,7 @@ namespace Studyzy.IMEWLConverter
             {
                 string line = lines[i];
 
-                string py = line.Split('\t')[0];
-                string word = line.Split('\t')[1];
-                WordLibrary wl = new WordLibrary();
-                wl.Word = word;
-                wl.Count = 1;
-                wl.PinYin = py.Split(new char[] { '\'' }, StringSplitOptions.RemoveEmptyEntries);
-                wlList.Add(wl);
+                wlList.Add(ImportLine(line));
 
             }
             return wlList;
@@ -47,10 +35,7 @@ namespace Studyzy.IMEWLConverter
             sb.Append("编辑=1\r\n\r\n");
             for (int i = 0; i < wlList.Count; i++)
             {
-                sb.Append(wlList[i].Word);
-                sb.Append("\t");
-                sb.Append(wlList[i].GetPinYinString("'", BuildType.None));
-                sb.Append("\t100000");
+                sb.Append(ExportLine(wlList[i]));
                 sb.Append("\r\n");
             }
             return sb.ToString();
@@ -65,5 +50,30 @@ namespace Studyzy.IMEWLConverter
         }
 
         #endregion
+
+        public string ExportLine(WordLibrary wl)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(wl.Word);
+            sb.Append("\t");
+            sb.Append(wl.GetPinYinString("'", BuildType.None));
+            sb.Append("\t100000");
+
+            return sb.ToString();
+        }
+
+
+        public WordLibrary ImportLine(string line)
+        {
+            string py = line.Split('\t')[0];
+            string word = line.Split('\t')[1];
+            WordLibrary wl = new WordLibrary();
+            wl.Word = word;
+            wl.Count = 1;
+            wl.PinYin = py.Split(new char[] { '\'' }, StringSplitOptions.RemoveEmptyEntries);
+            return wl;
+
+        }
     }
 }

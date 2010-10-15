@@ -4,15 +4,17 @@ using System.Text;
 
 namespace Studyzy.IMEWLConverter
 {
-    interface IWordLibraryImport
+    public interface IWordLibraryImport
     {
         int CountWord { get; set; }
         int CurrentStatus { get; set; }
         WordLibraryList Import(string str);
+        WordLibrary ImportLine(string str);
     }
-    interface IWordLibraryExport
+    public interface IWordLibraryExport
     {
         string Export(WordLibraryList wlList);
+        string ExportLine(WordLibrary wl);
         Encoding Encoding { get; }
        
     }

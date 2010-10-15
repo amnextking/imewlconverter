@@ -68,5 +68,24 @@ namespace Studyzy.IMEWLConverter
         }
 
         #endregion
+        public string ExportLine(WordLibrary wl)
+        {
+            return wl.Word;
+        }
+
+        /// <summary>
+        /// 好像不对
+        /// </summary>
+        /// <param name="line"></param>
+        /// <returns></returns>
+        public WordLibrary ImportLine(string line)
+        {
+            var list = pinyinFactory.GetPinYinListOfString(line);
+            WordLibrary wl = new WordLibrary();
+            wl.Word = line;
+            wl.PinYin = list[0].ToArray();
+            return wl;
+
+        }
     }
 }

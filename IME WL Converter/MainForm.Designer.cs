@@ -59,6 +59,7 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.toolStripMenuItemStreamExport = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -95,6 +96,7 @@
             // saveFileDialog1
             // 
             this.saveFileDialog1.Filter = "文本文件|*.txt|所有文件|*.*";
+            this.saveFileDialog1.Title = "请选择导出词库保存的文件位置";
             // 
             // btnOpenFileDialog
             // 
@@ -154,7 +156,8 @@
             this.toolStripMenuItemIgnoreLongWord,
             this.toolStripComboBoxIgnoreWordLength,
             this.toolStripSeparator2,
-            this.toolStripMenuItemExportDirectly});
+            this.toolStripMenuItemExportDirectly,
+            this.toolStripMenuItemStreamExport});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(65, 20);
             this.toolStripMenuItem1.Text = "高级设置";
@@ -299,7 +302,15 @@
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
-            // MainiForm
+            // toolStripMenuItemStreamExport
+            // 
+            this.toolStripMenuItemStreamExport.CheckOnClick = true;
+            this.toolStripMenuItemStreamExport.Name = "toolStripMenuItemStreamExport";
+            this.toolStripMenuItemStreamExport.Size = new System.Drawing.Size(190, 22);
+            this.toolStripMenuItemStreamExport.Text = "一边读取，一边导出";
+            this.toolStripMenuItemStreamExport.Click += new System.EventHandler(this.toolStripMenuItemStreamExport_Click);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -317,7 +328,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.Name = "MainiForm";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "深蓝词库转换1.3";
             this.Load += new System.EventHandler(this.MainiForm_Load);
@@ -361,6 +372,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Timer timer1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemStreamExport;
     }
 }
 

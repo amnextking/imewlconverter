@@ -12,130 +12,11 @@ namespace Studyzy.IMEWLConverter
 {
     public partial class MainForm : Form
     {
+        #region Init
         public MainForm()
         {
             InitializeComponent();
         }
-
-        private bool exportDirectly = false;
-
-        private void btnOpenFileDialog_Click(object sender, EventArgs e)
-        {            
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                //this.txbWLPath.Text = openFileDialog1.FileName;
-                string files = "";
-                foreach (string file in openFileDialog1.FileNames)
-                {
-                    files += file + " | ";
-                }
-                this.txbWLPath.Text = files.Remove(files.Length - 3);
-
-                cbxFrom.Text =FileOperationHelper.AutoMatchSourceWLType(openFileDialog1.FileName);
-            }
-
-        }
-        IWordLibraryImport import;
-        IWordLibraryExport export;
-        private WordLibraryList allWlList = new WordLibraryList();
-        private void btnConvert_Click(object sender, EventArgs e)
-        {
-            richTextBox1.Clear();
-            allWlList.Clear();
-            ignoreWordLength = Convert.ToInt32(toolStripComboBoxIgnoreWordLength.Text);
-            timer1.Enabled = true;
-#if !DEBUG
-            try
-            {
-#endif
-                import = GetImportInterface(cbxFrom.Text);
-                export = GetExportInterface(cbxTo.Text);
-                string[] files = txbWLPath.Text.Split('|');
-                foreach (string file in files)
-                {
-                    txt =FileOperationHelper. ReadFile(file.Trim());
-                    //ImportWordLibrary();
-                    //backgroundWorker1_RunWorkerCompleted(null,null);
-                    backgroundWorker1.RunWorkerAsync();
-                    //Thread thread = new Thread(new ThreadStart(ImportWordLibrary));
-                    //thread.Start();
-                }
-               
-#if !DEBUG
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-#endif
-        }
-
-
-        /// <summary>
-        /// 词库过滤
-        /// </summary>
-        /// <param name="wlList"></param>
-        /// <returns></returns>
-        private WordLibraryList Filter(WordLibraryList wlList)
-        {
-            List<WordLibrary> temp = new List<WordLibrary>();
-            //if (toolStripMenuItemIgnoreMutiPinyin.Checked)//多音字过滤
-            //{
-            //    Dictionary<string, WordLibrary> dic = new Dictionary<string, WordLibrary>();
-            //    foreach (WordLibrary wl in wlList)
-            //    {
-            //        if (!dic.ContainsKey(wl.Word))
-            //        {
-            //            dic.Add(wl.Word, wl);
-            //        }
-            //    }
-            //    temp.AddRange(dic.Values);
-            //}
-            //else
-            //{
-                temp = wlList;
-            //}
-            int minLength = 1;
-            int maxLength = 9999;
-            if (ignoreSingleWord)//过滤单个字
-            {
-                minLength = 2;
-            }
-            if (ignoreLongWord)
-            {
-                maxLength = ignoreWordLength;
-            }
-            if (minLength != 1 || maxLength != 9999)//设置了长度过滤
-            {
-                temp= temp.FindAll(delegate(WordLibrary wl)
-                {
-                    return wl.Word.Length >= minLength && wl.Word.Length <= maxLength;
-                });
-            }
-            if (filterEnglish)//过滤英文单词
-            {
-                Regex r = new Regex("[a-z]", RegexOptions.IgnoreCase);
-                temp.RemoveAll(delegate(WordLibrary wl) {
-                    return r.IsMatch(wl.Word);
-                });
-            }
-            WordLibraryList newList = new WordLibraryList();
-             newList.AddRange(temp);
-             return newList;
-
-        }
-
-        private string txt;
-
-        private void ImportWordLibrary()
-        {
-            var wlList = import.Import(txt);
-            
-            wlList = Filter(wlList);
-            allWlList.AddRange(wlList);
-           
-        }
-
         private void MainiForm_Load(object sender, EventArgs e)
         {
             this.cbxFrom.Items.Add(ConstantString.BAIDU_SHOUJI);
@@ -164,7 +45,7 @@ namespace Studyzy.IMEWLConverter
         }
         private IWordLibraryExport GetExportInterface(string str)
         {
-             switch (str)
+            switch (str)
             {
                 case ConstantString.BAIDU_SHOUJI: return new BaiduShouji();
                 case ConstantString.QQ_SHOUJI: return new QQShouji();
@@ -197,8 +78,130 @@ namespace Studyzy.IMEWLConverter
                 default: throw new ArgumentException("导入词库的输入法错误");
             }
         }
+        #endregion
+
+        private bool exportDirectly = false;
+        private bool ignoreSingleWord = false;
+        private bool filterEnglish = true;
+        private bool ignoreLongWord = false;
+        private int ignoreWordLength = 5;
+        private bool streamExport = false;
+        private string exportPath = "";
+        private string fileContent;
+        private void btnOpenFileDialog_Click(object sender, EventArgs e)
+        {            
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                //this.txbWLPath.Text = openFileDialog1.FileName;
+                string files = "";
+                foreach (string file in openFileDialog1.FileNames)
+                {
+                    files += file + " | ";
+                }
+                this.txbWLPath.Text = files.Remove(files.Length - 3);
+
+                cbxFrom.Text =FileOperationHelper.AutoMatchSourceWLType(openFileDialog1.FileName);
+            }
+
+        }
+        IWordLibraryImport import;
+        IWordLibraryExport export;
+        private WordLibraryList allWlList = new WordLibraryList();
+        private void btnConvert_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Clear();
+            allWlList.Clear();
+            ignoreWordLength = Convert.ToInt32(toolStripComboBoxIgnoreWordLength.Text);
+           
+            if (ignoreSingleWord)//过滤单个字
+            {
+                minLength = 2;
+            }
+            if (ignoreLongWord)
+            {
+                maxLength = ignoreWordLength;
+            }
+#if !DEBUG
+            try
+            {
+#endif
+            import = GetImportInterface(cbxFrom.Text);
+            export = GetExportInterface(cbxTo.Text);
+
+            if (streamExport)
+            {
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                    exportPath = saveFileDialog1.FileName;
+                else
+                {
+                    ShowStatusMessage("请选择词库保存的路径，否则将无法进行词库导出", true);
+                    return;
+                }
+            }
+            timer1.Enabled = true;
+            backgroundWorker1.RunWorkerAsync();
 
 
+
+#if !DEBUG
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+#endif
+        }
+
+        int minLength = 1;
+        int maxLength = 9999;
+        /// <summary>
+        /// 词库过滤
+        /// </summary>
+        /// <param name="wlList"></param>
+        /// <returns></returns>
+        private WordLibraryList Filter(WordLibraryList wlList)
+        {
+            //List<WordLibrary> temp =  wlList;
+
+
+
+            //if (minLength != 1 || maxLength != 9999)//设置了长度过滤
+            //{
+            //    temp= temp.FindAll(delegate(WordLibrary wl)
+            //    {
+            //        return wl.Word.Length >= minLength && wl.Word.Length <= maxLength;
+            //    });
+            //}
+            //if (filterEnglish)//过滤英文单词
+            //{
+            //    Regex r = new Regex("[a-z]", RegexOptions.IgnoreCase);
+            //    temp.RemoveAll(delegate(WordLibrary wl) {
+            //        return r.IsMatch(wl.Word);
+            //    });
+            //}
+
+            WordLibraryList newList = new WordLibraryList();
+            newList.AddRange(wlList.FindAll(delegate(WordLibrary wl) { return WordFilterRetain(wl); }));
+            return newList;
+
+        }
+        Regex englishRegex = new Regex("[a-z]", RegexOptions.IgnoreCase);
+        private bool WordFilterRetain(WordLibrary wl)
+        {
+            if (minLength != 1 || maxLength != 9999)//设置了长度过滤
+            {
+                if (wl.Word.Length > maxLength || wl.Word.Length < minLength)
+                {
+                    return false;
+                }
+            }
+            
+            if (filterEnglish && englishRegex.IsMatch(wl.Word)) //过滤英文单词
+            {
+                return false;
+            }
+            return true;
+        }
 
         private void btnExport_Click(object sender, EventArgs e)
         {
@@ -209,30 +212,21 @@ namespace Studyzy.IMEWLConverter
                 {
                     if (FileOperationHelper. WriteFile(saveFileDialog1.FileName, export.Encoding, richTextBox1.Text))
                     {
-                        MessageBox.Show("保存成功，词库路径：" + saveFileDialog1.FileName);
+                       ShowStatusMessage("保存成功，词库路径：" + saveFileDialog1.FileName,true);
                     }
                     else
                     {
-                        MessageBox.Show("保存失败");
+                        ShowStatusMessage("保存失败",false);
                     }
                 }
             }
 
         }
-        private void btnAbout_Click(object sender, EventArgs e)
-        {
-            AboutBox a = new AboutBox();
-            a.Show();
-        }
-        private void ToolStripMenuItemHelp_Click(object sender, EventArgs e)
-        {
-            HelpForm help = new HelpForm();
-            help.Show();
-        }
+       
 
         private void cbxFrom_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.cbxFrom.Text == ConstantString.WORD_ONLY)
+            if (this.cbxFrom.Text == ConstantString.SOUGOU_XIBAO_SCEL)
             {
                 this.openFileDialog1.Filter = "细胞词库|*.scel|文本文件|*.txt|所有文件|*.*";
             }
@@ -242,6 +236,7 @@ namespace Studyzy.IMEWLConverter
             }
         }
 
+        #region 菜单操作
         private void toolStripMenuItemEnableMutiConvert_Click(object sender, EventArgs e)
         {
             this.openFileDialog1.Multiselect = toolStripMenuItemEnableMutiConvert.Checked;
@@ -261,10 +256,7 @@ namespace Studyzy.IMEWLConverter
         {
             ignoreSingleWord = toolStripMenuItemIgnoreSingleWord.Checked;
         }
-        private bool ignoreSingleWord = false;
-        private bool filterEnglish = true;
-        private bool ignoreLongWord = false;
-        private int ignoreWordLength = 5;
+       
         private void toolStripMenuItemFilterEnglish_Click(object sender, EventArgs e)
         {
             filterEnglish = toolStripMenuItemFilterEnglish.Checked;
@@ -274,12 +266,28 @@ namespace Studyzy.IMEWLConverter
         {
             ignoreLongWord = toolStripMenuItemIgnoreLongWord.Checked;
         }
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+            AboutBox a = new AboutBox();
+            a.Show();
+        }
+        private void ToolStripMenuItemHelp_Click(object sender, EventArgs e)
+        {
+            HelpForm help = new HelpForm();
+            help.Show();
+        }
+
+        private void toolStripMenuItemStreamExport_Click(object sender, EventArgs e)
+        {
+            streamExport = toolStripMenuItemStreamExport.Checked;
+        }
+        #endregion
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (import != null)
             {
-                this.toolStripStatusLabel1.Text = "转换进度："+import.CurrentStatus + "/" + import.CountWord;
+                ShowStatusMessage( "转换进度："+import.CurrentStatus + "/" + import.CountWord,false);
                 this.toolStripProgressBar1.Maximum = import.CountWord;
                 this.toolStripProgressBar1.Value = import.CurrentStatus;
             }           
@@ -287,14 +295,37 @@ namespace Studyzy.IMEWLConverter
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            ImportWordLibrary();
+            string[] files = txbWLPath.Text.Split('|');
+            foreach (string file in files)
+            {
+                var txt = FileOperationHelper.ReadFile(file.Trim());
+                if (streamExport)//流转换
+                {
+                    var stream= FileOperationHelper.GetWriteFileStream(exportPath, export.Encoding);
+                    WordLibraryStream wlStream = new WordLibraryStream(import, export, txt,stream);
+                    wlStream.ConvertWordLibrary(WordFilterRetain);
+                    stream.Close();
+                }
+                else
+                {
+                    var wlList = import.Import(txt);
+                    wlList = Filter(wlList);
+                    allWlList.AddRange(wlList);
+                    fileContent = export.Export(allWlList);
+                }
+            }
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             timer1.Enabled = false;
-            string newWl = "";// export.Export(allWlList);
-            this.toolStripStatusLabel1.Text = "转换完成";
+          
+           ShowStatusMessage( "转换完成",false);
+            if(streamExport)
+            {
+                ShowStatusMessage("转换完成,词库保存到文件："+exportPath, true);
+                return;
+            }
             if (exportDirectly)
             {
                 richTextBox1.Text = "为提高处理速度，高级设置中默认设置为直接导出，本文本框中不显示转换后的结果，若要查看、修改转换后的结果再导出请取消该设置。";
@@ -302,7 +333,7 @@ namespace Studyzy.IMEWLConverter
             else
             {
 
-                richTextBox1.Text = newWl;
+                richTextBox1.Text = fileContent;
                 btnExport.Enabled = true;
             }
 
@@ -312,16 +343,31 @@ namespace Studyzy.IMEWLConverter
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
 
-                    if (FileOperationHelper.WriteFile(saveFileDialog1.FileName, export.Encoding, newWl))
+                    if (FileOperationHelper.WriteFile(saveFileDialog1.FileName, export.Encoding, fileContent))
                     {
-                        MessageBox.Show("保存成功，词库路径：" + saveFileDialog1.FileName);
+                        ShowStatusMessage("保存成功，词库路径：" + saveFileDialog1.FileName,true);
                     }
                     else
                     {
-                        MessageBox.Show("保存失败");
+                        ShowStatusMessage("保存失败",true);
                     }
                 }
             }
         }
+        /// <summary>
+        /// 在状态上显示消息
+        /// </summary>
+        /// <param name="statusMessage">消息内容</param>
+        /// <param name="showMessageBox">是否弹出窗口显示消息</param>
+        private void ShowStatusMessage(string statusMessage,bool showMessageBox)
+        {
+            this.toolStripStatusLabel1.Text = statusMessage;
+            if(showMessageBox)
+            {
+                MessageBox.Show(statusMessage);
+            }
+        }
+
+
     }
 }

@@ -15,9 +15,7 @@ namespace Studyzy.IMEWLConverter
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < wlList.Count; i++)
             {
-                sb.Append(wlList[i].GetPinYinString("'", BuildType.LeftContain));
-                sb.Append(" ");
-                sb.Append(wlList[i].Word);
+                sb.Append(ExportLine(wlList[i]));
                 sb.Append("\r\n");
             }
             return sb.ToString();
@@ -40,18 +38,36 @@ namespace Studyzy.IMEWLConverter
             {
                 string line = lines[i];
 
-                string py = line.Split(' ')[0];
-                string word = line.Split(' ')[1];
-                WordLibrary wl = new WordLibrary();
-                wl.Word = word;
-                wl.Count = 1;
-                wl.PinYin = py.Split(new char[] { '\'' }, StringSplitOptions.RemoveEmptyEntries);
-                wlList.Add(wl);
+
+                wlList.Add(ImportLine(line));
 
             }
             return wlList;
         }
 
         #endregion
+        public string ExportLine(WordLibrary wl)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(wl.GetPinYinString("'", BuildType.LeftContain));
+            sb.Append(" ");
+            sb.Append(wl.Word);
+
+            return sb.ToString();
+        }
+
+
+        public WordLibrary ImportLine(string line)
+        {
+            string py = line.Split(' ')[0];
+            string word = line.Split(' ')[1];
+            WordLibrary wl = new WordLibrary();
+            wl.Word = word;
+            wl.Count = 1;
+            wl.PinYin = py.Split(new char[] { '\'' }, StringSplitOptions.RemoveEmptyEntries);
+            return wl;
+
+        }
     }
 }

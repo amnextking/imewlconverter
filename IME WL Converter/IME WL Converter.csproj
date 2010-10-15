@@ -62,7 +62,6 @@
     </Compile>
     <Compile Include="IME\BaiduShouji.cs" />
     <Compile Include="IME\SinaPinyin.cs" />
-    <Compile Include="IME\FIT.cs" />
     <Compile Include="IME\GooglePinyin.cs" />
     <Compile Include="IME\PinyinJiaJia.cs" />
     <Compile Include="IME\SougouPinyinScel.cs" />
@@ -84,6 +83,7 @@
     <Compile Include="AllPinyin.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WordLibraryStream.cs" />
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>

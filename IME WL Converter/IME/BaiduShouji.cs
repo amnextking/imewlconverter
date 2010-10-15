@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Studyzy.IMEWLConverter
 {
-  public  class BaiduShouji:IWordLibraryImport,IWordLibraryExport
-  {
-      //public bool OnlySinglePinyin { get; set; }
+    public class BaiduShouji : IWordLibraryImport, IWordLibraryExport
+    {
+        //public bool OnlySinglePinyin { get; set; }
         #region IWordLibraryExport 成员
 
         public string Export(WordLibraryList wlList)
@@ -14,10 +14,7 @@ namespace Studyzy.IMEWLConverter
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < wlList.Count; i++)
             {
-                sb.Append(wlList[i].Word);
-                sb.Append(" ");
-                sb.Append(wlList[i].GetPinYinString("|", BuildType.None));
-                sb.Append(" 20000");
+                sb.Append(ExportLine(wlList[i]));
                 sb.Append("\r\n");
             }
             return sb.ToString();
@@ -40,19 +37,38 @@ namespace Studyzy.IMEWLConverter
             for (int i = 0; i < lines.Length; i++)
             {
                 string line = lines[i];
-               
-                    string py = line.Split(' ')[1];
-                    string word = line.Split(' ')[0];
-                    WordLibrary wl = new WordLibrary();
-                    wl.Word = word;
-                    wl.Count = 1;
-                    wl.PinYin = py.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
-                    wlList.Add(wl);
-              
+
+
+                wlList.Add(ImportLine(line));
+
             }
             return wlList;
         }
 
         #endregion
+        public string ExportLine(WordLibrary wl)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(wl.Word);
+            sb.Append(" ");
+            sb.Append(wl.GetPinYinString("|", BuildType.None));
+            sb.Append(" 20000");
+
+            return sb.ToString();
+        }
+
+
+        public WordLibrary ImportLine(string line)
+        {
+            string py = line.Split(' ')[1];
+            string word = line.Split(' ')[0];
+            WordLibrary wl = new WordLibrary();
+            wl.Word = word;
+            wl.Count = 1;
+            wl.PinYin = py.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+            return wl;
+
+        }
     }
 }
