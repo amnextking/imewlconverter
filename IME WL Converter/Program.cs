@@ -14,7 +14,7 @@ namespace Studyzy.IMEWLConverter
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainiForm());
+            Application.Run(new MainForm());
         }
     }
 }

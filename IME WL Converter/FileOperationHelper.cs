@@ -42,11 +42,11 @@ namespace Studyzy.IMEWLConverter
             {
                 return ConstantString.QQ_PINYIN;
             }
-            reg = new Regex(@"^[\u4E00-\u9FA5]+$");
-            if (reg.IsMatch(example))
-            {
-                return ConstantString.WORD_ONLY;
-            }
+            //reg = new Regex(@"^[\u4E00-\u9FA5]+$");
+            //if (reg.IsMatch(example))
+            //{
+            //    return ConstantString.WORD_ONLY;
+            //}//用户“不再梦想”建议删除该功能，因为加加词库也可能是纯汉字，会形成误判。
             reg = new Regex(@"^[a-z\u4E00-\u9FA5]+$");
             if (reg.IsMatch(example))
             {

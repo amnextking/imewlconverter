@@ -25,11 +25,11 @@ namespace Studyzy.IMEWLConverter
             get { return count; }
             set { count = value; }
         }
-        private List<string> pinYin;
+        private string[] pinYin;
         /// <summary>
         /// 词中每个字的拼音
         /// </summary>
-        public List<string> PinYin
+        public string[] PinYin
         {
             get { return pinYin; }
             set { pinYin = value; }
@@ -52,10 +52,10 @@ namespace Studyzy.IMEWLConverter
         public string GetPinYinString(string split,BuildType buildType)
         {
             StringBuilder sb=new StringBuilder();
-            pinYin.ForEach(delegate(string s)
+            foreach(string s in pinYin)           
             {
                 sb.Append(s + split);
-            });
+            }
             if (buildType == BuildType.RightContain)
             {
                 return sb.ToString();

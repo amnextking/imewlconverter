@@ -18,8 +18,10 @@ namespace Studyzy.IMEWLConverter
         {
             WordLibraryList wlList = new WordLibraryList();
             var lines = str.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            CountWord = lines.Length;
             for (int i = 0; i < lines.Length; i++)
             {
+                CurrentStatus = i;
                 string line = lines[i];
                 if (line.IndexOf("'") == 0)
                 {
@@ -28,7 +30,7 @@ namespace Studyzy.IMEWLConverter
                     WordLibrary wl = new WordLibrary();
                     wl.Word = word;
                     wl.Count = 1;
-                    wl.PinYin = new List<string>(py.Split(new char[] { '\'' }, StringSplitOptions.RemoveEmptyEntries));
+                    wl.PinYin = py.Split(new char[] { '\'' }, StringSplitOptions.RemoveEmptyEntries);
                     wlList.Add(wl);
                 }
             }
@@ -36,7 +38,8 @@ namespace Studyzy.IMEWLConverter
         }
 
         #endregion
-
+        public int CountWord { get; set; }
+        public int CurrentStatus { get; set; }
         public static string ReadScel(string path)
         {
             Dictionary<int, string> pyDic = new Dictionary<int, string>();

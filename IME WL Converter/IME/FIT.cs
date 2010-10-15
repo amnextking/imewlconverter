@@ -6,7 +6,8 @@ namespace Studyzy.IMEWLConverter
 {
     public class FIT : IWordLibraryExport, IWordLibraryImport
     {
-        //public bool OnlySinglePinyin { get; set; }
+        public int CountWord { get; set; }
+        public int CurrentStatus { get; set; }
         #region IWordLibraryExport 成员
 
         public string Export(WordLibraryList wlList)
@@ -43,7 +44,7 @@ namespace Studyzy.IMEWLConverter
                 WordLibrary wl = new WordLibrary();
                 wl.Word = c[0];
                 wl.Count = Convert.ToInt32(c[1]);
-                wl.PinYin = new List<string>(c[2].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
+                wl.PinYin = c[2].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                 wlList.Add(wl);
             }
             return wlList;

@@ -27,7 +27,7 @@ namespace Studyzy.IMEWLConverter
                 WordLibrary wl = new WordLibrary();
                 wl.Word = word;
                 wl.Count = 1;
-                wl.PinYin = new List<string>(py.Split(new char[] { '\'' }, StringSplitOptions.RemoveEmptyEntries));
+                wl.PinYin = py.Split(new char[] { '\'' }, StringSplitOptions.RemoveEmptyEntries);
                 wlList.Add(wl);
 
             }
@@ -35,7 +35,8 @@ namespace Studyzy.IMEWLConverter
         }
 
         #endregion
-
+        public int CountWord { get; set; }
+        public int CurrentStatus { get; set; }
         #region IWordLibraryExport 成员
 
         public string Export(WordLibraryList wlList)

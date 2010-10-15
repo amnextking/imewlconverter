@@ -1,6 +1,6 @@
 ﻿namespace Studyzy.IMEWLConverter
 {
-    partial class MainiForm
+    partial class MainForm
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainiForm));
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnConvert = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.txbWLPath = new System.Windows.Forms.TextBox();
@@ -53,7 +54,13 @@
             this.ToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemAccessWebSite = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExport = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnConvert
@@ -158,6 +165,7 @@
             this.toolStripMenuItemIgnoreSingleWord.Name = "toolStripMenuItemIgnoreSingleWord";
             this.toolStripMenuItemIgnoreSingleWord.Size = new System.Drawing.Size(190, 22);
             this.toolStripMenuItemIgnoreSingleWord.Text = "忽略一个字的词";
+            this.toolStripMenuItemIgnoreSingleWord.Click += new System.EventHandler(this.toolStripMenuItemIgnoreSingleWord_Click);
             // 
             // toolStripMenuItemFilterEnglish
             // 
@@ -167,6 +175,7 @@
             this.toolStripMenuItemFilterEnglish.Name = "toolStripMenuItemFilterEnglish";
             this.toolStripMenuItemFilterEnglish.Size = new System.Drawing.Size(190, 22);
             this.toolStripMenuItemFilterEnglish.Text = "忽略包含英文的词";
+            this.toolStripMenuItemFilterEnglish.Click += new System.EventHandler(this.toolStripMenuItemFilterEnglish_Click);
             // 
             // toolStripMenuItemEnableMutiConvert
             // 
@@ -187,6 +196,7 @@
             this.toolStripMenuItemIgnoreLongWord.Name = "toolStripMenuItemIgnoreLongWord";
             this.toolStripMenuItemIgnoreLongWord.Size = new System.Drawing.Size(190, 22);
             this.toolStripMenuItemIgnoreLongWord.Text = "忽略过长的词";
+            this.toolStripMenuItemIgnoreLongWord.Click += new System.EventHandler(this.toolStripMenuItemIgnoreLongWord_Click);
             // 
             // toolStripComboBoxIgnoreWordLength
             // 
@@ -228,21 +238,21 @@
             // ToolStripMenuItemHelp
             // 
             this.ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
-            this.ToolStripMenuItemHelp.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItemHelp.Size = new System.Drawing.Size(142, 22);
             this.ToolStripMenuItemHelp.Text = "帮助";
             this.ToolStripMenuItemHelp.Click += new System.EventHandler(this.ToolStripMenuItemHelp_Click);
             // 
             // ToolStripMenuItemAbout
             // 
             this.ToolStripMenuItemAbout.Name = "ToolStripMenuItemAbout";
-            this.ToolStripMenuItemAbout.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItemAbout.Size = new System.Drawing.Size(142, 22);
             this.ToolStripMenuItemAbout.Text = "关于";
             this.ToolStripMenuItemAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
             // ToolStripMenuItemAccessWebSite
             // 
             this.ToolStripMenuItemAccessWebSite.Name = "ToolStripMenuItemAccessWebSite";
-            this.ToolStripMenuItemAccessWebSite.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItemAccessWebSite.Size = new System.Drawing.Size(142, 22);
             this.ToolStripMenuItemAccessWebSite.Text = "查看最新版本";
             this.ToolStripMenuItemAccessWebSite.Click += new System.EventHandler(this.ToolStripMenuItemAccessWebSite_Click);
             // 
@@ -257,11 +267,44 @@
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripProgressBar1,
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 400);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(549, 22);
+            this.statusStrip1.TabIndex = 9;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(149, 17);
+            this.toolStripStatusLabel1.Text = "欢迎使用深蓝词库转换工具";
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
             // MainiForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(549, 408);
+            this.ClientSize = new System.Drawing.Size(549, 422);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbxTo);
@@ -280,6 +323,8 @@
             this.Load += new System.EventHandler(this.MainiForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -311,6 +356,11 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemAccessWebSite;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemExportDirectly;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.Timer timer1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 

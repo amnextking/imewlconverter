@@ -22,7 +22,8 @@ namespace Studyzy.IMEWLConverter
             }
             return sb.ToString();
         }
-
+        public int CountWord { get; set; }
+        public int CurrentStatus { get; set; }
         public Encoding Encoding
         {
             get { return Encoding.Unicode; }
@@ -45,7 +46,7 @@ namespace Studyzy.IMEWLConverter
                     WordLibrary wl = new WordLibrary();
                     wl.Word = word;
                     wl.Count = 1;
-                    wl.PinYin = new List<string>(py.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries));
+                    wl.PinYin = py.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
                     wlList.Add(wl);
               
             }

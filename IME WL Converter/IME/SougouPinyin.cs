@@ -6,7 +6,8 @@ namespace Studyzy.IMEWLConverter
 {
    public class SougouPinyin:IWordLibraryExport,IWordLibraryImport
    {
-       //public bool OnlySinglePinyin { get; set; }
+       public int CountWord { get; set; }
+       public int CurrentStatus { get; set; }
         #region IWordLibraryExport 成员
 
         public string Export(WordLibraryList wlList)
@@ -14,11 +15,12 @@ namespace Studyzy.IMEWLConverter
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < wlList.Count; i++)
             {
-                sb.Append(wlList[i].GetPinYinString("'", BuildType.LeftContain));
-                sb.Append(" ");
-                sb.Append(wlList[i].Word);
+                string str = wlList[i].GetPinYinString("'", BuildType.LeftContain) + " " + wlList[i].Word + "\r\n";
+                sb.Append(str);
+                //sb.Append(" ");
+                //sb.Append(wlList[i].Word);
 
-                sb.Append("\r\n");
+                //sb.Append("\r\n");
             }
             return sb.ToString();
         }
@@ -46,7 +48,7 @@ namespace Studyzy.IMEWLConverter
                     WordLibrary wl = new WordLibrary();
                     wl.Word = word;
                     wl.Count = 1;
-                    wl.PinYin = new List<string>(py.Split(new char[] { '\'' }, StringSplitOptions.RemoveEmptyEntries));
+                    wl.PinYin = py.Split(new char[] { '\'' }, StringSplitOptions.RemoveEmptyEntries);
                     wlList.Add(wl);
                 }
             }

@@ -6,10 +6,8 @@ namespace Studyzy.IMEWLConverter
 {
     public class SougouPinyinWL : IWordLibraryImport,IWordLibraryExport
     {
-        ///// <summary>
-        ///// 有多音字的时候只使用一个拼音
-        ///// </summary>
-        //public bool OnlySinglePinyin { get; set; }
+        public int CountWord { get; set; }
+        public int CurrentStatus { get; set; }
         private PinYinFactory pinyinFactory;
         #region IWordLibraryImport 成员
         /// <summary>
@@ -38,7 +36,7 @@ namespace Studyzy.IMEWLConverter
                     {
                         WordLibrary wl = new WordLibrary();
                         wl.Word = words[i];
-                        wl.PinYin = list[j];
+                        wl.PinYin = list[j].ToArray();
                         wlList.Add(wl);
                     }
                 }
