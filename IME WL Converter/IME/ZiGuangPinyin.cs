@@ -66,8 +66,8 @@ namespace Studyzy.IMEWLConverter
 
         public WordLibrary ImportLine(string line)
         {
-            string py = line.Split('\t')[0];
-            string word = line.Split('\t')[1];
+            string py = line.Split('\t')[1];
+            string word = line.Split('\t')[0];
             WordLibrary wl = new WordLibrary();
             wl.Word = word;
             wl.Count = 1;

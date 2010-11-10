@@ -26,16 +26,17 @@ namespace Studyzy.IMEWLConverter
             //    pinyinFactory = new AllPinyin();
             //}
             WordLibraryList wlList = new WordLibraryList();
-            string[] words = str.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            string[] words = str.Split(new char[] { '\r','\n' }, StringSplitOptions.RemoveEmptyEntries);
             for (int i = 0; i < words.Length; i++)
             {
                 try
                 {
-                    var list = pinyinFactory.GetPinYinListOfString(words[i]);
+                    string word = words[i].Trim();
+                    var list = pinyinFactory.GetPinYinListOfString(word);
                     for (int j = 0; j < list.Count; j++)
                     {
                         WordLibrary wl = new WordLibrary();
-                        wl.Word = words[i];
+                        wl.Word = word;
                         wl.PinYin = list[j].ToArray();
                         wlList.Add(wl);
                     }
