@@ -60,6 +60,10 @@ namespace Studyzy.IMEWLConverter
             {
                 return sb.ToString();
             }
+            if (buildType == BuildType.FullContain)
+            {
+                return split + sb.ToString();
+            }
             string str = sb.ToString().Remove(sb.Length - 1);
             if (buildType == BuildType.None)
             {
@@ -69,6 +73,10 @@ namespace Studyzy.IMEWLConverter
             {
                 return split + str;
             }
+        }
+        public string ToDisplayString()
+        {
+            return "汉字：" + word + "；拼音：" + PinYinString + "；词频：" + count;
         }
        
     }
@@ -85,6 +93,10 @@ namespace Studyzy.IMEWLConverter
         /// <summary>
         /// 字符串两侧都不包含分隔符
         /// </summary>
-        None
+        None,
+        /// <summary>
+        /// 字符串两侧都有分隔符
+        /// </summary>
+        FullContain
     }
 }

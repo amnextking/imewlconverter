@@ -30,6 +30,7 @@ namespace Studyzy.IMEWLConverter
             this.cbxFrom.Items.Add(ConstantString.PINYIN_JIAJIA);
             this.cbxFrom.Items.Add(ConstantString.WORD_ONLY);
             this.cbxFrom.Items.Add(ConstantString.SOUGOU_XIBAO_SCEL);
+            this.cbxFrom.Items.Add(ConstantString.SELF_DEFINING);
 
             this.cbxTo.Items.Add(ConstantString.BAIDU_SHOUJI);
             this.cbxTo.Items.Add(ConstantString.QQ_SHOUJI);
@@ -226,6 +227,18 @@ namespace Studyzy.IMEWLConverter
 
         private void cbxFrom_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (this.cbxFrom.Text == ConstantString.SELF_DEFINING)//弹出自定义窗口
+            {
+                SelfDefiningConverterForm selfDefining = new SelfDefiningConverterForm();
+                var show=selfDefining.ShowDialog();
+                if (show != System.Windows.Forms.DialogResult.OK)
+                {
+                    cbxFrom.SelectedText = "";
+                    return;
+                }
+
+            }
+
             if (this.cbxFrom.Text == ConstantString.SOUGOU_XIBAO_SCEL)
             {
                 this.openFileDialog1.Filter = "细胞词库|*.scel|文本文件|*.txt|所有文件|*.*";
