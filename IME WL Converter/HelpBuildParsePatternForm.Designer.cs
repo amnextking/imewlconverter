@@ -260,6 +260,7 @@
             // 
             // HelpBuildParsePatternForm
             // 
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Dialog;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 273);
@@ -279,8 +280,10 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "HelpBuildParsePatternForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HelpBuildParsePatternForm";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.HelpBuildParsePatternForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numOrderPinyin)).EndInit();
             this.groupBox1.ResumeLayout(false);

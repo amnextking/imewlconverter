@@ -16,7 +16,7 @@ namespace Studyzy.IMEWLConverter
             {
                 string line = lines[i];
 
-                wlList.Add(ImportLine(line));
+                wlList.AddWordLibraryList(ImportLine(line));
 
             }
             return wlList;
@@ -64,7 +64,7 @@ namespace Studyzy.IMEWLConverter
         }
 
 
-        public WordLibrary ImportLine(string line)
+        public WordLibraryList ImportLine(string line)
         {
             string py = line.Split('\t')[1];
             string word = line.Split('\t')[0];
@@ -72,7 +72,9 @@ namespace Studyzy.IMEWLConverter
             wl.Word = word;
             wl.Count = 1;
             wl.PinYin = py.Split(new char[] { '\'' }, StringSplitOptions.RemoveEmptyEntries);
-            return wl;
+            WordLibraryList wll = new WordLibraryList();
+            wll.Add(wl);
+            return wll;
 
         }
     }

@@ -38,7 +38,7 @@ namespace Studyzy.IMEWLConverter
             {
                 string line = lines[i];
 
-                wlList.Add(ImportLine(line));
+                wlList.AddWordLibraryList(ImportLine(line));
             }
             return wlList;
         }
@@ -61,14 +61,16 @@ namespace Studyzy.IMEWLConverter
         }
 
 
-       public WordLibrary ImportLine(string line)
+       public WordLibraryList ImportLine(string line)
         {
             var c = line.Split('\t');
             WordLibrary wl = new WordLibrary();
             wl.Word = c[0];
             wl.Count = Convert.ToInt32(c[1]);
             wl.PinYin = c[2].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            return wl;
+            WordLibraryList wll = new WordLibraryList();
+            wll.Add(wl);
+            return wll;
         }
    }
 }

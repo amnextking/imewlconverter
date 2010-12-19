@@ -92,7 +92,7 @@
             this.groupBox1.Size = new System.Drawing.Size(259, 376);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "粘贴源词库内容";
+            this.groupBox1.Text = "粘贴一段源词库内容";
             // 
             // groupBox2
             // 

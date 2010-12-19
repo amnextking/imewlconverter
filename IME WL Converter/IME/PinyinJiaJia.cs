@@ -49,7 +49,7 @@ namespace Studyzy.IMEWLConverter
                 CurrentStatus = i;
                 try
                 {
-                   wlList.Add(ImportLine(words[i]));
+                   wlList.AddWordLibraryList(ImportLine(words[i]));
                 }
                 catch
                 {
@@ -73,7 +73,7 @@ namespace Studyzy.IMEWLConverter
         }
 
 
-        public WordLibrary ImportLine(string word)
+        public WordLibraryList ImportLine(string word)
         {
             string hz = "";
             List<string> py = new List<string>();
@@ -107,7 +107,9 @@ namespace Studyzy.IMEWLConverter
             WordLibrary wl = new WordLibrary();
             wl.PinYin = py.ToArray();
             wl.Word = hz;
-            return wl;
+            WordLibraryList wll = new WordLibraryList();
+            wll.Add(wl);
+            return wll;
 
         }
     }

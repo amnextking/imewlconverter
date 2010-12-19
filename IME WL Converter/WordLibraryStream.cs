@@ -33,14 +33,17 @@ namespace Studyzy.IMEWLConverter
                try
                {
                    string line = lines[i];
-                   WordLibrary wl = import.ImportLine(line);
+                   var wll = import.ImportLine(line);
                    import.CurrentStatus = i;
-                   if (wl != null && match(wl))
+                   foreach (WordLibrary wl in wll)
                    {
-                       sw.WriteLine(export.ExportLine(wl));
+                       if (wl != null && match(wl))
+                       {
+                           sw.WriteLine(export.ExportLine(wl));
+                       }
                    }
                }
-               catch(Exception ex)
+               catch (Exception ex)
                {
 #if DEBUG
                    throw ex;

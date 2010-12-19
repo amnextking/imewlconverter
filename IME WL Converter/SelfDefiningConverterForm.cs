@@ -50,6 +50,9 @@ namespace Studyzy.IMEWLConverter
             }
            
         }
+        /// <summary>
+        /// 用户自定义的匹配模式
+        /// </summary>
         public ParsePattern SelectedParsePattern { get; set; }
         private void btnHelpBuild_Click(object sender, EventArgs e)
         {
@@ -63,7 +66,10 @@ namespace Studyzy.IMEWLConverter
 
         private void SelfDefiningConverterForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            if (DialogResult != System.Windows.Forms.DialogResult.OK)
+            {
+                this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            }
         }
     }
 }

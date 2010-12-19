@@ -49,6 +49,7 @@
             this.toolStripComboBoxIgnoreWordLength = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemExportDirectly = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemStreamExport = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,7 +60,6 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.toolStripMenuItemStreamExport = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -228,6 +228,14 @@
             this.toolStripMenuItemExportDirectly.Text = "不显示结果，直接导出";
             this.toolStripMenuItemExportDirectly.Click += new System.EventHandler(this.toolStripMenuItemExportDirectly_Click);
             // 
+            // toolStripMenuItemStreamExport
+            // 
+            this.toolStripMenuItemStreamExport.CheckOnClick = true;
+            this.toolStripMenuItemStreamExport.Name = "toolStripMenuItemStreamExport";
+            this.toolStripMenuItemStreamExport.Size = new System.Drawing.Size(190, 22);
+            this.toolStripMenuItemStreamExport.Text = "一边读取，一边导出";
+            this.toolStripMenuItemStreamExport.Click += new System.EventHandler(this.toolStripMenuItemStreamExport_Click);
+            // 
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -302,14 +310,6 @@
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
-            // toolStripMenuItemStreamExport
-            // 
-            this.toolStripMenuItemStreamExport.CheckOnClick = true;
-            this.toolStripMenuItemStreamExport.Name = "toolStripMenuItemStreamExport";
-            this.toolStripMenuItemStreamExport.Size = new System.Drawing.Size(190, 22);
-            this.toolStripMenuItemStreamExport.Text = "一边读取，一边导出";
-            this.toolStripMenuItemStreamExport.Click += new System.EventHandler(this.toolStripMenuItemStreamExport_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -330,7 +330,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "深蓝词库转换1.3";
+            this.Text = "深蓝词库转换1.4";
             this.Load += new System.EventHandler(this.MainiForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

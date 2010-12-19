@@ -79,14 +79,15 @@ namespace Studyzy.IMEWLConverter
         /// </summary>
         /// <param name="line"></param>
         /// <returns></returns>
-        public WordLibrary ImportLine(string line)
+        public WordLibraryList ImportLine(string line)
         {
             var list = pinyinFactory.GetPinYinListOfString(line);
             WordLibrary wl = new WordLibrary();
             wl.Word = line;
             wl.PinYin = list[0].ToArray();
-            return wl;
-
+            WordLibraryList wll = new WordLibraryList();
+            wll.Add(wl);
+            return wll;
         }
     }
 }

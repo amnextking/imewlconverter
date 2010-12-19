@@ -48,7 +48,14 @@ namespace Studyzy.IMEWLConverter
             {
                 if (string.IsNullOrEmpty(pys[i]))
                 {
-                    pys[i]=dic[str[i]];
+                    try
+                    {
+                        pys[i] = dic[str[i]];
+                    }
+                    catch//给定的字没有对应的拼音
+                    {
+                        pys[i] = "";
+                    }
                 }
             }
             pyList.Add(pys);

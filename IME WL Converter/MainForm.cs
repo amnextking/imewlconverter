@@ -31,6 +31,7 @@ namespace Studyzy.IMEWLConverter
             this.cbxFrom.Items.Add(ConstantString.WORD_ONLY);
             this.cbxFrom.Items.Add(ConstantString.SOUGOU_XIBAO_SCEL);
             this.cbxFrom.Items.Add(ConstantString.SELF_DEFINING);
+            this.cbxFrom.Items.Add(ConstantString.ZHENGMA);
 
             this.cbxTo.Items.Add(ConstantString.BAIDU_SHOUJI);
             this.cbxTo.Items.Add(ConstantString.QQ_SHOUJI);
@@ -65,7 +66,7 @@ namespace Studyzy.IMEWLConverter
         {
             switch (str)
             {
-                case ConstantString.BAIDU_SHOUJI: return new BaiduShouji();
+                case ConstantString.BAIDU_SHOUJI: return new BaiduShouji(); 
                 case ConstantString.QQ_SHOUJI: return new QQShouji();
                 case ConstantString.SOUGOU_PINYIN: return new SougouPinyin();
                 case ConstantString.SOUGOU_WUBI: return new SougouWubi();
@@ -75,7 +76,9 @@ namespace Studyzy.IMEWLConverter
                 case ConstantString.PINYIN_JIAJIA: return new PinyinJiaJia();
                 case ConstantString.WORD_ONLY: return new SougouPinyinWL();
                 case ConstantString.SINA_PINYIN: return new SinaPinyin();
-                case ConstantString.SOUGOU_XIBAO_SCEL: return new SougouPinyinScel();
+                case ConstantString.SOUGOU_XIBAO_SCEL: return new SougouPinyinScel(); 
+                case ConstantString.ZHENGMA: return new Zhengma();
+                case ConstantString.SELF_DEFINING: return new SelfDefining();
                 default: throw new ArgumentException("导入词库的输入法错误");
             }
         }
@@ -89,8 +92,9 @@ namespace Studyzy.IMEWLConverter
         private bool streamExport = false;
         private string exportPath = "";
         private string fileContent;
+        private ParsePattern userSetPattern;
         private void btnOpenFileDialog_Click(object sender, EventArgs e)
-        {            
+        {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 //this.txbWLPath.Text = openFileDialog1.FileName;
@@ -100,8 +104,10 @@ namespace Studyzy.IMEWLConverter
                     files += file + " | ";
                 }
                 this.txbWLPath.Text = files.Remove(files.Length - 3);
-
-                cbxFrom.Text =FileOperationHelper.AutoMatchSourceWLType(openFileDialog1.FileName);
+                if (cbxFrom.Text != ConstantString.SELF_DEFINING)
+                {
+                    cbxFrom.Text = FileOperationHelper.AutoMatchSourceWLType(openFileDialog1.FileName);
+                }
             }
 
         }
@@ -128,7 +134,10 @@ namespace Studyzy.IMEWLConverter
 #endif
             import = GetImportInterface(cbxFrom.Text);
             export = GetExportInterface(cbxTo.Text);
-
+            if (import is SelfDefining)
+            {
+                ((SelfDefining)import).UserDefiningPattern = userSetPattern;
+            }
             if (streamExport)
             {
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -162,24 +171,6 @@ namespace Studyzy.IMEWLConverter
         /// <returns></returns>
         private WordLibraryList Filter(WordLibraryList wlList)
         {
-            //List<WordLibrary> temp =  wlList;
-
-
-
-            //if (minLength != 1 || maxLength != 9999)//设置了长度过滤
-            //{
-            //    temp= temp.FindAll(delegate(WordLibrary wl)
-            //    {
-            //        return wl.Word.Length >= minLength && wl.Word.Length <= maxLength;
-            //    });
-            //}
-            //if (filterEnglish)//过滤英文单词
-            //{
-            //    Regex r = new Regex("[a-z]", RegexOptions.IgnoreCase);
-            //    temp.RemoveAll(delegate(WordLibrary wl) {
-            //        return r.IsMatch(wl.Word);
-            //    });
-            //}
 
             WordLibraryList newList = new WordLibraryList();
             newList.AddRange(wlList.FindAll(delegate(WordLibrary wl) { return WordFilterRetain(wl); }));
@@ -187,6 +178,11 @@ namespace Studyzy.IMEWLConverter
 
         }
         Regex englishRegex = new Regex("[a-z]", RegexOptions.IgnoreCase);
+        /// <summary>
+        /// 判断经过过滤规则后是否保留
+        /// </summary>
+        /// <param name="wl"></param>
+        /// <returns></returns>
         private bool WordFilterRetain(WordLibrary wl)
         {
             if (minLength != 1 || maxLength != 9999)//设置了长度过滤
@@ -235,6 +231,10 @@ namespace Studyzy.IMEWLConverter
                 {
                     cbxFrom.SelectedText = "";
                     return;
+                }
+                else//选了自定义
+                {
+                    userSetPattern = selfDefining.SelectedParsePattern;
                 }
 
             }
