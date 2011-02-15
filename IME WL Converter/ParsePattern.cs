@@ -112,6 +112,7 @@ namespace Studyzy.IMEWLConverter
                 }
             }
 
+            wl.PinYin = wl.PinYinString.Split(new string[] { PinyinSplitString }, StringSplitOptions.RemoveEmptyEntries);
             return wl;
         }
     }
