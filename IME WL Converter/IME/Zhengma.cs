@@ -4,15 +4,16 @@ using System.Text;
 
 namespace Studyzy.IMEWLConverter
 {
-   public class Zhengma:IWordLibraryImport
-   {
-
+    public class Zhengma : IWordLibraryImport
+    {
         #region IWordLibraryImport 成员
+
+        private readonly PinYinFactory pinyinFactory = new SinglePinyin();
 
         public WordLibraryList Import(string str)
         {
-            WordLibraryList wlList = new WordLibraryList();
-            var lines = str.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            var wlList = new WordLibraryList();
+            string[] lines = str.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
             CountWord = lines.Length;
             for (int i = 0; i < lines.Length; i++)
             {
@@ -23,20 +24,17 @@ namespace Studyzy.IMEWLConverter
             return wlList;
         }
 
-
-        private PinYinFactory pinyinFactory = new SinglePinyin();
-
         public WordLibraryList ImportLine(string line)
         {
-            WordLibraryList wlList = new WordLibraryList();
-            string[] strs=line.Split(' ');
-            for (var i = 1; i < strs.Length; i++)
+            var wlList = new WordLibraryList();
+            string[] strs = line.Split(' ');
+            for (int i = 1; i < strs.Length; i++)
             {
-                string word = strs[i].Replace("，","");//把汉字中带有逗号的都去掉逗号
-                var list = pinyinFactory.GetPinYinListOfString(word);
+                string word = strs[i].Replace("，", ""); //把汉字中带有逗号的都去掉逗号
+                List<List<string>> list = pinyinFactory.GetPinYinListOfString(word);
                 for (int j = 0; j < list.Count; j++)
                 {
-                    WordLibrary wl = new WordLibrary();
+                    var wl = new WordLibrary();
                     wl.Word = word;
                     wl.PinYin = list[j].ToArray();
                     wlList.Add(wl);
@@ -49,5 +47,10 @@ namespace Studyzy.IMEWLConverter
         public int CurrentStatus { get; set; }
 
         #endregion
-   }
+
+        public Encoding Encoding
+        {
+            get { return Encoding.Default; }
+        }
+    }
 }

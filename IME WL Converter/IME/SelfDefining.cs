@@ -1,18 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace Studyzy.IMEWLConverter
 {
     public class SelfDefining : IWordLibraryImport
-   {
+    {
         public ParsePattern UserDefiningPattern { get; set; }
+
         #region IWordLibraryImport 成员
+
+        private PinYinFactory pinyinFactory = new SinglePinyin();
+
+        public Encoding Encoding
+        {
+            get { return Encoding.Default; }
+        }
 
         public WordLibraryList Import(string str)
         {
-            WordLibraryList wlList = new WordLibraryList();
-            var lines = str.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            var wlList = new WordLibraryList();
+            string[] lines = str.Split(new[] {"\r", "\n"}, StringSplitOptions.RemoveEmptyEntries);
             CountWord = lines.Length;
             for (int i = 0; i < lines.Length; i++)
             {
@@ -23,13 +30,10 @@ namespace Studyzy.IMEWLConverter
             return wlList;
         }
 
-
-        private PinYinFactory pinyinFactory = new SinglePinyin();
-
         public WordLibraryList ImportLine(string line)
         {
-            WordLibraryList wlList = new WordLibraryList();
-            var wl= UserDefiningPattern.BuildWordLibrary(line);
+            var wlList = new WordLibraryList();
+            WordLibrary wl = UserDefiningPattern.BuildWordLibrary(line);
             wlList.Add(wl);
             return wlList;
         }
@@ -38,5 +42,5 @@ namespace Studyzy.IMEWLConverter
         public int CurrentStatus { get; set; }
 
         #endregion
-   }
+    }
 }

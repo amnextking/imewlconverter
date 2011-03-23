@@ -1,36 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Studyzy.IMEWLConverter
 {
     public partial class SelfDefiningConverterForm : Form
     {
+        private readonly List<string> fromWords = new List<string>();
+
         public SelfDefiningConverterForm()
         {
             InitializeComponent();
         }
 
+        public List<string> FromWords
+        {
+            get { return fromWords; }
+        }
+
+        /// <summary>
+        /// 用户自定义的匹配模式
+        /// </summary>
+        public ParsePattern SelectedParsePattern { get; set; }
+
         private void btnOK_Click(object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            DialogResult = DialogResult.OK;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-        }
-        private List<string> fromWords = new List<string>();
-        public List<string> FromWords
-        {
-            get
-            {
-                return fromWords;
-            }
+            DialogResult = DialogResult.Cancel;
         }
 
         private void btnParse_Click(object sender, EventArgs e)
@@ -41,34 +41,30 @@ namespace Studyzy.IMEWLConverter
                 return;
             }
             rtbTo.Clear();
-            string[] fromList = rtbFrom.Text.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] fromList = rtbFrom.Text.Split(new[] {'\r', '\n'}, StringSplitOptions.RemoveEmptyEntries);
             foreach (string str in fromList)
             {
-                var s = str.Trim();
-                var wl= SelectedParsePattern.BuildWordLibrary(s);
+                string s = str.Trim();
+                WordLibrary wl = SelectedParsePattern.BuildWordLibrary(s);
                 rtbTo.AppendText(wl.ToDisplayString() + "\r\n");
             }
-           
         }
-        /// <summary>
-        /// 用户自定义的匹配模式
-        /// </summary>
-        public ParsePattern SelectedParsePattern { get; set; }
+
         private void btnHelpBuild_Click(object sender, EventArgs e)
         {
-            HelpBuildParsePatternForm builder = new HelpBuildParsePatternForm();
-            if (builder.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            var builder = new HelpBuildParsePatternForm();
+            if (builder.ShowDialog() == DialogResult.OK)
             {
                 SelectedParsePattern = builder.SelectedParsePattern;
-                this.txbParsePattern.Text = SelectedParsePattern.BuildWLStringSample();
+                txbParsePattern.Text = SelectedParsePattern.BuildWLStringSample();
             }
         }
 
         private void SelfDefiningConverterForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (DialogResult != System.Windows.Forms.DialogResult.OK)
+            if (DialogResult != DialogResult.OK)
             {
-                this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+                DialogResult = DialogResult.Cancel;
             }
         }
     }

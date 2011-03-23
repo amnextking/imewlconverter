@@ -1,31 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 
 namespace Studyzy.IMEWLConverter
 {
+    /// <summary>
+    /// 词条类
+    /// </summary>
     public class WordLibrary
     {
+        private int count = 1;
+        private string[] pinYin;
+        private string pinYinString = "";
         private string word;
 
         /// <summary>
-        /// 汉字
+        /// 词语
         /// </summary>
         public string Word
         {
             get { return word; }
             set { word = value; }
         }
-        private int count=1;
+
         /// <summary>
-        /// 权值，打字出现次数
+        /// 词频，打字出现次数
         /// </summary>
         public int Count
         {
             get { return count; }
             set { count = value; }
         }
-        private string[] pinYin;
+
         /// <summary>
         /// 词中每个字的拼音
         /// </summary>
@@ -34,13 +38,21 @@ namespace Studyzy.IMEWLConverter
             get { return pinYin; }
             set { pinYin = value; }
         }
+
         /// <summary>
-        /// 词的拼音字符串，单独的一个属性，与PinYin属性无关联
+        /// 词的拼音字符串，可以单独设置的一个属性，如果没有设置该属性，而获取该属性，则返回PinYin属性和“'”组合的字符串
         /// </summary>
         public string PinYinString
         {
-            get;
-            set;
+            get
+            {
+                if (pinYinString == "")
+                {
+                    pinYinString = string.Join("'", pinYin);
+                }
+                return pinYinString;
+            }
+            set { pinYinString = value; }
         }
 
         /// <summary>
@@ -49,10 +61,10 @@ namespace Studyzy.IMEWLConverter
         /// <param name="split">每个拼音之间的分隔符</param>
         /// <param name="buildType">组装拼音字符串的方式</param>
         /// <returns></returns>
-        public string GetPinYinString(string split,BuildType buildType)
+        public string GetPinYinString(string split, BuildType buildType)
         {
-            StringBuilder sb=new StringBuilder();
-            foreach(string s in pinYin)           
+            var sb = new StringBuilder();
+            foreach (string s in pinYin)
             {
                 sb.Append(s + split);
             }
@@ -62,7 +74,7 @@ namespace Studyzy.IMEWLConverter
             }
             if (buildType == BuildType.FullContain)
             {
-                return split + sb.ToString();
+                return split + sb;
             }
             string str = sb.ToString().Remove(sb.Length - 1);
             if (buildType == BuildType.None)
@@ -74,12 +86,13 @@ namespace Studyzy.IMEWLConverter
                 return split + str;
             }
         }
+
         public string ToDisplayString()
         {
             return "汉字：" + word + "；拼音：" + PinYinString + "；词频：" + count;
         }
-       
     }
+
     public enum BuildType
     {
         /// <summary>

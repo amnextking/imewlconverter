@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Windows.Forms;
 
 namespace Studyzy.IMEWLConverter
 {
+    /// <summary>
+    /// 常量字符串
+    /// </summary>
     public static class ConstantString
     {
         public const string BAIDU_SHOUJI = "百度手机";
@@ -19,5 +20,10 @@ namespace Studyzy.IMEWLConverter
         public const string SINA_PINYIN = "新浪拼音";
         public const string SELF_DEFINING = "自定义";
         public const string ZHENGMA = "郑码";
+
+        /// <summary>
+        /// 注音文件的完整路径
+        /// </summary>
+        public static readonly string PinyinLibPath = Application.StartupPath + "\\注音.txt";
     }
 }

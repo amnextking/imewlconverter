@@ -1,26 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Studyzy.IMEWLConverter
 {
     public partial class HelpBuildParsePatternForm : Form
     {
-       
         public HelpBuildParsePatternForm()
         {
             InitializeComponent();
             InitParsePattern();
         }
-        public ParsePattern SelectedParsePattern
-        {
-            get;
-            set;
-        }
+
+        public ParsePattern SelectedParsePattern { get; set; }
+
         private void InitParsePattern()
         {
             SelectedParsePattern = new ParsePattern();
@@ -28,17 +21,15 @@ namespace Studyzy.IMEWLConverter
             SelectedParsePattern.ContainPinyin = true;
             SelectedParsePattern.PinyinSplitString = ",";
             SelectedParsePattern.PinyinSplitType = BuildType.None;
-            SelectedParsePattern.Sort = new List<int>() { 1, 2, 3 };
+            SelectedParsePattern.Sort = new List<int> {1, 2, 3};
             SelectedParsePattern.SplitString = " ";
-            
 
-         
+
             ShowSample();
         }
 
         private void HelpBuildParsePatternForm_Load(object sender, EventArgs e)
         {
-
         }
 
         private void cbxIncludePinyin_CheckedChanged(object sender, EventArgs e)
@@ -54,19 +45,20 @@ namespace Studyzy.IMEWLConverter
             numOrderCipin.Visible = cbxIncludeCipin.Checked;
             ShowSample();
         }
+
         private void ShowSample()
         {
-            this.txbSample.Text = SelectedParsePattern.BuildWLStringSample();
+            txbSample.Text = SelectedParsePattern.BuildWLStringSample();
         }
 
         private void cbbxPinyinSplitString_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string str="";
+            string str = "";
             if (cbbxPinyinSplitString.Text == "空格")
             {
                 str = " ";
             }
-            if (cbbxPinyinSplitString.Text == "Tab")
+            else if (cbbxPinyinSplitString.Text.ToLower() == "tab")
             {
                 str = "\t";
             }
@@ -85,7 +77,7 @@ namespace Studyzy.IMEWLConverter
             {
                 str = " ";
             }
-            if (cbbxSplitString.Text == "Tab")
+            else if (cbbxSplitString.Text.ToLower() == "tab")
             {
                 str = "\t";
             }
@@ -120,37 +112,26 @@ namespace Studyzy.IMEWLConverter
 
         private void numOrderPinyin_ValueChanged(object sender, EventArgs e)
         {
-            int number = (int)(sender as NumericUpDown).Value;
-            List<int> sort = new List<int>();
-            sort.Add((int)numOrderPinyin.Value);
-            sort.Add((int)numOrderHanzi.Value);
-            sort.Add((int)numOrderCipin.Value);
-            //待完善重复键值问题
-            //if (sort.FindAll(i => i == number).Count > 1)//重复的排序值
-            //{
-            //    foreach (NumericUpDown n in groupBox1.Controls)
-            //    {
-            //        if (n.Value >= number && n != sender)
-            //        {
-            //            n.Value = n.Value + 1;
-            //        }
-            //    }
-            //    numOrderPinyin_ValueChanged(sender, e);
-            //    return;
-            //}
+            var sort = new List<int>();
+            int a = (int) numOrderPinyin.Value*10;
+            int b = (int) numOrderHanzi.Value*10 + 1; //善重复键值问题
+            int c = (int) numOrderCipin.Value*10 + 2; //善重复键值问题
+            sort.Add(a);
+            sort.Add(b);
+            sort.Add(c);
+
             SelectedParsePattern.Sort = sort;
             ShowSample();
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            DialogResult = DialogResult.OK;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            DialogResult = DialogResult.Cancel;
         }
-
     }
 }

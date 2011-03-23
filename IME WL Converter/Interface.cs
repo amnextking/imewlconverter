@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 
 namespace Studyzy.IMEWLConverter
 {
@@ -11,11 +9,16 @@ namespace Studyzy.IMEWLConverter
         WordLibraryList Import(string str);
         WordLibraryList ImportLine(string str);
     }
+
+    public interface IWordLibraryTextImport : IWordLibraryImport
+    {
+        Encoding Encoding { get; }
+    }
+
     public interface IWordLibraryExport
     {
+        Encoding Encoding { get; }
         string Export(WordLibraryList wlList);
         string ExportLine(WordLibrary wl);
-        Encoding Encoding { get; }
-       
     }
 }

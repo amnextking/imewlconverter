@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Studyzy.IMEWLConverter
 {
+    /// <summary>
+    /// 词库类，含有多个词条
+    /// </summary>
     public class WordLibraryList : List<WordLibrary>
     {
         /// <summary>
@@ -11,7 +12,7 @@ namespace Studyzy.IMEWLConverter
         /// </summary>
         public void MergeSameWord()
         {
-            Dictionary<string, WordLibrary> dic = new Dictionary<string, WordLibrary>();
+            var dic = new Dictionary<string, WordLibrary>();
             foreach (WordLibrary wl in this)
             {
                 if (!dic.ContainsKey(wl.Word))
@@ -19,15 +20,16 @@ namespace Studyzy.IMEWLConverter
                     dic.Add(wl.Word, wl);
                 }
             }
-            this.Clear();
+            Clear();
             foreach (WordLibrary wl in dic.Values)
             {
-                this.Add(wl);
+                Add(wl);
             }
         }
+
         public void AddWordLibraryList(WordLibraryList wll)
         {
-            this.AddRange(wll);
+            AddRange(wll);
         }
     }
 }

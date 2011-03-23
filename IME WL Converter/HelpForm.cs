@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Studyzy.IMEWLConverter
@@ -17,7 +12,7 @@ namespace Studyzy.IMEWLConverter
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void HelpForm_Load(object sender, EventArgs e)
@@ -27,7 +22,7 @@ namespace Studyzy.IMEWLConverter
             helpString += "1.3版改进汉字自动注音功能，可以对纯汉字的词库进行注音和转换；并可设置不显示转换结果而直接导出结果以提高超大词库的转换效率\r\n";
             helpString += "有任何问题和建议请联系我：studyzy@163.com\r\n";
             helpString += "\r\nPS:QQ分类词库（QPYD格式）的词库我不知道怎么解析，谁有办法还请帮帮忙，指点一下！";
-            this.richTextBox1.Text = helpString;
+            richTextBox1.Text = helpString;
         }
     }
 }

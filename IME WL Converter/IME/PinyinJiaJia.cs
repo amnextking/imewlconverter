@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Studyzy.IMEWLConverter
 {
-   public class PinyinJiaJia:IWordLibraryExport,IWordLibraryImport
+    public class PinyinJiaJia : IWordLibraryExport, IWordLibraryImport
     {
         #region IWordLibraryExport 成员
 
         public string Export(WordLibraryList wlList)
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             for (int i = 0; i < wlList.Count; i++)
             {
                 sb.Append(ExportLine(wlList[i]));
-                sb.Append( "\r\n");
+                sb.Append("\r\n");
             }
             return sb.ToString();
         }
@@ -29,27 +28,27 @@ namespace Studyzy.IMEWLConverter
 
         #region IWordLibraryImport 成员
 
-        public int CountWord        {            get;            set;        }
+        private readonly SinglePinyin single = new SinglePinyin();
+        public int CountWord { get; set; }
         public int CurrentStatus { get; set; }
-        SinglePinyin single = new SinglePinyin();
-       /// <summary>
+
+        /// <summary>
         /// 形如：冷血xue动物
         /// 只有多音字才注音，一般的字不注音，就使用默认读音即可
-       /// </summary>
-       /// <param name="str"></param>
-       /// <returns></returns>
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public WordLibraryList Import(string str)
         {
-            
-            WordLibraryList wlList = new WordLibraryList();
-            string[] words = str.Split(new char[] { '\r','\n' }, StringSplitOptions.RemoveEmptyEntries);
+            var wlList = new WordLibraryList();
+            string[] words = str.Split(new[] {'\r', '\n'}, StringSplitOptions.RemoveEmptyEntries);
             CountWord = words.Length;
             for (int i = 0; i < words.Length; i++)
             {
                 CurrentStatus = i;
                 try
                 {
-                   wlList.AddWordLibraryList(ImportLine(words[i]));
+                    wlList.AddWordLibraryList(ImportLine(words[i]));
                 }
                 catch
                 {
@@ -59,9 +58,12 @@ namespace Studyzy.IMEWLConverter
         }
 
         #endregion
+
+        #region IWordLibraryExport Members
+
         public string ExportLine(WordLibrary wl)
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             string str = wl.Word;
             for (int j = 0; j < str.Length; j++)
@@ -72,20 +74,23 @@ namespace Studyzy.IMEWLConverter
             return sb.ToString();
         }
 
+        #endregion
+
+        #region IWordLibraryImport Members
 
         public WordLibraryList ImportLine(string word)
         {
             string hz = "";
-            List<string> py = new List<string>();
+            var py = new List<string>();
             int j;
             for (j = 0; j < word.Length - 1; j++)
             {
                 hz += word[j];
-                if (word[j + 1] > 'z')//而且后面跟的不是拼音
+                if (word[j + 1] > 'z') //而且后面跟的不是拼音
                 {
                     py.Add(single.GetPinYinOfChar(word[j])[0]);
                 }
-                else//后面跟拼音
+                else //后面跟拼音
                 {
                     int k = 1;
                     string py1 = "";
@@ -95,22 +100,22 @@ namespace Studyzy.IMEWLConverter
                         k++;
                     }
                     py.Add(py1);
-                    j += k - 1;//减1是因为接下来会运行j++
+                    j += k - 1; //减1是因为接下来会运行j++
                 }
-
             }
-            if (j == word.Length - 1)//最后一个字是汉字
+            if (j == word.Length - 1) //最后一个字是汉字
             {
                 hz += word[j];
                 py.Add(single.GetPinYinOfChar(word[j])[0]);
             }
-            WordLibrary wl = new WordLibrary();
+            var wl = new WordLibrary();
             wl.PinYin = py.ToArray();
             wl.Word = hz;
-            WordLibraryList wll = new WordLibraryList();
+            var wll = new WordLibraryList();
             wll.Add(wl);
             return wll;
-
         }
+
+        #endregion
     }
 }
