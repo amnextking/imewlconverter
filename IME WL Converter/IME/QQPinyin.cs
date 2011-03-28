@@ -21,26 +21,7 @@ namespace Studyzy.IMEWLConverter
 
         #endregion
 
-        #region IWordLibraryImport Members
-
-        public int CountWord { get; set; }
-        public int CurrentStatus { get; set; }
-
-
-        public WordLibraryList ImportLine(string line)
-        {
-            string py = line.Split(' ')[0];
-            string word = line.Split(' ')[1];
-            var wl = new WordLibrary();
-            wl.Word = word;
-            wl.Count = 1;
-            wl.PinYin = py.Split(new[] {'\''}, StringSplitOptions.RemoveEmptyEntries);
-            var wll = new WordLibraryList();
-            wll.Add(wl);
-            return wll;
-        }
-
-        #endregion
+       
 
         #region IWordLibraryExport 成员
 
@@ -68,8 +49,27 @@ namespace Studyzy.IMEWLConverter
         }
 
         #endregion
+        #region IWordLibraryImport Members
 
-        #region IWordLibraryImport 成员
+        public int CountWord { get; set; }
+        public int CurrentStatus { get; set; }
+
+
+        public WordLibraryList ImportLine(string line)
+        {
+            line = line.Split(',')[0];//如果有逗号，就只取第一个
+            string[] sp = line.Split(' ');
+            string py = sp[0];
+            string word = sp[1];
+            int count = Convert.ToInt32(sp[2]);
+            var wl = new WordLibrary();
+            wl.Word = word;
+            wl.Count = count;
+            wl.PinYin = py.Split(new[] { '\'' }, StringSplitOptions.RemoveEmptyEntries);
+            var wll = new WordLibraryList();
+            wll.Add(wl);
+            return wll;
+        }
 
         public WordLibraryList Import(string str)
         {

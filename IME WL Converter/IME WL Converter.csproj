@@ -108,7 +108,11 @@
       <DependentUpon>HelpForm.cs</DependentUpon>
     </Compile>
     <Compile Include="IME\BaiduShouji.cs" />
+    <Compile Include="IME\TouchPal\GlobalCache.cs" />
     <Compile Include="IME\SelfDefining.cs" />
+    <Compile Include="IME\TouchPal\TouchPal.cs" />
+    <Compile Include="IME\TouchPal\TouchPalChar.cs" />
+    <Compile Include="IME\TouchPal\TouchPalWord.cs" />
     <Compile Include="IME\Zhengma.cs" />
     <Compile Include="IME\SinaPinyin.cs" />
     <Compile Include="IME\GooglePinyin.cs" />
@@ -198,6 +202,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <None Include="Resources\TouchPalPinyinDic.txt" />
     <None Include="Resources\WordPinyin.txt" />
     <None Include="Resources\SinglePinYin.txt" />
   </ItemGroup>

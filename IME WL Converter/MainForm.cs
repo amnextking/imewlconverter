@@ -20,6 +20,7 @@ namespace Studyzy.IMEWLConverter
         {
             cbxFrom.Items.Add(ConstantString.BAIDU_SHOUJI);
             cbxFrom.Items.Add(ConstantString.QQ_SHOUJI);
+            cbxFrom.Items.Add(ConstantString.TOUCH_PAL);
             cbxFrom.Items.Add(ConstantString.SOUGOU_PINYIN);
             cbxFrom.Items.Add(ConstantString.SOUGOU_WUBI);
             cbxFrom.Items.Add(ConstantString.QQ_PINYIN);
@@ -34,6 +35,7 @@ namespace Studyzy.IMEWLConverter
 
             cbxTo.Items.Add(ConstantString.BAIDU_SHOUJI);
             cbxTo.Items.Add(ConstantString.QQ_SHOUJI);
+            cbxTo.Items.Add(ConstantString.TOUCH_PAL);
             cbxTo.Items.Add(ConstantString.SOUGOU_PINYIN);
             cbxTo.Items.Add(ConstantString.SOUGOU_WUBI);
             cbxTo.Items.Add(ConstantString.QQ_PINYIN);
@@ -69,6 +71,8 @@ namespace Studyzy.IMEWLConverter
                     return new PinyinJiaJia();
                 case ConstantString.SINA_PINYIN:
                     return new SinaPinyin();
+                case ConstantString.TOUCH_PAL:
+                    return new TouchPal();
                 default:
                     throw new ArgumentException("导出词库的输入法错误");
             }
@@ -104,6 +108,8 @@ namespace Studyzy.IMEWLConverter
                     return new Zhengma();
                 case ConstantString.SELF_DEFINING:
                     return new SelfDefining();
+                case ConstantString.TOUCH_PAL:
+                    return new TouchPal();
                 default:
                     throw new ArgumentException("导入词库的输入法错误");
             }
@@ -286,6 +292,16 @@ namespace Studyzy.IMEWLConverter
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
+            if (import is TouchPal)//触宝输入法是二进制，需要特殊处理
+            {
+                WordLibraryList wlList = import.Import(txbWLPath.Text);
+                wlList = Filter(wlList);
+                allWlList.AddRange(wlList);
+                allWlList.Sort((a, b) => a.Word.CompareTo(b.Word));
+                fileContent = export.Export(allWlList);
+                return;
+            }
+            
             string[] files = txbWLPath.Text.Split('|');
             foreach (string file in files)
             {
@@ -302,9 +318,10 @@ namespace Studyzy.IMEWLConverter
                     WordLibraryList wlList = import.Import(txt);
                     wlList = Filter(wlList);
                     allWlList.AddRange(wlList);
-                    fileContent = export.Export(allWlList);
+                  
                 }
             }
+            fileContent = export.Export(allWlList);
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -331,10 +348,23 @@ namespace Studyzy.IMEWLConverter
                 MessageBox.Show("是否将导入的" + allWlList.Count + "条词库保存到本地硬盘上？", "是否保存", MessageBoxButtons.YesNo,
                                 MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                saveFileDialog1.DefaultExt = ".txt";
+                if (export is TouchPal)
+                {
+                    saveFileDialog1.DefaultExt = ".bak";
+                    saveFileDialog1.Filter = "触宝备份文件|*.bak";
+                }
+                else
+                {
+                    saveFileDialog1.DefaultExt = ".txt";
+                    saveFileDialog1.Filter = "文本文件|*.txt";
+                }
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    if (FileOperationHelper.WriteFile(saveFileDialog1.FileName, export.Encoding, fileContent))
+                    if (export is TouchPal)
+                    {
+                        File.Move(fileContent, saveFileDialog1.FileName);
+                    }
+                    else if (FileOperationHelper.WriteFile(saveFileDialog1.FileName, export.Encoding, fileContent))
                     {
                         ShowStatusMessage("保存成功，词库路径：" + saveFileDialog1.FileName, true);
                     }

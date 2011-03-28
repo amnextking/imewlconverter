@@ -18,6 +18,10 @@ namespace Studyzy.IMEWLConverter
             {
                 return ConstantString.SOUGOU_XIBAO_SCEL;
             }
+            if (Path.GetExtension(filePath) == ".bak")
+            {
+                return ConstantString.TOUCH_PAL;
+            }
             string example = "";
             using (var sr = new StreamReader(filePath, Encoding.Default))
             {

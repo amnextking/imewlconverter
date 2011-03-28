@@ -120,6 +120,7 @@ namespace Studyzy.IMEWLConverter
                 }
             }
 
+
             //fs.Position = 0x2628;
             fs.Position = hzPosition;
             int i = 0, count = 0, samePYcount = 0;

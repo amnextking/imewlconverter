@@ -9,6 +9,7 @@ namespace Studyzy.IMEWLConverter
     {
         public const string BAIDU_SHOUJI = "百度手机";
         public const string QQ_SHOUJI = "QQ手机";
+        public const string TOUCH_PAL = "触宝手机";
         public const string SOUGOU_PINYIN = "搜狗拼音";
         public const string SOUGOU_WUBI = "搜狗五笔";
         public const string QQ_PINYIN = "QQ拼音";
@@ -20,6 +21,7 @@ namespace Studyzy.IMEWLConverter
         public const string SINA_PINYIN = "新浪拼音";
         public const string SELF_DEFINING = "自定义";
         public const string ZHENGMA = "郑码";
+        
 
         /// <summary>
         /// 注音文件的完整路径

@@ -125,6 +125,9 @@
     <value>Resources\SinglePinYin.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="TouchPalPinyinDic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\TouchPalPinyinDic.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="WordPinyin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\WordPinyin.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;gb2312</value>
   </data>
