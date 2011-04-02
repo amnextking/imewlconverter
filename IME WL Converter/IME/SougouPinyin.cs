@@ -5,8 +5,8 @@ namespace Studyzy.IMEWLConverter
 {
     public class SougouPinyin : IWordLibraryExport, IWordLibraryImport
     {
-        #region IWordLibraryExport Members
 
+        #region IWordLibraryExport 成员
         public string ExportLine(WordLibrary wl)
         {
             //StringBuilder sb = new StringBuilder();
@@ -15,36 +15,6 @@ namespace Studyzy.IMEWLConverter
 
             return str;
         }
-
-        #endregion
-
-        #region IWordLibraryImport Members
-
-        public int CountWord { get; set; }
-        public int CurrentStatus { get; set; }
-
-
-        public WordLibraryList ImportLine(string line)
-        {
-            if (line.IndexOf("'") == 0)
-            {
-                string py = line.Split(' ')[0];
-                string word = line.Split(' ')[1];
-                var wl = new WordLibrary();
-                wl.Word = word;
-                wl.Count = 1;
-                wl.PinYin = py.Split(new[] {'\''}, StringSplitOptions.RemoveEmptyEntries);
-                var wll = new WordLibraryList();
-                wll.Add(wl);
-                return wll;
-            }
-            return null;
-        }
-
-        #endregion
-
-        #region IWordLibraryExport 成员
-
         public string Export(WordLibraryList wlList)
         {
             var sb = new StringBuilder();
@@ -67,14 +37,35 @@ namespace Studyzy.IMEWLConverter
         #endregion
 
         #region IWordLibraryImport 成员
+        public int CountWord { get; set; }
+        public int CurrentStatus { get; set; }
 
+
+        public WordLibraryList ImportLine(string line)
+        {
+            if (line.IndexOf("'") == 0)
+            {
+                string py = line.Split(' ')[0];
+                string word = line.Split(' ')[1];
+                var wl = new WordLibrary();
+                wl.Word = word;
+                wl.Count = 1;
+                wl.PinYin = py.Split(new[] { '\'' }, StringSplitOptions.RemoveEmptyEntries);
+                var wll = new WordLibraryList();
+                wll.Add(wl);
+                return wll;
+            }
+            return null;
+        }
         public WordLibraryList Import(string str)
         {
             var wlList = new WordLibraryList();
             string[] lines = str.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
+            CountWord = lines.Length;
             for (int i = 0; i < lines.Length; i++)
             {
                 string line = lines[i];
+                CurrentStatus = i;
                 if (line.IndexOf("'") == 0)
                 {
                     wlList.AddWordLibraryList(ImportLine(line));

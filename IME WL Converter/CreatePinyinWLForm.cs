@@ -36,71 +36,72 @@ namespace Studyzy.IMEWLConverter
         {
             //try
             //{
-                string path = GetText();
-                if (path == "")
+            string path = GetText();
+            if (path == "")
+            {
+                MessageBox.Show("请选择一个搜狗词库的文件");
+                return;
+            }
+            string str = FileOperationHelper.ReadFile(path);
+            string[] lines = str.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
+            int count = lines.Length;
+            var wls = new Dictionary<string, string>();
+            for (int i = 0; i < count; i++)
+            {
+
+                string line = lines[i];
+                if (line[0] == ';') //说明
                 {
-                    MessageBox.Show("请选择一个搜狗词库的文件");
-                    return;
+                    continue;
                 }
-                string str = FileOperationHelper.ReadFile(path);
-                string[] lines = str.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
-                int count = lines.Length;
-                var wls = new Dictionary<string, string>();
-                for (int i = 0; i < count; i++)
+                string[] hzpy = line.Split(' ');
+                string py = hzpy[0];
+                string hz = hzpy[1];
+                if (NeedSave(hz, py))
                 {
-
-                    string line = lines[i];
-                    if (line[0] == ';')//说明
-                    {
-                        continue;
-                    }
-                    string[] hzpy = line.Split(' ');
-                    string py = hzpy[0];
-                    string hz = hzpy[1];
-                    if (NeedSave(hz, py))
-                    {
-                        //多音字做如下处理
-                        if (!wls.ContainsKey(hz))
-                        {
-                            wls.Add(hz, py);
-                        }
-                    }
-                    processString = i + "/" + count;
-                }
-                ShowTextMessage("开始载入现有的注音库");
-                string pylibString = FileOperationHelper.ReadFile(ConstantString.PinyinLibPath);
-
-                lines = pylibString.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
-                for (int i = 0; i < lines.Length; i++)
-                {
-                    string line = lines[i];
-                    string[] hzpy = line.Split(' ');
-                    string py = hzpy[0];
-                    string hz = hzpy[1];
-
+                    //多音字做如下处理
                     if (!wls.ContainsKey(hz))
                     {
                         wls.Add(hz, py);
                     }
-                    processString = i + "/" + count;
                 }
-           
+                processString = i + "/" + count;
+            }
+            ShowTextMessage("开始载入现有的注音库");
+            string pylibString = FileOperationHelper.ReadFile(ConstantString.PinyinLibPath);
 
-                ShowTextMessage("载入全部完成,开始去除重复");
-                Dictionary<string, string> rst = RemoveDuplicateWords(wls);
-                
+            lines = pylibString.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
+            for (int i = 0; i < lines.Length; i++)
+            {
+                string line = lines[i];
+                string[] hzpy = line.Split(' ');
+                string py = hzpy[0];
+                string hz = hzpy[1];
 
-                ShowTextMessage("去除重复完成，开始写入文件");
-                FileOperationHelper.WriteFile(ConstantString.PinyinLibPath, Encoding.Default, ""); //清空注音库文件
-                foreach (string key in rst.Keys)
+                if (!wls.ContainsKey(hz))
                 {
-                    string line = rst[key] + " " + key;
-                    FileOperationHelper.WriteFileLine(ConstantString.PinyinLibPath, line);
+                    wls.Add(hz, py);
                 }
-                toolStripStatusLabel1.Text = "完成!";
-                ShowTextMessage("完成!");
-                timer1.Stop();
-                MessageBox.Show("完成!");
+                processString = i + "/" + count;
+            }
+
+
+            ShowTextMessage("载入全部完成,开始去除重复");
+            Dictionary<string, string> rst = RemoveDuplicateWords(wls);
+
+
+            ShowTextMessage("去除重复完成，开始写入文件");
+            var sw = FileOperationHelper.WriteFile(ConstantString.PinyinLibPath, Encoding.Unicode); //清空注音库文件
+            foreach (string key in rst.Keys)
+            {
+                string line = rst[key] + " " + key;
+                FileOperationHelper.WriteFileLine(sw, line);
+            }
+            sw.Close();
+            toolStripStatusLabel1.Text = "完成!";
+            ShowTextMessage("完成!");
+            timer1.Stop();
+            MessageBox.Show("完成!");
             //}
             //catch (Exception ex)
             //{

@@ -21,9 +21,11 @@ namespace Studyzy.IMEWLConverter
             var wlList = new WordLibraryList();
             string[] lines = str.Split(new[] {"\r", "\n"}, StringSplitOptions.RemoveEmptyEntries);
             CountWord = lines.Length;
+            CountWord = lines.Length;
             for (int i = 0; i < lines.Length; i++)
             {
                 string line = lines[i];
+                CurrentStatus = i;
                 wlList.AddWordLibraryList(ImportLine(line));
                 CurrentStatus = i;
             }

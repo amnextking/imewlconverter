@@ -5,8 +5,8 @@ namespace Studyzy.IMEWLConverter
 {
     public class GooglePinyin : IWordLibraryExport, IWordLibraryImport
     {
-        #region IWordLibraryExport Members
 
+        #region IWordLibraryExport 成员
         public string ExportLine(WordLibrary wl)
         {
             var sb = new StringBuilder();
@@ -20,31 +20,6 @@ namespace Studyzy.IMEWLConverter
 
             return sb.ToString();
         }
-
-        #endregion
-
-        #region IWordLibraryImport Members
-
-        public int CountWord { get; set; }
-        public int CurrentStatus { get; set; }
-
-
-        public WordLibraryList ImportLine(string line)
-        {
-            string[] c = line.Split('\t');
-            var wl = new WordLibrary();
-            wl.Word = c[0];
-            wl.Count = Convert.ToInt32(c[1]);
-            wl.PinYin = c[2].Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
-            var wll = new WordLibraryList();
-            wll.Add(wl);
-            return wll;
-        }
-
-        #endregion
-
-        #region IWordLibraryExport 成员
-
         public string Export(WordLibraryList wlList)
         {
             var sb = new StringBuilder();
@@ -69,15 +44,30 @@ namespace Studyzy.IMEWLConverter
         {
             var wlList = new WordLibraryList();
             string[] lines = str.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
+            CountWord = lines.Length;
             for (int i = 0; i < lines.Length; i++)
             {
                 string line = lines[i];
-
+                CurrentStatus = i;
                 wlList.AddWordLibraryList(ImportLine(line));
             }
             return wlList;
         }
+        public int CountWord { get; set; }
+        public int CurrentStatus { get; set; }
 
+
+        public WordLibraryList ImportLine(string line)
+        {
+            string[] c = line.Split('\t');
+            var wl = new WordLibrary();
+            wl.Word = c[0];
+            wl.Count = Convert.ToInt32(c[1]);
+            wl.PinYin = c[2].Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var wll = new WordLibraryList();
+            wll.Add(wl);
+            return wll;
+        }
         #endregion
     }
 }

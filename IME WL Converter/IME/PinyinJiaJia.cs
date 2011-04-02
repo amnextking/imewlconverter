@@ -13,8 +13,12 @@ namespace Studyzy.IMEWLConverter
             var sb = new StringBuilder();
             for (int i = 0; i < wlList.Count; i++)
             {
-                sb.Append(ExportLine(wlList[i]));
-                sb.Append("\r\n");
+                var line = ExportLine(wlList[i]);
+                if (line != "")
+                {
+                    sb.Append(line);
+                    sb.Append("\r\n");
+                }
             }
             return sb.ToString();
         }
@@ -23,7 +27,25 @@ namespace Studyzy.IMEWLConverter
         {
             get { return Encoding.Unicode; }
         }
+        public string ExportLine(WordLibrary wl)
+        {
+            try
+            {
+                var sb = new StringBuilder();
 
+                string str = wl.Word;
+                for (int j = 0; j < str.Length; j++)
+                {
+                    sb.Append(str[j] + wl.PinYin[j]);
+                }
+
+                return sb.ToString();
+            }
+            catch
+            {
+                return "";
+            }
+        }
         #endregion
 
         #region IWordLibraryImport 成员
@@ -56,28 +78,6 @@ namespace Studyzy.IMEWLConverter
             }
             return wlList;
         }
-
-        #endregion
-
-        #region IWordLibraryExport Members
-
-        public string ExportLine(WordLibrary wl)
-        {
-            var sb = new StringBuilder();
-
-            string str = wl.Word;
-            for (int j = 0; j < str.Length; j++)
-            {
-                sb.Append(str[j] + wl.PinYin[j]);
-            }
-
-            return sb.ToString();
-        }
-
-        #endregion
-
-        #region IWordLibraryImport Members
-
         public WordLibraryList ImportLine(string word)
         {
             string hz = "";
@@ -115,7 +115,7 @@ namespace Studyzy.IMEWLConverter
             wll.Add(wl);
             return wll;
         }
-
         #endregion
+
     }
 }

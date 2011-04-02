@@ -35,7 +35,7 @@ namespace Studyzy.IMEWLConverter
 
             cbxTo.Items.Add(ConstantString.BAIDU_SHOUJI);
             cbxTo.Items.Add(ConstantString.QQ_SHOUJI);
-            cbxTo.Items.Add(ConstantString.TOUCH_PAL);
+            //cbxTo.Items.Add(ConstantString.TOUCH_PAL);
             cbxTo.Items.Add(ConstantString.SOUGOU_PINYIN);
             cbxTo.Items.Add(ConstantString.SOUGOU_WUBI);
             cbxTo.Items.Add(ConstantString.QQ_PINYIN);
@@ -165,10 +165,10 @@ namespace Studyzy.IMEWLConverter
             {
                 maxLength = ignoreWordLength;
             }
-#if !DEBUG
+
             try
             {
-#endif
+
             import = GetImportInterface(cbxFrom.Text);
             export = GetExportInterface(cbxTo.Text);
             if (import is SelfDefining)
@@ -189,13 +189,13 @@ namespace Studyzy.IMEWLConverter
             backgroundWorker1.RunWorkerAsync();
 
 
-#if !DEBUG
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-#endif
+
         }
 
         /// <summary>

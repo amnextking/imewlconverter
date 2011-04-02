@@ -5,7 +5,7 @@ namespace Studyzy.IMEWLConverter
 {
     public class SougouWubi : IWordLibraryImport, IWordLibraryExport
     {
-        #region IWordLibraryExport Members
+        #region IWordLibraryExport 成员
 
         public string ExportLine(WordLibrary wl)
         {
@@ -17,32 +17,6 @@ namespace Studyzy.IMEWLConverter
 
             return sb.ToString();
         }
-
-        #endregion
-
-        #region IWordLibraryImport Members
-
-        public int CountWord { get; set; }
-        public int CurrentStatus { get; set; }
-
-
-        public WordLibraryList ImportLine(string line)
-        {
-            string py = line.Split(' ')[0];
-            string word = line.Split(' ')[1];
-            var wl = new WordLibrary();
-            wl.Word = word;
-            wl.Count = 1;
-            wl.PinYin = py.Split(new[] {'\''}, StringSplitOptions.RemoveEmptyEntries);
-            var wll = new WordLibraryList();
-            wll.Add(wl);
-            return wll;
-        }
-
-        #endregion
-
-        #region IWordLibraryExport 成员
-
         public string Export(WordLibraryList wlList)
         {
             var sb = new StringBuilder();
@@ -62,15 +36,31 @@ namespace Studyzy.IMEWLConverter
         #endregion
 
         #region IWordLibraryImport 成员
+        public int CountWord { get; set; }
+        public int CurrentStatus { get; set; }
 
+
+        public WordLibraryList ImportLine(string line)
+        {
+            string py = line.Split(' ')[0];
+            string word = line.Split(' ')[1];
+            var wl = new WordLibrary();
+            wl.Word = word;
+            wl.Count = 1;
+            wl.PinYin = py.Split(new[] { '\'' }, StringSplitOptions.RemoveEmptyEntries);
+            var wll = new WordLibraryList();
+            wll.Add(wl);
+            return wll;
+        }
         public WordLibraryList Import(string str)
         {
             var wlList = new WordLibraryList();
             string[] lines = str.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
+            CountWord = lines.Length;
             for (int i = 0; i < lines.Length; i++)
             {
                 string line = lines[i];
-
+                CurrentStatus = i;
 
                 wlList.AddWordLibraryList(ImportLine(line));
             }

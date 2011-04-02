@@ -50,7 +50,7 @@ namespace Studyzy.IMEWLConverter
             //{
             //    return ConstantString.WORD_ONLY;
             //}//用户“不再梦想”建议删除该功能，因为加加词库也可能是纯汉字，会形成误判。
-            reg = new Regex(@"^[a-z\u4E00-\u9FA5]+$");
+            reg = new Regex(@"^([\u4E00-\u9FA5]+[a-z]+)+([\u4E00-\u9FA5]+[a-z]*)*$");
             if (reg.IsMatch(example))
             {
                 return ConstantString.PINYIN_JIAJIA;
@@ -129,6 +129,13 @@ namespace Studyzy.IMEWLConverter
                 return false;
             }
         }
+        public static StreamWriter WriteFile(string path, Encoding coding)
+        {
+
+            var sw = new StreamWriter(path, false, coding);
+
+            return sw;
+        }
 
         /// <summary>
         /// 写一行文本到文件，追加的方式
@@ -145,6 +152,19 @@ namespace Studyzy.IMEWLConverter
                     sw.WriteLine(line);
                     sw.Close();
                 }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public static bool WriteFileLine(StreamWriter sw, string line)
+        {
+            try
+            {
+                sw.WriteLine(line);
+
                 return true;
             }
             catch

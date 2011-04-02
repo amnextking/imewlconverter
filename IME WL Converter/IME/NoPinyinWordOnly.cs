@@ -9,7 +9,24 @@ namespace Studyzy.IMEWLConverter
         private PinYinFactory pinyinFactory;
 
         #region IWordLibraryImport 成员
+        public int CountWord { get; set; }
+        public int CurrentStatus { get; set; }
 
+        /// <summary>
+        /// 好像不对
+        /// </summary>
+        /// <param name="line"></param>
+        /// <returns></returns>
+        public WordLibraryList ImportLine(string line)
+        {
+            List<List<string>> list = pinyinFactory.GetPinYinListOfString(line);
+            var wl = new WordLibrary();
+            wl.Word = line;
+            wl.PinYin = list[0].ToArray();
+            var wll = new WordLibraryList();
+            wll.Add(wl);
+            return wll;
+        }
         /// <summary>
         /// 通过搜狗细胞词库txt内容构造词库对象
         /// </summary>
@@ -51,7 +68,10 @@ namespace Studyzy.IMEWLConverter
         #endregion
 
         #region IWordLibraryExport 成员
-
+        public string ExportLine(WordLibrary wl)
+        {
+            return wl.Word;
+        }
         public string Export(WordLibraryList wlList)
         {
             var sb = new StringBuilder();
@@ -72,33 +92,13 @@ namespace Studyzy.IMEWLConverter
 
         #region IWordLibraryExport Members
 
-        public string ExportLine(WordLibrary wl)
-        {
-            return wl.Word;
-        }
+
 
         #endregion
 
         #region IWordLibraryImport Members
 
-        public int CountWord { get; set; }
-        public int CurrentStatus { get; set; }
-
-        /// <summary>
-        /// 好像不对
-        /// </summary>
-        /// <param name="line"></param>
-        /// <returns></returns>
-        public WordLibraryList ImportLine(string line)
-        {
-            List<List<string>> list = pinyinFactory.GetPinYinListOfString(line);
-            var wl = new WordLibrary();
-            wl.Word = line;
-            wl.PinYin = list[0].ToArray();
-            var wll = new WordLibraryList();
-            wll.Add(wl);
-            return wll;
-        }
+     
 
         #endregion
     }

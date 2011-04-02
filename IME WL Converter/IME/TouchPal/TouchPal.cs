@@ -199,6 +199,14 @@ namespace Studyzy.IMEWLConverter
             return tempPath;
         }
 
+        public void Convert2TouchPalChar(WordLibrary wl,TouchPalChar tpc)
+        {
+            for (int i = 0; i < wl.Word.Length; i++)
+            {
+                
+            }
+        }
+
         public string ExportLine(WordLibrary wl)
         {
             throw new NotImplementedException();

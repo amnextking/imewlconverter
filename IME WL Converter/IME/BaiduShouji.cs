@@ -7,7 +7,17 @@ namespace Studyzy.IMEWLConverter
     {
         #region IWordLibraryExport 成员
 
-        #region IWordLibraryExport Members
+        public string ExportLine(WordLibrary wl)
+        {
+            var sb = new StringBuilder();
+
+            sb.Append(wl.Word);
+            sb.Append(" ");
+            sb.Append(wl.GetPinYinString("|", BuildType.None));
+            sb.Append(" 20000");
+
+            return sb.ToString();
+        }
 
         public string Export(WordLibraryList wlList)
         {
@@ -27,52 +37,26 @@ namespace Studyzy.IMEWLConverter
 
         #endregion
 
-        #region IWordLibraryImport Members
+        #region IWordLibraryImport 成员
 
         public int CountWord { get; set; }
         public int CurrentStatus { get; set; }
 
-        #endregion
 
-        #endregion
-
-        #region IWordLibraryImport 成员
-
-        WordLibraryList IWordLibraryImport.Import(string str)
+        public WordLibraryList Import(string str)
         {
             var wlList = new WordLibraryList();
             string[] lines = str.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
+            CountWord = lines.Length;
             for (int i = 0; i < lines.Length; i++)
             {
                 string line = lines[i];
-
+                CurrentStatus = i;
 
                 wlList.AddWordLibraryList(ImportLine(line));
             }
             return wlList;
         }
-
-        #endregion
-
-        //public bool OnlySinglePinyin { get; set; }
-
-        #region IWordLibraryExport Members
-
-        public string ExportLine(WordLibrary wl)
-        {
-            var sb = new StringBuilder();
-
-            sb.Append(wl.Word);
-            sb.Append(" ");
-            sb.Append(wl.GetPinYinString("|", BuildType.None));
-            sb.Append(" 20000");
-
-            return sb.ToString();
-        }
-
-        #endregion
-
-        #region IWordLibraryImport Members
 
         public WordLibraryList ImportLine(string line)
         {

@@ -5,8 +5,11 @@ namespace Studyzy.IMEWLConverter
 {
     public class QQPinyin : IWordLibraryImport, IWordLibraryExport
     {
-        #region IWordLibraryExport Members
 
+
+       
+
+        #region IWordLibraryExport 成员
         public string ExportLine(WordLibrary wl)
         {
             var sb = new StringBuilder();
@@ -18,13 +21,6 @@ namespace Studyzy.IMEWLConverter
             sb.Append(wl.Count);
             return sb.ToString();
         }
-
-        #endregion
-
-       
-
-        #region IWordLibraryExport 成员
-
         public string Export(WordLibraryList wlList)
         {
             var sb = new StringBuilder();
@@ -75,9 +71,11 @@ namespace Studyzy.IMEWLConverter
         {
             var wlList = new WordLibraryList();
             string[] lines = str.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
+            CountWord = lines.Length;
             for (int i = 0; i < lines.Length; i++)
             {
                 string line = lines[i];
+                CurrentStatus = i;
                 wlList.AddWordLibraryList(ImportLine(line));
             }
             return wlList;
