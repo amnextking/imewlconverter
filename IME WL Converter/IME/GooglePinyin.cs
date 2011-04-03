@@ -3,6 +3,9 @@ using System.Text;
 
 namespace Studyzy.IMEWLConverter
 {
+	/// <summary>
+	/// Google拼音输入法
+	/// </summary>
     public class GooglePinyin : IWordLibraryExport, IWordLibraryImport
     {
 
