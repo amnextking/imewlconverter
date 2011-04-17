@@ -105,10 +105,25 @@ namespace Studyzy.IMEWLConverter
             return countPosition > 0;
         }
 
+        /// <summary>
+        /// 下一个字
+        /// </summary>
         public TouchPalChar NextChar { get; set; }
+        /// <summary>
+        /// 跳转到的字
+        /// </summary>
         public TouchPalChar JumpToChar { get; set; }
+        /// <summary>
+        /// 直接上一个字
+        /// </summary>
         public TouchPalChar PrevChar { get; set; }
+        /// <summary>
+        /// 词语上的直接上一个字（忽略中间的跳转）
+        /// </summary>
         public TouchPalChar PrevValidChar { get; set; }
+        /// <summary>
+        /// 字关联的词，只有该字是最后一个字的时候才有这个属性
+        /// </summary>
         public TouchPalWord Word { get; set; }
         public int PinyinSortIndex
         {
@@ -128,5 +143,22 @@ namespace Studyzy.IMEWLConverter
         public char Char
         {
             get; set; }
+        /// <summary>
+        /// 这个词在内存中占用的字节数，如果是最后一个字，词频汉字也算这个字的占用。
+        /// </summary>
+        public int MemeryLength
+        {
+            get
+            {
+                if (Word == null)
+                {
+                    return 26;
+                }
+                else
+                {
+                    return 26+ 2*Word.ChineseWord.Length + 5;
+                }
+            }
+        }
     }
 }

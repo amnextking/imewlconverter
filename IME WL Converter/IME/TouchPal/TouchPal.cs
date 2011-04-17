@@ -23,20 +23,7 @@ namespace Studyzy.IMEWLConverter
             beginCharPosition = BitConverter.ToInt32(temp, 0);//值为1E 
             fs.Position = beginCharPosition;
         }
-        private void RewriteCharNextPosition(FileStream fs,int position,int next)
-        {
-            long p = fs.Position;
-            fs.Position = position+6;
-            fs.Write(BitConverter.GetBytes(next), 0, 4);
-            fs.Position = p;
-        }
-        private void RewriteCharJumpPosition(FileStream fs, int position, int jump)
-        {
-            long p = fs.Position;
-            fs.Position = position + 10;
-            fs.Write(BitConverter.GetBytes(jump), 0, 4);
-            fs.Position = p;
-        }
+
         private TouchPalChar FindBeginPosition(string word, out int charIndex)
         {
             var stack = new List<TouchPalChar>(GlobalCache.ExportStackes.ToArray());
@@ -161,7 +148,7 @@ namespace Studyzy.IMEWLConverter
             fs.Write(wordByte, 0, wordByte.Length);
             return beginPosition;
         }
-     
+
 
         #region IWordLibraryExport Members
 
@@ -176,36 +163,160 @@ namespace Studyzy.IMEWLConverter
         /// <returns></returns>
         public string Export(WordLibraryList wlList)
         {
+            TouchPalChar rootChar = BuildTree(wlList);
+            string s = rootChar.ToString();
+
+
             GlobalCache.ExportStackes.Clear();
+            //创建一个临时文件
             string tempPath = System.Windows.Forms.Application.StartupPath + "\\temp" +
                               DateTime.Now.ToString("yyyyMMddHHmmss") + ".bak";
             var fs = new FileStream(tempPath, FileMode.OpenOrCreate, FileAccess.Write);
-            int totalLength = 30;
-            foreach (WordLibrary wl in wlList)
-            {
-                totalLength += wl.Word.Length * 28 + 5;
-            }
-            fs.Write(BitConverter.GetBytes(totalLength), 0, 4);
-            byte[] head = new byte[] { 0, 0, 0, 0, 0, 0, 0x1E, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-            fs.Write(head, 0, 26);
-            int from = 4;
-            GlobalCache.JumpChar = new TouchPalChar() {BeginPosition = 4};
-            for (int i = 0; i < wlList.Count; i++)
-            {
-                WordLibrary wl = wlList[i];
-                from = WriteWord(fs, wl, i == wlList.Count - 1);
-            }
+            //int totalLength = 30;
+            //foreach (WordLibrary wl in wlList)
+            //{
+            //    totalLength += wl.Word.Length * 28 + 5;
+            //}
+            //fs.Write(BitConverter.GetBytes(totalLength), 0, 4);
+            //byte[] head = new byte[] { 0, 0, 0, 0, 0, 0, 0x1E, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            //fs.Write(head, 0, 26);
+            //int from = 4;
+            //GlobalCache.JumpChar = new TouchPalChar() {BeginPosition = 4};
+            //for (int i = 0; i < wlList.Count; i++)
+            //{
+            //    WordLibrary wl = wlList[i];
+            //    from = WriteWord(fs, wl, i == wlList.Count - 1);
+            //}
             fs.Close();
             return tempPath;
         }
 
-        public void Convert2TouchPalChar(WordLibrary wl,TouchPalChar tpc)
+        #region Build Word Lib Tree
+       
+        /// <summary>
+        /// 构造一棵词库的树
+        /// </summary>
+        /// <param name="wlList"></param>
+        /// <returns></returns>
+        private TouchPalChar BuildTree(WordLibraryList wlList)
         {
-            for (int i = 0; i < wl.Word.Length; i++)
+            //先对词库进行排序再生成词库树
+            wlList.Sort((a, b) => a.Word.CompareTo(b.Word));
+            WordLibrary rootWL = wlList[0];
+            TouchPalChar rootChar = new TouchPalChar();//这个只是一个根Char，没有实际的字
+            TouchPalChar lastChar = AddWordLink2Char(rootChar, rootWL, 0);
+
+
+            for (int i = 1; i < wlList.Count; i++)
             {
-                
+                WordLibrary wl = wlList[i];
+                string a = lastChar.Word.ChineseWord;
+                string b = wl.Word;
+                int len = FindSameWordLen(a, b);
+                if (len == 0)
+                {
+                    lastChar = AddWordLink2Char(rootChar, wl, 0);
+                }
+                else
+                {
+                    lastChar = AddWordLink2Char(lastChar, wl, len);
+                }
+            }
+            return rootChar;
+        }
+        
+
+        /// <summary>
+        /// 将一个词加入到最后一个节点
+        /// </summary>
+        /// <param name="rootChar"></param>
+        /// <param name="wl"></param>
+        /// <param name="begin"></param>
+        /// <returns></returns>
+        private TouchPalChar AddWordLink2Char(TouchPalChar rootChar, WordLibrary wl, int begin)
+        {
+            TouchPalWord rootWord = new TouchPalWord {ChineseWord = wl.Word, Count = wl.Count};
+            TouchPalChar lastChar = rootChar;
+            if (begin > 0)
+            {
+                lastChar = lastChar.Word.Chars[begin - 1];
+            }
+            TouchPalChar[] chars = new TouchPalChar[wl.Word.Length];
+            rootWord.Chars = chars;
+            for (int i = 0; i < begin; i++)
+            {
+                chars[i] = rootChar.Word.Chars[i];
+            }
+            for (int i = begin; i < wl.Word.Length; i++)
+            {
+                char c = wl.Word[i];
+                TouchPalChar tpc = new TouchPalChar();
+                tpc.Char = c;
+                AddChar2Next(lastChar, tpc);
+                lastChar = tpc;
+                chars[i] = lastChar;
+            }
+            lastChar.Word = rootWord;
+            return lastChar;
+        }
+
+        /// <summary>
+        /// 找到两个字符串中前面相同的字符的长度
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        private int FindSameWordLen(string a, string b)
+        {
+            int len = Math.Min(a.Length, b.Length);
+            for (int i = 0; i < len; i++)
+            {
+                if (a[i] != b[i])
+                {
+                    return i;
+                }
+            }
+            return len;
+        }
+        /// <summary>
+        /// 把字b加到字a的后面
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        private void AddChar2Next(TouchPalChar a, TouchPalChar b)
+        {
+            if (a.NextChar == null)
+            {
+                a.NextChar = b;
+                b.PrevChar = a;
+                b.PrevValidChar = a;
+            }
+            else
+            {
+                TouchPalChar p = GetTouchPalChar2Link(a.NextChar);
+                p.JumpToChar = b;
+                b.PrevChar = p;
+                b.PrevValidChar = a;
             }
         }
+
+        /// <summary>
+        /// 找到字p能够跳转的字并返回
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        private TouchPalChar GetTouchPalChar2Link(TouchPalChar p)
+        {
+            if (p.JumpToChar == null)
+            {
+                return p;
+            }
+            else
+            {
+                return GetTouchPalChar2Link(p.JumpToChar);
+            }
+        }
+        #endregion
 
         public string ExportLine(WordLibrary wl)
         {

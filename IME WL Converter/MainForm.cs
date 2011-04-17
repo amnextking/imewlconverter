@@ -14,8 +14,14 @@ namespace Studyzy.IMEWLConverter
         public MainForm()
         {
             InitializeComponent();
+            LoadTitle();
         }
 
+        private void LoadTitle()
+        {
+        	var v=System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+        	this.Text="深蓝词库转换"+ v.Major+"."+v.Minor; 
+        }
         private void MainiForm_Load(object sender, EventArgs e)
         {
             cbxFrom.Items.Add(ConstantString.BAIDU_SHOUJI);
@@ -35,7 +41,7 @@ namespace Studyzy.IMEWLConverter
 
             cbxTo.Items.Add(ConstantString.BAIDU_SHOUJI);
             cbxTo.Items.Add(ConstantString.QQ_SHOUJI);
-            //cbxTo.Items.Add(ConstantString.TOUCH_PAL);
+            cbxTo.Items.Add(ConstantString.TOUCH_PAL);
             cbxTo.Items.Add(ConstantString.SOUGOU_PINYIN);
             cbxTo.Items.Add(ConstantString.SOUGOU_WUBI);
             cbxTo.Items.Add(ConstantString.QQ_PINYIN);

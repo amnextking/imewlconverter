@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // 与程序集关联的信息。
 
 [assembly: AssemblyTitle("深蓝词库转换")]
-[assembly: AssemblyDescription("随手写的一个词库转换小工具，已支持搜狗细胞词库的导出，希望大家喜欢，有问题请联系我：\r\nstudyzy@163.com")]
+[assembly: AssemblyDescription("随手写的一个词库转换小工具，支持主流的电脑和手机输入法，希望大家喜欢，有问题请联系我：\r\nstudyzy@163.com")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("深蓝 http://studyzy.cnblogs.com")]
 [assembly: AssemblyProduct("深蓝词库转换")]
@@ -35,5 +35,5 @@ using System.Runtime.InteropServices;
 // 方法是按如下所示使用“*”:
 // [assembly: AssemblyVersion("1.0.*")]
 
-[assembly: AssemblyVersion("1.4.0.0")]
-[assembly: AssemblyFileVersion("1.4.0.0")]
+[assembly: AssemblyVersion("1.5.0.0")]
+[assembly: AssemblyFileVersion("1.5.0.0")]

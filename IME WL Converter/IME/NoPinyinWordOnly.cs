@@ -90,16 +90,5 @@ namespace Studyzy.IMEWLConverter
 
         #endregion
 
-        #region IWordLibraryExport Members
-
-
-
-        #endregion
-
-        #region IWordLibraryImport Members
-
-     
-
-        #endregion
     }
 }
