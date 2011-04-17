@@ -38,21 +38,25 @@ namespace Studyzy.IMEWLConverter
         public int PrevCharPosition
         {
             get { return prevCharPosition; }
+            set { prevCharPosition = value; }
         }
 
         public int JumpToPosition
         {
             get { return jumpToPosition; }
+            set { jumpToPosition = value; }
         }
 
         public int NextCharPosition
         {
             get { return nextCharPosition; }
+            set { nextCharPosition = value; }
         }
 
         public int CountPosition
         {
             get { return countPosition; }
+            set { countPosition = value; }
         }
 
         public short PinYinIndex
@@ -144,7 +148,7 @@ namespace Studyzy.IMEWLConverter
         {
             get; set; }
         /// <summary>
-        /// 这个词在内存中占用的字节数，如果是最后一个字，词频汉字也算这个字的占用。
+        /// 这个词在内存中占用的字节数，如果是最后一个字，词频汉字也算这个字的占用，在导出时使用
         /// </summary>
         public int MemeryLength
         {

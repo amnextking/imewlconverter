@@ -164,6 +164,7 @@ namespace Studyzy.IMEWLConverter
         public string Export(WordLibraryList wlList)
         {
             TouchPalChar rootChar = BuildTree(wlList);
+           int endPositon= InitTreeNodePosition(rootChar, 4);
             string s = rootChar.ToString();
 
 
@@ -316,6 +317,56 @@ namespace Studyzy.IMEWLConverter
                 return GetTouchPalChar2Link(p.JumpToChar);
             }
         }
+        #endregion
+
+        #region Calculate Position
+
+        /// <summary>
+        /// 初始化Tree上面每个字的Position
+        /// </summary>
+        /// <param name="root">传入的树的根节点</param>
+        /// <param name="offset">该根节点所在的Position</param>
+        /// <returns>末尾的位置</returns>
+        private int InitTreeNodePosition(TouchPalChar root, int offset)
+        {
+            root.BeginPosition = offset;
+            int nextCharPosition = 0;
+            if (root.NextChar != null)
+            {
+                root.NextChar.PrevCharPosition = offset;
+                root.NextChar.PrevValidCharPosition = offset;
+                nextCharPosition += InitTreeNodePosition(root.NextChar, offset + root.MemeryLength);
+                
+                root.NextCharPosition = nextCharPosition;
+              
+            }
+
+            if (root.JumpToChar != null)
+            {
+                root.JumpToChar.PrevCharPosition = offset;
+                root.JumpToChar.PrevValidCharPosition = root.PrevValidCharPosition;
+                nextCharPosition = InitTreeNodePosition(root.JumpToChar,
+                                                         nextCharPosition > 0
+                                                             ? nextCharPosition
+                                                             : offset + root.MemeryLength);
+                
+                root.JumpToPosition = nextCharPosition;
+              
+            }
+            if (root.NextChar == null && root.JumpToChar == null)
+            {
+                return offset + root.MemeryLength;
+            }
+            else
+            {
+                return nextCharPosition;
+            }
+        }
+        private void WriteBinaryTree(TouchPalChar root,FileStream fs)
+        {
+            //TODO
+        }
+
         #endregion
 
         public string ExportLine(WordLibrary wl)
