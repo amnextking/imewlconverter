@@ -5,12 +5,6 @@ using System.Collections.Generic;
 
 namespace Studyzy.IMEWLConverter
 {
-    struct ExportChar
-    {
-        public char TouchPalChar;
-        public int Positon;
-        public int RealPosition;
-    }
 
     class GlobalCache
     {

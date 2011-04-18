@@ -78,5 +78,13 @@ namespace Studyzy.IMEWLConverter
                 return py;
             }
         }
+        public byte[] ToBinary()
+        {
+            int len = ChineseWord.Length*2 + 5;
+            byte[] mem = new byte[len];
+            BitConverter.GetBytes(Count).CopyTo(mem, 0);
+            Encoding.Unicode.GetBytes(ChineseWord).CopyTo(mem,5);
+            return mem;
+        }
     }
 }

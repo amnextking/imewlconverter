@@ -11,18 +11,7 @@ namespace Studyzy.IMEWLConverter
     class TouchPal : IWordLibraryImport, IWordLibraryExport
     {
 
-        private int beginCharPosition;
-        private void ParseHeader(FileStream fs)
-        {
-            byte[] temp = new byte[4];
-            fs.Read(temp, 0, 4);
-            int totalLength = BitConverter.ToInt32(temp, 0);
-            byte[] unknown = new byte[6];
-            fs.Read(unknown, 0, 6);//这6个字节不知道什么用，好像都是0
-            fs.Read(temp, 0, 4);
-            beginCharPosition = BitConverter.ToInt32(temp, 0);//值为1E 
-            fs.Position = beginCharPosition;
-        }
+      
 
         private TouchPalChar FindBeginPosition(string word, out int charIndex)
         {
@@ -165,14 +154,14 @@ namespace Studyzy.IMEWLConverter
         {
             TouchPalChar rootChar = BuildTree(wlList);
            int endPositon= InitTreeNodePosition(rootChar, 4);
-            string s = rootChar.ToString();
 
-
-            GlobalCache.ExportStackes.Clear();
             //创建一个临时文件
             string tempPath = System.Windows.Forms.Application.StartupPath + "\\temp" +
                               DateTime.Now.ToString("yyyyMMddHHmmss") + ".bak";
             var fs = new FileStream(tempPath, FileMode.OpenOrCreate, FileAccess.Write);
+            fs.Write(BitConverter.GetBytes(endPositon), 0, 4);
+            WriteBinaryTree(rootChar, fs);
+            fs.Close();
             //int totalLength = 30;
             //foreach (WordLibrary wl in wlList)
             //{
@@ -211,6 +200,7 @@ namespace Studyzy.IMEWLConverter
             for (int i = 1; i < wlList.Count; i++)
             {
                 WordLibrary wl = wlList[i];
+                wl.Count = 96;//默认是96的词频
                 string a = lastChar.Word.ChineseWord;
                 string b = wl.Word;
                 int len = FindSameWordLen(a, b);
@@ -251,8 +241,12 @@ namespace Studyzy.IMEWLConverter
             for (int i = begin; i < wl.Word.Length; i++)
             {
                 char c = wl.Word[i];
+                string py = wl.PinYin[i];
                 TouchPalChar tpc = new TouchPalChar();
                 tpc.Char = c;
+                tpc.PinyinCode = GlobalCache.PinyinIndexMapping[py];
+                tpc.WordIndex = i+1;
+                var s = tpc.IndexAndPinYin;
                 AddChar2Next(lastChar, tpc);
                 lastChar = tpc;
                 chars[i] = lastChar;
@@ -330,28 +324,28 @@ namespace Studyzy.IMEWLConverter
         private int InitTreeNodePosition(TouchPalChar root, int offset)
         {
             root.BeginPosition = offset;
-            int nextCharPosition = 0;
+            if (root.Word != null)
+            {
+                root.CountPosition = offset + 26;
+            }
+            int nextCharPosition = offset + root.MemeryLength;
             if (root.NextChar != null)
             {
+                root.NextCharPosition = nextCharPosition;
                 root.NextChar.PrevCharPosition = offset;
                 root.NextChar.PrevValidCharPosition = offset;
-                nextCharPosition += InitTreeNodePosition(root.NextChar, offset + root.MemeryLength);
-                
-                root.NextCharPosition = nextCharPosition;
-              
+                nextCharPosition = InitTreeNodePosition(root.NextChar, nextCharPosition);
+
             }
 
             if (root.JumpToChar != null)
             {
+                root.JumpToPosition = nextCharPosition;
                 root.JumpToChar.PrevCharPosition = offset;
                 root.JumpToChar.PrevValidCharPosition = root.PrevValidCharPosition;
-                nextCharPosition = InitTreeNodePosition(root.JumpToChar,
-                                                         nextCharPosition > 0
-                                                             ? nextCharPosition
-                                                             : offset + root.MemeryLength);
+
+                nextCharPosition = InitTreeNodePosition(root.JumpToChar,nextCharPosition);
                 
-                root.JumpToPosition = nextCharPosition;
-              
             }
             if (root.NextChar == null && root.JumpToChar == null)
             {
@@ -362,13 +356,21 @@ namespace Studyzy.IMEWLConverter
                 return nextCharPosition;
             }
         }
-        private void WriteBinaryTree(TouchPalChar root,FileStream fs)
-        {
-            //TODO
-        }
+       
 
         #endregion
-
+        private void WriteBinaryTree(TouchPalChar root, FileStream fs)
+        {
+            fs.Write(root.ToBinary(), 0, root.MemeryLength);
+            if (root.NextChar != null)
+            {
+                WriteBinaryTree(root.NextChar, fs);
+            }
+            if (root.JumpToChar != null)
+            {
+                WriteBinaryTree(root.JumpToChar, fs);
+            }
+        }
         public string ExportLine(WordLibrary wl)
         {
             throw new NotImplementedException();
@@ -395,7 +397,18 @@ namespace Studyzy.IMEWLConverter
                 throw new NotImplementedException();
             }
         }
-
+        private int beginCharPosition;
+        private void ParseHeader(FileStream fs)
+        {
+            byte[] temp = new byte[4];
+            fs.Read(temp, 0, 4);
+            int totalLength = BitConverter.ToInt32(temp, 0);
+            byte[] unknown = new byte[6];
+            fs.Read(unknown, 0, 6);//这6个字节不知道什么用，好像都是0
+            fs.Read(temp, 0, 4);
+            beginCharPosition = BitConverter.ToInt32(temp, 0);//值为1E 
+            fs.Position = beginCharPosition;
+        }
         public WordLibraryList Import(string str)
         {
             GlobalCache.CharList.Clear();

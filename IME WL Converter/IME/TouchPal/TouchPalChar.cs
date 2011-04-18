@@ -10,12 +10,6 @@ namespace Studyzy.IMEWLConverter
     /// </summary>
     class TouchPalChar
     {
-        public TouchPalChar()
-        {
-            
-        }
-
-        private short pinYinIndex;
         private int countPosition;
         private int nextCharPosition;
         private int jumpToPosition;
@@ -58,10 +52,17 @@ namespace Studyzy.IMEWLConverter
             get { return countPosition; }
             set { countPosition = value; }
         }
-
-        public short PinYinIndex
+        /// <summary>
+        /// 前2个字节，表示字的顺序和字的拼音编码，前5位是字的顺序，后面11位是拼音编码
+        /// </summary>
+        public short IndexAndPinYin
         {
-            get { return pinYinIndex; }
+            get { return (short)((wordIndex << 11) + pinyinCode); }
+            set
+            {
+                wordIndex = value >> 11;
+                pinyinCode = value & 0x7FF;
+            }
         }
         public int BeginPosition
         {
@@ -83,7 +84,7 @@ namespace Studyzy.IMEWLConverter
             c.beginPosition = (int)fs.Position;
             byte[] temp=new byte[2];
             fs.Read(temp, 0, 2);
-            c.pinYinIndex = BitConverter.ToInt16(temp, 0);
+            c.IndexAndPinYin = BitConverter.ToInt16(temp, 0);
             temp = new byte[4];
             fs.Read(temp, 0, 4);
             c.countPosition = BitConverter.ToInt32(temp, 0);
@@ -129,13 +130,25 @@ namespace Studyzy.IMEWLConverter
         /// 字关联的词，只有该字是最后一个字的时候才有这个属性
         /// </summary>
         public TouchPalWord Word { get; set; }
-        public int PinyinSortIndex
+
+        private int wordIndex;
+        /// <summary>
+        /// 该字在词中的顺序，从1开始计数
+        /// </summary>
+        public int WordIndex
         {
-            get { return pinYinIndex >> 11; }
+            get { return wordIndex; }
+            set { wordIndex = value; }
         }
+
+        private int pinyinCode;
+        /// <summary>
+        /// 拼音的编码，通过GlobalCache.PinyinIndexMapping可查得
+        /// </summary>
         public int PinyinCode
         {
-            get { return pinYinIndex&2047 ; }
+            get { return pinyinCode; }
+            set { pinyinCode=value; }
         }
         public string PinyinString
         {
@@ -163,6 +176,22 @@ namespace Studyzy.IMEWLConverter
                     return 26+ 2*Word.ChineseWord.Length + 5;
                 }
             }
+        }
+        public byte[] ToBinary()
+        {
+            byte[] mem = new byte[MemeryLength];
+            BitConverter.GetBytes(IndexAndPinYin).CopyTo(mem, 0);
+            BitConverter.GetBytes(CountPosition).CopyTo(mem, 2);
+            BitConverter.GetBytes(NextCharPosition).CopyTo(mem, 6);
+            BitConverter.GetBytes(JumpToPosition).CopyTo(mem, 10);
+            BitConverter.GetBytes(PrevCharPosition).CopyTo(mem, 14);
+            BitConverter.GetBytes(PrevValidCharPosition).CopyTo(mem, 18);
+            BitConverter.GetBytes(Unknown).CopyTo(mem, 22);
+            if (Word != null)
+            {
+                Word.ToBinary().CopyTo(mem, 26);
+            }
+            return mem;
         }
     }
 }
