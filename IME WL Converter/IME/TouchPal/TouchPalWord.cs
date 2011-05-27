@@ -26,12 +26,14 @@ namespace Studyzy.IMEWLConverter
             if (position > 0)
             {
                 fs.Position = position;
+                
             }
             if (GlobalCache.WordList.ContainsKey(position))
             {
                 return GlobalCache.WordList[position];
             }
             TouchPalWord w = new TouchPalWord();
+            w.Position = position;
             byte[] temp = new byte[4];
             fs.Read(temp, 0, 4);
             w.Count = BitConverter.ToInt32(temp, 0);
@@ -85,6 +87,10 @@ namespace Studyzy.IMEWLConverter
             BitConverter.GetBytes(Count).CopyTo(mem, 0);
             Encoding.Unicode.GetBytes(ChineseWord).CopyTo(mem,5);
             return mem;
+        }
+        public override string ToString()
+        {
+            return "Position:" + Position + "\tCount:"+count+"\tWord:"+chineseWord;
         }
     }
 }

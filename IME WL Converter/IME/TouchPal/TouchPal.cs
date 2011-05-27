@@ -443,6 +443,9 @@ namespace Studyzy.IMEWLConverter
                 root.Word.Chars = GlobalCache.Stackes.ToArray();
                 GlobalCache.Stackes.Pop();
             }
+#if DEBUG
+            DebugPrintData(root);
+#endif
             if (root.NextCharPosition > 0)
             {
                 GlobalCache.Stackes.Push(root);
@@ -477,7 +480,18 @@ namespace Studyzy.IMEWLConverter
         {
             throw new NotImplementedException();
         }
-
+        private void DebugPrintData(TouchPalChar c)
+        {
+            using (StreamWriter sw = new StreamWriter("C:\\touchpal.txt",true, Encoding.Default))
+            {
+                sw.WriteLine(c.ToString());
+                if (c.Word != null)
+                {
+                    sw.WriteLine(c.Word.ToString());
+                }
+                sw.Close();
+            }
+        }
         #endregion
     }
 }

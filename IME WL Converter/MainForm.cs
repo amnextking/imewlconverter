@@ -453,6 +453,28 @@ namespace Studyzy.IMEWLConverter
 
         #endregion
 
+        private void MainForm_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Link;
+            else e.Effect = DragDropEffects.None; 
+
+        }
+
+        private void MainForm_DragDrop(object sender, DragEventArgs e)
+        {
+            var array = (System.Array) e.Data.GetData(DataFormats.FileDrop);
+            string files = "";
+
+          
+            foreach (var a in array)
+            {
+                string path = a.ToString();
+                files += path + " | ";
+            }
+            txbWLPath.Text = files.Remove(files.Length - 3);
+        }
+
       
     }
 }

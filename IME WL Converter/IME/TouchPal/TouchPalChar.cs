@@ -193,5 +193,19 @@ namespace Studyzy.IMEWLConverter
             }
             return mem;
         }
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendFormat("Position:{0}\t", beginPosition);
+            sb.AppendFormat("WordIndex:{0}\t" , wordIndex);
+            sb.AppendFormat("PinyinString:{0}\t", PinyinString);
+            sb.AppendFormat("CountPosition:{0}\t", CountPosition);
+            sb.AppendFormat("NextPosition:{0}\t", NextCharPosition);
+            sb.AppendFormat("JumpPosition:{0}\t", JumpToPosition);
+            sb.AppendFormat("PrePosition:{0}\t", PrevCharPosition);
+            sb.AppendFormat("PreVailidPosition:{0}\t", PrevValidCharPosition);
+            sb.AppendFormat("UnknowPosition:{0}", Unknown);
+            return sb.ToString();
+        }
     }
 }
