@@ -108,6 +108,7 @@
     <Compile Include="HelpForm.Designer.cs">
       <DependentUpon>HelpForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="IME\BaiduPinyinBdict.cs" />
     <Compile Include="IME\BaiduShouji.cs" />
     <Compile Include="IME\TouchPal\GlobalCache.cs" />
     <Compile Include="IME\SelfDefining.cs" />

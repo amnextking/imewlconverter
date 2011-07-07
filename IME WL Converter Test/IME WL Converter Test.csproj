@@ -37,6 +37,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaiduPinyinTest.cs" />
     <Compile Include="BaiduShoujiTest.cs" />
     <Compile Include="BaseTest.cs" />
     <Compile Include="GooglePinyinTest.cs" />
@@ -62,9 +63,15 @@
     <Content Include="Lib\nunit.framework.dll" />
     <Content Include="Lib\nunit.framework.xml" />
     <Content Include="Lib\nunit.util.dll" />
+    <None Include="movie.bdict">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\PinyinJiajia.txt" />
     <None Include="Resources\NoPinyinWordOnly.txt" />
     <None Include="Resources\GooglePinyin.txt" />
+    <None Include="travel.bdict">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resource4Test.resx">

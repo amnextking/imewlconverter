@@ -124,7 +124,6 @@
   <data name="NoPinyinWordOnly" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\NoPinyinWordOnly.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;gb2312</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="PinyinJiajia" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\PinyinJiajia.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
   </data>

@@ -25,6 +25,7 @@ namespace Studyzy.IMEWLConverter
         private void MainiForm_Load(object sender, EventArgs e)
         {
             cbxFrom.Items.Add(ConstantString.BAIDU_SHOUJI);
+            cbxFrom.Items.Add(ConstantString.BAIDU_BDICT);
             cbxFrom.Items.Add(ConstantString.QQ_SHOUJI);
             cbxFrom.Items.Add(ConstantString.TOUCH_PAL);
             cbxFrom.Items.Add(ConstantString.SOUGOU_PINYIN);
@@ -41,7 +42,7 @@ namespace Studyzy.IMEWLConverter
 
             cbxTo.Items.Add(ConstantString.BAIDU_SHOUJI);
             cbxTo.Items.Add(ConstantString.QQ_SHOUJI);
-            cbxTo.Items.Add(ConstantString.TOUCH_PAL);
+            //cbxTo.Items.Add(ConstantString.TOUCH_PAL);
             cbxTo.Items.Add(ConstantString.SOUGOU_PINYIN);
             cbxTo.Items.Add(ConstantString.SOUGOU_WUBI);
             cbxTo.Items.Add(ConstantString.QQ_PINYIN);
@@ -90,6 +91,8 @@ namespace Studyzy.IMEWLConverter
             {
                 case ConstantString.BAIDU_SHOUJI:
                     return new BaiduShouji();
+                case ConstantString.BAIDU_BDICT:
+                    return new BaiduPinyinBdict();
                 case ConstantString.QQ_SHOUJI:
                     return new QQShouji();
                 case ConstantString.SOUGOU_PINYIN:
@@ -298,7 +301,7 @@ namespace Studyzy.IMEWLConverter
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (import is TouchPal)//触宝输入法是二进制，需要特殊处理
+            if (import is TouchPal||import is BaiduPinyinBdict )//触宝输入法是二进制，需要特殊处理
             {
                 WordLibraryList wlList = import.Import(txbWLPath.Text);
                 wlList = Filter(wlList);

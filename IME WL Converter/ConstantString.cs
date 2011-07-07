@@ -8,6 +8,7 @@ namespace Studyzy.IMEWLConverter
     public static class ConstantString
     {
         public const string BAIDU_SHOUJI = "百度手机";
+        public const string BAIDU_BDICT = "百度分类词库bdict";
         public const string QQ_SHOUJI = "QQ手机";
         public const string TOUCH_PAL = "触宝手机";
         public const string SOUGOU_PINYIN = "搜狗拼音";

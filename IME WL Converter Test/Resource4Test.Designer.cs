@@ -101,13 +101,13 @@ namespace Studyzy.IMEWLConverter.Test {
         ///   Looks up a localized string similar to 人民很行xing
         ///人民银行hang
         ///栋力无wu限
+        ///深shen蓝lan居ju
+        ///爱存不存
         ///电子科技大da学
         ///控制台应用程序
-        ///深蓝居
         ///原封不动
         ///做做数shu据库
         ///做做词库
-        ///爱存不存
         ///.
         /// </summary>
         internal static string PinyinJiajia {
