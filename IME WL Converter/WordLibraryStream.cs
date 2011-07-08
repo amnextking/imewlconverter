@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
+using System.Text;
 
 namespace Studyzy.IMEWLConverter
 {
@@ -8,43 +10,49 @@ namespace Studyzy.IMEWLConverter
         private readonly IWordLibraryExport export;
         private readonly IWordLibraryImport import;
 
-        private readonly string[] lines;
+        private readonly string path;
         private readonly StreamWriter sw;
+        private Encoding encoding;
 
-
-        public WordLibraryStream(IWordLibraryImport import, IWordLibraryExport export, string txt, StreamWriter sw)
+        public WordLibraryStream(IWordLibraryImport import, IWordLibraryExport export, string path, Encoding encoding, StreamWriter sw)
         {
             this.import = import;
             this.export = export;
             this.sw = sw;
-            lines = txt.Split(new[] {'\r', '\n'}, StringSplitOptions.RemoveEmptyEntries);
-            import.CountWord = lines.Length;
+            this.path = path;
+            this.encoding = encoding;
         }
 
         public int Count
         {
-            get { return lines.Length; }
+            get { return 0; }
         }
 
         public void ConvertWordLibrary(Predicate<WordLibrary> match)
         {
-            for (int i = 0; i < lines.Length; i++)
+            int i = 0;
+            using (StreamReader sr = new StreamReader(path, encoding))
             {
+
                 try
                 {
-                    string line = lines[i];
-                    WordLibraryList wll = import.ImportLine(line);
-                    import.CurrentStatus = i;
-                    foreach (WordLibrary wl in wll)
+                    while (sr.Peek() != -1)
                     {
-                        if (wl != null && match(wl))
+                        string line = sr.ReadLine();
+                        WordLibraryList wll = import.ImportLine(line);
+                        import.CurrentStatus = i++;
+                        foreach (WordLibrary wl in wll)
                         {
-                            sw.WriteLine(export.ExportLine(wl));
+                            if (wl != null && match(wl))
+                            {
+                                sw.WriteLine(export.ExportLine(wl));
+                            }
                         }
                     }
                 }
                 catch (Exception ex)
                 {
+                    Debug.WriteLine(ex.Message);
 #if DEBUG
                     throw ex;
 #endif

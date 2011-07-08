@@ -14,8 +14,9 @@ namespace Studyzy.IMEWLConverter
 
         //public bool OnlySinglePinyin { get; set; }
 
-        public WordLibraryList Import(string str)
+        public WordLibraryList Import(string path)
         {
+            var str = ReadScel(path);
             var wlList = new WordLibraryList();
             string[] lines = str.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
             CountWord = lines.Length;
@@ -37,7 +38,10 @@ namespace Studyzy.IMEWLConverter
 
         public int CountWord { get; set; }
         public int CurrentStatus { get; set; }
-
+        public bool IsText
+        {
+            get { return false; }
+        }
 
         public WordLibraryList ImportLine(string line)
         {
@@ -58,7 +62,7 @@ namespace Studyzy.IMEWLConverter
 
         #endregion
 
-        public static string ReadScel(string path)
+        private string ReadScel(string path)
         {
             var pyDic = new Dictionary<int, string>();
             //Dictionary<string, string> pyAndWord = new Dictionary<string, string>();

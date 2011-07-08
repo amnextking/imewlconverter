@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Studyzy.IMEWLConverter
 {
-    public class BaiduShouji : IWordLibraryImport, IWordLibraryExport
+    public class BaiduShouji : IWordLibraryTextImport, IWordLibraryExport
     {
         #region IWordLibraryExport 成员
 
@@ -42,11 +42,20 @@ namespace Studyzy.IMEWLConverter
         public int CountWord { get; set; }
         public int CurrentStatus { get; set; }
 
-
-        public WordLibraryList Import(string str)
+        public bool IsText
         {
+            get { return true; }
+        }
+        public WordLibraryList Import(string path)
+        {
+            var str = FileOperationHelper.ReadFile(path, Encoding);
+            return ImportText(str);
+        }
+        public WordLibraryList ImportText(string str)
+        {
+
             var wlList = new WordLibraryList();
-            string[] lines = str.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
+            string[] lines = str.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
             CountWord = lines.Length;
             for (int i = 0; i < lines.Length; i++)
             {
@@ -65,7 +74,7 @@ namespace Studyzy.IMEWLConverter
             var wl = new WordLibrary();
             wl.Word = word;
             wl.Count = 1;
-            wl.PinYin = py.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries);
+            wl.PinYin = py.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
             var wll = new WordLibraryList();
             wll.Add(wl);
             return wll;

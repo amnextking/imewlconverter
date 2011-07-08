@@ -397,6 +397,10 @@ namespace Studyzy.IMEWLConverter
                 throw new NotImplementedException();
             }
         }
+        public bool IsText
+        {
+            get { return false; }
+        }
         private int beginCharPosition;
         private void ParseHeader(FileStream fs)
         {

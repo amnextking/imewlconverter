@@ -17,7 +17,7 @@ namespace Studyzy.IMEWLConverter.Test
         {
             importer = new BaiduPinyinBdict();
         }
-         [TestCase("travel.bdict")]
+         [TestCase("movie.bdict")]
          public void TestImport(string file)
          {
              var wlList = importer.Import(file);

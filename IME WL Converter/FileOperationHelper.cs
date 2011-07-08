@@ -22,6 +22,10 @@ namespace Studyzy.IMEWLConverter
             {
                 return ConstantString.TOUCH_PAL;
             }
+            if (Path.GetExtension(filePath) == ".bdict")
+            {
+                return ConstantString.BAIDU_BDICT;
+            }
             string example = "";
             using (var sr = new StreamReader(filePath, Encoding.Default))
             {
@@ -90,12 +94,12 @@ namespace Studyzy.IMEWLConverter
             {
                 return "";
             }
-            string ext = Path.GetExtension(path);
-            if (ext == ".scel") //搜狗细胞词库
-            {
-                return SougouPinyinScel.ReadScel(path);
-            }
-            else //文本
+            //string ext = Path.GetExtension(path);
+            //if (ext == ".scel") //搜狗细胞词库
+            //{
+            //    return SougouPinyinScel.ReadScel(path);
+            //}
+            //else //文本
             {
                 //using (var sr = new StreamReader(path, GetType(path),true))
                 //{
@@ -105,7 +109,19 @@ namespace Studyzy.IMEWLConverter
                 return ReadFileContent(path, ref c, Encoding.Default);
             }
         }
-
+        public static string ReadFile(string path,Encoding encoding)
+        {
+            if (!File.Exists(path))
+            {
+                return "";
+            }
+            using (StreamReader sr = new StreamReader(path, encoding))
+            {
+                var txt = sr.ReadToEnd();
+                sr.Close();
+                return txt;
+            }
+        }
         /// <summary>
         /// 将一个字符串写入文件，采用覆盖的方式
         /// </summary>

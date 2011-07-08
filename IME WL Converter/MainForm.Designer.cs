@@ -238,6 +238,7 @@
             this.toolStripMenuItemStreamExport.Name = "toolStripMenuItemStreamExport";
             this.toolStripMenuItemStreamExport.Size = new System.Drawing.Size(190, 22);
             this.toolStripMenuItemStreamExport.Text = "一边读取，一边导出";
+            this.toolStripMenuItemStreamExport.ToolTipText = "目前只有文本格式的词库才能支持该功能";
             this.toolStripMenuItemStreamExport.Click += new System.EventHandler(this.toolStripMenuItemStreamExport_Click);
             // 
             // 关于ToolStripMenuItem

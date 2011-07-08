@@ -28,5 +28,22 @@ namespace Studyzy.IMEWLConverter
         /// 注音文件的完整路径
         /// </summary>
         public static readonly string PinyinLibPath = Application.StartupPath + "\\注音.txt";
+
+        //简码，控制台用
+        public const string BAIDU_SHOUJI_C = "bdsj";
+        public const string BAIDU_BDICT_C = "bdict";
+        public const string QQ_SHOUJI_C = "qqsj";
+        public const string TOUCH_PAL_C = "cbsj";
+        public const string SOUGOU_PINYIN_C = "sgpy";
+        public const string SOUGOU_WUBI_C = "sgwb";
+        public const string QQ_PINYIN_C = "qqpy";
+        public const string GOOGLE_PINYIN_C = "ggpy";
+        public const string ZIGUANG_PINYIN_C = "zgpy";
+        public const string PINYIN_JIAJIA_C = "pyjj";
+        public const string WORD_ONLY_C = "word";
+        public const string SOUGOU_XIBAO_SCEL_C = "scel";
+        public const string SINA_PINYIN_C = "xlpy";
+        public const string SELF_DEFINING_C = "self";
+        public const string ZHENGMA_C = "zm";
     }
 }

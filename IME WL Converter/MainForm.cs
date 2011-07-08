@@ -295,36 +295,40 @@ namespace Studyzy.IMEWLConverter
             {
                 ShowStatusMessage("转换进度：" + import.CurrentStatus + "/" + import.CountWord, false);
                 toolStripProgressBar1.Maximum = import.CountWord;
-                toolStripProgressBar1.Value = import.CurrentStatus;
+                if (import.CountWord > 0)
+                {
+                    toolStripProgressBar1.Value = import.CurrentStatus;
+                }
             }
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (import is TouchPal||import is BaiduPinyinBdict )//触宝输入法是二进制，需要特殊处理
-            {
-                WordLibraryList wlList = import.Import(txbWLPath.Text);
-                wlList = Filter(wlList);
-                allWlList.AddRange(wlList);
-                allWlList.Sort((a, b) => a.Word.CompareTo(b.Word));
-                fileContent = export.Export(allWlList);
-                return;
-            }
+            //if (import is TouchPal||import is BaiduPinyinBdict )//触宝输入法是二进制，需要特殊处理
+            //{
+            //    WordLibraryList wlList = import.Import(txbWLPath.Text);
+            //    wlList = Filter(wlList);
+            //    allWlList.AddRange(wlList);
+            //    allWlList.Sort((a, b) => a.Word.CompareTo(b.Word));
+            //    fileContent = export.Export(allWlList);
+            //    return;
+            //}
             
             string[] files = txbWLPath.Text.Split('|');
             foreach (string file in files)
             {
-                string txt = FileOperationHelper.ReadFile(file.Trim());
-                if (streamExport) //流转换
+                string path =file.Trim();
+                if (streamExport&& import.IsText ) //流转换,只有文本类型的才支持。
                 {
+                    IWordLibraryTextImport textImport = (IWordLibraryTextImport) import;
                     StreamWriter stream = FileOperationHelper.GetWriteFileStream(exportPath, export.Encoding);
-                    var wlStream = new WordLibraryStream(import, export, txt, stream);
+                    var wlStream = new WordLibraryStream(import, export, path, textImport.Encoding, stream);
                     wlStream.ConvertWordLibrary(WordFilterRetain);
                     stream.Close();
                 }
                 else
                 {
-                    WordLibraryList wlList = import.Import(txt);
+                    WordLibraryList wlList = import.Import(path);
                     wlList = Filter(wlList);
                     allWlList.AddRange(wlList);
                   
@@ -338,7 +342,7 @@ namespace Studyzy.IMEWLConverter
             timer1.Enabled = false;
 
             ShowStatusMessage("转换完成", false);
-            if (streamExport)
+            if (streamExport && import.IsText)
             {
                 ShowStatusMessage("转换完成,词库保存到文件：" + exportPath, true);
                 return;

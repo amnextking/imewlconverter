@@ -15,7 +15,10 @@ namespace Studyzy.IMEWLConverter
 
        public int CountWord { get; set; }
        public int CurrentStatus { get; set; }
-
+       public bool IsText
+       {
+           get { return false; }
+       }
         public WordLibraryList Import(string path)
         {
             WordLibraryList wordLibraryList=new WordLibraryList();
@@ -23,7 +26,18 @@ namespace Studyzy.IMEWLConverter
             fs.Position = 0x350;
             do
             {
-                wordLibraryList.Add(ImportWord(fs));
+                try
+                {
+                    var wl = ImportWord(fs);
+                    if(wl.Word!=""&&wl.PinYin.Length>0)
+                    {
+                        wordLibraryList.Add(wl);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
             } 
             while (fs.Position != fs.Length);
             fs.Close();
@@ -44,6 +58,13 @@ namespace Studyzy.IMEWLConverter
             //    sw.WriteLine(cpy.Key+"\t"+ py+"\t"+cpy.Value);
             //}
             //sw.Close();
+
+            //wordLibraryList.ForEach(delegate(WordLibrary wl) { if(wl.Word==""||wl.PinYin.Length==0)
+            //{
+            //    Debug.WriteLine(wl.ToDisplayString());
+            //}
+            //});
+
             return wordLibraryList;
         }
        //public Dictionary<char,string > CharAndPinyin=new Dictionary<char, string>();

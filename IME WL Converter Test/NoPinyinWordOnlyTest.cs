@@ -33,7 +33,7 @@ namespace Studyzy.IMEWLConverter.Test
         [Test]
         public void TestImport()
         {
-            var wl = importer.Import(StringData);
+            var wl = ((IWordLibraryTextImport)importer).ImportText(StringData);
             Assert.AreEqual(wl.Count, 10);
         }
     }

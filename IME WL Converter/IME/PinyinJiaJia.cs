@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Studyzy.IMEWLConverter
 {
-    public class PinyinJiaJia : IWordLibraryExport, IWordLibraryImport
+    public class PinyinJiaJia : IWordLibraryExport, IWordLibraryTextImport
     {
         #region IWordLibraryExport 成员
 
@@ -53,14 +53,22 @@ namespace Studyzy.IMEWLConverter
         private readonly SinglePinyin single = new SinglePinyin();
         public int CountWord { get; set; }
         public int CurrentStatus { get; set; }
-
+        public bool IsText
+        {
+            get { return true; }
+        }
         /// <summary>
         /// 形如：冷血xue动物
         /// 只有多音字才注音，一般的字不注音，就使用默认读音即可
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public WordLibraryList Import(string str)
+        public WordLibraryList Import(string path)
+        {
+            var str = FileOperationHelper.ReadFile(path, Encoding);
+            return ImportText(str);
+        }
+        public WordLibraryList ImportText(string str)
         {
             var wlList = new WordLibraryList();
             string[] words = str.Split(new[] {'\r', '\n'}, StringSplitOptions.RemoveEmptyEntries);

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Studyzy.IMEWLConverter
 {
-    public class NoPinyinWordOnly : IWordLibraryImport, IWordLibraryExport
+    public class NoPinyinWordOnly : IWordLibraryTextImport, IWordLibraryExport
     {
         private PinYinFactory pinyinFactory;
 
@@ -32,7 +32,12 @@ namespace Studyzy.IMEWLConverter
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public WordLibraryList Import(string str)
+        public WordLibraryList Import(string path)
+        {
+            var str = FileOperationHelper.ReadFile(path);
+            return ImportText(str);
+        }
+        public WordLibraryList ImportText(string str)
         {
             //if (OnlySinglePinyin)
             //{
@@ -89,6 +94,9 @@ namespace Studyzy.IMEWLConverter
         }
 
         #endregion
-
+        public bool IsText
+        {
+            get { return true; }
+        }
     }
 }

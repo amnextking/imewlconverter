@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Studyzy.IMEWLConverter
 {
-    public class QQPinyin : IWordLibraryImport, IWordLibraryExport
+    public class QQPinyin : IWordLibraryTextImport, IWordLibraryExport
     {
 
 
@@ -50,7 +50,10 @@ namespace Studyzy.IMEWLConverter
         public int CountWord { get; set; }
         public int CurrentStatus { get; set; }
 
-
+        public bool IsText
+        {
+            get { return true; }
+        }
         public WordLibraryList ImportLine(string line)
         {
             line = line.Split(',')[0];//如果有逗号，就只取第一个
@@ -67,7 +70,12 @@ namespace Studyzy.IMEWLConverter
             return wll;
         }
 
-        public WordLibraryList Import(string str)
+        public WordLibraryList Import(string path)
+        {
+            var str = FileOperationHelper.ReadFile(path, Encoding);
+            return ImportText(str);
+        }
+        public WordLibraryList ImportText(string str)
         {
             var wlList = new WordLibraryList();
             string[] lines = str.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);

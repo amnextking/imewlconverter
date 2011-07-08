@@ -3,11 +3,16 @@ using System.Text;
 
 namespace Studyzy.IMEWLConverter
 {
-    public class ZiGuangPinyin : IWordLibraryImport, IWordLibraryExport
+    public class ZiGuangPinyin : IWordLibraryTextImport, IWordLibraryExport
     {
         #region IWordLibraryImport 成员
 
-        public WordLibraryList Import(string str)
+        public WordLibraryList Import(string path)
+        {
+            var str = FileOperationHelper.ReadFile(path, Encoding);
+            return ImportText(str);
+        }
+        public WordLibraryList ImportText(string str)
         {
             var wlList = new WordLibraryList();
             string[] lines = str.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
@@ -23,7 +28,10 @@ namespace Studyzy.IMEWLConverter
 
         public int CountWord { get; set; }
         public int CurrentStatus { get; set; }
-
+        public bool IsText
+        {
+            get { return true; }
+        }
 
         public WordLibraryList ImportLine(string line)
         {

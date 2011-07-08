@@ -6,13 +6,15 @@ namespace Studyzy.IMEWLConverter
     {
         int CountWord { get; set; }
         int CurrentStatus { get; set; }
-        WordLibraryList Import(string str);
+        WordLibraryList Import(string path);
         WordLibraryList ImportLine(string str);
+        bool IsText { get; }
     }
 
     public interface IWordLibraryTextImport : IWordLibraryImport
     {
         Encoding Encoding { get; }
+        WordLibraryList ImportText(string text);
     }
 
     public interface IWordLibraryExport

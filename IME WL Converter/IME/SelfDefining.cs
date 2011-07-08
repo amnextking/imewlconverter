@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Studyzy.IMEWLConverter
 {
-    public class SelfDefining : IWordLibraryImport
+    public class SelfDefining : IWordLibraryTextImport
     {
         public ParsePattern UserDefiningPattern { get; set; }
 
@@ -15,8 +15,16 @@ namespace Studyzy.IMEWLConverter
         {
             get { return Encoding.Default; }
         }
-
-        public WordLibraryList Import(string str)
+        public bool IsText
+        {
+            get { return true; }
+        }
+        public WordLibraryList Import(string path)
+        {
+            var str = FileOperationHelper.ReadFile(path);
+            return ImportText(str);
+        }
+        public WordLibraryList ImportText(string str)
         {
             var wlList = new WordLibraryList();
             string[] lines = str.Split(new[] {"\r", "\n"}, StringSplitOptions.RemoveEmptyEntries);

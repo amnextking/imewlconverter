@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Studyzy.IMEWLConverter
 {
-    public class SougouPinyin : IWordLibraryExport, IWordLibraryImport
+    public class SougouPinyin : IWordLibraryExport, IWordLibraryTextImport
     {
 
         #region IWordLibraryExport 成员
@@ -39,7 +39,10 @@ namespace Studyzy.IMEWLConverter
         #region IWordLibraryImport 成员
         public int CountWord { get; set; }
         public int CurrentStatus { get; set; }
-
+        public bool IsText
+        {
+            get { return true; }
+        }
 
         public WordLibraryList ImportLine(string line)
         {
@@ -57,7 +60,12 @@ namespace Studyzy.IMEWLConverter
             }
             return null;
         }
-        public WordLibraryList Import(string str)
+        public WordLibraryList Import(string path)
+        {
+            var str = FileOperationHelper.ReadFile(path, Encoding);
+            return ImportText(str);
+        }
+        public WordLibraryList ImportText(string str)
         {
             var wlList = new WordLibraryList();
             string[] lines = str.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);

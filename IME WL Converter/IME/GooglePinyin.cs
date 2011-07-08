@@ -6,7 +6,7 @@ namespace Studyzy.IMEWLConverter
 	/// <summary>
 	/// Google拼音输入法
 	/// </summary>
-    public class GooglePinyin : IWordLibraryExport, IWordLibraryImport
+    public class GooglePinyin : IWordLibraryExport, IWordLibraryTextImport
     {
 
         #region IWordLibraryExport 成员
@@ -42,8 +42,16 @@ namespace Studyzy.IMEWLConverter
         #endregion
 
         #region IWordLibraryImport 成员
-
-        public WordLibraryList Import(string str)
+        public bool IsText
+        {
+            get { return true; }
+        }
+        public WordLibraryList Import(string path)
+        {
+            var str = FileOperationHelper.ReadFile(path, Encoding);
+            return ImportText(str);
+        }
+        public WordLibraryList ImportText(string str)
         {
             var wlList = new WordLibraryList();
             string[] lines = str.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);

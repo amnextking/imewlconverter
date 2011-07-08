@@ -4,13 +4,18 @@ using System.Text;
 
 namespace Studyzy.IMEWLConverter
 {
-    public class Zhengma : IWordLibraryImport
+    public class Zhengma : IWordLibraryTextImport
     {
         #region IWordLibraryImport 成员
 
         private readonly PinYinFactory pinyinFactory = new SinglePinyin();
 
-        public WordLibraryList Import(string str)
+        public WordLibraryList Import(string path)
+        {
+            var str = FileOperationHelper.ReadFile(path, Encoding);
+            return ImportText(str);
+        }
+        public WordLibraryList ImportText(string str)
         {
             var wlList = new WordLibraryList();
             string[] lines = str.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
@@ -45,7 +50,10 @@ namespace Studyzy.IMEWLConverter
 
         public int CountWord { get; set; }
         public int CurrentStatus { get; set; }
-
+        public bool IsText
+        {
+            get { return true; }
+        }
         #endregion
 
         public Encoding Encoding
