@@ -43,7 +43,7 @@ namespace Studyzy.IMEWLConverter
                 }
                 string str = wordLibraryExport.Export(wordLibraryList);
                 FileOperationHelper.WriteFile(exportPath, wordLibraryExport.Encoding, str);
-                Console.WriteLine("转换完成");
+                Console.WriteLine("转换完成,共转换"+wordLibraryList.Count+"个");
                 return;
             }
             else
