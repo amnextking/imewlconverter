@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Studyzy.IMEWLConverter.IME;
 
 namespace Studyzy.IMEWLConverter
 {
@@ -31,6 +32,7 @@ namespace Studyzy.IMEWLConverter
             cbxFrom.Items.Add(ConstantString.SOUGOU_PINYIN);
             cbxFrom.Items.Add(ConstantString.SOUGOU_WUBI);
             cbxFrom.Items.Add(ConstantString.QQ_PINYIN);
+            cbxFrom.Items.Add(ConstantString.QQ_WUBI);
             cbxFrom.Items.Add(ConstantString.SINA_PINYIN);
             cbxFrom.Items.Add(ConstantString.GOOGLE_PINYIN);
             cbxFrom.Items.Add(ConstantString.ZIGUANG_PINYIN);
@@ -101,6 +103,8 @@ namespace Studyzy.IMEWLConverter
                     return new SougouWubi();
                 case ConstantString.QQ_PINYIN:
                     return new QQPinyin();
+                case ConstantString.QQ_WUBI:
+                    return new QQWubi();
                 case ConstantString.GOOGLE_PINYIN:
                     return new GooglePinyin();
                 case ConstantString.ZIGUANG_PINYIN:

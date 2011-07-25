@@ -10,6 +10,7 @@ namespace Studyzy.IMEWLConverter
         public const string BAIDU_SHOUJI = "百度手机";
         public const string BAIDU_BDICT = "百度分类词库bdict";
         public const string QQ_SHOUJI = "QQ手机";
+        public const string QQ_WUBI = "QQ五笔";
         public const string TOUCH_PAL = "触宝手机";
         public const string SOUGOU_PINYIN = "搜狗拼音";
         public const string SOUGOU_WUBI = "搜狗五笔";
@@ -33,6 +34,7 @@ namespace Studyzy.IMEWLConverter
         public const string BAIDU_SHOUJI_C = "bdsj";
         public const string BAIDU_BDICT_C = "bdict";
         public const string QQ_SHOUJI_C = "qqsj";
+        public const string QQ_WUBI_C = "qqwb";
         public const string TOUCH_PAL_C = "cbsj";
         public const string SOUGOU_PINYIN_C = "sgpy";
         public const string SOUGOU_WUBI_C = "sgwb";

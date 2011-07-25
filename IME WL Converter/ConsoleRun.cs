@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Studyzy.IMEWLConverter.IME;
 
 namespace Studyzy.IMEWLConverter
 {
@@ -128,6 +129,8 @@ namespace Studyzy.IMEWLConverter
                     return new SougouWubi();
                 case ConstantString.QQ_PINYIN_C:
                     return new QQPinyin();
+                case ConstantString.QQ_WUBI_C:
+                    return new QQWubi();
                 case ConstantString.GOOGLE_PINYIN_C:
                     return new GooglePinyin();
                 case ConstantString.ZIGUANG_PINYIN_C:
@@ -164,6 +167,7 @@ namespace Studyzy.IMEWLConverter
             Console.WriteLine(ConstantString.TOUCH_PAL_C + "\t" + ConstantString.TOUCH_PAL);
             Console.WriteLine(ConstantString.ZHENGMA_C + "\t" + ConstantString.ZHENGMA);
             Console.WriteLine(ConstantString.QQ_PINYIN_C + "\t" + ConstantString.QQ_PINYIN);
+            Console.WriteLine(ConstantString.QQ_WUBI_C + "\t" + ConstantString.QQ_WUBI);
             Console.WriteLine(ConstantString.QQ_SHOUJI_C + "\t" + ConstantString.QQ_SHOUJI);
             Console.WriteLine("");
             Console.WriteLine("例如要将C:\\test.scel的搜狗细胞词库转换为D:\\gg.txt的谷歌拼音词库，命令为：");

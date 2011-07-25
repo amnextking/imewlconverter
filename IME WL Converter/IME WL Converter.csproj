@@ -117,6 +117,7 @@
     </Compile>
     <Compile Include="IME\BaiduPinyinBdict.cs" />
     <Compile Include="IME\BaiduShouji.cs" />
+    <Compile Include="IME\QQWubi.cs" />
     <Compile Include="IME\TouchPal\GlobalCache.cs" />
     <Compile Include="IME\SelfDefining.cs" />
     <Compile Include="IME\TouchPal\TouchPal.cs" />

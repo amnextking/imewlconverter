@@ -29,7 +29,7 @@ namespace Studyzy.IMEWLConverter
             return wlList;
         }
 
-        public WordLibraryList ImportLine(string line)
+        public virtual WordLibraryList ImportLine(string line)
         {
             var wlList = new WordLibraryList();
             string[] strs = line.Split(' ');
