@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 
@@ -61,10 +62,10 @@ namespace Studyzy.IMEWLConverter
         }
 
         #endregion
-
+        Dictionary<int, string> pyDic = new Dictionary<int, string>();
         private string ReadScel(string path)
         {
-            var pyDic = new Dictionary<int, string>();
+            pyDic = new Dictionary<int, string>();
             //Dictionary<string, string> pyAndWord = new Dictionary<string, string>();
             var pyAndWord = new List<WordLibrary>();
             var fs = new FileStream(path, FileMode.Open, FileAccess.Read);
@@ -127,46 +128,16 @@ namespace Studyzy.IMEWLConverter
 
             //fs.Position = 0x2628;
             fs.Position = hzPosition;
-            int i = 0, count = 0, samePYcount = 0;
-            //byte[] pybuf = new byte[128];
-            //byte[] hzbuf = new byte[128];
-            //byte[] buf = new byte[256];
+       
             while (true)
             {
-                num = new byte[4];
-                fs.Read(num, 0, 4);
-                samePYcount = num[0] + num[1]*256;
-                count = num[2] + num[3]*256;
-                //接下来读拼音
-                str = new byte[256];
-                for (i = 0; i < count; i++)
+                try
                 {
-                    str[i] = (byte) fs.ReadByte();
+                    pyAndWord.AddRange(ReadAPinyinWord(fs));
                 }
-                string wordPY = "";
-                for (i = 0; i < count/2; i++)
+                catch (Exception ex)
                 {
-                    int key = str[i*2] + str[i*2 + 1]*256;
-                    wordPY += pyDic[key] + "'";
-                }
-                wordPY = wordPY.Remove(wordPY.Length - 1); //移除最后一个单引号
-                //接下来读词语
-                for (int s = 0; s < samePYcount; s++) //同音词，使用前面相同的拼音
-                {
-                    num = new byte[2];
-                    fs.Read(num, 0, 2);
-                    int hzBytecount = num[0] + num[1]*256;
-                    str = new byte[hzBytecount];
-                    fs.Read(str, 0, hzBytecount);
-                    string word = Encoding.Unicode.GetString(str);
-
-                    pyAndWord.Add(new WordLibrary {Word = word, PinYinString = wordPY});
-                    //接下来12个字节什么意思呢？难道是词频？暂时先忽略了
-                    var temp = new byte[12];
-                    for (i = 0; i < 12; i++)
-                    {
-                        temp[i] = (byte) fs.ReadByte();
-                    }
+                    Debug.WriteLine(ex.Message);
                 }
                 if (fs.Length == fs.Position) //判断文件结束
                 {
@@ -180,6 +151,47 @@ namespace Studyzy.IMEWLConverter
                 sb.AppendLine("'" + w.PinYinString + " " + w.Word); //以搜狗文本词库的方式返回
             }
             return sb.ToString();
+        }
+        private IList<WordLibrary> ReadAPinyinWord(FileStream fs)
+        {
+            var num = new byte[4];
+            fs.Read(num, 0, 4);
+            var samePYcount = num[0] + num[1] * 256;
+            var count = num[2] + num[3] * 256;
+            //接下来读拼音
+            var str = new byte[256];
+            for (var i = 0; i < count; i++)
+            {
+                str[i] = (byte)fs.ReadByte();
+            }
+            string wordPY = "";
+            for (var i = 0; i < count / 2; i++)
+            {
+                int key = str[i * 2] + str[i * 2 + 1] * 256;
+                wordPY += pyDic[key] + "'";
+            }
+            wordPY = wordPY.Remove(wordPY.Length - 1); //移除最后一个单引号
+            //接下来读词语
+            var pyAndWord = new List<WordLibrary>();
+            for (int s = 0; s < samePYcount; s++) //同音词，使用前面相同的拼音
+            {
+                num = new byte[2];
+                fs.Read(num, 0, 2);
+                int hzBytecount = num[0] + num[1] * 256;
+                str = new byte[hzBytecount];
+                fs.Read(str, 0, hzBytecount);
+                string word = Encoding.Unicode.GetString(str);
+
+                pyAndWord.Add(new WordLibrary { Word = word, PinYinString = wordPY });
+
+                //接下来12个字节什么意思呢？难道是词频？暂时先忽略了
+                var temp = new byte[12];
+                for (var i = 0; i < 12; i++)
+                {
+                    temp[i] = (byte)fs.ReadByte();
+                }
+            }
+            return pyAndWord;
         }
     }
 }
