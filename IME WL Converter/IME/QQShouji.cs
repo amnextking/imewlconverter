@@ -5,15 +5,21 @@ namespace Studyzy.IMEWLConverter
 {
     public class QQShouji : IWordLibraryTextImport, IWordLibraryExport
     {
+        private int number = 1;
         #region IWordLibraryExport 成员
         public string ExportLine(WordLibrary wl)
         {
             var sb = new StringBuilder();
-
+            var py = wl.GetPinYinString("'", BuildType.None);
+            sb.Append(py);
+            sb.Append(" ");
             sb.Append(wl.Word);
             sb.Append(" ");
-            sb.Append(wl.GetPinYinString("'", BuildType.None));
-
+            sb.Append(number);
+            sb.Append(" Z, ");
+            sb.Append(py);
+            sb.Append(" ");
+            sb.Append(number);
             return sb.ToString();
         }
         public string Export(WordLibraryList wlList)
@@ -21,6 +27,7 @@ namespace Studyzy.IMEWLConverter
             var sb = new StringBuilder();
             for (int i = 0; i < wlList.Count; i++)
             {
+                number =(int)Math.Ceiling((wlList.Count - i)*100.0/wlList.Count);
                 sb.Append(ExportLine(wlList[i]));
                 sb.Append("\r\n");
             }
@@ -44,19 +51,20 @@ namespace Studyzy.IMEWLConverter
 
         public WordLibraryList ImportLine(string line)
         {
-            if (line.IndexOf("'") == 0)
+            var wll = new WordLibraryList();
+            if (line.IndexOf("Z,") > 0)
             {
-                string py = line.Split(' ')[1];
-                string word = line.Split(' ')[0];
+                string py = line.Split(' ')[0];
+                string word = line.Split(' ')[1];
                 var wl = new WordLibrary();
                 wl.Word = word;
                 wl.Count = 1;
                 wl.PinYin = py.Split(new[] { '\'' }, StringSplitOptions.RemoveEmptyEntries);
-                var wll = new WordLibraryList();
+              
                 wll.Add(wl);
-                return wll;
+               
             }
-            return null;
+            return wll;
         }
         public WordLibraryList Import(string path)
         {

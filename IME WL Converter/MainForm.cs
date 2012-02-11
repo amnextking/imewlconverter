@@ -135,6 +135,7 @@ namespace Studyzy.IMEWLConverter
         private IWordLibraryExport export;
         private bool exportDirectly;
         private string exportPath = "";
+        protected string exportFileName;
         private string fileContent;
         private bool filterEnglish = true;
         private bool ignoreLongWord;
@@ -321,6 +322,7 @@ namespace Studyzy.IMEWLConverter
             string[] files = txbWLPath.Text.Split('|');
             foreach (string file in files)
             {
+                this.exportFileName = Path.GetFileNameWithoutExtension(file)+".txt";
                 string path =file.Trim();
                 if (streamExport&& import.IsText ) //流转换,只有文本类型的才支持。
                 {
@@ -365,6 +367,10 @@ namespace Studyzy.IMEWLConverter
                 MessageBox.Show("是否将导入的" + allWlList.Count + "条词库保存到本地硬盘上？", "是否保存", MessageBoxButtons.YesNo,
                                 MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                if (!string.IsNullOrEmpty(exportFileName))
+                {
+                    saveFileDialog1.FileName = exportFileName;
+                }
                 if (export is TouchPal)
                 {
                     saveFileDialog1.DefaultExt = ".bak";
@@ -409,11 +415,7 @@ namespace Studyzy.IMEWLConverter
 
         #region 菜单操作
 
-        private void toolStripMenuItemEnableMutiConvert_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.Multiselect = toolStripMenuItemEnableMutiConvert.Checked;
-        }
-
+       
         private void ToolStripMenuItemAccessWebSite_Click(object sender, EventArgs e)
         {
             Process.Start("http://code.google.com/p/imewlconverter/");

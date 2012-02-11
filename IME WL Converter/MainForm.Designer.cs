@@ -43,7 +43,6 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemIgnoreSingleWord = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemFilterEnglish = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemEnableMutiConvert = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemIgnoreLongWord = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBoxIgnoreWordLength = new System.Windows.Forms.ToolStripComboBox();
@@ -94,6 +93,7 @@
             // openFileDialog1
             // 
             this.openFileDialog1.Filter = "文本文件|*.txt|细胞词库|*.scel|所有文件|*.*";
+            this.openFileDialog1.Multiselect = true;
             // 
             // saveFileDialog1
             // 
@@ -155,7 +155,6 @@
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemIgnoreSingleWord,
             this.toolStripMenuItemFilterEnglish,
-            this.toolStripMenuItemEnableMutiConvert,
             this.toolStripSeparator1,
             this.toolStripMenuItemIgnoreLongWord,
             this.toolStripComboBoxIgnoreWordLength,
@@ -183,14 +182,6 @@
             this.toolStripMenuItemFilterEnglish.Size = new System.Drawing.Size(190, 22);
             this.toolStripMenuItemFilterEnglish.Text = "忽略包含英文的词";
             this.toolStripMenuItemFilterEnglish.Click += new System.EventHandler(this.toolStripMenuItemFilterEnglish_Click);
-            // 
-            // toolStripMenuItemEnableMutiConvert
-            // 
-            this.toolStripMenuItemEnableMutiConvert.CheckOnClick = true;
-            this.toolStripMenuItemEnableMutiConvert.Name = "toolStripMenuItemEnableMutiConvert";
-            this.toolStripMenuItemEnableMutiConvert.Size = new System.Drawing.Size(190, 22);
-            this.toolStripMenuItemEnableMutiConvert.Text = "允许批量词库转换";
-            this.toolStripMenuItemEnableMutiConvert.Click += new System.EventHandler(this.toolStripMenuItemEnableMutiConvert_Click);
             // 
             // toolStripSeparator1
             // 
@@ -256,33 +247,33 @@
             // ToolStripMenuItemHelp
             // 
             this.ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
-            this.ToolStripMenuItemHelp.Size = new System.Drawing.Size(142, 22);
+            this.ToolStripMenuItemHelp.Size = new System.Drawing.Size(152, 22);
             this.ToolStripMenuItemHelp.Text = "帮助";
             this.ToolStripMenuItemHelp.Click += new System.EventHandler(this.ToolStripMenuItemHelp_Click);
             // 
             // ToolStripMenuItemAbout
             // 
             this.ToolStripMenuItemAbout.Name = "ToolStripMenuItemAbout";
-            this.ToolStripMenuItemAbout.Size = new System.Drawing.Size(142, 22);
+            this.ToolStripMenuItemAbout.Size = new System.Drawing.Size(152, 22);
             this.ToolStripMenuItemAbout.Text = "关于";
             this.ToolStripMenuItemAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
             // ToolStripMenuItemAccessWebSite
             // 
             this.ToolStripMenuItemAccessWebSite.Name = "ToolStripMenuItemAccessWebSite";
-            this.ToolStripMenuItemAccessWebSite.Size = new System.Drawing.Size(142, 22);
+            this.ToolStripMenuItemAccessWebSite.Size = new System.Drawing.Size(152, 22);
             this.ToolStripMenuItemAccessWebSite.Text = "查看最新版本";
             this.ToolStripMenuItemAccessWebSite.Click += new System.EventHandler(this.ToolStripMenuItemAccessWebSite_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(139, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
             // 
             // ToolStripMenuItemCreatePinyinWL
             // 
             this.ToolStripMenuItemCreatePinyinWL.Name = "ToolStripMenuItemCreatePinyinWL";
-            this.ToolStripMenuItemCreatePinyinWL.Size = new System.Drawing.Size(142, 22);
+            this.ToolStripMenuItemCreatePinyinWL.Size = new System.Drawing.Size(152, 22);
             this.ToolStripMenuItemCreatePinyinWL.Text = "注音库生成";
             this.ToolStripMenuItemCreatePinyinWL.Click += new System.EventHandler(this.ToolStripMenuItemCreatePinyinWL_Click);
             // 
@@ -384,7 +375,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemIgnoreLongWord;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBoxIgnoreWordLength;
         private System.Windows.Forms.Button btnExport;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemEnableMutiConvert;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemFilterEnglish;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemAccessWebSite;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;

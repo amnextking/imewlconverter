@@ -211,6 +211,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <Content Include="Readme.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\TouchPalPinyinDic.txt" />
     <None Include="Resources\WordPinyin.txt" />
     <None Include="Resources\SinglePinYin.txt" />
