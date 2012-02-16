@@ -23,28 +23,28 @@ namespace Studyzy.IMEWLConverter
         	var v=System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
         	this.Text="深蓝词库转换"+ v.Major+"."+v.Minor; 
         }
-        private void MainiForm_Load(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
-            cbxFrom.Items.Add(ConstantString.BAIDU_SHOUJI);
-            cbxFrom.Items.Add(ConstantString.BAIDU_BDICT);
-            cbxFrom.Items.Add(ConstantString.QQ_SHOUJI);
-            cbxFrom.Items.Add(ConstantString.TOUCH_PAL);
             cbxFrom.Items.Add(ConstantString.SOUGOU_PINYIN);
+            cbxFrom.Items.Add(ConstantString.SOUGOU_XIBAO_SCEL);
             cbxFrom.Items.Add(ConstantString.SOUGOU_WUBI);
             cbxFrom.Items.Add(ConstantString.QQ_PINYIN);
+            cbxFrom.Items.Add(ConstantString.QQ_PINYIN_QPYD);
             cbxFrom.Items.Add(ConstantString.QQ_WUBI);
             cbxFrom.Items.Add(ConstantString.SINA_PINYIN);
             cbxFrom.Items.Add(ConstantString.GOOGLE_PINYIN);
             cbxFrom.Items.Add(ConstantString.ZIGUANG_PINYIN);
             cbxFrom.Items.Add(ConstantString.PINYIN_JIAJIA);
-            cbxFrom.Items.Add(ConstantString.WORD_ONLY);
-            cbxFrom.Items.Add(ConstantString.SOUGOU_XIBAO_SCEL);
-            cbxFrom.Items.Add(ConstantString.SELF_DEFINING);
             cbxFrom.Items.Add(ConstantString.ZHENGMA);
+            cbxFrom.Items.Add(ConstantString.BAIDU_BDICT);
 
-            cbxTo.Items.Add(ConstantString.BAIDU_SHOUJI);
-            cbxTo.Items.Add(ConstantString.QQ_SHOUJI);
-            //cbxTo.Items.Add(ConstantString.TOUCH_PAL);
+            cbxFrom.Items.Add(ConstantString.BAIDU_SHOUJI);
+            cbxFrom.Items.Add(ConstantString.QQ_SHOUJI);
+            cbxFrom.Items.Add(ConstantString.TOUCH_PAL);
+            cbxFrom.Items.Add(ConstantString.SELF_DEFINING);
+            cbxFrom.Items.Add(ConstantString.WORD_ONLY);
+
+
             cbxTo.Items.Add(ConstantString.SOUGOU_PINYIN);
             cbxTo.Items.Add(ConstantString.SOUGOU_WUBI);
             cbxTo.Items.Add(ConstantString.QQ_PINYIN);
@@ -52,7 +52,8 @@ namespace Studyzy.IMEWLConverter
             cbxTo.Items.Add(ConstantString.GOOGLE_PINYIN);
             cbxTo.Items.Add(ConstantString.ZIGUANG_PINYIN);
             cbxTo.Items.Add(ConstantString.PINYIN_JIAJIA);
-
+            cbxTo.Items.Add(ConstantString.BAIDU_SHOUJI);
+            cbxTo.Items.Add(ConstantString.QQ_SHOUJI);
             cbxTo.Items.Add(ConstantString.WORD_ONLY);
         }
 
@@ -103,6 +104,8 @@ namespace Studyzy.IMEWLConverter
                     return new SougouWubi();
                 case ConstantString.QQ_PINYIN:
                     return new QQPinyin();
+                case ConstantString.QQ_PINYIN_QPYD:
+                    return new QQPinyinQpyd();
                 case ConstantString.QQ_WUBI:
                     return new QQWubi();
                 case ConstantString.GOOGLE_PINYIN:
@@ -309,16 +312,7 @@ namespace Studyzy.IMEWLConverter
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            //if (import is TouchPal||import is BaiduPinyinBdict )//触宝输入法是二进制，需要特殊处理
-            //{
-            //    WordLibraryList wlList = import.Import(txbWLPath.Text);
-            //    wlList = Filter(wlList);
-            //    allWlList.AddRange(wlList);
-            //    allWlList.Sort((a, b) => a.Word.CompareTo(b.Word));
-            //    fileContent = export.Export(allWlList);
-            //    return;
-            //}
-            
+          
             string[] files = txbWLPath.Text.Split('|');
             foreach (string file in files)
             {
@@ -337,7 +331,6 @@ namespace Studyzy.IMEWLConverter
                     WordLibraryList wlList = import.Import(path);
                     wlList = Filter(wlList);
                     allWlList.AddRange(wlList);
-                  
                 }
             }
             fileContent = export.Export(allWlList);
@@ -486,8 +479,11 @@ namespace Studyzy.IMEWLConverter
                 files += path + " | ";
             }
             txbWLPath.Text = files.Remove(files.Length - 3);
+            if (array.Length == 1)
+            {
+                cbxFrom.Text = FileOperationHelper.AutoMatchSourceWLType(array.GetValue(0).ToString());
+            }
         }
-
       
     }
 }

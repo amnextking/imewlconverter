@@ -129,6 +129,8 @@ namespace Studyzy.IMEWLConverter
                     return new SougouWubi();
                 case ConstantString.QQ_PINYIN_C:
                     return new QQPinyin();
+                case ConstantString.QQ_PINYIN_QPYD_C:
+                    return new QQPinyinQpyd();
                 case ConstantString.QQ_WUBI_C:
                     return new QQWubi();
                 case ConstantString.GOOGLE_PINYIN_C:
@@ -157,6 +159,7 @@ namespace Studyzy.IMEWLConverter
         {
             Console.WriteLine("-i:输入的词库类型 词库路径1 词库路径2 词库路径3 -o:输出的词库类型 输出词库路径");
             Console.WriteLine("输入和输出的词库类型如下：");
+            Console.WriteLine(ConstantString.SOUGOU_PINYIN_C + "\t" + ConstantString.SOUGOU_PINYIN);
             Console.WriteLine(ConstantString.GOOGLE_PINYIN_C+ "\t"+ConstantString.GOOGLE_PINYIN);
             Console.WriteLine(ConstantString.BAIDU_SHOUJI_C + "\t" + ConstantString.BAIDU_SHOUJI);
             Console.WriteLine(ConstantString.BAIDU_BDICT_C + "\t" + ConstantString.BAIDU_BDICT);
@@ -167,6 +170,7 @@ namespace Studyzy.IMEWLConverter
             Console.WriteLine(ConstantString.TOUCH_PAL_C + "\t" + ConstantString.TOUCH_PAL);
             Console.WriteLine(ConstantString.ZHENGMA_C + "\t" + ConstantString.ZHENGMA);
             Console.WriteLine(ConstantString.QQ_PINYIN_C + "\t" + ConstantString.QQ_PINYIN);
+            Console.WriteLine(ConstantString.QQ_PINYIN_QPYD_C + "\t" + ConstantString.QQ_PINYIN_QPYD);
             Console.WriteLine(ConstantString.QQ_WUBI_C + "\t" + ConstantString.QQ_WUBI);
             Console.WriteLine(ConstantString.QQ_SHOUJI_C + "\t" + ConstantString.QQ_SHOUJI);
             Console.WriteLine("");

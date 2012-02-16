@@ -92,7 +92,7 @@
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.Filter = "文本文件|*.txt|细胞词库|*.scel|所有文件|*.*";
+            this.openFileDialog1.Filter = "文本文件|*.txt|细胞词库|*.scel|QQ分类词库|*.qpyd|所有文件|*.*";
             this.openFileDialog1.Multiselect = true;
             // 
             // saveFileDialog1
@@ -247,33 +247,33 @@
             // ToolStripMenuItemHelp
             // 
             this.ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
-            this.ToolStripMenuItemHelp.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItemHelp.Size = new System.Drawing.Size(142, 22);
             this.ToolStripMenuItemHelp.Text = "帮助";
             this.ToolStripMenuItemHelp.Click += new System.EventHandler(this.ToolStripMenuItemHelp_Click);
             // 
             // ToolStripMenuItemAbout
             // 
             this.ToolStripMenuItemAbout.Name = "ToolStripMenuItemAbout";
-            this.ToolStripMenuItemAbout.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItemAbout.Size = new System.Drawing.Size(142, 22);
             this.ToolStripMenuItemAbout.Text = "关于";
             this.ToolStripMenuItemAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
             // ToolStripMenuItemAccessWebSite
             // 
             this.ToolStripMenuItemAccessWebSite.Name = "ToolStripMenuItemAccessWebSite";
-            this.ToolStripMenuItemAccessWebSite.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItemAccessWebSite.Size = new System.Drawing.Size(142, 22);
             this.ToolStripMenuItemAccessWebSite.Text = "查看最新版本";
             this.ToolStripMenuItemAccessWebSite.Click += new System.EventHandler(this.ToolStripMenuItemAccessWebSite_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(139, 6);
             // 
             // ToolStripMenuItemCreatePinyinWL
             // 
             this.ToolStripMenuItemCreatePinyinWL.Name = "ToolStripMenuItemCreatePinyinWL";
-            this.ToolStripMenuItemCreatePinyinWL.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItemCreatePinyinWL.Size = new System.Drawing.Size(142, 22);
             this.ToolStripMenuItemCreatePinyinWL.Text = "注音库生成";
             this.ToolStripMenuItemCreatePinyinWL.Click += new System.EventHandler(this.ToolStripMenuItemCreatePinyinWL_Click);
             // 
@@ -284,7 +284,7 @@
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 23);
             this.btnExport.TabIndex = 8;
-            this.btnExport.Text = "导出";
+            this.btnExport.Text = "导 出";
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
@@ -342,7 +342,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "深蓝词库转换";
-            this.Load += new System.EventHandler(this.MainiForm_Load);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
             this.menuStrip1.ResumeLayout(false);

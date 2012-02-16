@@ -26,6 +26,10 @@ namespace Studyzy.IMEWLConverter
             {
                 return ConstantString.BAIDU_BDICT;
             }
+            if (Path.GetExtension(filePath) == ".qpyd")
+            {
+                return ConstantString.QQ_PINYIN_QPYD;
+            }
             string example = "";
             using (var sr = new StreamReader(filePath, Encoding.Default))
             {
