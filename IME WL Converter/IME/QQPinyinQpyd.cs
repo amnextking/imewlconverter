@@ -7,7 +7,7 @@ using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
 
 namespace Studyzy.IMEWLConverter.IME
 {
-    class QQPinyinQpyd : IWordLibraryImport
+    public class QQPinyinQpyd : IWordLibraryImport
     {
         private string ParseQpyd(string qqydFile)
         {

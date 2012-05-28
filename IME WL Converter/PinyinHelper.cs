@@ -6,7 +6,7 @@ namespace Studyzy.IMEWLConverter
     public static class PinyinHelper
     {
         private static readonly Dictionary<char, List<string>> dictionary = new Dictionary<char, List<string>>();
-
+        private static readonly Dictionary<char, List<string>> dictionaryWithTone = new Dictionary<char, List<string>>();
         /// <summary>
         /// 字的拼音
         /// </summary>
@@ -24,6 +24,8 @@ namespace Studyzy.IMEWLConverter
                         string[] hzpy = pyList[i].Split(',');
                         char hz = Convert.ToChar(hzpy[0]);
                         string py = hzpy[1];
+                        py = py.Remove(py.Length - 1);//去掉了声调，因为大多数输入法不支持声调
+
                         if (dictionary.ContainsKey(hz))
                         {
                             dictionary[hz].Add(py);
@@ -35,6 +37,34 @@ namespace Studyzy.IMEWLConverter
                     }
                 }
                 return dictionary;
+            }
+        }
+
+        private static Dictionary<char, List<string>> PinYinWithToneDict
+        {
+            get
+            {
+                if (dictionaryWithTone.Count == 0)
+                {
+                    //string allPinYin = FileOperationHelper.ReadFile("AllPinYin.txt");
+                    string allPinYin = PinyinDic.AllPinYin;
+                    string[] pyList = allPinYin.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                    for (int i = 0; i < pyList.Length; i++)
+                    {
+                        string[] hzpy = pyList[i].Split(',');
+                        char hz = Convert.ToChar(hzpy[0]);
+                        string py = hzpy[1];
+                        if (dictionaryWithTone.ContainsKey(hz))
+                        {
+                            dictionaryWithTone[hz].Add(py);
+                        }
+                        else
+                        {
+                            dictionaryWithTone.Add(hz, new List<string> { py });
+                        }
+                    }
+                }
+                return dictionaryWithTone;
             }
         }
 
@@ -73,13 +103,30 @@ namespace Studyzy.IMEWLConverter
         #endregion
 
         /// <summary>
-        /// 获得单个字的拼音
+        /// 获得单个字的拼音,不包括声调
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
         public static List<string> GetPinYinOfChar(char str)
         {
             return PinYinDict[str];
+        }
+
+        public static List<string> GetPinYinWithToneOfChar(char str)
+        {
+            return PinYinWithToneDict[str];
+        }
+        public static string GetPinyinWithToneOfChar(char str,string py)
+        {
+            var list = PinYinWithToneDict[str];
+            foreach (var pinyin in list)
+            {
+                if (pinyin == py + "0" || pinyin == py + "1" || pinyin == py + "2" || pinyin == py + "3" || pinyin == py + "4")
+                {
+                    return pinyin;
+                }
+            }
+            return null;
         }
 
         /// <summary>

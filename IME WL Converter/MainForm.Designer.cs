@@ -97,7 +97,7 @@
             // 
             // saveFileDialog1
             // 
-            this.saveFileDialog1.Filter = "文本文件|*.txt|所有文件|*.*";
+            this.saveFileDialog1.Filter = "文本文件|*.txt|微软拼音|*.dctx|所有文件|*.*";
             this.saveFileDialog1.Title = "请选择导出词库保存的文件位置";
             // 
             // btnOpenFileDialog

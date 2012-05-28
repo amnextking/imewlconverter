@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // 与程序集关联的信息。
 
 [assembly: AssemblyTitle("深蓝词库转换")]
-[assembly: AssemblyDescription("随手写的一个词库转换小工具，支持主流的电脑和手机输入法，希望大家喜欢，有问题请联系我：\r\nstudyzy@163.com")]
+[assembly: AssemblyDescription("随手写的一个词库转换小工具，支持主流的电脑和手机输入法，希望大家喜欢。\r\n有问题请联系我：studyzy@163.com\r\n新浪微博：http://weibo.com/studyzy")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("深蓝 http://studyzy.cnblogs.com")]
 [assembly: AssemblyProduct("深蓝词库转换")]

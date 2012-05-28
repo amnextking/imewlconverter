@@ -29,7 +29,10 @@ namespace Studyzy.IMEWLConverter
 
         public void AddWordLibraryList(WordLibraryList wll)
         {
-            AddRange(wll);
+            if(wll!=null)
+            {
+                AddRange(wll);
+            }
         }
        
     }

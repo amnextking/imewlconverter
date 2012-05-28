@@ -37,10 +37,12 @@ namespace Studyzy.IMEWLConverter
             cbxFrom.Items.Add(ConstantString.PINYIN_JIAJIA);
             cbxFrom.Items.Add(ConstantString.ZHENGMA);
             cbxFrom.Items.Add(ConstantString.BAIDU_BDICT);
+            cbxFrom.Items.Add(ConstantString.MS_PINYIN);
 
             cbxFrom.Items.Add(ConstantString.BAIDU_SHOUJI);
             cbxFrom.Items.Add(ConstantString.QQ_SHOUJI);
             cbxFrom.Items.Add(ConstantString.TOUCH_PAL);
+            cbxFrom.Items.Add(ConstantString.IFLY_IME);
             cbxFrom.Items.Add(ConstantString.SELF_DEFINING);
             cbxFrom.Items.Add(ConstantString.WORD_ONLY);
 
@@ -52,8 +54,12 @@ namespace Studyzy.IMEWLConverter
             cbxTo.Items.Add(ConstantString.GOOGLE_PINYIN);
             cbxTo.Items.Add(ConstantString.ZIGUANG_PINYIN);
             cbxTo.Items.Add(ConstantString.PINYIN_JIAJIA);
+            cbxTo.Items.Add(ConstantString.MS_PINYIN);
+            cbxTo.Items.Add(ConstantString.XIAOXIAO);
+
             cbxTo.Items.Add(ConstantString.BAIDU_SHOUJI);
             cbxTo.Items.Add(ConstantString.QQ_SHOUJI);
+            cbxTo.Items.Add(ConstantString.IFLY_IME);
             cbxTo.Items.Add(ConstantString.WORD_ONLY);
         }
 
@@ -83,6 +89,12 @@ namespace Studyzy.IMEWLConverter
                     return new SinaPinyin();
                 case ConstantString.TOUCH_PAL:
                     return new TouchPal();
+                case ConstantString.IFLY_IME:
+                    return new iFlyIME();
+                case ConstantString.MS_PINYIN:
+                    return new MsPinyin();
+                case ConstantString.XIAOXIAO:
+                    return new Xiaoxiao();
                 default:
                     throw new ArgumentException("导出词库的输入法错误");
             }
@@ -126,6 +138,11 @@ namespace Studyzy.IMEWLConverter
                     return new SelfDefining();
                 case ConstantString.TOUCH_PAL:
                     return new TouchPal();
+                case ConstantString.IFLY_IME:
+                    return new iFlyIME();
+                case ConstantString.MS_PINYIN:
+                    return new MsPinyin();
+            
                 default:
                     throw new ArgumentException("导入词库的输入法错误");
             }
@@ -255,6 +272,10 @@ namespace Studyzy.IMEWLConverter
                 DialogResult.Yes)
             {
                 saveFileDialog1.DefaultExt = ".txt";
+                if (cbxTo.Text == ConstantString.MS_PINYIN)
+                {
+                    saveFileDialog1.DefaultExt = ".dctx";
+                }
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     if (FileOperationHelper.WriteFile(saveFileDialog1.FileName, export.Encoding, richTextBox1.Text))
@@ -316,7 +337,7 @@ namespace Studyzy.IMEWLConverter
             string[] files = txbWLPath.Text.Split('|');
             foreach (string file in files)
             {
-                this.exportFileName = Path.GetFileNameWithoutExtension(file)+".txt";
+                this.exportFileName = Path.GetFileNameWithoutExtension(file);
                 string path =file.Trim();
                 if (streamExport&& import.IsText ) //流转换,只有文本类型的才支持。
                 {
@@ -368,6 +389,11 @@ namespace Studyzy.IMEWLConverter
                 {
                     saveFileDialog1.DefaultExt = ".bak";
                     saveFileDialog1.Filter = "触宝备份文件|*.bak";
+                }
+               else if (export is MsPinyin)
+                {
+                    saveFileDialog1.DefaultExt = ".dctx";
+                    saveFileDialog1.Filter = "微软拼音2010|*.dctx";
                 }
                 else
                 {

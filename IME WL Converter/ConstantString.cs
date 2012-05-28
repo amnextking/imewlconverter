@@ -23,8 +23,10 @@ namespace Studyzy.IMEWLConverter
         public const string SOUGOU_XIBAO_SCEL = "搜狗细胞词库scel";
         public const string SINA_PINYIN = "新浪拼音";
         public const string SELF_DEFINING = "自定义";
+        public const string IFLY_IME = "讯飞语音输入法";
         public const string ZHENGMA = "郑码";
-        
+        public const string MS_PINYIN = "微软拼音2010";
+        public const string XIAOXIAO = "小小输入法";
 
         /// <summary>
         /// 注音文件的完整路径
@@ -49,5 +51,8 @@ namespace Studyzy.IMEWLConverter
         public const string SINA_PINYIN_C = "xlpy";
         public const string SELF_DEFINING_C = "self";
         public const string ZHENGMA_C = "zm";
+        public const string IFLY_IME_C = "ifly";
+        public const string MS_PINYIN_C = "mspy";
+        public const string XIAOXIAO_C = "xxpy";
     }
 }

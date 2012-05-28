@@ -118,6 +118,8 @@
     </Compile>
     <Compile Include="IME\BaiduPinyinBdict.cs" />
     <Compile Include="IME\BaiduShouji.cs" />
+    <Compile Include="IME\iFlyIME.cs" />
+    <Compile Include="IME\MsPinyin.cs" />
     <Compile Include="IME\QQPinyinQpyd.cs" />
     <Compile Include="IME\QQWubi.cs" />
     <Compile Include="IME\TouchPal\GlobalCache.cs" />
@@ -125,6 +127,7 @@
     <Compile Include="IME\TouchPal\TouchPal.cs" />
     <Compile Include="IME\TouchPal\TouchPalChar.cs" />
     <Compile Include="IME\TouchPal\TouchPalWord.cs" />
+    <Compile Include="IME\Xiaoxiao.cs" />
     <Compile Include="IME\Zhengma.cs" />
     <Compile Include="IME\SinaPinyin.cs" />
     <Compile Include="IME\GooglePinyin.cs" />

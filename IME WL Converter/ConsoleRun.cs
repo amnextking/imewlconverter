@@ -108,6 +108,10 @@ namespace Studyzy.IMEWLConverter
                     return new SinaPinyin();
                 case ConstantString.TOUCH_PAL_C:
                     return new TouchPal();
+                case ConstantString.MS_PINYIN_C:
+                    return new MsPinyin();
+                case ConstantString.XIAOXIAO_C:
+                    return new Xiaoxiao();
                 default:
                     throw new ArgumentException("导出词库的输入法错误");
             }
@@ -151,6 +155,9 @@ namespace Studyzy.IMEWLConverter
                     return new SelfDefining();
                 case ConstantString.TOUCH_PAL_C:
                     return new TouchPal();
+                case ConstantString.MS_PINYIN_C:
+                    return new MsPinyin();
+             
                 default:
                     throw new ArgumentException("导入词库的输入法错误");
             }
@@ -167,6 +174,7 @@ namespace Studyzy.IMEWLConverter
             Console.WriteLine(ConstantString.PINYIN_JIAJIA_C + "\t" + ConstantString.PINYIN_JIAJIA);
             Console.WriteLine(ConstantString.ZIGUANG_PINYIN_C + "\t" + ConstantString.ZIGUANG_PINYIN);
             Console.WriteLine(ConstantString.SINA_PINYIN_C + "\t" + ConstantString.SINA_PINYIN);
+            Console.WriteLine(ConstantString.XIAOXIAO_C + "\t" + ConstantString.XIAOXIAO);
             Console.WriteLine(ConstantString.TOUCH_PAL_C + "\t" + ConstantString.TOUCH_PAL);
             Console.WriteLine(ConstantString.ZHENGMA_C + "\t" + ConstantString.ZHENGMA);
             Console.WriteLine(ConstantString.QQ_PINYIN_C + "\t" + ConstantString.QQ_PINYIN);

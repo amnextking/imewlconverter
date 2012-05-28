@@ -13,11 +13,11 @@ namespace Studyzy.IMEWLConverter
         public int CurrentStatus { get; set; }
 
         /// <summary>
-        /// 好像不对
+        /// 将一行纯文本转换为对象
         /// </summary>
         /// <param name="line"></param>
         /// <returns></returns>
-        public WordLibraryList ImportLine(string line)
+        public virtual WordLibraryList ImportLine(string line)
         {
             List<List<string>> list = pinyinFactory.GetPinYinListOfString(line);
             var wl = new WordLibrary();
@@ -32,12 +32,12 @@ namespace Studyzy.IMEWLConverter
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public WordLibraryList Import(string path)
+        public virtual WordLibraryList Import(string path)
         {
             var str = FileOperationHelper.ReadFile(path);
             return ImportText(str);
         }
-        public WordLibraryList ImportText(string str)
+        public virtual WordLibraryList ImportText(string str)
         {
             //if (OnlySinglePinyin)
             //{
@@ -54,13 +54,9 @@ namespace Studyzy.IMEWLConverter
                 try
                 {
                     string word = words[i].Trim();
-                    List<List<string>> list = pinyinFactory.GetPinYinListOfString(word);
-                    for (int j = 0; j < list.Count; j++)
+                    if (word != string.Empty)
                     {
-                        var wl = new WordLibrary();
-                        wl.Word = word;
-                        wl.PinYin = list[j].ToArray();
-                        wlList.Add(wl);
+                        wlList.AddWordLibraryList(ImportLine(word));
                     }
                 }
                 catch
@@ -73,11 +69,11 @@ namespace Studyzy.IMEWLConverter
         #endregion
 
         #region IWordLibraryExport 成员
-        public string ExportLine(WordLibrary wl)
+        public virtual string ExportLine(WordLibrary wl)
         {
             return wl.Word;
         }
-        public string Export(WordLibraryList wlList)
+        public virtual string Export(WordLibraryList wlList)
         {
             var sb = new StringBuilder();
             for (int i = 0; i < wlList.Count; i++)
@@ -88,7 +84,7 @@ namespace Studyzy.IMEWLConverter
             return sb.ToString();
         }
 
-        public Encoding Encoding
+        public virtual Encoding Encoding
         {
             get { return Encoding.Default; }
         }
