@@ -3,18 +3,36 @@ using System.Text;
 
 namespace Studyzy.IMEWLConverter
 {
-    public class SelfDefining : IWordLibraryTextImport
+    public class SelfDefining : IWordLibraryTextImport,IWordLibraryExport
     {
         public ParsePattern UserDefiningPattern { get; set; }
 
         #region IWordLibraryImport 成员
 
-        private PinYinFactory pinyinFactory = new SinglePinyin();
-
         public Encoding Encoding
         {
             get { return Encoding.Default; }
         }
+
+        public string Export(WordLibraryList wlList)
+        {
+            StringBuilder sb=new StringBuilder();
+            foreach (WordLibrary wordLibrary in wlList)
+            {
+                sb.Append(ExportLine(wordLibrary));
+                sb.Append("\r\n");
+            }
+            return sb.ToString();
+        }
+
+        public string ExportLine(WordLibrary wl)
+        {
+          
+            string line = UserDefiningPattern.BuildWLString(wl);
+
+            return line;
+        }
+
         public bool IsText
         {
             get { return true; }

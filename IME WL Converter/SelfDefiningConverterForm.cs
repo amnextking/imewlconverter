@@ -4,6 +4,8 @@ using System.Windows.Forms;
 
 namespace Studyzy.IMEWLConverter
 {
+    using System.Text;
+
     public partial class SelfDefiningConverterForm : Form
     {
         private readonly List<string> fromWords = new List<string>();
@@ -67,5 +69,45 @@ namespace Studyzy.IMEWLConverter
                 DialogResult = DialogResult.Cancel;
             }
         }
+
+        private void btnFileSelect_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                txbFilePath.Text = openFileDialog1.FileName;
+            }
+        }
+        private void btnConvertTest_Click(object sender, EventArgs e)
+        {
+            if (SelectedParsePattern == null)
+            {
+                MessageBox.Show("请点击右上角按钮选择匹配规则");
+                return;
+            }
+            PinYinFactory factory = null;
+            if (string.IsNullOrEmpty(txbFilePath.Text))
+            {
+                factory=new SinglePinyin();
+            }
+            else
+            {
+                factory=new SelfDefiningCode();
+                UserCodingHelper.FilePath = txbFilePath.Text;
+            }
+            SelectedParsePattern.Factory = factory;
+
+          
+            rtbTo.Clear();
+            string[] fromList = rtbFrom.Text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string str in fromList)
+            {
+                string s = str.Trim();
+                WordLibrary wl=new WordLibrary(){Word = s};
+                 var result = SelectedParsePattern.BuildWLString(wl);
+                rtbTo.AppendText(result + "\r\n");
+            }
+        }
+
+      
     }
 }

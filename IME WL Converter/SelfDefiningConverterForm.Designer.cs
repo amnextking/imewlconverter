@@ -38,6 +38,11 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnHelpBuild = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txbFilePath = new System.Windows.Forms.TextBox();
+            this.btnFileSelect = new System.Windows.Forms.Button();
+            this.btnConvertTest = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -47,15 +52,15 @@
             this.rtbFrom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtbFrom.Location = new System.Drawing.Point(3, 17);
             this.rtbFrom.Name = "rtbFrom";
-            this.rtbFrom.Size = new System.Drawing.Size(253, 356);
+            this.rtbFrom.Size = new System.Drawing.Size(253, 322);
             this.rtbFrom.TabIndex = 0;
             this.rtbFrom.Text = "";
             this.rtbFrom.WordWrap = false;
             // 
             // txbParsePattern
             // 
-            this.txbParsePattern.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbParsePattern.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbParsePattern.Location = new System.Drawing.Point(73, 13);
             this.txbParsePattern.Name = "txbParsePattern";
             this.txbParsePattern.ReadOnly = true;
@@ -65,7 +70,7 @@
             // 
             // btnParse
             // 
-            this.btnParse.Location = new System.Drawing.Point(110, 456);
+            this.btnParse.Location = new System.Drawing.Point(48, 456);
             this.btnParse.Name = "btnParse";
             this.btnParse.Size = new System.Drawing.Size(75, 23);
             this.btnParse.TabIndex = 2;
@@ -84,32 +89,32 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.rtbFrom);
-            this.groupBox1.Location = new System.Drawing.Point(10, 62);
+            this.groupBox1.Location = new System.Drawing.Point(10, 96);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(259, 376);
+            this.groupBox1.Size = new System.Drawing.Size(259, 342);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "粘贴一段源词库内容";
+            this.groupBox1.Text = "源内容";
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.rtbTo);
-            this.groupBox2.Location = new System.Drawing.Point(288, 62);
+            this.groupBox2.Location = new System.Drawing.Point(275, 96);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(253, 376);
+            this.groupBox2.Size = new System.Drawing.Size(266, 342);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "识别结果";
+            this.groupBox2.Text = "测试结果";
             // 
             // rtbTo
             // 
             this.rtbTo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtbTo.Location = new System.Drawing.Point(3, 17);
             this.rtbTo.Name = "rtbTo";
-            this.rtbTo.Size = new System.Drawing.Size(247, 356);
+            this.rtbTo.Size = new System.Drawing.Size(260, 322);
             this.rtbTo.TabIndex = 0;
             this.rtbTo.Text = "";
             this.rtbTo.WordWrap = false;
@@ -146,12 +151,57 @@
             this.btnHelpBuild.UseVisualStyleBackColor = true;
             this.btnHelpBuild.Click += new System.EventHandler(this.btnHelpBuild_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 46);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 12);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "编码文件:";
+            // 
+            // txbFilePath
+            // 
+            this.txbFilePath.Location = new System.Drawing.Point(73, 40);
+            this.txbFilePath.Name = "txbFilePath";
+            this.txbFilePath.Size = new System.Drawing.Size(423, 21);
+            this.txbFilePath.TabIndex = 9;
+            // 
+            // btnFileSelect
+            // 
+            this.btnFileSelect.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnFileSelect.Location = new System.Drawing.Point(502, 39);
+            this.btnFileSelect.Name = "btnFileSelect";
+            this.btnFileSelect.Size = new System.Drawing.Size(36, 23);
+            this.btnFileSelect.TabIndex = 8;
+            this.btnFileSelect.Text = "..";
+            this.btnFileSelect.UseVisualStyleBackColor = true;
+            this.btnFileSelect.Click += new System.EventHandler(this.btnFileSelect_Click);
+            // 
+            // btnConvertTest
+            // 
+            this.btnConvertTest.Location = new System.Drawing.Point(158, 456);
+            this.btnConvertTest.Name = "btnConvertTest";
+            this.btnConvertTest.Size = new System.Drawing.Size(75, 23);
+            this.btnConvertTest.TabIndex = 11;
+            this.btnConvertTest.Text = "测试编码";
+            this.btnConvertTest.UseVisualStyleBackColor = true;
+            this.btnConvertTest.Click += new System.EventHandler(this.btnConvertTest_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // SelfDefiningConverterForm
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.Dialog;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(553, 491);
+            this.Controls.Add(this.btnConvertTest);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txbFilePath);
+            this.Controls.Add(this.btnFileSelect);
             this.Controls.Add(this.btnHelpBuild);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
@@ -189,5 +239,10 @@
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnHelpBuild;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txbFilePath;
+        private System.Windows.Forms.Button btnFileSelect;
+        private System.Windows.Forms.Button btnConvertTest;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

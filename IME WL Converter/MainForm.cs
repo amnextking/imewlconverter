@@ -60,6 +60,7 @@ namespace Studyzy.IMEWLConverter
             cbxTo.Items.Add(ConstantString.BAIDU_SHOUJI);
             cbxTo.Items.Add(ConstantString.QQ_SHOUJI);
             cbxTo.Items.Add(ConstantString.IFLY_IME);
+            cbxTo.Items.Add(ConstantString.SELF_DEFINING);
             cbxTo.Items.Add(ConstantString.WORD_ONLY);
         }
 
@@ -95,6 +96,8 @@ namespace Studyzy.IMEWLConverter
                     return new MsPinyin();
                 case ConstantString.XIAOXIAO:
                     return new Xiaoxiao();
+                case ConstantString.SELF_DEFINING:
+                    return new SelfDefining();
                 default:
                     throw new ArgumentException("导出词库的输入法错误");
             }
@@ -165,8 +168,8 @@ namespace Studyzy.IMEWLConverter
         private int maxLength = 9999;
         private int minLength = 1;
         private bool streamExport;
-        private ParsePattern userSetPattern;
-
+        private ParsePattern fromUserSetPattern;
+        private ParsePattern toUserSetPattern;
         private void btnOpenFileDialog_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -207,7 +210,11 @@ namespace Studyzy.IMEWLConverter
             export = GetExportInterface(cbxTo.Text);
             if (import is SelfDefining)
             {
-                ((SelfDefining) import).UserDefiningPattern = userSetPattern;
+                ((SelfDefining) import).UserDefiningPattern = fromUserSetPattern;
+            }
+            if (export is SelfDefining)
+            {
+                ((SelfDefining)export).UserDefiningPattern = toUserSetPattern;
             }
             if (streamExport)
             {
@@ -304,7 +311,7 @@ namespace Studyzy.IMEWLConverter
                 }
                 else //选了自定义
                 {
-                    userSetPattern = selfDefining.SelectedParsePattern;
+                    fromUserSetPattern = selfDefining.SelectedParsePattern;
                 }
             }
 
@@ -482,7 +489,8 @@ namespace Studyzy.IMEWLConverter
             var f = new CreatePinyinWLForm();
             f.Show();
         }
-
+     
+       
         #endregion
 
         private void MainForm_DragEnter(object sender, DragEventArgs e)
@@ -510,6 +518,26 @@ namespace Studyzy.IMEWLConverter
                 cbxFrom.Text = FileOperationHelper.AutoMatchSourceWLType(array.GetValue(0).ToString());
             }
         }
+
+        private void cbxTo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbxTo.Text == ConstantString.SELF_DEFINING) //弹出自定义窗口
+            {
+                var selfDefining = new SelfDefiningConverterForm();
+                DialogResult show = selfDefining.ShowDialog();
+                if (show != DialogResult.OK)
+                {
+                    cbxFrom.SelectedText = "";
+                    return;
+                }
+                else //选了自定义
+                {
+                    toUserSetPattern = selfDefining.SelectedParsePattern;
+                }
+            }
+        }
+
+      
       
     }
 }
