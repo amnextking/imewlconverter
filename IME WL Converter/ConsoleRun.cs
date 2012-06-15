@@ -5,6 +5,8 @@ using Studyzy.IMEWLConverter.IME;
 
 namespace Studyzy.IMEWLConverter
 {
+    using System.Runtime.InteropServices;
+
     class ConsoleRun
     {
         private enum CommandType
@@ -122,44 +124,55 @@ namespace Studyzy.IMEWLConverter
                 format = command.Substring(3);
                 beginImportFile = false;
                 List<int> sort=new List<int>();
-                foreach (char c in format)
+                for (int i=0;i<3;i++)
                 {
+                    var c = format[i];
                     sort.Add(Convert.ToInt32(c));
                 }
                 pattern.Sort = sort;
-                return CommandType.Format;
-            }
-            if (command.StartsWith("-s:"))//split
-            {
-                pattern.PinyinSplitString = command.Substring(3);
-                beginImportFile = false;
-                return CommandType.Format;
-            }
-            if (command.StartsWith("-S:"))//Split
-            {
-                pattern.SplitString = command.Substring(3);
-                beginImportFile = false;
-                return CommandType.Format;
-            }
-            if (command.StartsWith("-t:"))//trim
-            {
-                var t = command.Substring(3);
+                pattern.PinyinSplitString = format[3].ToString();
+                pattern.SplitString = format[4].ToString();
+                var t = format[5].ToString().ToLower();
                 beginImportFile = false;
                 if (t == "l") pattern.PinyinSplitType = BuildType.LeftContain;
                 if (t == "r") pattern.PinyinSplitType = BuildType.RightContain;
                 if (t == "b") pattern.PinyinSplitType = BuildType.FullContain;
                 if (t == "n") pattern.PinyinSplitType = BuildType.None;
+                pattern.ContainPinyin = (format[6].ToString().ToLower() == "y");
+                pattern.ContainCipin = (format[8].ToString().ToLower() == "y");
+                return CommandType.Format;
+            }
+            //if (command.StartsWith("-s:"))//split
+            //{
+            //    pattern.PinyinSplitString = command.Substring(3);
+            //    beginImportFile = false;
+            //    return CommandType.Format;
+            //}
+            //if (command.StartsWith("-S:"))//Split
+            //{
+            //    pattern.SplitString = command.Substring(3);
+            //    beginImportFile = false;
+            //    return CommandType.Format;
+            //}
+            //if (command.StartsWith("-t:"))//trim
+            //{
+            //    var t = command.Substring(3);
+            //    beginImportFile = false;
+            //    if (t == "l") pattern.PinyinSplitType = BuildType.LeftContain;
+            //    if (t == "r") pattern.PinyinSplitType = BuildType.RightContain;
+            //    if (t == "b") pattern.PinyinSplitType = BuildType.FullContain;
+            //    if (t == "n") pattern.PinyinSplitType = BuildType.None;
 
-                return CommandType.Format;
-            }
-            if (command.StartsWith("-d:"))//display
-            {
-                var d = command.Substring(3);
-                beginImportFile = false;
-                pattern.ContainPinyin = (d[1].ToString().ToUpper() == "Y");
-                pattern.ContainCipin = (d[2].ToString().ToUpper() == "Y");
-                return CommandType.Format;
-            }
+            //    return CommandType.Format;
+            //}
+            //if (command.StartsWith("-d:"))//display
+            //{
+            //    var d = command.Substring(3);
+            //    beginImportFile = false;
+            //    pattern.ContainPinyin = (d[1].ToString().ToUpper() == "Y");
+            //    pattern.ContainCipin = (d[2].ToString().ToUpper() == "Y");
+            //    return CommandType.Format;
+            //}
             if (beginImportFile )
             {
                 importPaths.Add(command);
@@ -258,6 +271,7 @@ namespace Studyzy.IMEWLConverter
         {
             Console.WriteLine("-i:输入的词库类型 词库路径1 词库路径2 词库路径3 -o:输出的词库类型 输出词库路径 -c:编码文件路径");
             Console.WriteLine("输入和输出的词库类型如下：");
+            ConsoleColour.SetForeGroundColour(ConsoleColour.ForeGroundColour.Green);
             Console.WriteLine(ConstantString.SOUGOU_PINYIN_C + "\t" + ConstantString.SOUGOU_PINYIN);
             Console.WriteLine(ConstantString.GOOGLE_PINYIN_C+ "\t"+ConstantString.GOOGLE_PINYIN);
             Console.WriteLine(ConstantString.BAIDU_SHOUJI_C + "\t" + ConstantString.BAIDU_SHOUJI);
@@ -276,16 +290,89 @@ namespace Studyzy.IMEWLConverter
             Console.WriteLine(ConstantString.QQ_SHOUJI_C + "\t" + ConstantString.QQ_SHOUJI);
             Console.WriteLine(ConstantString.SELF_DEFINING_C + "\t" + ConstantString.SELF_DEFINING);
             Console.WriteLine("");
-            Console.WriteLine("例如要将C:\\test.scel的搜狗细胞词库转换为D:\\gg.txt的谷歌拼音词库，命令为：");
-            Console.WriteLine("深蓝词库转换.exe -i:"+ConstantString.SOUGOU_XIBAO_SCEL_C+" C:\\test.scel -o:"+ConstantString.GOOGLE_PINYIN_C+" D:\\gg.txt");
-            Console.WriteLine("自定义格式的参数如下：");
-            Console.WriteLine("-f:213 这里是设置汉字、拼音和词频的顺序，213表示1拼音2汉字3词频，必须要有3个");
-            Console.WriteLine("-s:, 这里是设置拼音之间的分隔符，用逗号分割");
-            Console.WriteLine("-S:\" \" 这里是设置汉字拼音词频之间的分隔符，用空格分割");
-            Console.WriteLine("-t:l 这里是设置拼音分隔符的位置，有lrbn四个选项，l表示左包含，r表示右包含，b表示两边都包含，n表示两边都不包含");
-            Console.WriteLine("-d:YYN 这里是设置汉字拼音词频这3个是否显示，Y表示显示，N表示不显示，这里YYN表示显示汉字和拼音，不显示词频");
+            ConsoleColour.SetForeGroundColour(ConsoleColour.ForeGroundColour.White);
+            Console.WriteLine("例如要将C:\\test.scel和C:\\a.scel的搜狗细胞词库转换为D:\\gg.txt的谷歌拼音词库，命令为：");
+            ConsoleColour.SetForeGroundColour(ConsoleColour.ForeGroundColour.Blue);
+            Console.WriteLine("深蓝词库转换.exe -i:" + ConstantString.SOUGOU_XIBAO_SCEL_C + " C:\\test.scel C:\\a.scel -o:" + ConstantString.GOOGLE_PINYIN_C + " D:\\gg.txt");
+            ConsoleColour.SetForeGroundColour(ConsoleColour.ForeGroundColour.White);
+            Console.WriteLine("自定义格式的参数如下:");
+            Console.WriteLine("-f:213,|byyn");
+            Console.WriteLine("213 这里是设置拼音、汉字和词频的顺序，213表示1汉字2拼音3词频，必须要有3个");
+            Console.WriteLine(", 这里是设置拼音之间的分隔符，用逗号分割");
+            Console.WriteLine("| 这里是设置汉字拼音词频之间的分隔符，用|分割");
+            Console.WriteLine("b 这里是设置拼音分隔符的位置，有lrbn四个选项，l表示左包含，r表示右包含，b表示两边都包含，n表示两边都不包含");
+            Console.WriteLine("yyn 这里是设置拼音汉字词频这3个是否显示，y表示显示，b表示不显示，这里yyn表示显示拼音和汉字，不显示词频");
+            Console.WriteLine("例如要将一个qpyd词库转换为自定义格式的文本词库，拼音之间逗号分割，拼音和词之间空格分割，不显示词频，同时使用自定义的编码文件code.txt命令如下：");
+            ConsoleColour.SetForeGroundColour(ConsoleColour.ForeGroundColour.Blue);
+            Console.WriteLine("深蓝词库转换.exe -i:qpyd D:\\a.qpyd -o:self D:\\zy.txt \"-f:213, nyyn\" -c:D:\\code.txt");
+            ConsoleColour.SetForeGroundColour(ConsoleColour.ForeGroundColour.White);
         }
 
      
+    }
+    /// <summary>
+    /// Static class for console colour manipulation.
+    /// </summary>
+    class ConsoleColour
+    {
+        // constants for console streams
+        const int STD_INPUT_HANDLE = -10;
+        const int STD_OUTPUT_HANDLE = -11;
+        const int STD_ERROR_HANDLE = -12;
+        [DllImport("Kernel32.dll")]
+        private static extern IntPtr GetStdHandle
+        (
+            int nStdHandle // input, output, or error device
+        );
+        [DllImportAttribute("Kernel32.dll")]
+        private static extern bool SetConsoleTextAttribute
+        (
+            IntPtr hConsoleOutput, // handle to screen buffer
+            int wAttributes    // text and background colors
+        );
+        // class can not be created, so we can set colours
+        // without a variable
+        private ConsoleColour() { }
+        public static bool SetForeGroundColour()
+        {
+            // default to a white-grey
+            return SetForeGroundColour(ForeGroundColour.Grey);
+        }
+        public static bool SetForeGroundColour(
+            ForeGroundColour foreGroundColour)
+        {
+            // default to a bright white-grey
+            return SetForeGroundColour(foreGroundColour, true);
+        }
+        public static bool SetForeGroundColour(
+            ForeGroundColour foreGroundColour,
+            bool brightColours)
+        {
+            // get the current console handle
+            IntPtr nConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+            int colourMap;
+            // if we want bright colours OR it with white
+            if (brightColours)
+                colourMap = (int)foreGroundColour |
+                    (int)ForeGroundColour.White;
+            else
+                colourMap = (int)foreGroundColour;
+            // call the api and return the result
+            return SetConsoleTextAttribute(nConsole, colourMap);
+        }
+        // colours that can be set
+        [Flags]
+        public enum ForeGroundColour
+        {
+            Black = 0x0000,
+            Blue = 0x0001,
+            Green = 0x0002,
+            Cyan = 0x0003,
+            Red = 0x0004,
+            Magenta = 0x0005,
+            Yellow = 0x0006,
+            Grey = 0x0007,
+            White = 0x008
+        }
     }
 }
