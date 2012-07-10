@@ -15,6 +15,18 @@ namespace Studyzy.IMEWLConverter
             InitializeComponent();
         }
 
+        private bool isImport = true;
+        public bool IsImport
+        {
+            get { return isImport; }
+            set { isImport = value;
+            
+                btnParse.Visible = isImport;
+                btnConvertTest.Visible = !isImport;
+            
+            }
+        }
+
         public List<string> FromWords
         {
             get { return fromWords; }
@@ -43,12 +55,19 @@ namespace Studyzy.IMEWLConverter
                 return;
             }
             rtbTo.Clear();
-            string[] fromList = rtbFrom.Text.Split(new[] {'\r', '\n'}, StringSplitOptions.RemoveEmptyEntries);
-            foreach (string str in fromList)
+            try
             {
-                string s = str.Trim();
-                WordLibrary wl = SelectedParsePattern.BuildWordLibrary(s);
-                rtbTo.AppendText(wl.ToDisplayString() + "\r\n");
+                string[] fromList = rtbFrom.Text.Split(new[] {'\r', '\n'}, StringSplitOptions.RemoveEmptyEntries);
+                foreach (string str in fromList)
+                {
+                    string s = str.Trim();
+                    WordLibrary wl = SelectedParsePattern.BuildWordLibrary(s);
+                    rtbTo.AppendText(wl.ToDisplayString() + "\r\n");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("无法识别源内容，请确认源内容与自定义规则匹配！");
             }
         }
 

@@ -230,6 +230,8 @@ namespace Studyzy.IMEWLConverter
                     return new BaiduShouji();
                 case ConstantString.BAIDU_BDICT_C:
                     return new BaiduPinyinBdict();
+                case ConstantString.BAIDU_BCD_C:
+                    return new BaiduPinyinBdict();
                 case ConstantString.QQ_SHOUJI_C:
                     return new QQShouji();
                 case ConstantString.SOUGOU_PINYIN_C:
@@ -276,6 +278,7 @@ namespace Studyzy.IMEWLConverter
             Console.WriteLine(ConstantString.GOOGLE_PINYIN_C+ "\t"+ConstantString.GOOGLE_PINYIN);
             Console.WriteLine(ConstantString.BAIDU_SHOUJI_C + "\t" + ConstantString.BAIDU_SHOUJI);
             Console.WriteLine(ConstantString.BAIDU_BDICT_C + "\t" + ConstantString.BAIDU_BDICT);
+            Console.WriteLine(ConstantString.BAIDU_BCD_C + "\t" + ConstantString.BAIDU_BCD);
             Console.WriteLine(ConstantString.SOUGOU_XIBAO_SCEL_C + "\t" + ConstantString.SOUGOU_XIBAO_SCEL);
             Console.WriteLine(ConstantString.PINYIN_JIAJIA_C + "\t" + ConstantString.PINYIN_JIAJIA);
             Console.WriteLine(ConstantString.ZIGUANG_PINYIN_C + "\t" + ConstantString.ZIGUANG_PINYIN);

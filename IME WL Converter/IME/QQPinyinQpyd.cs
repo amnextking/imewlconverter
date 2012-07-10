@@ -100,7 +100,10 @@ namespace Studyzy.IMEWLConverter.IME
             wl.Count = count;
             wl.PinYin = py.Split(new[] { '\'' }, StringSplitOptions.RemoveEmptyEntries);
             var wll = new WordLibraryList();
-            wll.Add(wl);
+            if (!string.IsNullOrEmpty(py))
+            {
+                wll.Add(wl);
+            }
             return wll;
         }
 

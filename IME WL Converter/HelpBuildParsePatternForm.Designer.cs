@@ -284,7 +284,7 @@
             this.Name = "HelpBuildParsePatternForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HelpBuildParsePatternForm";
+            this.Text = "自定义格式配置";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.HelpBuildParsePatternForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numOrderPinyin)).EndInit();

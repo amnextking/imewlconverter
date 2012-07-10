@@ -118,6 +118,7 @@
     </Compile>
     <Compile Include="IME\BaiduPinyinBdict.cs" />
     <Compile Include="IME\BaiduShouji.cs" />
+    <Compile Include="IME\BaiduShoujiBcd.cs" />
     <Compile Include="IME\iFlyIME.cs" />
     <Compile Include="IME\MsPinyin.cs" />
     <Compile Include="IME\QQPinyinQpyd.cs" />

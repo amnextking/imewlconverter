@@ -24,7 +24,7 @@ namespace Studyzy.IMEWLConverter
             helpString += "1.5版增加了百度分类词库bdict格式的转换，增加了命令行调用功能。";
             helpString += "1.6版修改了搜狗细胞词库解析和QQ手机词库解析的函数，支持最新格式。";
             helpString += "1.7版增加了对QQ输入法分类词库(qpyd格式)的解析，可像搜狗细胞词库一样的将QQ分类词库导为文本了！";
-            helpString += "1.8版增加了自定义编码的输出，增强了命令行功能。实现了小小输入法和微软拼音输入法的词库功能，但是由于输入法的原因，可能会导入失败。";
+            helpString += "1.8版增加了自定义编码的输出，增强了命令行功能。实现了百度手机分类词库（bcd格式）、小小输入法和微软拼音输入法的词库功能，但是由于输入法的原因，MS拼音可能会导入失败。";
             helpString += "有任何问题和建议请联系我：studyzy@163.com\r\n";
             helpString += "\r\nPS:QQ分类词库（QPYD格式）的词库在keke的帮助下实现了解析，特此表示感谢。触宝输入法词库和bcd格式词库还无法生成，谁有办法还请帮帮忙，指点一下！";
             richTextBox1.Text = helpString;

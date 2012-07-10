@@ -37,6 +37,7 @@ namespace Studyzy.IMEWLConverter
             cbxFrom.Items.Add(ConstantString.PINYIN_JIAJIA);
             cbxFrom.Items.Add(ConstantString.ZHENGMA);
             cbxFrom.Items.Add(ConstantString.BAIDU_BDICT);
+            cbxFrom.Items.Add(ConstantString.BAIDU_BCD);
             cbxFrom.Items.Add(ConstantString.MS_PINYIN);
 
             cbxFrom.Items.Add(ConstantString.BAIDU_SHOUJI);
@@ -111,6 +112,8 @@ namespace Studyzy.IMEWLConverter
                     return new BaiduShouji();
                 case ConstantString.BAIDU_BDICT:
                     return new BaiduPinyinBdict();
+                case ConstantString.BAIDU_BCD:
+                    return new BaiduShoujiBcd();
                 case ConstantString.QQ_SHOUJI:
                     return new QQShouji();
                 case ConstantString.SOUGOU_PINYIN:
@@ -524,6 +527,7 @@ namespace Studyzy.IMEWLConverter
             if (cbxTo.Text == ConstantString.SELF_DEFINING) //弹出自定义窗口
             {
                 var selfDefining = new SelfDefiningConverterForm();
+                selfDefining.IsImport = false;
                 DialogResult show = selfDefining.ShowDialog();
                 if (show != DialogResult.OK)
                 {
