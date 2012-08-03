@@ -92,7 +92,7 @@
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.Filter = "文本文件|*.txt|细胞词库|*.scel|QQ分类词库|*.qpyd|所有文件|*.*";
+            this.openFileDialog1.Filter = "文本文件|*.txt|细胞词库|*.scel|QQ分类词库|*.qpyd|百度分类词库|*.bdict|所有文件|*.*";
             this.openFileDialog1.Multiselect = true;
             // 
             // saveFileDialog1
@@ -116,7 +116,7 @@
             this.cbxFrom.FormattingEnabled = true;
             this.cbxFrom.Location = new System.Drawing.Point(12, 58);
             this.cbxFrom.Name = "cbxFrom";
-            this.cbxFrom.Size = new System.Drawing.Size(121, 20);
+            this.cbxFrom.Size = new System.Drawing.Size(131, 20);
             this.cbxFrom.TabIndex = 4;
             this.cbxFrom.SelectedIndexChanged += new System.EventHandler(this.cbxFrom_SelectedIndexChanged);
             // 
@@ -126,14 +126,14 @@
             this.cbxTo.FormattingEnabled = true;
             this.cbxTo.Location = new System.Drawing.Point(194, 58);
             this.cbxTo.Name = "cbxTo";
-            this.cbxTo.Size = new System.Drawing.Size(121, 20);
+            this.cbxTo.Size = new System.Drawing.Size(131, 20);
             this.cbxTo.TabIndex = 4;
             this.cbxTo.SelectedIndexChanged += new System.EventHandler(this.cbxTo_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(149, 61);
+            this.label1.Location = new System.Drawing.Point(155, 61);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 12);
             this.label1.TabIndex = 5;

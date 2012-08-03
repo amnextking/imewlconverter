@@ -9,8 +9,8 @@ namespace Studyzy.IMEWLConverter
     public class BaiduShoujiBcd : IWordLibraryImport
     {
        
-       private List<string> Fenmu = new List<string>() { "c", "d", "b", "f", "g", "h", "ch", "j", "k", "l", "m", "n", "", "p", "q", "r", "s", "t", "sh", "zh", "w", "x", "y", "z" };
-       private List<string> Yunmu = new List<string>() { "uang", "iang", "ong", "ang", "eng", "ian", "iao", "ing", "ong", "uai", "uan", "ai", "an", "ao", "ei", "en", "er", "ua", "ie", "in", "iu", "ou", "ia", "ue", "ui", "un", "uo", "a", "e", "i", "a", "u", "v" };
+       private List<string> Shengmu = new List<string>() { "c", "d", "b", "f", "g", "h", "ch", "j", "k", "l", "m", "n", "", "p", "q", "r", "s", "t", "sh", "zh", "w", "x", "y", "z" };
+       private List<string> Yunmu = new List<string>() { "uang", "iang", "iong", "ang", "eng", "ian", "iao", "ing", "ong", "uai", "uan", "ai", "an", "ao", "ei", "en", "er", "ua", "ie", "in", "iu", "ou", "ia", "ue", "ui", "un", "uo", "a", "e", "i", "o", "u", "v" };
         #region IWordLibraryImport Members
 
        public int CountWord { get; set; }
@@ -88,7 +88,7 @@ namespace Studyzy.IMEWLConverter
                 temp = new byte[2];
                 fs.Read(temp, 0, 2);
 
-               pinyinList.Add(Fenmu[temp[0]]+Yunmu[temp[1]]);
+               pinyinList.Add(Shengmu[temp[0]]+Yunmu[temp[1]]);
             }
             wordLibrary.PinYin = pinyinList.ToArray();
             temp = new byte[2*len];
