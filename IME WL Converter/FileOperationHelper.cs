@@ -48,6 +48,12 @@ namespace Studyzy.IMEWLConverter
             {
                 return ConstantString.SOUGOU_PINYIN;
             }
+            reg = new Regex(@"^([a-z]+')+[a-z]+\,[\u4E00-\u9FA5]+$");
+            if (reg.IsMatch(example))
+            {
+                return ConstantString.FIT;
+            }
+
             reg = new Regex(@"^[a-z']+\s[\u4E00-\u9FA5]+\s\d+$");
             if (reg.IsMatch(example))
             {

@@ -28,6 +28,7 @@ namespace Studyzy.IMEWLConverter
         public const string ZHENGMA = "郑码";
         public const string MS_PINYIN = "微软拼音2010";
         public const string XIAOXIAO = "小小输入法";
+        public const string FIT = "FIT输入法";
 
         /// <summary>
         /// 注音文件的完整路径
@@ -56,5 +57,6 @@ namespace Studyzy.IMEWLConverter
         public const string IFLY_IME_C = "ifly";
         public const string MS_PINYIN_C = "mspy";
         public const string XIAOXIAO_C = "xxpy";
+        public const string FIT_C = "fit";
     }
 }

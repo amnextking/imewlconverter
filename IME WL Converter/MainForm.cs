@@ -39,6 +39,7 @@ namespace Studyzy.IMEWLConverter
             cbxFrom.Items.Add(ConstantString.BAIDU_BDICT);
             cbxFrom.Items.Add(ConstantString.BAIDU_BCD);
             cbxFrom.Items.Add(ConstantString.MS_PINYIN);
+            cbxFrom.Items.Add(ConstantString.FIT);
 
             cbxFrom.Items.Add(ConstantString.BAIDU_SHOUJI);
             cbxFrom.Items.Add(ConstantString.QQ_SHOUJI);
@@ -57,6 +58,7 @@ namespace Studyzy.IMEWLConverter
             cbxTo.Items.Add(ConstantString.PINYIN_JIAJIA);
             cbxTo.Items.Add(ConstantString.MS_PINYIN);
             cbxTo.Items.Add(ConstantString.XIAOXIAO);
+            cbxTo.Items.Add(ConstantString.FIT);
 
             cbxTo.Items.Add(ConstantString.BAIDU_SHOUJI);
             cbxTo.Items.Add(ConstantString.QQ_SHOUJI);
@@ -99,6 +101,8 @@ namespace Studyzy.IMEWLConverter
                     return new Xiaoxiao();
                 case ConstantString.SELF_DEFINING:
                     return new SelfDefining();
+                case ConstantString.FIT:
+                    return new FitInput();
                 default:
                     throw new ArgumentException("导出词库的输入法错误");
             }
@@ -148,7 +152,8 @@ namespace Studyzy.IMEWLConverter
                     return new iFlyIME();
                 case ConstantString.MS_PINYIN:
                     return new MsPinyin();
-            
+                case ConstantString.FIT:
+                    return new FitInput();
                 default:
                     throw new ArgumentException("导入词库的输入法错误");
             }
