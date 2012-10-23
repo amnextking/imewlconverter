@@ -167,6 +167,7 @@ namespace Studyzy.IMEWLConverter
         private bool ignoreLongWord;
         private bool ignoreSingleWord;
         private int ignoreWordLength = 5;
+        private bool mergeTo1File = true;
         private IWordLibraryImport import;
         private int maxLength = 9999;
         private int minLength = 1;
@@ -492,8 +493,11 @@ namespace Studyzy.IMEWLConverter
             var f = new CreatePinyinWLForm();
             f.Show();
         }
-     
-       
+
+        private void toolStripMenuItemMergeToOneFile_Click(object sender, EventArgs e)
+        {
+            mergeTo1File = toolStripMenuItemMergeToOneFile.Checked;
+        }
         #endregion
 
         private void MainForm_DragEnter(object sender, DragEventArgs e)
@@ -540,6 +544,8 @@ namespace Studyzy.IMEWLConverter
                 }
             }
         }
+
+      
 
       
       

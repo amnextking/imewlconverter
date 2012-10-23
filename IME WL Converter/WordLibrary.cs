@@ -91,6 +91,10 @@ namespace Studyzy.IMEWLConverter
         {
             return "汉字：" + word + "；拼音：" + PinYinString + "；词频：" + count;
         }
+        public override string ToString()
+        {
+            return "WordLibrary 汉字：" + word + "；拼音：" + PinYinString + "；词频：" + count;
+        }
     }
 
     public enum BuildType

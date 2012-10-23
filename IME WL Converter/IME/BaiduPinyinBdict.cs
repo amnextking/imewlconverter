@@ -21,16 +21,23 @@ namespace Studyzy.IMEWLConverter
        }
         public WordLibraryList Import(string path)
         {
+            int endPosition = 0;
             WordLibraryList wordLibraryList=new WordLibraryList();
             var fs = new FileStream(path, FileMode.Open, FileAccess.Read);
+            fs.Position = 0x60;
+            endPosition = BinFileHelper.ReadInt32(fs);
             fs.Position = 0x350;
             CurrentStatus = 0;
             do
             {
-                CurrentStatus++;
+                //CurrentStatus++;
                 try
                 {
                     var wl = ImportWord(fs);
+                    if (wl == null)
+                    {
+                        break;
+                    }
                     if(wl.Word!=""&&wl.PinYin.Length>0)
                     {
                         wordLibraryList.Add(wl);
@@ -40,8 +47,8 @@ namespace Studyzy.IMEWLConverter
                 {
                     Debug.WriteLine(ex.Message);
                 }
-            } 
-            while (fs.Position < fs.Length);
+            }
+            while (fs.Position!=endPosition);//< fs.Length
             fs.Close();
             //StreamWriter sw=new StreamWriter("D:\\py.txt",true,Encoding.Unicode);
             //SinglePinyin singlePinyin=new SinglePinyin();
@@ -87,6 +94,7 @@ namespace Studyzy.IMEWLConverter
             if (len == 0)
             {
                 Debug.WriteLine(fs.Position);
+                return null;
                 return SpecialWord(fs);
             }
             List<string> pinyinList=new List<string>();

@@ -61,6 +61,7 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.toolStripMenuItemMergeToOneFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -161,7 +162,8 @@
             this.toolStripComboBoxIgnoreWordLength,
             this.toolStripSeparator2,
             this.toolStripMenuItemExportDirectly,
-            this.toolStripMenuItemStreamExport});
+            this.toolStripMenuItemStreamExport,
+            this.toolStripMenuItemMergeToOneFile});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(68, 21);
             this.toolStripMenuItem1.Text = "高级设置";
@@ -321,6 +323,15 @@
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
+            // toolStripMenuItemMergeToOneFile
+            // 
+            this.toolStripMenuItemMergeToOneFile.Checked = true;
+            this.toolStripMenuItemMergeToOneFile.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.toolStripMenuItemMergeToOneFile.Name = "toolStripMenuItemMergeToOneFile";
+            this.toolStripMenuItemMergeToOneFile.Size = new System.Drawing.Size(196, 22);
+            this.toolStripMenuItemMergeToOneFile.Text = "合并多词库到一个文件";
+            this.toolStripMenuItemMergeToOneFile.Click += new System.EventHandler(this.toolStripMenuItemMergeToOneFile_Click);
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -388,6 +399,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemStreamExport;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemCreatePinyinWL;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemMergeToOneFile;
     }
 }
 
