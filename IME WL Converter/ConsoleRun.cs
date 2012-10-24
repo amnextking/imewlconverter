@@ -215,6 +215,10 @@ namespace Studyzy.IMEWLConverter
                     return new MsPinyin();
                 case ConstantString.XIAOXIAO_C:
                     return new Xiaoxiao();
+                case ConstantString.RIME_C:
+                    return new Rime();
+                case ConstantString.FIT_C:
+                    return new FitInput();
                 case ConstantString.SELF_DEFINING_C:
                     return new SelfDefining();
                 default:
@@ -264,7 +268,10 @@ namespace Studyzy.IMEWLConverter
                     return new TouchPal();
                 case ConstantString.MS_PINYIN_C:
                     return new MsPinyin();
-             
+                case ConstantString.RIME_C:
+                    return new Rime();
+                case ConstantString.FIT_C:
+                    return new FitInput();
                 default:
                     throw new ArgumentException("导入词库的输入法错误");
             }

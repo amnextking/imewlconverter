@@ -29,6 +29,7 @@ namespace Studyzy.IMEWLConverter
         public const string MS_PINYIN = "微软拼音2010";
         public const string XIAOXIAO = "小小输入法";
         public const string FIT = "FIT输入法";
+        public const string RIME = "Rime(小狼毫)";
 
         /// <summary>
         /// 注音文件的完整路径
@@ -58,5 +59,6 @@ namespace Studyzy.IMEWLConverter
         public const string MS_PINYIN_C = "mspy";
         public const string XIAOXIAO_C = "xxpy";
         public const string FIT_C = "fit";
+        public const string RIME_C = "rime";
     }
 }
