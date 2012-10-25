@@ -7,17 +7,23 @@ using Studyzy.IMEWLConverter.IME;
 namespace Studyzy.IMEWLConverter.Test
 {
     [TestFixture]
-    class QQPinyinTest : BaseTest
+    class RimeTest : BaseTest
     {
-        [SetUp]
+        [TestFixtureSetUp]
         public override void InitData()
         {
-            exporter = new QQPinyin();
-            importer = new QQPinyin();
+            exporter = new Rime();
+            importer = new Rime();
         }
         protected override string StringData
         {
             get { throw new NotImplementedException(); }
+        }
+        [TestCase("luna_pinyin_export.txt")]
+        public void TestImport(string path)
+        {
+            var wl = importer.Import(path);
+            Assert.Greater(wl.Count,0);
         }
     }
 }

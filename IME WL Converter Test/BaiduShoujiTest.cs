@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using Studyzy.IMEWLConverter;
 using NUnit.Framework;
+using Studyzy.IMEWLConverter.IME;
+
 namespace Studyzy.IMEWLConverter.Test
 {
     [TestFixture]

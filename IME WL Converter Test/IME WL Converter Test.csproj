@@ -40,6 +40,8 @@
     <Compile Include="BaiduPinyinTest.cs" />
     <Compile Include="BaiduShoujiTest.cs" />
     <Compile Include="BaseTest.cs" />
+    <Compile Include="RimeTest.cs" />
+    <Compile Include="SougouPinyinBinTest.cs" />
     <Compile Include="GooglePinyinTest.cs" />
     <Compile Include="NoPinyinWordOnlyTest.cs" />
     <Compile Include="PinyinJiaJiaTest.cs" />
@@ -64,6 +66,12 @@
     <Content Include="Lib\nunit.framework.dll" />
     <Content Include="Lib\nunit.framework.xml" />
     <Content Include="Lib\nunit.util.dll" />
+    <Content Include="luna_pinyin_export.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="sougoubak.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="movie.bdict">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -6,14 +6,13 @@ using Studyzy.IMEWLConverter.IME;
 
 namespace Studyzy.IMEWLConverter.Test
 {
-    [TestFixture]
-    class QQPinyinTest : BaseTest
+    class SougouPinyinTest:BaseTest
     {
         [SetUp]
         public override void InitData()
         {
-            exporter = new QQPinyin();
-            importer = new QQPinyin();
+            importer = new SougouPinyin();
+            exporter = new SougouPinyin();
         }
         protected override string StringData
         {

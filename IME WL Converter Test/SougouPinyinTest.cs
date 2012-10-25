@@ -2,20 +2,27 @@
 using System.Collections.Generic;
 using System.Text;
 using NUnit.Framework;
+using Studyzy.IMEWLConverter.IME;
 
 namespace Studyzy.IMEWLConverter.Test
 {
-    class SougouPinyinTest:BaseTest
+    [TestFixture]
+    class SougouPinyinBinTest:BaseTest
     {
-        [SetUp]
+        [TestFixtureSetUp]
         public override void InitData()
         {
-            importer = new SougouPinyin();
-            exporter = new SougouPinyin();
+            importer = new SougouPinyinBin();
         }
         protected override string StringData
         {
             get { throw new NotImplementedException(); }
+        }
+        [TestCase("sougoubak.bin")]
+        public void TestParseBinFile(string filePath)
+        {
+            var lib = importer.Import(filePath);
+            Assert.Greater(lib.Count,0);
         }
     }
 }
