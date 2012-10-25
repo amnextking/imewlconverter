@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Studyzy.IMEWLConverter.IME
 {
-    class iFlyIME:NoPinyinWordOnly
+    public class iFlyIME:NoPinyinWordOnly
     {
         public override Encoding Encoding
         {

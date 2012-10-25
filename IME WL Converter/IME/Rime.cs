@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Studyzy.IMEWLConverter.IME
 {
-    class Rime : IWordLibraryTextImport, IWordLibraryExport
+    public class Rime : IWordLibraryTextImport, IWordLibraryExport
     {
         #region IWordLibraryExport 成员
 

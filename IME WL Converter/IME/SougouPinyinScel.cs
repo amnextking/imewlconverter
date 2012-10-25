@@ -4,12 +4,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-namespace Studyzy.IMEWLConverter
+namespace Studyzy.IMEWLConverter.IME
 {
     /// <summary>
     /// 搜狗细胞词库
     /// </summary>
-    internal class SougouPinyinScel : IWordLibraryImport
+    public class SougouPinyinScel : IWordLibraryImport
     {
         #region IWordLibraryImport 成员
 
@@ -124,8 +124,14 @@ namespace Studyzy.IMEWLConverter
                     break;
                 }
             }
-
-
+            StringBuilder s=new StringBuilder();
+            foreach (string value in pyDic.Values)
+            {
+                s.Append(value+ "\",\"");
+            }
+            Debug.WriteLine(s.ToString());
+            
+             
             //fs.Position = 0x2628;
             fs.Position = hzPosition;
        

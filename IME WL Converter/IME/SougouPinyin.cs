@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace Studyzy.IMEWLConverter
+namespace Studyzy.IMEWLConverter.IME
 {
     public class SougouPinyin : IWordLibraryExport, IWordLibraryTextImport
     {

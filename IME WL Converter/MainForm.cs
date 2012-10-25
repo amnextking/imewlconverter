@@ -27,6 +27,7 @@ namespace Studyzy.IMEWLConverter
         {
             cbxFrom.Items.Add(ConstantString.SOUGOU_PINYIN);
             cbxFrom.Items.Add(ConstantString.SOUGOU_XIBAO_SCEL);
+            cbxFrom.Items.Add(ConstantString.SOUGOU_PINYIN_BIN);
             cbxFrom.Items.Add(ConstantString.SOUGOU_WUBI);
             cbxFrom.Items.Add(ConstantString.QQ_PINYIN);
             cbxFrom.Items.Add(ConstantString.QQ_PINYIN_QPYD);
@@ -79,6 +80,7 @@ namespace Studyzy.IMEWLConverter
                     return new QQShouji();
                 case ConstantString.SOUGOU_PINYIN:
                     return new SougouPinyin();
+               
                 case ConstantString.SOUGOU_WUBI:
                     return new SougouWubi();
                 case ConstantString.QQ_PINYIN:
@@ -126,6 +128,8 @@ namespace Studyzy.IMEWLConverter
                     return new QQShouji();
                 case ConstantString.SOUGOU_PINYIN:
                     return new SougouPinyin();
+                case ConstantString.SOUGOU_PINYIN_BIN:
+                    return new SougouPinyinBin();
                 case ConstantString.SOUGOU_WUBI:
                     return new SougouWubi();
                 case ConstantString.QQ_PINYIN:

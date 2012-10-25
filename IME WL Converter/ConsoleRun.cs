@@ -240,6 +240,8 @@ namespace Studyzy.IMEWLConverter
                     return new QQShouji();
                 case ConstantString.SOUGOU_PINYIN_C:
                     return new SougouPinyin();
+                case ConstantString.SOUGOU_PINYIN_BIN_C:
+                    return new SougouPinyinBin();
                 case ConstantString.SOUGOU_WUBI_C:
                     return new SougouWubi();
                 case ConstantString.QQ_PINYIN_C:
@@ -282,6 +284,7 @@ namespace Studyzy.IMEWLConverter
             Console.WriteLine("输入和输出的词库类型如下：");
             ConsoleColour.SetForeGroundColour(ConsoleColour.ForeGroundColour.Green);
             Console.WriteLine(ConstantString.SOUGOU_PINYIN_C + "\t" + ConstantString.SOUGOU_PINYIN);
+            Console.WriteLine(ConstantString.SOUGOU_PINYIN_BIN_C + "\t" + ConstantString.SOUGOU_PINYIN_BIN);
             Console.WriteLine(ConstantString.GOOGLE_PINYIN_C+ "\t"+ConstantString.GOOGLE_PINYIN);
             Console.WriteLine(ConstantString.BAIDU_SHOUJI_C + "\t" + ConstantString.BAIDU_SHOUJI);
             Console.WriteLine(ConstantString.BAIDU_BDICT_C + "\t" + ConstantString.BAIDU_BDICT);
@@ -290,6 +293,8 @@ namespace Studyzy.IMEWLConverter
             Console.WriteLine(ConstantString.PINYIN_JIAJIA_C + "\t" + ConstantString.PINYIN_JIAJIA);
             Console.WriteLine(ConstantString.ZIGUANG_PINYIN_C + "\t" + ConstantString.ZIGUANG_PINYIN);
             Console.WriteLine(ConstantString.SINA_PINYIN_C + "\t" + ConstantString.SINA_PINYIN);
+            Console.WriteLine(ConstantString.FIT_C + "\t" + ConstantString.FIT);
+            Console.WriteLine(ConstantString.RIME_C + "\t" + ConstantString.RIME);
             Console.WriteLine(ConstantString.WORD_ONLY_C + "\t" + ConstantString.WORD_ONLY);
             Console.WriteLine(ConstantString.XIAOXIAO_C + "\t" + ConstantString.XIAOXIAO);
             Console.WriteLine(ConstantString.TOUCH_PAL_C + "\t" + ConstantString.TOUCH_PAL);

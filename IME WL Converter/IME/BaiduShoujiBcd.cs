@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-namespace Studyzy.IMEWLConverter
+namespace Studyzy.IMEWLConverter.IME
 {
     public class BaiduShoujiBcd : IWordLibraryImport
     {

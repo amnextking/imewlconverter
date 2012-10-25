@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace Studyzy.IMEWLConverter
+namespace Studyzy.IMEWLConverter.IME
 {
 	/// <summary>
 	/// Google拼音输入法
