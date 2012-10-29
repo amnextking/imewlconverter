@@ -219,6 +219,8 @@ namespace Studyzy.IMEWLConverter
                     return new Rime();
                 case ConstantString.FIT_C:
                     return new FitInput();
+                case ConstantString.ENGKOO_PINYIN_C:
+                    return new EngkooPinyin();
                 case ConstantString.SELF_DEFINING_C:
                     return new SelfDefining();
                 default:
@@ -272,6 +274,8 @@ namespace Studyzy.IMEWLConverter
                     return new MsPinyin();
                 case ConstantString.RIME_C:
                     return new Rime();
+                case ConstantString.ENGKOO_PINYIN_C:
+                    return new EngkooPinyin();
                 case ConstantString.FIT_C:
                     return new FitInput();
                 default:
@@ -295,6 +299,7 @@ namespace Studyzy.IMEWLConverter
             Console.WriteLine(ConstantString.SINA_PINYIN_C + "\t" + ConstantString.SINA_PINYIN);
             Console.WriteLine(ConstantString.FIT_C + "\t" + ConstantString.FIT);
             Console.WriteLine(ConstantString.RIME_C + "\t" + ConstantString.RIME);
+            Console.WriteLine(ConstantString.ENGKOO_PINYIN_C + "\t" + ConstantString.ENGKOO_PINYIN);
             Console.WriteLine(ConstantString.WORD_ONLY_C + "\t" + ConstantString.WORD_ONLY);
             Console.WriteLine(ConstantString.XIAOXIAO_C + "\t" + ConstantString.XIAOXIAO);
             Console.WriteLine(ConstantString.TOUCH_PAL_C + "\t" + ConstantString.TOUCH_PAL);

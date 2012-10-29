@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -23,6 +24,28 @@ namespace Studyzy.IMEWLConverter
         	var v=System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
         	this.Text="深蓝词库转换"+ v.Major+"."+v.Minor; 
         }
+        private void InitOpenFileDialogFilter(string select)
+        {
+            var types = new string[]
+                {
+                    "文本文件|*.txt",
+                    "细胞词库|*.scel", 
+                    "QQ分类词库|*.qpyd", 
+                    "百度分类词库|*.bdict", 
+                    "百度分类词库|*.bcd",
+                    "搜狗备份词库|*.bin", 
+                    "所有文件|*.*"
+                };
+            int idx = 0;
+            for (int i = 0; i < types.Length; i++)
+            {
+                if (types[i].Contains(select))
+                    idx = i;
+            }
+            openFileDialog1.Filter = string.Join("|", types);
+            openFileDialog1.FilterIndex = idx;
+        }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             cbxFrom.Items.Add(ConstantString.SOUGOU_PINYIN);
@@ -42,6 +65,7 @@ namespace Studyzy.IMEWLConverter
             cbxFrom.Items.Add(ConstantString.MS_PINYIN);
             cbxFrom.Items.Add(ConstantString.FIT);
             cbxFrom.Items.Add(ConstantString.RIME);
+            cbxFrom.Items.Add(ConstantString.ENGKOO_PINYIN);
 
             cbxFrom.Items.Add(ConstantString.BAIDU_SHOUJI);
             cbxFrom.Items.Add(ConstantString.QQ_SHOUJI);
@@ -62,12 +86,15 @@ namespace Studyzy.IMEWLConverter
             cbxTo.Items.Add(ConstantString.XIAOXIAO);
             cbxTo.Items.Add(ConstantString.FIT);
             cbxTo.Items.Add(ConstantString.RIME);
+            cbxTo.Items.Add(ConstantString.ENGKOO_PINYIN);
 
             cbxTo.Items.Add(ConstantString.BAIDU_SHOUJI);
             cbxTo.Items.Add(ConstantString.QQ_SHOUJI);
             cbxTo.Items.Add(ConstantString.IFLY_IME);
             cbxTo.Items.Add(ConstantString.SELF_DEFINING);
             cbxTo.Items.Add(ConstantString.WORD_ONLY);
+
+            InitOpenFileDialogFilter("");
         }
 
         private IWordLibraryExport GetExportInterface(string str)
@@ -109,6 +136,8 @@ namespace Studyzy.IMEWLConverter
                     return new FitInput();
                 case ConstantString.RIME:
                     return new Rime();
+                case ConstantString.ENGKOO_PINYIN:
+                    return new EngkooPinyin();
                 default:
                     throw new ArgumentException("导出词库的输入法错误");
             }
@@ -164,6 +193,8 @@ namespace Studyzy.IMEWLConverter
                     return new FitInput();
                 case ConstantString.RIME:
                     return new Rime();
+                case ConstantString.ENGKOO_PINYIN:
+                    return new EngkooPinyin();
                 default:
                     throw new ArgumentException("导入词库的输入法错误");
             }

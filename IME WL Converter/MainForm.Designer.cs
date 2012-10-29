@@ -49,6 +49,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemExportDirectly = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemStreamExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemMergeToOneFile = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,7 +62,6 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.toolStripMenuItemMergeToOneFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -93,7 +93,6 @@
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.Filter = "文本文件|*.txt|细胞词库|*.scel|QQ分类词库|*.qpyd|百度分类词库|*.bdict|所有文件|*.*";
             this.openFileDialog1.Multiselect = true;
             // 
             // saveFileDialog1
@@ -235,6 +234,15 @@
             this.toolStripMenuItemStreamExport.ToolTipText = "目前只有文本格式的词库才能支持该功能";
             this.toolStripMenuItemStreamExport.Click += new System.EventHandler(this.toolStripMenuItemStreamExport_Click);
             // 
+            // toolStripMenuItemMergeToOneFile
+            // 
+            this.toolStripMenuItemMergeToOneFile.Checked = true;
+            this.toolStripMenuItemMergeToOneFile.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.toolStripMenuItemMergeToOneFile.Name = "toolStripMenuItemMergeToOneFile";
+            this.toolStripMenuItemMergeToOneFile.Size = new System.Drawing.Size(196, 22);
+            this.toolStripMenuItemMergeToOneFile.Text = "合并多词库到一个文件";
+            this.toolStripMenuItemMergeToOneFile.Click += new System.EventHandler(this.toolStripMenuItemMergeToOneFile_Click);
+            // 
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -322,15 +330,6 @@
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            // 
-            // toolStripMenuItemMergeToOneFile
-            // 
-            this.toolStripMenuItemMergeToOneFile.Checked = true;
-            this.toolStripMenuItemMergeToOneFile.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolStripMenuItemMergeToOneFile.Name = "toolStripMenuItemMergeToOneFile";
-            this.toolStripMenuItemMergeToOneFile.Size = new System.Drawing.Size(196, 22);
-            this.toolStripMenuItemMergeToOneFile.Text = "合并多词库到一个文件";
-            this.toolStripMenuItemMergeToOneFile.Click += new System.EventHandler(this.toolStripMenuItemMergeToOneFile_Click);
             // 
             // MainForm
             // 
