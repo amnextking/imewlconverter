@@ -219,6 +219,12 @@
     <Compile Include="SharpZLib\Zip\ZipInputStream.cs" />
     <Compile Include="SharpZLib\Zip\ZipNameTransform.cs" />
     <Compile Include="SharpZLib\Zip\ZipOutputStream.cs" />
+    <Compile Include="SplitFileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplitFileForm.Designer.cs">
+      <DependentUpon>SplitFileForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserCodingHelper.cs" />
     <Compile Include="WordLibraryStream.cs" />
     <EmbeddedResource Include="AboutBox.resx">
@@ -252,6 +258,9 @@
     </Compile>
     <EmbeddedResource Include="SelfDefiningConverterForm.resx">
       <DependentUpon>SelfDefiningConverterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplitFileForm.resx">
+      <DependentUpon>SplitFileForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

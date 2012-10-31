@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -39,7 +38,7 @@ namespace Studyzy.IMEWLConverter
             int idx = 0;
             for (int i = 0; i < types.Length; i++)
             {
-                if (types[i].Contains(select))
+                if (!string.IsNullOrEmpty(select)&& types[i].Contains(select))
                     idx = i;
             }
             openFileDialog1.Filter = string.Join("|", types);
@@ -365,14 +364,14 @@ namespace Studyzy.IMEWLConverter
                 }
             }
 
-            if (cbxFrom.Text == ConstantString.SOUGOU_XIBAO_SCEL)
-            {
-                openFileDialog1.Filter = "细胞词库|*.scel|文本文件|*.txt|所有文件|*.*";
-            }
-            else
-            {
-                openFileDialog1.Filter = "文本文件|*.txt|细胞词库|*.scel|所有文件|*.*";
-            }
+            //if (cbxFrom.Text == ConstantString.SOUGOU_XIBAO_SCEL)
+            //{
+            //    openFileDialog1.Filter = "细胞词库|*.scel|文本文件|*.txt|所有文件|*.*";
+            //}
+            //else
+            //{
+            //    openFileDialog1.Filter = "文本文件|*.txt|细胞词库|*.scel|所有文件|*.*";
+            //}
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -516,7 +515,10 @@ namespace Studyzy.IMEWLConverter
         {
             ignoreLongWord = toolStripMenuItemIgnoreLongWord.Checked;
         }
-
+        private void ToolStripMenuItemDonate_Click(object sender, EventArgs e)
+        {
+            Process.Start("http://imewlconverter.googlecode.com/svn/wiki/donate.html");
+        }
         private void btnAbout_Click(object sender, EventArgs e)
         {
             var a = new AboutBox();
@@ -590,6 +592,14 @@ namespace Studyzy.IMEWLConverter
                 }
             }
         }
+
+        private void ToolStripMenuItemSplitFile_Click(object sender, EventArgs e)
+        {
+            SplitFileForm form=new SplitFileForm();
+            form.Show();
+        }
+
+       
 
       
 

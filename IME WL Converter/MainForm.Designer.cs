@@ -56,12 +56,14 @@
             this.ToolStripMenuItemAccessWebSite = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItemCreatePinyinWL = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemDonate = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExport = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.ToolStripMenuItemSplitFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -113,10 +115,11 @@
             // cbxFrom
             // 
             this.cbxFrom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxFrom.DropDownWidth = 150;
             this.cbxFrom.FormattingEnabled = true;
             this.cbxFrom.Location = new System.Drawing.Point(12, 58);
             this.cbxFrom.Name = "cbxFrom";
-            this.cbxFrom.Size = new System.Drawing.Size(131, 20);
+            this.cbxFrom.Size = new System.Drawing.Size(150, 20);
             this.cbxFrom.TabIndex = 4;
             this.cbxFrom.SelectedIndexChanged += new System.EventHandler(this.cbxFrom_SelectedIndexChanged);
             // 
@@ -124,16 +127,16 @@
             // 
             this.cbxTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTo.FormattingEnabled = true;
-            this.cbxTo.Location = new System.Drawing.Point(194, 58);
+            this.cbxTo.Location = new System.Drawing.Point(219, 58);
             this.cbxTo.Name = "cbxTo";
-            this.cbxTo.Size = new System.Drawing.Size(131, 20);
+            this.cbxTo.Size = new System.Drawing.Size(150, 20);
             this.cbxTo.TabIndex = 4;
             this.cbxTo.SelectedIndexChanged += new System.EventHandler(this.cbxTo_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(155, 61);
+            this.label1.Location = new System.Drawing.Point(175, 61);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 12);
             this.label1.TabIndex = 5;
@@ -246,11 +249,13 @@
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemDonate,
             this.ToolStripMenuItemHelp,
             this.ToolStripMenuItemAbout,
             this.ToolStripMenuItemAccessWebSite,
             this.toolStripSeparator3,
-            this.ToolStripMenuItemCreatePinyinWL});
+            this.ToolStripMenuItemCreatePinyinWL,
+            this.ToolStripMenuItemSplitFile});
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
             this.关于ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.关于ToolStripMenuItem.Text = "帮助";
@@ -258,35 +263,42 @@
             // ToolStripMenuItemHelp
             // 
             this.ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
-            this.ToolStripMenuItemHelp.Size = new System.Drawing.Size(148, 22);
+            this.ToolStripMenuItemHelp.Size = new System.Drawing.Size(152, 22);
             this.ToolStripMenuItemHelp.Text = "帮助";
             this.ToolStripMenuItemHelp.Click += new System.EventHandler(this.ToolStripMenuItemHelp_Click);
             // 
             // ToolStripMenuItemAbout
             // 
             this.ToolStripMenuItemAbout.Name = "ToolStripMenuItemAbout";
-            this.ToolStripMenuItemAbout.Size = new System.Drawing.Size(148, 22);
+            this.ToolStripMenuItemAbout.Size = new System.Drawing.Size(152, 22);
             this.ToolStripMenuItemAbout.Text = "关于";
             this.ToolStripMenuItemAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
             // ToolStripMenuItemAccessWebSite
             // 
             this.ToolStripMenuItemAccessWebSite.Name = "ToolStripMenuItemAccessWebSite";
-            this.ToolStripMenuItemAccessWebSite.Size = new System.Drawing.Size(148, 22);
+            this.ToolStripMenuItemAccessWebSite.Size = new System.Drawing.Size(152, 22);
             this.ToolStripMenuItemAccessWebSite.Text = "查看最新版本";
             this.ToolStripMenuItemAccessWebSite.Click += new System.EventHandler(this.ToolStripMenuItemAccessWebSite_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(145, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
             // 
             // ToolStripMenuItemCreatePinyinWL
             // 
             this.ToolStripMenuItemCreatePinyinWL.Name = "ToolStripMenuItemCreatePinyinWL";
-            this.ToolStripMenuItemCreatePinyinWL.Size = new System.Drawing.Size(148, 22);
+            this.ToolStripMenuItemCreatePinyinWL.Size = new System.Drawing.Size(152, 22);
             this.ToolStripMenuItemCreatePinyinWL.Text = "注音库生成";
             this.ToolStripMenuItemCreatePinyinWL.Click += new System.EventHandler(this.ToolStripMenuItemCreatePinyinWL_Click);
+            // 
+            // ToolStripMenuItemDonate
+            // 
+            this.ToolStripMenuItemDonate.Name = "ToolStripMenuItemDonate";
+            this.ToolStripMenuItemDonate.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItemDonate.Text = "捐贈";
+            this.ToolStripMenuItemDonate.Click += new System.EventHandler(this.ToolStripMenuItemDonate_Click);
             // 
             // btnExport
             // 
@@ -330,6 +342,13 @@
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // ToolStripMenuItemSplitFile
+            // 
+            this.ToolStripMenuItemSplitFile.Name = "ToolStripMenuItemSplitFile";
+            this.ToolStripMenuItemSplitFile.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItemSplitFile.Text = "文件分割";
+            this.ToolStripMenuItemSplitFile.Click += new System.EventHandler(this.ToolStripMenuItemSplitFile_Click);
             // 
             // MainForm
             // 
@@ -399,6 +418,8 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemCreatePinyinWL;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemMergeToOneFile;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemDonate;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemSplitFile;
     }
 }
 

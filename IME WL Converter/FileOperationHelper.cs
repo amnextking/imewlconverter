@@ -22,6 +22,14 @@ namespace Studyzy.IMEWLConverter
             {
                 return ConstantString.TOUCH_PAL;
             }
+            if (Path.GetExtension(filePath) == ".bin")
+            {
+                return ConstantString.SOUGOU_PINYIN_BIN;
+            }
+            if (Path.GetExtension(filePath) == ".bcd")
+            {
+                return ConstantString.BAIDU_BCD;
+            }
             if (Path.GetExtension(filePath) == ".bdict")
             {
                 return ConstantString.BAIDU_BDICT;
@@ -205,7 +213,7 @@ namespace Studyzy.IMEWLConverter
             return sw;
         }
 
-        public static Encoding GetType(string fileName)
+        public static Encoding GetEncodingType(string fileName)
         {
             var fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
             Encoding r = GetType(fs);
@@ -248,7 +256,25 @@ namespace Studyzy.IMEWLConverter
             }
         }
 
-
+        public static void WriteFileHeader(FileStream fs, Encoding encoding)
+        {
+            if (encoding == Encoding.UTF8)
+            {
+                fs.WriteByte(0xEF);
+                fs.WriteByte(0xBB);
+                fs.WriteByte(0xBF);
+            }
+            else if (encoding == Encoding.Unicode)
+            {
+                fs.WriteByte(0xFF);
+                fs.WriteByte(0xFE);
+            }
+            else if (encoding == Encoding.BigEndianUnicode)
+            {
+                fs.WriteByte(0xFE);
+                fs.WriteByte(0xFF);
+            }
+        }
 
         #region
 
