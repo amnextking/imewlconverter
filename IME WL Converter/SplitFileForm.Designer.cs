@@ -49,7 +49,7 @@
             // 
             // btnSelectFile
             // 
-            this.btnSelectFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelectFile.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSelectFile.Location = new System.Drawing.Point(320, 10);
             this.btnSelectFile.Name = "btnSelectFile";
             this.btnSelectFile.Size = new System.Drawing.Size(34, 23);

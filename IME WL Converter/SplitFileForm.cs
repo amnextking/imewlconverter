@@ -36,6 +36,7 @@ namespace Studyzy.IMEWLConverter
                 MessageBox.Show(txbFilePath.Text+ "，该文件不存在");
                 return;
             }
+            rtbLogs.Clear();
             if(rbtnSplitByLine.Checked)
             {
                 SplitFileByLine( (int)numdMaxLine.Value);
@@ -82,7 +83,9 @@ namespace Studyzy.IMEWLConverter
                 {
                     if (i != 0)
                     {
-                        FileOperationHelper.WriteFile(GetWriteFilePath(fileIndex++), encoding,fileContent.ToString());
+                        var newFile = GetWriteFilePath(fileIndex++);
+                        FileOperationHelper.WriteFile(newFile, encoding,fileContent.ToString());
+                        rtbLogs.AppendText(newFile+"\r\n");
                         fileContent=new StringBuilder();
                     }
                 }
@@ -102,7 +105,8 @@ namespace Studyzy.IMEWLConverter
 
             do
             {
-                FileStream outFile = new FileStream(GetWriteFilePath(fileIndex++), FileMode.OpenOrCreate,
+                var newFile = GetWriteFilePath(fileIndex++);
+                FileStream outFile = new FileStream(newFile, FileMode.OpenOrCreate,
                                                     FileAccess.Write);
                 if (fileIndex != 2)//不是第一个文件，那么就要写文件头
                 {
@@ -135,7 +139,7 @@ namespace Studyzy.IMEWLConverter
                     } while (hasContent);
                 }
                 outFile.Close();
-                
+                rtbLogs.AppendText(newFile+"\r\n");
             } while (inFile.Position != inFile.Length);
             inFile.Close();
         }
@@ -178,13 +182,15 @@ namespace Studyzy.IMEWLConverter
                     content += str.Substring(0, i + 2);
                     str = str.Substring(i + 2);
                 }
-                FileOperationHelper.WriteFile(GetWriteFilePath(fileIndex++), encoding, content);
+                string newFile = GetWriteFilePath(fileIndex++);
+                FileOperationHelper.WriteFile(newFile, encoding, content);
+                rtbLogs.AppendText(newFile+"\r\n");
             } while (true);
         }
         private string GetWriteFilePath(int i)
         {
             string path = txbFilePath.Text;
-            return Path.GetDirectoryName(path)+"\\"+ Path.GetFileNameWithoutExtension(path)+string.Format("{0}",i)+Path.GetExtension(path);
+            return Path.GetDirectoryName(path)+"\\"+ Path.GetFileNameWithoutExtension(path)+i.ToString("00")+Path.GetExtension(path);
         }
     }
 }

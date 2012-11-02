@@ -25,8 +25,9 @@ namespace Studyzy.IMEWLConverter
             helpString += "1.6版修改了搜狗细胞词库解析和QQ手机词库解析的函数，支持最新格式。\r\n";
             helpString += "1.7版增加了对QQ输入法分类词库(qpyd格式)的解析，可像搜狗细胞词库一样的将QQ分类词库导为文本了！\r\n";
             helpString += "1.8版增加了自定义编码的输出，增强了命令行功能。实现了百度手机分类词库（bcd格式）、小小输入法和微软拼音输入法的词库功能，但是由于输入法的原因，MS拼音可能会导入失败。\r\n";
-            helpString += "有任何问题和建议请联系我：studyzy@163.com\r\n";
-            helpString += "\r\nPS:QQ分类词库（QPYD格式）的词库在keke的帮助下实现了解析，特此表示感谢。触宝输入法词库和bcd格式词库还无法生成，谁有办法还请帮帮忙，指点一下！\r\n";
+            helpString += "1.9版增加了微软英库拼音输入法、FIT输入法、搜狗Bin格式备份词库、中州韵（小狼毫、鼠须管）、各种常用五笔输入法的支持，增加词库文件分割功能。\r\n";
+            helpString += "如果您觉得深蓝词库转换能够给您的生活带来了极大的方便，可以通过Paypal或者支付宝捐赠该软件(http://imewlconverter.googlecode.com/svn/wiki/donate.html)。\r\n有任何问题和建议请联系我：studyzy@163.com\r\n";
+            
             richTextBox1.Text = helpString;
         }
     }

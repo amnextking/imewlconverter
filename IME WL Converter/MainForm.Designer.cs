@@ -51,19 +51,19 @@
             this.toolStripMenuItemStreamExport = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemMergeToOneFile = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemDonate = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemAccessWebSite = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItemCreatePinyinWL = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemDonate = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemSplitFile = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExport = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.ToolStripMenuItemSplitFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -260,6 +260,14 @@
             this.关于ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.关于ToolStripMenuItem.Text = "帮助";
             // 
+            // ToolStripMenuItemDonate
+            // 
+            this.ToolStripMenuItemDonate.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripMenuItemDonate.Image")));
+            this.ToolStripMenuItemDonate.Name = "ToolStripMenuItemDonate";
+            this.ToolStripMenuItemDonate.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItemDonate.Text = "捐贈";
+            this.ToolStripMenuItemDonate.Click += new System.EventHandler(this.ToolStripMenuItemDonate_Click);
+            // 
             // ToolStripMenuItemHelp
             // 
             this.ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
@@ -293,12 +301,12 @@
             this.ToolStripMenuItemCreatePinyinWL.Text = "注音库生成";
             this.ToolStripMenuItemCreatePinyinWL.Click += new System.EventHandler(this.ToolStripMenuItemCreatePinyinWL_Click);
             // 
-            // ToolStripMenuItemDonate
+            // ToolStripMenuItemSplitFile
             // 
-            this.ToolStripMenuItemDonate.Name = "ToolStripMenuItemDonate";
-            this.ToolStripMenuItemDonate.Size = new System.Drawing.Size(152, 22);
-            this.ToolStripMenuItemDonate.Text = "捐贈";
-            this.ToolStripMenuItemDonate.Click += new System.EventHandler(this.ToolStripMenuItemDonate_Click);
+            this.ToolStripMenuItemSplitFile.Name = "ToolStripMenuItemSplitFile";
+            this.ToolStripMenuItemSplitFile.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItemSplitFile.Text = "文件分割";
+            this.ToolStripMenuItemSplitFile.Click += new System.EventHandler(this.ToolStripMenuItemSplitFile_Click);
             // 
             // btnExport
             // 
@@ -342,13 +350,6 @@
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            // 
-            // ToolStripMenuItemSplitFile
-            // 
-            this.ToolStripMenuItemSplitFile.Name = "ToolStripMenuItemSplitFile";
-            this.ToolStripMenuItemSplitFile.Size = new System.Drawing.Size(152, 22);
-            this.ToolStripMenuItemSplitFile.Text = "文件分割";
-            this.ToolStripMenuItemSplitFile.Click += new System.EventHandler(this.ToolStripMenuItemSplitFile_Click);
             // 
             // MainForm
             // 

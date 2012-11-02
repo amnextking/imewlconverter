@@ -82,7 +82,8 @@
             "\'",
             "|",
             ",",
-            "Tab"});
+            "Tab",
+            "无"});
             this.cbbxPinyinSplitString.Location = new System.Drawing.Point(173, 40);
             this.cbbxPinyinSplitString.Name = "cbbxPinyinSplitString";
             this.cbbxPinyinSplitString.Size = new System.Drawing.Size(86, 20);

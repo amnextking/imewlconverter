@@ -62,6 +62,10 @@ namespace Studyzy.IMEWLConverter
             {
                 str = "\t";
             }
+            else if (cbbxPinyinSplitString.Text == "无")
+            {
+                str = "";
+            }
             else
             {
                 str = cbbxPinyinSplitString.Text;
@@ -80,6 +84,10 @@ namespace Studyzy.IMEWLConverter
             else if (cbbxSplitString.Text.ToLower() == "tab")
             {
                 str = "\t";
+            }
+            else if (cbbxSplitString.Text == "无")
+            {
+                str = "";
             }
             else
             {
