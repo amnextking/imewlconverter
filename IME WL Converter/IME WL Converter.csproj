@@ -80,6 +80,10 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -95,6 +99,13 @@
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
     <Compile Include="BinFileHelper.cs" />
+    <Compile Include="ChineseConverterSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChineseConverterSelectForm.Designer.cs">
+      <DependentUpon>ChineseConverterSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChineseTranslate.cs" />
     <Compile Include="ConsoleRun.cs" />
     <Compile Include="ConstantString.cs" />
     <Compile Include="CreatePinyinWLForm.cs">
@@ -140,6 +151,10 @@
     <Compile Include="IME\SougouPinyinScel.cs" />
     <Compile Include="IME\ZiGuangPinyin.cs" />
     <Compile Include="Interface.cs" />
+    <Compile Include="Language\IChineseConverter.cs" />
+    <Compile Include="Language\MsVbComponent.cs" />
+    <Compile Include="Language\OfficeComponent.cs" />
+    <Compile Include="Language\SystemKernel.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,6 +244,9 @@
     <Compile Include="WordLibraryStream.cs" />
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChineseConverterSelectForm.resx">
+      <DependentUpon>ChineseConverterSelectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreatePinyinWLForm.resx">
       <DependentUpon>CreatePinyinWLForm.cs</DependentUpon>

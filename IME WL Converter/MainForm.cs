@@ -2,9 +2,11 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Studyzy.IMEWLConverter.IME;
+using Studyzy.IMEWLConverter.Language;
 
 namespace Studyzy.IMEWLConverter
 {
@@ -201,7 +203,7 @@ namespace Studyzy.IMEWLConverter
 
         #endregion
 
-        private readonly WordLibraryList allWlList = new WordLibraryList();
+        private WordLibraryList allWlList = new WordLibraryList();
         private readonly Regex englishRegex = new Regex("[a-z]", RegexOptions.IgnoreCase);
         private IWordLibraryExport export;
         private bool exportDirectly;
@@ -219,6 +221,10 @@ namespace Studyzy.IMEWLConverter
         private bool streamExport;
         private ParsePattern fromUserSetPattern;
         private ParsePattern toUserSetPattern;
+
+        private ChineseTranslate selectedTranslate =ChineseTranslate.NotTrans;
+        private IChineseConverter selectedConverter = new SystemKernel();
+
         private void btnOpenFileDialog_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -389,13 +395,13 @@ namespace Studyzy.IMEWLConverter
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-          
+
             string[] files = txbWLPath.Text.Split('|');
             foreach (string file in files)
             {
                 this.exportFileName = Path.GetFileNameWithoutExtension(file);
-                string path =file.Trim();
-                if (streamExport&& import.IsText ) //流转换,只有文本类型的才支持。
+                string path = file.Trim();
+                if (streamExport && import.IsText) //流转换,只有文本类型的才支持。
                 {
                     IWordLibraryTextImport textImport = (IWordLibraryTextImport) import;
                     StreamWriter stream = FileOperationHelper.GetWriteFileStream(exportPath, export.Encoding);
@@ -410,13 +416,55 @@ namespace Studyzy.IMEWLConverter
                     allWlList.AddRange(wlList);
                 }
             }
+            timer1.Enabled = false;
+             //简繁体转换
+            
+            if (selectedTranslate != ChineseTranslate.NotTrans)
+            {
+                ShowStatusMessage("词库解析完成，正在进行简繁转换...",false);
+                allWlList = ConvertChinese(allWlList);
+                ShowStatusMessage("简繁转换完成，正在进行目标词库生成...", false);
+            }
             fileContent = export.Export(allWlList);
+           
+           
+
+        }
+
+        private WordLibraryList ConvertChinese(WordLibraryList wordLibraryList)
+        {
+            StringBuilder sb=new StringBuilder();
+            int count = wordLibraryList.Count;
+            foreach (WordLibrary wordLibrary in wordLibraryList)
+            {
+                sb.Append(wordLibrary.Word + "\r");
+            }
+            var result = "";
+            if (selectedTranslate == ChineseTranslate.Trans2Chs)
+            {
+                result = selectedConverter.ToChs(sb.ToString());
+            }
+            else if (selectedTranslate == ChineseTranslate.Trans2Cht)
+            {
+                result = selectedConverter.ToCht(sb.ToString());
+            }
+            var newList = result.Split(new char[] {'\r'}, StringSplitOptions.RemoveEmptyEntries);
+            if (newList.Length != count)
+            {
+                throw new Exception("简繁转换时转换失败，请更改简繁转换设置");
+            }
+            for (var i=0;i< count;i++)
+            {
+                var wordLibrary = wordLibraryList[i];
+                wordLibrary.Word = newList[i];
+            }
+            return wordLibraryList;
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             timer1.Enabled = false;
-
+            toolStripProgressBar1.Value = toolStripProgressBar1.Maximum;
             ShowStatusMessage("转换完成", false);
             if (streamExport && import.IsText)
             {
@@ -597,6 +645,16 @@ namespace Studyzy.IMEWLConverter
         {
             SplitFileForm form=new SplitFileForm();
             form.Show();
+        }
+
+        private void ToolStripMenuItemChineseTransConfig_Click(object sender, EventArgs e)
+        {
+            ChineseConverterSelectForm form=new ChineseConverterSelectForm();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                selectedTranslate = form.SelectedTranslate;
+                selectedConverter = form.SelectedConverter;
+            }
         }
 
        

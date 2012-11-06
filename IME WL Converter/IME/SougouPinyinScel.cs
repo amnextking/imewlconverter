@@ -17,20 +17,21 @@ namespace Studyzy.IMEWLConverter.IME
 
         public WordLibraryList Import(string path)
         {
-            var str = ReadScel(path);
-            var wlList = new WordLibraryList();
-            string[] lines = str.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
-            CountWord = lines.Length;
-            for (int i = 0; i < lines.Length; i++)
-            {
-                CurrentStatus = i;
-                string line = lines[i];
-                if (line.IndexOf("'") == 0)
-                {
-                    wlList.AddWordLibraryList(ImportLine(line));
-                }
-            }
-            return wlList;
+            //var str = ReadScel(path);
+            //var wlList = new WordLibraryList();
+            //string[] lines = str.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
+            //CountWord = lines.Length;
+            //for (int i = 0; i < lines.Length; i++)
+            //{
+            //    CurrentStatus = i;
+            //    string line = lines[i];
+            //    if (line.IndexOf("'") == 0)
+            //    {
+            //        wlList.AddWordLibraryList(ImportLine(line));
+            //    }
+            //}
+            //return wlList;
+            return ReadScel(path);
         }
 
         #endregion
@@ -46,28 +47,29 @@ namespace Studyzy.IMEWLConverter.IME
 
         public WordLibraryList ImportLine(string line)
         {
-            if (line.IndexOf("'") == 0)
-            {
-                string py = line.Split(' ')[0];
-                string word = line.Split(' ')[1];
-                var wl = new WordLibrary();
-                wl.Word = word;
-                wl.Count = 1;
-                wl.PinYin = py.Split(new[] {'\''}, StringSplitOptions.RemoveEmptyEntries);
-                var wll = new WordLibraryList();
-                wll.Add(wl);
-                return wll;
-            }
-            return null;
+            //if (line.IndexOf("'") == 0)
+            //{
+            //    string py = line.Split(' ')[0];
+            //    string word = line.Split(' ')[1];
+            //    var wl = new WordLibrary();
+            //    wl.Word = word;
+            //    wl.Count = 1;
+            //    wl.PinYin = py.Split(new[] {'\''}, StringSplitOptions.RemoveEmptyEntries);
+            //    var wll = new WordLibraryList();
+            //    wll.Add(wl);
+            //    return wll;
+            //}
+            //return null;
+            throw new Exception("Scel格式是二进制文件，不支持流转换");
         }
 
         #endregion
         Dictionary<int, string> pyDic = new Dictionary<int, string>();
-        private string ReadScel(string path)
+        private WordLibraryList ReadScel(string path)
         {
             pyDic = new Dictionary<int, string>();
             //Dictionary<string, string> pyAndWord = new Dictionary<string, string>();
-            var pyAndWord = new List<WordLibrary>();
+            var pyAndWord = new WordLibraryList();
             var fs = new FileStream(path, FileMode.Open, FileAccess.Read);
             var str = new byte[128];
             var outstr = new byte[128];
@@ -90,6 +92,11 @@ namespace Studyzy.IMEWLConverter.IME
             {
                 hzPosition = 0x26C4;
             }
+
+            fs.Position = 0x124;
+            CountWord = BinFileHelper.ReadInt32(fs);
+            CurrentStatus = 0;
+
             //fs.Position = 0x130;
             //fs.Read(str, 0, 64);
             //string txt = Encoding.Unicode.GetString(str);
@@ -151,12 +158,13 @@ namespace Studyzy.IMEWLConverter.IME
                     break;
                 }
             }
-            var sb = new StringBuilder();
-            foreach (WordLibrary w in pyAndWord)
-            {
-                sb.AppendLine("'" + w.PinYinString + " " + w.Word); //以搜狗文本词库的方式返回
-            }
-            return sb.ToString();
+            return pyAndWord;
+            //var sb = new StringBuilder();
+            //foreach (WordLibrary w in pyAndWord)
+            //{
+            //    sb.AppendLine("'" + w.PinYinString + " " + w.Word); //以搜狗文本词库的方式返回
+            //}
+            //return sb.ToString();
         }
         private IList<WordLibrary> ReadAPinyinWord(FileStream fs)
         {
@@ -170,13 +178,13 @@ namespace Studyzy.IMEWLConverter.IME
             {
                 str[i] = (byte)fs.ReadByte();
             }
-            string wordPY = "";
+            List<string> wordPY = new List<string>();
             for (var i = 0; i < count / 2; i++)
             {
                 int key = str[i * 2] + str[i * 2 + 1] * 256;
-                wordPY += pyDic[key] + "'";
+                wordPY .Add(pyDic[key]);
             }
-            wordPY = wordPY.Remove(wordPY.Length - 1); //移除最后一个单引号
+            //wordPY = wordPY.Remove(wordPY.Length - 1); //移除最后一个单引号
             //接下来读词语
             var pyAndWord = new List<WordLibrary>();
             for (int s = 0; s < samePYcount; s++) //同音词，使用前面相同的拼音
@@ -187,12 +195,12 @@ namespace Studyzy.IMEWLConverter.IME
                 str = new byte[hzBytecount];
                 fs.Read(str, 0, hzBytecount);
                 string word = Encoding.Unicode.GetString(str);
-
-                pyAndWord.Add(new WordLibrary { Word = word, PinYinString = wordPY });
-
-                //接下来12个字节什么意思呢？难道是词频？暂时先忽略了
-                var temp = new byte[12];
-                for (var i = 0; i < 12; i++)
+                var wlcount = BinFileHelper.ReadInt16(fs);
+                pyAndWord.Add(new WordLibrary { Word = word, PinYin = wordPY.ToArray(), Count = wlcount });
+                CurrentStatus++;
+                //接下来10个字节什么意思呢？暂时先忽略了
+                var temp = new byte[10];
+                for (var i = 0; i < 10; i++)
                 {
                     temp[i] = (byte)fs.ReadByte();
                 }

@@ -19,8 +19,12 @@ namespace Studyzy.IMEWLConverter.IME
             StringBuilder sb=new StringBuilder();
             foreach (WordLibrary wordLibrary in wlList)
             {
-                sb.Append(ExportLine(wordLibrary));
-                sb.Append("\r\n");
+                try
+                {
+                    sb.Append(ExportLine(wordLibrary));
+                    sb.Append("\r\n");
+                }
+                catch { }
             }
             return sb.ToString();
         }

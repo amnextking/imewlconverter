@@ -16,6 +16,11 @@ namespace Studyzy.IMEWLConverter.IME
             byte[] startAddressByte = new byte[4];
             fs.Read(startAddressByte, 0, 4);
             var startAddress = BitConverter.ToInt32(startAddressByte, 0);
+            fs.Position = 0x44;
+            var wordCount = BinFileHelper.ReadInt32(fs);
+            CountWord = wordCount;
+            CurrentStatus = 0;
+
             fs.Position = startAddress;
             InflaterInputStream zipStream = new InflaterInputStream(fs);
 
@@ -60,7 +65,7 @@ namespace Studyzy.IMEWLConverter.IME
                 string word = Encoding.Unicode.GetString(byteArray, wordStartAddr, wordLength);
                 sb.Append(word + "\t" + pinyin+"\n");
                 Debug.WriteLine(word + "\t" + pinyin);
-
+                CurrentStatus++;
                 // step up
                 idx += 0xa;
             }
