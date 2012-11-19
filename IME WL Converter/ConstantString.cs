@@ -8,8 +8,11 @@ namespace Studyzy.IMEWLConverter
     public static class ConstantString
     {
         public const string BAIDU_SHOUJI = "百度手机";
+        public const string BAIDU_SHOUJI_ENG = "百度手机英文";
         public const string BAIDU_BDICT = "百度分类词库bdict";
         public const string BAIDU_BCD = "百度手机词库bcd";
+        public const string BAIDU_PINYIN = "百度拼音";
+        public const string QQ_PINYIN_ENG = "QQ拼音英文";
         public const string QQ_SHOUJI = "QQ手机";
         public const string QQ_WUBI = "QQ五笔";
         public const string TOUCH_PAL = "触宝手机";
@@ -32,6 +35,7 @@ namespace Studyzy.IMEWLConverter
         public const string FIT = "FIT输入法";
         public const string RIME = "中州韵";
         public const string ENGKOO_PINYIN = "微软英库拼音";
+        public const string LINGOES_LD2 = "灵格斯ld2";
         /// <summary>
         /// 注音文件的完整路径
         /// </summary>
@@ -39,6 +43,7 @@ namespace Studyzy.IMEWLConverter
 
         //简码，控制台用
         public const string BAIDU_SHOUJI_C = "bdsj";
+        public const string BAIDU_SHOUJI_ENG_C = "bdsje";
         public const string BAIDU_BDICT_C = "bdict";
         public const string BAIDU_BCD_C = "bcd";
         public const string QQ_SHOUJI_C = "qqsj";
@@ -63,5 +68,8 @@ namespace Studyzy.IMEWLConverter
         public const string FIT_C = "fit";
         public const string RIME_C = "rime";
         public const string ENGKOO_PINYIN_C = "engkoo";
+        public const string LINGOES_LD2_C = "ld2";
+        public const string BAIDU_PINYIN_C = "bdpy";
+        public const string QQ_PINYIN_ENG_C = "qqpye";
     }
 }

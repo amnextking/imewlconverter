@@ -127,10 +127,14 @@
     <Compile Include="HelpForm.Designer.cs">
       <DependentUpon>HelpForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="IME\BaiduPinyin.cs" />
     <Compile Include="IME\BaiduPinyinBdict.cs" />
     <Compile Include="IME\BaiduShouji.cs" />
     <Compile Include="IME\BaiduShoujiBcd.cs" />
+    <Compile Include="IME\BaiduShoujiEng.cs" />
+    <Compile Include="IME\QQPinyinEng.cs" />
     <Compile Include="IME\EngkooPinyin.cs" />
+    <Compile Include="IME\LingoesLd2.cs" />
     <Compile Include="IME\SougouPinyinBin.cs" />
     <Compile Include="IME\FitInput.cs" />
     <Compile Include="IME\iFlyIME.cs" />

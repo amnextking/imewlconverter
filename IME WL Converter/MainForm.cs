@@ -30,17 +30,18 @@ namespace Studyzy.IMEWLConverter
             var types = new string[]
                 {
                     "文本文件|*.txt",
-                    "细胞词库|*.scel", 
-                    "QQ分类词库|*.qpyd", 
-                    "百度分类词库|*.bdict", 
+                    "细胞词库|*.scel",
+                    "QQ分类词库|*.qpyd",
+                    "百度分类词库|*.bdict",
                     "百度分类词库|*.bcd",
-                    "搜狗备份词库|*.bin", 
+                    "搜狗备份词库|*.bin",
+                    "灵格斯词库|*.ld2",
                     "所有文件|*.*"
                 };
             int idx = 0;
             for (int i = 0; i < types.Length; i++)
             {
-                if (!string.IsNullOrEmpty(select)&& types[i].Contains(select))
+                if (!string.IsNullOrEmpty(select) && types[i].Contains(select))
                     idx = i;
             }
             openFileDialog1.Filter = string.Join("|", types);
@@ -53,22 +54,35 @@ namespace Studyzy.IMEWLConverter
             cbxFrom.Items.Add(ConstantString.SOUGOU_XIBAO_SCEL);
             cbxFrom.Items.Add(ConstantString.SOUGOU_PINYIN_BIN);
             cbxFrom.Items.Add(ConstantString.SOUGOU_WUBI);
+
             cbxFrom.Items.Add(ConstantString.QQ_PINYIN);
             cbxFrom.Items.Add(ConstantString.QQ_PINYIN_QPYD);
             cbxFrom.Items.Add(ConstantString.QQ_WUBI);
+
+            cbxFrom.Items.Add(ConstantString.BAIDU_PINYIN);
+            cbxFrom.Items.Add(ConstantString.QQ_PINYIN_ENG);
+            cbxFrom.Items.Add(ConstantString.BAIDU_BDICT);
+            cbxFrom.Items.Add(ConstantString.BAIDU_BCD);
+          
+
             cbxFrom.Items.Add(ConstantString.SINA_PINYIN);
             cbxFrom.Items.Add(ConstantString.GOOGLE_PINYIN);
             cbxFrom.Items.Add(ConstantString.ZIGUANG_PINYIN);
             cbxFrom.Items.Add(ConstantString.PINYIN_JIAJIA);
             cbxFrom.Items.Add(ConstantString.ZHENGMA);
-            cbxFrom.Items.Add(ConstantString.BAIDU_BDICT);
-            cbxFrom.Items.Add(ConstantString.BAIDU_BCD);
+          
             cbxFrom.Items.Add(ConstantString.MS_PINYIN);
             cbxFrom.Items.Add(ConstantString.FIT);
             cbxFrom.Items.Add(ConstantString.RIME);
             cbxFrom.Items.Add(ConstantString.ENGKOO_PINYIN);
 
+            cbxFrom.Items.Add(ConstantString.LINGOES_LD2);
+
+
+
+
             cbxFrom.Items.Add(ConstantString.BAIDU_SHOUJI);
+            cbxFrom.Items.Add(ConstantString.BAIDU_SHOUJI_ENG);
             cbxFrom.Items.Add(ConstantString.QQ_SHOUJI);
             cbxFrom.Items.Add(ConstantString.TOUCH_PAL);
             cbxFrom.Items.Add(ConstantString.IFLY_IME);
@@ -79,6 +93,8 @@ namespace Studyzy.IMEWLConverter
             cbxTo.Items.Add(ConstantString.SOUGOU_PINYIN);
             cbxTo.Items.Add(ConstantString.SOUGOU_WUBI);
             cbxTo.Items.Add(ConstantString.QQ_PINYIN);
+            cbxTo.Items.Add(ConstantString.BAIDU_PINYIN);
+            cbxTo.Items.Add(ConstantString.QQ_PINYIN_ENG);
             cbxTo.Items.Add(ConstantString.SINA_PINYIN);
             cbxTo.Items.Add(ConstantString.GOOGLE_PINYIN);
             cbxTo.Items.Add(ConstantString.ZIGUANG_PINYIN);
@@ -90,6 +106,7 @@ namespace Studyzy.IMEWLConverter
             cbxTo.Items.Add(ConstantString.ENGKOO_PINYIN);
 
             cbxTo.Items.Add(ConstantString.BAIDU_SHOUJI);
+            cbxTo.Items.Add(ConstantString.BAIDU_SHOUJI_ENG);
             cbxTo.Items.Add(ConstantString.QQ_SHOUJI);
             cbxTo.Items.Add(ConstantString.IFLY_IME);
             cbxTo.Items.Add(ConstantString.SELF_DEFINING);
@@ -135,8 +152,15 @@ namespace Studyzy.IMEWLConverter
                     return new SelfDefining();
                 case ConstantString.FIT:
                     return new FitInput();
+                case ConstantString.BAIDU_PINYIN:
+                    return new BaiduPinyin();
+                case ConstantString.QQ_PINYIN_ENG:
+                    return new QQPinyinEng();
+                case ConstantString.BAIDU_SHOUJI_ENG:
+                    return new BaiduShoujiEng();
                 case ConstantString.RIME:
                     return new Rime();
+            
                 case ConstantString.ENGKOO_PINYIN:
                     return new EngkooPinyin();
                 default:
@@ -194,6 +218,12 @@ namespace Studyzy.IMEWLConverter
                     return new FitInput();
                 case ConstantString.RIME:
                     return new Rime();
+                case ConstantString.QQ_PINYIN_ENG:
+                    return new QQPinyinEng();
+                case ConstantString.BAIDU_SHOUJI_ENG:
+                    return new BaiduShoujiEng();
+                case ConstantString.LINGOES_LD2:
+                    return new LingoesLd2();
                 case ConstantString.ENGKOO_PINYIN:
                     return new EngkooPinyin();
                 default:

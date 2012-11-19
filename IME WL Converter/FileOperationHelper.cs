@@ -14,29 +14,34 @@ namespace Studyzy.IMEWLConverter
         /// <returns></returns>
         public static string AutoMatchSourceWLType(string filePath)
         {
-            if (Path.GetExtension(filePath) == ".scel")
+            var ext = Path.GetExtension(filePath);
+            if (ext== ".scel")
             {
                 return ConstantString.SOUGOU_XIBAO_SCEL;
             }
-            if (Path.GetExtension(filePath) == ".bak")
+            if (ext== ".bak")
             {
                 return ConstantString.TOUCH_PAL;
             }
-            if (Path.GetExtension(filePath) == ".bin")
+            if (ext== ".bin")
             {
                 return ConstantString.SOUGOU_PINYIN_BIN;
             }
-            if (Path.GetExtension(filePath) == ".bcd")
+            if (ext== ".bcd")
             {
                 return ConstantString.BAIDU_BCD;
             }
-            if (Path.GetExtension(filePath) == ".bdict")
+            if (ext== ".bdict")
             {
                 return ConstantString.BAIDU_BDICT;
             }
-            if (Path.GetExtension(filePath) == ".qpyd")
+            if (ext== ".qpyd")
             {
                 return ConstantString.QQ_PINYIN_QPYD;
+            }
+            if (ext== ".ld2")
+            {
+                return ConstantString.LINGOES_LD2;
             }
             string example = "";
             using (var sr = new StreamReader(filePath, Encoding.Default))

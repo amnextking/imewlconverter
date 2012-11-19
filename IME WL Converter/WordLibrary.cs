@@ -11,7 +11,15 @@ namespace Studyzy.IMEWLConverter
         private string[] pinYin;
         private string pinYinString = "";
         private string word;
-
+        private bool isEnglish = false;
+        /// <summary>
+        /// 该词条是否是英文词条
+        /// </summary>
+        public bool IsEnglish
+        {
+            get { return isEnglish; }
+            set { isEnglish = value; }
+        }
         /// <summary>
         /// 词语
         /// </summary>
@@ -46,7 +54,7 @@ namespace Studyzy.IMEWLConverter
         {
             get
             {
-                if (pinYinString == "")
+                if (pinYinString == ""&&!isEnglish)
                 {
                     pinYinString = string.Join("'", pinYin);
                 }
