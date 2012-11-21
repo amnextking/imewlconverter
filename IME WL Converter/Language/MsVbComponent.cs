@@ -1,24 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.VisualBasic;
+﻿using Microsoft.VisualBasic;
+
 namespace Studyzy.IMEWLConverter.Language
 {
-    class MsVbComponent : IChineseConverter
+    internal class MsVbComponent : IChineseConverter
     {
+        #region IChineseConverter Members
+
         public string ToChs(string cht)
         {
-            return Microsoft.VisualBasic.Strings.StrConv(cht, VbStrConv.SimplifiedChinese, 0);
+            return Strings.StrConv(cht, VbStrConv.SimplifiedChinese, 0);
         }
 
         public string ToCht(string chs)
         {
-            return Microsoft.VisualBasic.Strings.StrConv(chs, VbStrConv.TraditionalChinese, 0);
+            return Strings.StrConv(chs, VbStrConv.TraditionalChinese, 0);
         }
+
+        #endregion
 
         public void Init()
         {
-            
         }
     }
 }

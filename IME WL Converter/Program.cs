@@ -10,19 +10,22 @@ namespace Studyzy.IMEWLConverter
         //static extern bool AllocConsole();
         //[DllImport("kernel32.dll")]
         //static extern bool FreeConsole();
-        [DllImport("kernel32.dll")]
-        static extern bool AttachConsole(int dwProcessId);
+
         private const int ATTACH_PARENT_PROCESS = -1;
+
+        [DllImport("kernel32.dll")]
+        private static extern bool AttachConsole(int dwProcessId);
+
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
         [STAThread]
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             if (args.Length > 0)
             {
                 AttachConsole(ATTACH_PARENT_PROCESS);
-                ConsoleRun consoleRun = new ConsoleRun(args);
+                var consoleRun = new ConsoleRun(args);
                 consoleRun.Run();
             }
             else
@@ -33,5 +36,4 @@ namespace Studyzy.IMEWLConverter
             }
         }
     }
-
 }

@@ -1,16 +1,22 @@
 ﻿using System;
 using System.Text;
+using Studyzy.IMEWLConverter.Helpers;
 
 namespace Studyzy.IMEWLConverter.IME
 {
+    [ComboBoxShow(ConstantString.QQ_SHOUJI, ConstantString.QQ_SHOUJI_C, 1030)]
     public class QQShouji : IWordLibraryTextImport, IWordLibraryExport
     {
         private int number = 1;
+
         #region IWordLibraryExport 成员
+
+        #region IWordLibraryExport Members
+
         public string ExportLine(WordLibrary wl)
         {
             var sb = new StringBuilder();
-            var py = wl.GetPinYinString("'", BuildType.None);
+            string py = wl.GetPinYinString("'", BuildType.None);
             sb.Append(py);
             sb.Append(" ");
             sb.Append(wl.Word);
@@ -22,17 +28,22 @@ namespace Studyzy.IMEWLConverter.IME
             sb.Append(number);
             return sb.ToString();
         }
+
         public string Export(WordLibraryList wlList)
         {
             var sb = new StringBuilder();
             for (int i = 0; i < wlList.Count; i++)
             {
-                number =(int)Math.Ceiling((wlList.Count - i)*100.0/wlList.Count);
+                number = (int) Math.Ceiling((wlList.Count - i)*100.0/wlList.Count);
                 sb.Append(ExportLine(wlList[i]));
                 sb.Append("\r\n");
             }
             return sb.ToString();
         }
+
+        #endregion
+
+        #region IWordLibraryTextImport Members
 
         public Encoding Encoding
         {
@@ -41,9 +52,13 @@ namespace Studyzy.IMEWLConverter.IME
 
         #endregion
 
+        #endregion
+
         #region IWordLibraryImport 成员
+
         public int CountWord { get; set; }
         public int CurrentStatus { get; set; }
+
         public bool IsText
         {
             get { return true; }
@@ -59,18 +74,19 @@ namespace Studyzy.IMEWLConverter.IME
                 var wl = new WordLibrary();
                 wl.Word = word;
                 wl.Count = 1;
-                wl.PinYin = py.Split(new[] { '\'' }, StringSplitOptions.RemoveEmptyEntries);
-              
+                wl.PinYin = py.Split(new[] {'\''}, StringSplitOptions.RemoveEmptyEntries);
+
                 wll.Add(wl);
-               
             }
             return wll;
         }
+
         public WordLibraryList Import(string path)
         {
-            var str = FileOperationHelper.ReadFile(path, Encoding);
+            string str = FileOperationHelper.ReadFile(path, Encoding);
             return ImportText(str);
         }
+
         public WordLibraryList ImportText(string str)
         {
             var wlList = new WordLibraryList();

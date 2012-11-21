@@ -1,51 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Xml;
+using Studyzy.IMEWLConverter.Helpers;
+
 namespace Studyzy.IMEWLConverter.IME
 {
-  public  class MsPinyin : IWordLibraryExport, IWordLibraryTextImport
+    [ComboBoxShow(ConstantString.MS_PINYIN, ConstantString.MS_PINYIN_C, 130)]
+    public class MsPinyin : IWordLibraryExport, IWordLibraryTextImport
     {
         #region IWordLibraryExport 成员
+
         public string ExportLine(WordLibrary wl)
         {
             var sb = new StringBuilder();
             sb.Append("<ns1:DictionaryEntry>\r\n");
             sb.Append("<ns1:InputString>" + GetPinyinWithTone(wl) + "</ns1:InputString>\r\n");
-     sb.Append("<ns1:OutputString>" + wl.Word + "</ns1:OutputString>\r\n");
-     sb.Append("<ns1:Exist>1</ns1:Exist>\r\n");
-     sb.Append("</ns1:DictionaryEntry>");
+            sb.Append("<ns1:OutputString>" + wl.Word + "</ns1:OutputString>\r\n");
+            sb.Append("<ns1:Exist>1</ns1:Exist>\r\n");
+            sb.Append("</ns1:DictionaryEntry>");
 
             return sb.ToString();
         }
 
-      private string GetPinyinWithTone(WordLibrary wl)
-      {
-          StringBuilder sb=new StringBuilder();
-          for (var i = 0; i < wl.Word.Length;i++ )
-          {
-              char c = wl.Word[i];
-              var py = wl.PinYin[i];
-              var pinyin = PinyinHelper.GetPinyinWithToneOfChar(c, py);
-              if (pinyin == null)
-              {
-                  throw new Exception("找不到字["+c+"]的拼音");
-              }
-              sb.Append(pinyin);
-              if (i != wl.Word.Length - 1)
-              {
-                  sb.Append(" ");
-              }
-          }
-          return sb.ToString();
-      }
+
         public string Export(WordLibraryList wlList)
         {
             var sb = new StringBuilder();
-            sb.Append("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<ns1:Dictionary xmlns:ns1=\"http://www.microsoft.com/ime/dctx\">");
+            sb.Append(
+                "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<ns1:Dictionary xmlns:ns1=\"http://www.microsoft.com/ime/dctx\">");
             sb.Append(
                 @"<ns1:DictionaryHeader>
-    <ns1:DictionaryGUID>{"+Guid.NewGuid()+ @"}</ns1:DictionaryGUID>
+    <ns1:DictionaryGUID>{" + Guid.NewGuid() + @"}</ns1:DictionaryGUID>
     <ns1:DictionaryLanguage>zh-cn</ns1:DictionaryLanguage>
     <ns1:FormatVersion>0</ns1:FormatVersion>
     <ns1:DictionaryVersion>1</ns1:DictionaryVersion>
@@ -96,50 +81,76 @@ namespace Studyzy.IMEWLConverter.IME
             get { return Encoding.UTF8; }
         }
 
+        private string GetPinyinWithTone(WordLibrary wl)
+        {
+            var sb = new StringBuilder();
+            for (int i = 0; i < wl.Word.Length; i++)
+            {
+                char c = wl.Word[i];
+                string py = wl.PinYin[i];
+                string pinyin = PinyinHelper.GetPinyinWithToneOfChar(c, py);
+                if (pinyin == null)
+                {
+                    throw new Exception("找不到字[" + c + "]的拼音");
+                }
+                sb.Append(pinyin);
+                if (i != wl.Word.Length - 1)
+                {
+                    sb.Append(" ");
+                }
+            }
+            return sb.ToString();
+        }
+
         #endregion
 
         #region IWordLibraryImport 成员
+
         public bool IsText
         {
             get { return true; }
         }
+
         public WordLibraryList Import(string path)
         {
-            var str = FileOperationHelper.ReadFile(path, Encoding);
+            string str = FileOperationHelper.ReadFile(path, Encoding);
             return ImportText(str);
         }
+
         public WordLibraryList ImportText(string str)
         {
-            XmlDocument xmlDoc = new XmlDocument();
+            var xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(str);
-            XmlNamespaceManager namespaceManager=new XmlNamespaceManager(xmlDoc.NameTable);
+            var namespaceManager = new XmlNamespaceManager(xmlDoc.NameTable);
             namespaceManager.AddNamespace("ns1", "http://www.microsoft.com/ime/dctx");
             var wlList = new WordLibraryList();
-            var xns = xmlDoc.SelectNodes("//ns1:Dictionary/ns1:DictionaryEntry", namespaceManager);
+            XmlNodeList xns = xmlDoc.SelectNodes("//ns1:Dictionary/ns1:DictionaryEntry", namespaceManager);
             CountWord = xns.Count;
-            for (var i = 0; i < xns.Count;i++ )
+            for (int i = 0; i < xns.Count; i++)
             {
                 XmlNode xn = xns[i];
-                var py = xn.SelectSingleNode("ns1:InputString", namespaceManager).InnerText;
-                var word = xn.SelectSingleNode("ns1:OutputString", namespaceManager).InnerText;
+                string py = xn.SelectSingleNode("ns1:InputString", namespaceManager).InnerText;
+                string word = xn.SelectSingleNode("ns1:OutputString", namespaceManager).InnerText;
                 var wl = new WordLibrary();
                 wl.Word = word;
                 wl.Count = 1;
-                wl.PinYin = py.Split(new[] { ' ', '1', '2', '3', '4' }, StringSplitOptions.RemoveEmptyEntries);
+                wl.PinYin = py.Split(new[] {' ', '1', '2', '3', '4'}, StringSplitOptions.RemoveEmptyEntries);
                 CurrentStatus = i;
                 wlList.Add(wl);
             }
 
             return wlList;
         }
+
         public int CountWord { get; set; }
         public int CurrentStatus { get; set; }
 
 
         public WordLibraryList ImportLine(string line)
         {
-          throw new NotImplementedException();
+            throw new NotImplementedException();
         }
+
         #endregion
     }
 }

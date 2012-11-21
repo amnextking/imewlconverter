@@ -6,30 +6,95 @@ using System.Text;
 
 namespace Studyzy.IMEWLConverter.IME
 {
+    [ComboBoxShow(ConstantString.BAIDU_BCD, ConstantString.BAIDU_BCD_C, 1020)]
     public class BaiduShoujiBcd : IWordLibraryImport
     {
-       
-       private List<string> Shengmu = new List<string>() { "c", "d", "b", "f", "g", "h", "ch", "j", "k", "l", "m", "n", "", "p", "q", "r", "s", "t", "sh", "zh", "w", "x", "y", "z" };
-       private List<string> Yunmu = new List<string>() { "uang", "iang", "iong", "ang", "eng", "ian", "iao", "ing", "ong", "uai", "uan", "ai", "an", "ao", "ei", "en", "er", "ua", "ie", "in", "iu", "ou", "ia", "ue", "ui", "un", "uo", "a", "e", "i", "o", "u", "v" };
+        private readonly List<string> Shengmu = new List<string>
+            {
+                "c",
+                "d",
+                "b",
+                "f",
+                "g",
+                "h",
+                "ch",
+                "j",
+                "k",
+                "l",
+                "m",
+                "n",
+                "",
+                "p",
+                "q",
+                "r",
+                "s",
+                "t",
+                "sh",
+                "zh",
+                "w",
+                "x",
+                "y",
+                "z"
+            };
+
+        private readonly List<string> Yunmu = new List<string>
+            {
+                "uang",
+                "iang",
+                "iong",
+                "ang",
+                "eng",
+                "ian",
+                "iao",
+                "ing",
+                "ong",
+                "uai",
+                "uan",
+                "ai",
+                "an",
+                "ao",
+                "ei",
+                "en",
+                "er",
+                "ua",
+                "ie",
+                "in",
+                "iu",
+                "ou",
+                "ia",
+                "ue",
+                "ui",
+                "un",
+                "uo",
+                "a",
+                "e",
+                "i",
+                "o",
+                "u",
+                "v"
+            };
+
         #region IWordLibraryImport Members
 
-       public int CountWord { get; set; }
-       public int CurrentStatus { get; set; }
-       public bool IsText
-       {
-           get { return false; }
-       }
+        public int CountWord { get; set; }
+        public int CurrentStatus { get; set; }
+
+        public bool IsText
+        {
+            get { return false; }
+        }
+
         public WordLibraryList Import(string path)
         {
-            WordLibraryList wordLibraryList=new WordLibraryList();
+            var wordLibraryList = new WordLibraryList();
             var fs = new FileStream(path, FileMode.Open, FileAccess.Read);
             fs.Position = 0x350;
             do
             {
                 try
                 {
-                    var wl = ImportWord(fs);
-                    if(wl.Word!=""&&wl.PinYin.Length>0)
+                    WordLibrary wl = ImportWord(fs);
+                    if (wl.Word != "" && wl.PinYin.Length > 0)
                     {
                         wordLibraryList.Add(wl);
                     }
@@ -38,12 +103,11 @@ namespace Studyzy.IMEWLConverter.IME
                 {
                     Debug.WriteLine(ex.Message);
                 }
-            } 
-            while (fs.Position != fs.Length);
+            } while (fs.Position != fs.Length);
             fs.Close();
             //StreamWriter sw=new StreamWriter("D:\\py.txt",true,Encoding.Unicode);
             //SinglePinyin singlePinyin=new SinglePinyin();
-               
+
             //foreach (var cpy in CharAndPinyin)
             //{
             //    var py = "";
@@ -67,28 +131,37 @@ namespace Studyzy.IMEWLConverter.IME
 
             return wordLibraryList;
         }
-       //public Dictionary<char,string > CharAndPinyin=new Dictionary<char, string>();
-       //private void AddWordAndPinyin(char word,string pinyin)
-       //{
-       //    if (!CharAndPinyin.ContainsKey(word))
-       //    {
-       //        CharAndPinyin.Add(word,pinyin);
-       //    }
-       //}
+
+        //public Dictionary<char,string > CharAndPinyin=new Dictionary<char, string>();
+        //private void AddWordAndPinyin(char word,string pinyin)
+        //{
+        //    if (!CharAndPinyin.ContainsKey(word))
+        //    {
+        //        CharAndPinyin.Add(word,pinyin);
+        //    }
+        //}
+
+        public WordLibraryList ImportLine(string str)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
         private WordLibrary ImportWord(FileStream fs)
         {
-            WordLibrary wordLibrary=new WordLibrary();
+            var wordLibrary = new WordLibrary();
             var temp = new byte[2];
             fs.Read(temp, 0, 2);
-            var len = BitConverter.ToInt16(temp, 0);
-            fs.Read(temp, 0, 2);//what's the meaning of these 2 bytes?
-            List<string> pinyinList=new List<string>();
-            for (var i = 0; i < len; i++)
+            short len = BitConverter.ToInt16(temp, 0);
+            fs.Read(temp, 0, 2); //what's the meaning of these 2 bytes?
+            var pinyinList = new List<string>();
+            for (int i = 0; i < len; i++)
             {
                 temp = new byte[2];
                 fs.Read(temp, 0, 2);
 
-               pinyinList.Add(Shengmu[temp[0]]+Yunmu[temp[1]]);
+                pinyinList.Add(Shengmu[temp[0]] + Yunmu[temp[1]]);
             }
             wordLibrary.PinYin = pinyinList.ToArray();
             temp = new byte[2*len];
@@ -100,12 +173,5 @@ namespace Studyzy.IMEWLConverter.IME
             //}
             return wordLibrary;
         }
-
-       public WordLibraryList ImportLine(string str)
-        {
-            throw new NotImplementedException();
-        }
-
-        #endregion
     }
 }

@@ -37,12 +37,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaiduPinyinTest.cs" />
+    <Compile Include="BaiduBdictTest.cs" />
     <Compile Include="BaiduShoujiTest.cs" />
     <Compile Include="BaseTest.cs" />
     <Compile Include="Ld2ParseTest.cs" />
     <Compile Include="RimeTest.cs" />
-    <Compile Include="SougouPinyinBinTest.cs" />
+    <Compile Include="SougouPinyinTest.cs" />
     <Compile Include="GooglePinyinTest.cs" />
     <Compile Include="NoPinyinWordOnlyTest.cs" />
     <Compile Include="PinyinJiaJiaTest.cs" />
@@ -54,7 +54,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource4Test.resx</DependentUpon>
     </Compile>
-    <Compile Include="SougouPinyinTest.cs" />
+    <Compile Include="SougouPinyinBinTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IME WL Converter\IME WL Converter.csproj">
@@ -67,29 +67,38 @@
     <Content Include="Lib\nunit.framework.dll" />
     <Content Include="Lib\nunit.framework.xml" />
     <Content Include="Lib\nunit.util.dll" />
-    <Content Include="luna_pinyin_export.txt">
+    <Content Include="Test\luna_pinyin_export.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="g.ld2">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="i.ld2">
+    <Content Include="Test\QQPinyin.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Test\QQPinyin_English.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Test\纯汉字.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Test\g.ld2">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="sougoubak.bin">
+    <None Include="Test\i.ld2">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="movie.bdict">
+    <None Include="Test\sougoubak.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Test\movie.bdict">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\PinyinJiajia.txt" />
     <None Include="Resources\NoPinyinWordOnly.txt" />
     <None Include="Resources\GooglePinyin.txt" />
-    <None Include="travel.bdict">
+    <None Include="Test\travel.bdict">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="成语.qpyd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="Test\成语.qpyd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +107,7 @@
       <LastGenOutput>Resource4Test.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Studyzy.IMEWLConverter.Generaters;
+using Studyzy.IMEWLConverter.Helpers;
 
 namespace Studyzy.IMEWLConverter.IME
 {
+    [ComboBoxShow(ConstantString.WORD_ONLY, ConstantString.WORD_ONLY_C, 2010)]
     public class NoPinyinWordOnly : IWordLibraryTextImport, IWordLibraryExport
     {
-        private PinYinFactory pinyinFactory;
+        private IWordCodeGenerater pinyinFactory;
 
         #region IWordLibraryImport 成员
+
         public int CountWord { get; set; }
         public int CurrentStatus { get; set; }
 
@@ -19,14 +23,15 @@ namespace Studyzy.IMEWLConverter.IME
         /// <returns></returns>
         public virtual WordLibraryList ImportLine(string line)
         {
-            List<List<string>> list = pinyinFactory.GetPinYinListOfString(line);
+            List<string> py = pinyinFactory.GetCodeOfString(line);
             var wl = new WordLibrary();
             wl.Word = line;
-            wl.PinYin = list[0].ToArray();
+            wl.PinYin = py.ToArray();
             var wll = new WordLibraryList();
             wll.Add(wl);
             return wll;
         }
+
         /// <summary>
         /// 通过搜狗细胞词库txt内容构造词库对象
         /// </summary>
@@ -34,19 +39,14 @@ namespace Studyzy.IMEWLConverter.IME
         /// <returns></returns>
         public virtual WordLibraryList Import(string path)
         {
-            var str = FileOperationHelper.ReadFile(path);
+            string str = FileOperationHelper.ReadFile(path);
             return ImportText(str);
         }
+
         public virtual WordLibraryList ImportText(string str)
         {
-            //if (OnlySinglePinyin)
-            //{
-            pinyinFactory = new SinglePinyin();
-            //}
-            //else
-            //{
-            //    pinyinFactory = new AllPinyin();
-            //}
+            pinyinFactory = new WordPinyinGenerater();
+
             var wlList = new WordLibraryList();
             string[] words = str.Split(new[] {'\r', '\n'}, StringSplitOptions.RemoveEmptyEntries);
             for (int i = 0; i < words.Length; i++)
@@ -69,10 +69,14 @@ namespace Studyzy.IMEWLConverter.IME
         #endregion
 
         #region IWordLibraryExport 成员
+
+        #region IWordLibraryExport Members
+
         public virtual string ExportLine(WordLibrary wl)
         {
             return wl.Word;
         }
+
         public virtual string Export(WordLibraryList wlList)
         {
             var sb = new StringBuilder();
@@ -84,15 +88,26 @@ namespace Studyzy.IMEWLConverter.IME
             return sb.ToString();
         }
 
+        #endregion
+
+        #region IWordLibraryTextImport Members
+
         public virtual Encoding Encoding
         {
             get { return Encoding.Default; }
         }
 
         #endregion
+
+        #endregion
+
+        #region IWordLibraryTextImport Members
+
         public bool IsText
         {
             get { return true; }
         }
+
+        #endregion
     }
 }

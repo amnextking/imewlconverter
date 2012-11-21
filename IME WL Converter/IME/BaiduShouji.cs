@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Text;
+using Studyzy.IMEWLConverter.Helpers;
 
 namespace Studyzy.IMEWLConverter.IME
 {
+    [ComboBoxShow(ConstantString.BAIDU_SHOUJI, ConstantString.BAIDU_SHOUJI_C, 1000)]
     public class BaiduShouji : IWordLibraryTextImport, IWordLibraryExport
     {
         #region IWordLibraryExport 成员
+
+        #region IWordLibraryExport Members
 
         public string ExportLine(WordLibrary wl)
         {
@@ -30,10 +34,16 @@ namespace Studyzy.IMEWLConverter.IME
             return sb.ToString();
         }
 
+        #endregion
+
+        #region IWordLibraryTextImport Members
+
         public Encoding Encoding
         {
             get { return Encoding.Unicode; }
         }
+
+        #endregion
 
         #endregion
 
@@ -46,16 +56,17 @@ namespace Studyzy.IMEWLConverter.IME
         {
             get { return true; }
         }
+
         public WordLibraryList Import(string path)
         {
-            var str = FileOperationHelper.ReadFile(path, Encoding);
+            string str = FileOperationHelper.ReadFile(path, Encoding);
             return ImportText(str);
         }
+
         public WordLibraryList ImportText(string str)
         {
-
             var wlList = new WordLibraryList();
-            string[] lines = str.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            string[] lines = str.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
             CountWord = lines.Length;
             for (int i = 0; i < lines.Length; i++)
             {
@@ -74,7 +85,7 @@ namespace Studyzy.IMEWLConverter.IME
             var wl = new WordLibrary();
             wl.Word = word;
             wl.Count = 1;
-            wl.PinYin = py.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+            wl.PinYin = py.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries);
             var wll = new WordLibraryList();
             wll.Add(wl);
             return wll;

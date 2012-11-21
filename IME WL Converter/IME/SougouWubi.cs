@@ -1,11 +1,18 @@
 ﻿using System;
 using System.Text;
+using Studyzy.IMEWLConverter.Helpers;
 
 namespace Studyzy.IMEWLConverter.IME
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    [ComboBoxShow(ConstantString.SOUGOU_WUBI, ConstantString.SOUGOU_WUBI_C, 40)]
     public class SougouWubi : IWordLibraryTextImport, IWordLibraryExport
     {
         #region IWordLibraryExport 成员
+
+        #region IWordLibraryExport Members
 
         public string ExportLine(WordLibrary wl)
         {
@@ -17,6 +24,7 @@ namespace Studyzy.IMEWLConverter.IME
 
             return sb.ToString();
         }
+
         public string Export(WordLibraryList wlList)
         {
             var sb = new StringBuilder();
@@ -28,6 +36,10 @@ namespace Studyzy.IMEWLConverter.IME
             return sb.ToString();
         }
 
+        #endregion
+
+        #region IWordLibraryTextImport Members
+
         public Encoding Encoding
         {
             get { return Encoding.Default; }
@@ -35,7 +47,10 @@ namespace Studyzy.IMEWLConverter.IME
 
         #endregion
 
+        #endregion
+
         #region IWordLibraryImport 成员
+
         public int CountWord { get; set; }
         public int CurrentStatus { get; set; }
 
@@ -43,6 +58,7 @@ namespace Studyzy.IMEWLConverter.IME
         {
             get { return true; }
         }
+
         public WordLibraryList ImportLine(string line)
         {
             string py = line.Split(' ')[0];
@@ -50,16 +66,18 @@ namespace Studyzy.IMEWLConverter.IME
             var wl = new WordLibrary();
             wl.Word = word;
             wl.Count = 1;
-            wl.PinYin = py.Split(new[] { '\'' }, StringSplitOptions.RemoveEmptyEntries);
+            wl.PinYin = py.Split(new[] {'\''}, StringSplitOptions.RemoveEmptyEntries);
             var wll = new WordLibraryList();
             wll.Add(wl);
             return wll;
         }
+
         public WordLibraryList Import(string path)
         {
-            var str = FileOperationHelper.ReadFile(path, Encoding);
+            string str = FileOperationHelper.ReadFile(path, Encoding);
             return ImportText(str);
         }
+
         public WordLibraryList ImportText(string str)
         {
             var wlList = new WordLibraryList();

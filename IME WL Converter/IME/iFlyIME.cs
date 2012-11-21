@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 
 namespace Studyzy.IMEWLConverter.IME
 {
-    public class iFlyIME:NoPinyinWordOnly
+    [ComboBoxShow(ConstantString.IFLY_IME, ConstantString.IFLY_IME_C, 1050)]
+    public class iFlyIME : NoPinyinWordOnly
     {
         public override Encoding Encoding
         {
             get { return Encoding.UTF8; }
         }
+
         public override WordLibraryList ImportLine(string line)
         {
             if (line.Length == 0 || line[0] == '#')
@@ -18,6 +18,7 @@ namespace Studyzy.IMEWLConverter.IME
             }
             return base.ImportLine(line.Split(' ')[0]);
         }
+
         public override string Export(WordLibraryList wlList)
         {
             string head =
@@ -37,9 +38,9 @@ namespace Studyzy.IMEWLConverter.IME
 
 ###以下为正文内容###
 ";
-            head = string.Format(head, wlList.Count * 10, wlList.Count);
-            
-            return head+ base.Export(wlList);
+            head = string.Format(head, wlList.Count*10, wlList.Count);
+
+            return head + base.Export(wlList);
         }
     }
 }

@@ -1,20 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Studyzy.IMEWLConverter.Generaters;
+using Studyzy.IMEWLConverter.Helpers;
 
 namespace Studyzy.IMEWLConverter.IME
 {
+    [ComboBoxShow(ConstantString.ZHENGMA, ConstantString.ZHENGMA_C, 190)]
     public class Zhengma : IWordLibraryTextImport
     {
         #region IWordLibraryImport 成员
 
-        private readonly PinYinFactory pinyinFactory = new SinglePinyin();
+        private readonly IWordCodeGenerater pinyinFactory = new WordPinyinGenerater();
 
         public WordLibraryList Import(string path)
         {
-            var str = FileOperationHelper.ReadFile(path, Encoding);
+            string str = FileOperationHelper.ReadFile(path, Encoding);
             return ImportText(str);
         }
+
         public WordLibraryList ImportText(string str)
         {
             var wlList = new WordLibraryList();
@@ -36,12 +40,12 @@ namespace Studyzy.IMEWLConverter.IME
             for (int i = 1; i < strs.Length; i++)
             {
                 string word = strs[i].Replace("，", ""); //把汉字中带有逗号的都去掉逗号
-                List<List<string>> list = pinyinFactory.GetPinYinListOfString(word);
+                List<string> list = pinyinFactory.GetCodeOfString(word);
                 for (int j = 0; j < list.Count; j++)
                 {
                     var wl = new WordLibrary();
                     wl.Word = word;
-                    wl.PinYin = list[j].ToArray();
+                    wl.PinYin = list.ToArray();
                     wlList.Add(wl);
                 }
             }
@@ -50,15 +54,21 @@ namespace Studyzy.IMEWLConverter.IME
 
         public int CountWord { get; set; }
         public int CurrentStatus { get; set; }
+
         public bool IsText
         {
             get { return true; }
         }
+
         #endregion
+
+        #region IWordLibraryTextImport Members
 
         public Encoding Encoding
         {
             get { return Encoding.Default; }
         }
+
+        #endregion
     }
 }

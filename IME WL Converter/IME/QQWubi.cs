@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Studyzy.IMEWLConverter.IME
+﻿namespace Studyzy.IMEWLConverter.IME
 {
-    public class QQWubi:Zhengma
+    [ComboBoxShow(ConstantString.QQ_WUBI, ConstantString.QQ_WUBI_C, 70)]
+    public class QQWubi : Zhengma
     {
-
     }
 }

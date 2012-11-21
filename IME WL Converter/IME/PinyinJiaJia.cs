@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Studyzy.IMEWLConverter.Generaters;
+using Studyzy.IMEWLConverter.Helpers;
 
 namespace Studyzy.IMEWLConverter.IME
 {
+    [ComboBoxShow(ConstantString.PINYIN_JIAJIA, ConstantString.PINYIN_JIAJIA_C, 120)]
     public class PinyinJiaJia : IWordLibraryExport, IWordLibraryTextImport
     {
         #region IWordLibraryExport 成员
@@ -13,7 +16,7 @@ namespace Studyzy.IMEWLConverter.IME
             var sb = new StringBuilder();
             for (int i = 0; i < wlList.Count; i++)
             {
-                var line = ExportLine(wlList[i]);
+                string line = ExportLine(wlList[i]);
                 if (line != "")
                 {
                     sb.Append(line);
@@ -27,6 +30,7 @@ namespace Studyzy.IMEWLConverter.IME
         {
             get { return Encoding.Unicode; }
         }
+
         public string ExportLine(WordLibrary wl)
         {
             try
@@ -46,17 +50,20 @@ namespace Studyzy.IMEWLConverter.IME
                 return "";
             }
         }
+
         #endregion
 
         #region IWordLibraryImport 成员
 
-        private readonly SinglePinyin single = new SinglePinyin();
+        private readonly IWordCodeGenerater single = new WordPinyinGenerater();
         public int CountWord { get; set; }
         public int CurrentStatus { get; set; }
+
         public bool IsText
         {
             get { return true; }
         }
+
         /// <summary>
         /// 形如：冷血xue动物
         /// 只有多音字才注音，一般的字不注音，就使用默认读音即可
@@ -65,9 +72,10 @@ namespace Studyzy.IMEWLConverter.IME
         /// <returns></returns>
         public WordLibraryList Import(string path)
         {
-            var str = FileOperationHelper.ReadFile(path, Encoding);
+            string str = FileOperationHelper.ReadFile(path, Encoding);
             return ImportText(str);
         }
+
         public WordLibraryList ImportText(string str)
         {
             var wlList = new WordLibraryList();
@@ -86,6 +94,7 @@ namespace Studyzy.IMEWLConverter.IME
             }
             return wlList;
         }
+
         public WordLibraryList ImportLine(string word)
         {
             string hz = "";
@@ -96,7 +105,7 @@ namespace Studyzy.IMEWLConverter.IME
                 hz += word[j];
                 if (word[j + 1] > 'z') //而且后面跟的不是拼音
                 {
-                    py.Add(single.GetPinYinOfChar(word[j])[0]);
+                    py.Add(single.GetCodeOfChar(word[j]));
                 }
                 else //后面跟拼音
                 {
@@ -114,7 +123,7 @@ namespace Studyzy.IMEWLConverter.IME
             if (j == word.Length - 1) //最后一个字是汉字
             {
                 hz += word[j];
-                py.Add(single.GetPinYinOfChar(word[j])[0]);
+                py.Add(single.GetCodeOfChar(word[j]));
             }
             var wl = new WordLibrary();
             wl.PinYin = py.ToArray();
@@ -123,7 +132,7 @@ namespace Studyzy.IMEWLConverter.IME
             wll.Add(wl);
             return wll;
         }
-        #endregion
 
+        #endregion
     }
 }

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using Studyzy.IMEWLConverter.Language;
 
@@ -11,11 +6,14 @@ namespace Studyzy.IMEWLConverter
 {
     public partial class ChineseConverterSelectForm : Form
     {
+        private static int selectedTranslateIndex;
+        private static int selectedConverterIndex;
+
         public ChineseConverterSelectForm()
         {
             InitializeComponent();
             SelectedConverter = new SystemKernel();
-            SelectedTranslate=ChineseTranslate.NotTrans;
+            SelectedTranslate = ChineseTranslate.NotTrans;
             if (selectedConverterIndex == 1)
             {
                 rbtnKernel.Checked = false;
@@ -35,8 +33,6 @@ namespace Studyzy.IMEWLConverter
             }
         }
 
-        private static int selectedTranslateIndex=0;
-        private static int selectedConverterIndex=0;
         public ChineseTranslate SelectedTranslate { get; set; }
         public IChineseConverter SelectedConverter { get; set; }
 
@@ -45,31 +41,29 @@ namespace Studyzy.IMEWLConverter
             if (rbtnKernel.Checked)
             {
                 selectedConverterIndex = 0;
-                SelectedConverter=new SystemKernel();
+                SelectedConverter = new SystemKernel();
             }
             else if (rbtnOffice.Checked)
             {
                 selectedConverterIndex = 1;
-                SelectedConverter=new OfficeComponent();
+                SelectedConverter = new OfficeComponent();
             }
             if (rbtnNotTrans.Checked)
             {
                 selectedTranslateIndex = 0;
-                SelectedTranslate=ChineseTranslate.NotTrans;
+                SelectedTranslate = ChineseTranslate.NotTrans;
             }
             else if (rbtnTransToChs.Checked)
             {
                 selectedTranslateIndex = 1;
-                SelectedTranslate=ChineseTranslate.Trans2Chs;
+                SelectedTranslate = ChineseTranslate.Trans2Chs;
             }
             else if (rbtnTransToCht.Checked)
             {
                 selectedTranslateIndex = 2;
                 SelectedTranslate = ChineseTranslate.Trans2Cht;
             }
-            this.DialogResult=DialogResult.OK;
+            DialogResult = DialogResult.OK;
         }
-
-      
     }
 }

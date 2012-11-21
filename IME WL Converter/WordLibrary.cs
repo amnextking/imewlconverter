@@ -8,10 +8,11 @@ namespace Studyzy.IMEWLConverter
     public class WordLibrary
     {
         private int count = 1;
+        private bool isEnglish;
         private string[] pinYin;
         private string pinYinString = "";
         private string word;
-        private bool isEnglish = false;
+
         /// <summary>
         /// 该词条是否是英文词条
         /// </summary>
@@ -20,6 +21,7 @@ namespace Studyzy.IMEWLConverter
             get { return isEnglish; }
             set { isEnglish = value; }
         }
+
         /// <summary>
         /// 词语
         /// </summary>
@@ -54,7 +56,7 @@ namespace Studyzy.IMEWLConverter
         {
             get
             {
-                if (pinYinString == ""&&!isEnglish)
+                if (pinYinString == "" && !isEnglish)
                 {
                     pinYinString = string.Join("'", pinYin);
                 }
@@ -99,6 +101,7 @@ namespace Studyzy.IMEWLConverter
         {
             return "汉字：" + word + "；拼音：" + PinYinString + "；词频：" + count;
         }
+
         public override string ToString()
         {
             return "WordLibrary 汉字：" + word + "；拼音：" + PinYinString + "；词频：" + count;
@@ -111,14 +114,17 @@ namespace Studyzy.IMEWLConverter
         /// 字符串左边包含分隔符
         /// </summary>
         LeftContain,
+
         /// <summary>
         /// 字符串右边包含分隔符
         /// </summary>
         RightContain,
+
         /// <summary>
         /// 字符串两侧都不包含分隔符
         /// </summary>
         None,
+
         /// <summary>
         /// 字符串两侧都有分隔符
         /// </summary>

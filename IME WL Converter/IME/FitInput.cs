@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
+using Studyzy.IMEWLConverter.Helpers;
 
 namespace Studyzy.IMEWLConverter.IME
 {
+    [ComboBoxShow(ConstantString.FIT, ConstantString.FIT_C, 140)]
     public class FitInput : IWordLibraryExport, IWordLibraryTextImport
     {
-
         #region IWordLibraryExport 成员
 
         public string ExportLine(WordLibrary wl)
@@ -51,7 +51,6 @@ namespace Studyzy.IMEWLConverter.IME
 
         public WordLibraryList ImportLine(string line)
         {
-
             string py = line.Split(',')[0];
             string word = line.Split(',')[1];
             var wl = new WordLibrary();
@@ -61,12 +60,11 @@ namespace Studyzy.IMEWLConverter.IME
             var wll = new WordLibraryList();
             wll.Add(wl);
             return wll;
-
         }
 
         public WordLibraryList Import(string path)
         {
-            var str = FileOperationHelper.ReadFile(path, Encoding);
+            string str = FileOperationHelper.ReadFile(path, Encoding);
             return ImportText(str);
         }
 
@@ -81,7 +79,6 @@ namespace Studyzy.IMEWLConverter.IME
                 CurrentStatus = i;
 
                 wlList.AddWordLibraryList(ImportLine(line));
-
             }
             return wlList;
         }

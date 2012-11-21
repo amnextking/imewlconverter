@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Text;
+using Studyzy.IMEWLConverter.Helpers;
 
 namespace Studyzy.IMEWLConverter.IME
 {
+    [ComboBoxShow(ConstantString.QQ_PINYIN, ConstantString.QQ_PINYIN_C, 50)]
     public class QQPinyin : IWordLibraryTextImport, IWordLibraryExport
     {
-
-
-       
-
         #region IWordLibraryExport 成员
+
+        #region IWordLibraryExport Members
+
         public string ExportLine(WordLibrary wl)
         {
             var sb = new StringBuilder();
@@ -21,15 +22,16 @@ namespace Studyzy.IMEWLConverter.IME
             sb.Append(wl.Count);
             return sb.ToString();
         }
+
         public string Export(WordLibraryList wlList)
         {
             var sb = new StringBuilder();
-            for (int i = 0; i < wlList.Count-1; i++)
+            for (int i = 0; i < wlList.Count - 1; i++)
             {
                 sb.Append(ExportLine(wlList[i]));
                 sb.Append("\r\n");
             }
-            var last = wlList[wlList.Count - 1];
+            WordLibrary last = wlList[wlList.Count - 1];
             sb.Append(ExportLine(last));
             sb.Append(", ");
             sb.Append(last.GetPinYinString("'", BuildType.None));
@@ -39,13 +41,20 @@ namespace Studyzy.IMEWLConverter.IME
             return sb.ToString();
         }
 
+        #endregion
+
+        #region IWordLibraryTextImport Members
+
         public Encoding Encoding
         {
             get { return Encoding.Unicode; }
         }
 
         #endregion
-        #region IWordLibraryImport Members
+
+        #endregion
+
+        #region IWordLibraryTextImport Members
 
         public int CountWord { get; set; }
         public int CurrentStatus { get; set; }
@@ -54,9 +63,10 @@ namespace Studyzy.IMEWLConverter.IME
         {
             get { return true; }
         }
+
         public WordLibraryList ImportLine(string line)
         {
-            line = line.Split(',')[0];//如果有逗号，就只取第一个
+            line = line.Split(',')[0]; //如果有逗号，就只取第一个
             string[] sp = line.Split(' ');
             string py = sp[0];
             string word = sp[1];
@@ -64,7 +74,7 @@ namespace Studyzy.IMEWLConverter.IME
             var wl = new WordLibrary();
             wl.Word = word;
             wl.Count = count;
-            wl.PinYin = py.Split(new[] { '\'' }, StringSplitOptions.RemoveEmptyEntries);
+            wl.PinYin = py.Split(new[] {'\''}, StringSplitOptions.RemoveEmptyEntries);
             var wll = new WordLibraryList();
             wll.Add(wl);
             return wll;
@@ -72,9 +82,10 @@ namespace Studyzy.IMEWLConverter.IME
 
         public WordLibraryList Import(string path)
         {
-            var str = FileOperationHelper.ReadFile(path, Encoding);
+            string str = FileOperationHelper.ReadFile(path, Encoding);
             return ImportText(str);
         }
+
         public WordLibraryList ImportText(string str)
         {
             var wlList = new WordLibraryList();

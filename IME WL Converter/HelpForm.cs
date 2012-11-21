@@ -30,7 +30,7 @@ namespace Studyzy.IMEWLConverter
             helpString +=
                 "如果您觉得深蓝词库转换能够给您的生活带来了极大的方便，可以通过Paypal或者支付宝捐赠该软件(http://imewlconverter.googlecode.com/svn/wiki/donate.html)。\r\n";
             helpString += "有任何问题和建议请联系我：studyzy@163.com\r\n";
-            
+
             richTextBox1.Text = helpString;
         }
     }

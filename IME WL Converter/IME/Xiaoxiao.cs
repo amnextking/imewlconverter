@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 
 namespace Studyzy.IMEWLConverter.IME
 {
+    [ComboBoxShow(ConstantString.XIAOXIAO, ConstantString.XIAOXIAO_C, 100)]
     public class Xiaoxiao : IWordLibraryExport
     {
-
         #region IWordLibraryExport 成员
+
         public string ExportLine(WordLibrary wl)
         {
             var sb = new StringBuilder();
@@ -16,6 +16,7 @@ namespace Studyzy.IMEWLConverter.IME
             sb.Append(wl.Word);
             return sb.ToString();
         }
+
         public string Export(WordLibraryList wlList)
         {
             var sb = new StringBuilder();
@@ -32,7 +33,7 @@ assist=mb/yong.txt 2
 code_a1=p..
 [DATA]
 ");
-            IDictionary<string,string> xiaoxiaoDic=new Dictionary<string, string>();
+            IDictionary<string, string> xiaoxiaoDic = new Dictionary<string, string>();
 
             for (int i = 0; i < wlList.Count; i++)
             {
@@ -44,10 +45,10 @@ code_a1=p..
                 }
                 else
                 {
-                    xiaoxiaoDic.Add(key,value);
+                    xiaoxiaoDic.Add(key, value);
                 }
             }
-            foreach (KeyValuePair<string, string> keyValuePair in xiaoxiaoDic)
+            foreach (var keyValuePair in xiaoxiaoDic)
             {
                 sb.Append(keyValuePair.Key + " " + keyValuePair.Value + "\n");
             }
@@ -61,6 +62,5 @@ code_a1=p..
         }
 
         #endregion
-
     }
 }

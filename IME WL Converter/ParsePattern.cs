@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Studyzy.IMEWLConverter.Generaters;
 
 namespace Studyzy.IMEWLConverter
 {
@@ -15,7 +16,7 @@ namespace Studyzy.IMEWLConverter
             sample.Count = 1234;
             sample.Word = "深蓝词库转换";
             sample.PinYin = new[] {"shen", "lan", "ci", "ku", "zhuan", "huan"};
-            Factory=new SinglePinyin();
+            Factory = new WordPinyinGenerater();
         }
 
         public bool ContainPinyin { get; set; }
@@ -24,7 +25,7 @@ namespace Studyzy.IMEWLConverter
         public string SplitString { get; set; }
         public BuildType PinyinSplitType { get; set; }
         public List<int> Sort { get; set; }
-        public PinYinFactory Factory { get; set; }
+        public IWordCodeGenerater Factory { get; set; }
 
         public string BuildWLStringSample()
         {
@@ -117,12 +118,13 @@ namespace Studyzy.IMEWLConverter
             wl.PinYin = wl.PinYinString.Split(new[] {PinyinSplitString}, StringSplitOptions.RemoveEmptyEntries);
             return wl;
         }
-        public void CodingString(WordLibrary wl,PinYinFactory factory)
+
+        public void CodingString(WordLibrary wl, IWordCodeGenerater factory)
         {
-            List<string> codes=new List<string>();
+            var codes = new List<string>();
             foreach (char c in wl.Word)
             {
-                string code = factory.GetPinYinOfChar(c)[0];
+                string code = factory.GetCodeOfChar(c);
                 codes.Add(code);
             }
             wl.PinYin = codes.ToArray();

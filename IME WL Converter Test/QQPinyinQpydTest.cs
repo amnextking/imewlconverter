@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using NUnit.Framework;
+using Studyzy.IMEWLConverter.IME;
 
 namespace Studyzy.IMEWLConverter.Test
 {
-
     [TestFixture]
     internal class QQPinyinQpydTest : BaseTest
     {
@@ -14,14 +12,17 @@ namespace Studyzy.IMEWLConverter.Test
             get { throw new NotImplementedException(); }
         }
 
-        [SetUp]
+        [TestFixtureSetUp]
         public override void InitData()
         {
-            importer = new Studyzy.IMEWLConverter.IME.QQPinyinQpyd();
+            importer = new QQPinyinQpyd();
         }
-        public  void TestParseQypd()
+
+        [TestCase("成语.qpyd")]
+        public void TestParseQypd(string file)
         {
-            
+            WordLibraryList wll = importer.Import(GetFullPath(file));
+            Assert.Greater(wll.Count, 0);
         }
     }
 }

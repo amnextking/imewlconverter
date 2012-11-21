@@ -1,22 +1,21 @@
 ﻿using System;
 using System.Text;
+using Studyzy.IMEWLConverter.Helpers;
 
 namespace Studyzy.IMEWLConverter.IME
 {
-    public class SelfDefining : IWordLibraryTextImport,IWordLibraryExport
+    [ComboBoxShow(ConstantString.SELF_DEFINING, ConstantString.SELF_DEFINING_C, 2000)]
+    public class SelfDefining : IWordLibraryTextImport, IWordLibraryExport
     {
         public ParsePattern UserDefiningPattern { get; set; }
 
         #region IWordLibraryImport 成员
 
-        public Encoding Encoding
-        {
-            get { return Encoding.Default; }
-        }
+        #region IWordLibraryExport Members
 
         public string Export(WordLibraryList wlList)
         {
-            StringBuilder sb=new StringBuilder();
+            var sb = new StringBuilder();
             foreach (WordLibrary wordLibrary in wlList)
             {
                 try
@@ -24,28 +23,40 @@ namespace Studyzy.IMEWLConverter.IME
                     sb.Append(ExportLine(wordLibrary));
                     sb.Append("\r\n");
                 }
-                catch { }
+                catch
+                {
+                }
             }
             return sb.ToString();
         }
 
         public string ExportLine(WordLibrary wl)
         {
-          
             string line = UserDefiningPattern.BuildWLString(wl);
 
             return line;
+        }
+
+        #endregion
+
+        #region IWordLibraryTextImport Members
+
+        public Encoding Encoding
+        {
+            get { return Encoding.Default; }
         }
 
         public bool IsText
         {
             get { return true; }
         }
+
         public WordLibraryList Import(string path)
         {
-            var str = FileOperationHelper.ReadFile(path);
+            string str = FileOperationHelper.ReadFile(path);
             return ImportText(str);
         }
+
         public WordLibraryList ImportText(string str)
         {
             var wlList = new WordLibraryList();
@@ -72,6 +83,8 @@ namespace Studyzy.IMEWLConverter.IME
 
         public int CountWord { get; set; }
         public int CurrentStatus { get; set; }
+
+        #endregion
 
         #endregion
     }

@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using Studyzy.IMEWLConverter.Helpers;
 
 namespace Studyzy.IMEWLConverter
 {
@@ -20,7 +17,7 @@ namespace Studyzy.IMEWLConverter
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                this.txbFilePath.Text = openFileDialog1.FileName;
+                txbFilePath.Text = openFileDialog1.FileName;
             }
         }
 
@@ -33,13 +30,13 @@ namespace Studyzy.IMEWLConverter
             }
             if (!File.Exists(txbFilePath.Text))
             {
-                MessageBox.Show(txbFilePath.Text+ "，该文件不存在");
+                MessageBox.Show(txbFilePath.Text + "，该文件不存在");
                 return;
             }
             rtbLogs.Clear();
-            if(rbtnSplitByLine.Checked)
+            if (rbtnSplitByLine.Checked)
             {
-                SplitFileByLine( (int)numdMaxLine.Value);
+                SplitFileByLine((int) numdMaxLine.Value);
             }
             else if (rbtnSplitBySize.Checked)
             {
@@ -51,11 +48,11 @@ namespace Studyzy.IMEWLConverter
             }
             MessageBox.Show("恭喜你，文件分割完成!");
         }
+
         private void SplitFileByLine(int maxLine)
         {
-         
-            Encoding encoding=null;
-            var str = FileOperationHelper.ReadFileContent(txbFilePath.Text,ref encoding,Encoding.UTF8);
+            Encoding encoding = null;
+            string str = FileOperationHelper.ReadFileContent(txbFilePath.Text, ref encoding, Encoding.UTF8);
             string splitLineChar = "\r\n";
             if (str.IndexOf(splitLineChar) < 0)
             {
@@ -73,20 +70,20 @@ namespace Studyzy.IMEWLConverter
                     return;
                 }
             }
-            var list = str.Split(new string[] {splitLineChar}, StringSplitOptions.RemoveEmptyEntries);
+            string[] list = str.Split(new[] {splitLineChar}, StringSplitOptions.RemoveEmptyEntries);
 
-            StringBuilder fileContent = new StringBuilder();
+            var fileContent = new StringBuilder();
             int fileIndex = 1;
-            for (var i = 0; i < list.Length; i++)
+            for (int i = 0; i < list.Length; i++)
             {
-                if (i % maxLine == 0)
+                if (i%maxLine == 0)
                 {
                     if (i != 0)
                     {
-                        var newFile = GetWriteFilePath(fileIndex++);
-                        FileOperationHelper.WriteFile(newFile, encoding,fileContent.ToString());
-                        rtbLogs.AppendText(newFile+"\r\n");
-                        fileContent=new StringBuilder();
+                        string newFile = GetWriteFilePath(fileIndex++);
+                        FileOperationHelper.WriteFile(newFile, encoding, fileContent.ToString());
+                        rtbLogs.AppendText(newFile + "\r\n");
+                        fileContent = new StringBuilder();
                     }
                 }
                 fileContent.Append(list[i]);
@@ -96,41 +93,40 @@ namespace Studyzy.IMEWLConverter
 
         private void SplitFileBySize(int maxSize)
         {
-            var encoding = FileOperationHelper.GetEncodingType(txbFilePath.Text);
+            Encoding encoding = FileOperationHelper.GetEncodingType(txbFilePath.Text);
 
 
             int fileIndex = 1;
-            int size = (maxSize-10)*1024;//10K的Buffer
-            FileStream inFile = new FileStream(txbFilePath.Text, FileMode.Open, FileAccess.Read);
+            int size = (maxSize - 10)*1024; //10K的Buffer
+            var inFile = new FileStream(txbFilePath.Text, FileMode.Open, FileAccess.Read);
 
             do
             {
-                var newFile = GetWriteFilePath(fileIndex++);
-                FileStream outFile = new FileStream(newFile, FileMode.OpenOrCreate,
-                                                    FileAccess.Write);
-                if (fileIndex != 2)//不是第一个文件，那么就要写文件头
+                string newFile = GetWriteFilePath(fileIndex++);
+                var outFile = new FileStream(newFile, FileMode.OpenOrCreate,
+                                             FileAccess.Write);
+                if (fileIndex != 2) //不是第一个文件，那么就要写文件头
                 {
-                    FileOperationHelper.WriteFileHeader(outFile,encoding);
+                    FileOperationHelper.WriteFileHeader(outFile, encoding);
                 }
                 int data = 0;
-                byte[] buffer = new byte[size];
+                var buffer = new byte[size];
                 if ((data = inFile.Read(buffer, 0, size)) > 0)
                 {
                     outFile.Write(buffer, 0, data);
                     bool hasContent = true;
                     do
                     {
-                        var b = inFile.ReadByte();
+                        int b = inFile.ReadByte();
                         if (b == 0xA || b == 0xD)
                         {
                             ReadToNextLine(inFile);
-                           
-                               hasContent=false;
-                          
+
+                            hasContent = false;
                         }
-                        if (b != -1)//文件已经读完
+                        if (b != -1) //文件已经读完
                         {
-                            outFile.WriteByte((byte)b);
+                            outFile.WriteByte((byte) b);
                         }
                         else
                         {
@@ -139,20 +135,21 @@ namespace Studyzy.IMEWLConverter
                     } while (hasContent);
                 }
                 outFile.Close();
-                rtbLogs.AppendText(newFile+"\r\n");
+                rtbLogs.AppendText(newFile + "\r\n");
             } while (inFile.Position != inFile.Length);
             inFile.Close();
         }
+
         private bool ReadToNextLine(FileStream fs)
         {
             do
             {
-                byte b = (byte)fs.ReadByte();
+                var b = (byte) fs.ReadByte();
                 if (b == -1)
                 {
                     return false;
                 }
-                if (b != 0xA && b != 0xD &&b!=0)
+                if (b != 0xA && b != 0xD && b != 0)
                 {
                     fs.Position--;
                     return true;
@@ -164,8 +161,8 @@ namespace Studyzy.IMEWLConverter
         private void SplitFileByLength(int length)
         {
             Encoding encoding = null;
-            length = length - 100;//100个字的Buffer
-            var str = FileOperationHelper.ReadFileContent(txbFilePath.Text, ref encoding, Encoding.UTF8);
+            length = length - 100; //100个字的Buffer
+            string str = FileOperationHelper.ReadFileContent(txbFilePath.Text, ref encoding, Encoding.UTF8);
             int fileIndex = 1;
             do
             {
@@ -173,10 +170,10 @@ namespace Studyzy.IMEWLConverter
                 {
                     break;
                 }
-                var content = str.Substring(0, Math.Min(str.Length,length));
+                string content = str.Substring(0, Math.Min(str.Length, length));
                 str = str.Substring(content.Length);
 
-                var i = Math.Min(str.IndexOf('\r'), str.IndexOf('\n'));
+                int i = Math.Min(str.IndexOf('\r'), str.IndexOf('\n'));
                 if (i != -1)
                 {
                     content += str.Substring(0, i + 2);
@@ -184,13 +181,15 @@ namespace Studyzy.IMEWLConverter
                 }
                 string newFile = GetWriteFilePath(fileIndex++);
                 FileOperationHelper.WriteFile(newFile, encoding, content);
-                rtbLogs.AppendText(newFile+"\r\n");
+                rtbLogs.AppendText(newFile + "\r\n");
             } while (true);
         }
+
         private string GetWriteFilePath(int i)
         {
             string path = txbFilePath.Text;
-            return Path.GetDirectoryName(path)+"\\"+ Path.GetFileNameWithoutExtension(path)+i.ToString("00")+Path.GetExtension(path);
+            return Path.GetDirectoryName(path) + "\\" + Path.GetFileNameWithoutExtension(path) + i.ToString("00") +
+                   Path.GetExtension(path);
         }
     }
 }

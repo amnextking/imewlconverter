@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using Studyzy.IMEWLConverter.Helpers;
 
 namespace Studyzy.IMEWLConverter.IME
 {
     /// <summary>
     /// 搜狗细胞词库
     /// </summary>
+    [ComboBoxShow(ConstantString.SOUGOU_XIBAO_SCEL, ConstantString.SOUGOU_XIBAO_SCEL_C, 20)]
     public class SougouPinyinScel : IWordLibraryImport
     {
         #region IWordLibraryImport 成员
@@ -36,10 +38,13 @@ namespace Studyzy.IMEWLConverter.IME
 
         #endregion
 
+        private Dictionary<int, string> pyDic = new Dictionary<int, string>();
+
         #region IWordLibraryImport Members
 
         public int CountWord { get; set; }
         public int CurrentStatus { get; set; }
+
         public bool IsText
         {
             get { return false; }
@@ -64,7 +69,7 @@ namespace Studyzy.IMEWLConverter.IME
         }
 
         #endregion
-        Dictionary<int, string> pyDic = new Dictionary<int, string>();
+
         private WordLibraryList ReadScel(string path)
         {
             pyDic = new Dictionary<int, string>();
@@ -131,17 +136,17 @@ namespace Studyzy.IMEWLConverter.IME
                     break;
                 }
             }
-            StringBuilder s=new StringBuilder();
+            var s = new StringBuilder();
             foreach (string value in pyDic.Values)
             {
-                s.Append(value+ "\",\"");
+                s.Append(value + "\",\"");
             }
             Debug.WriteLine(s.ToString());
-            
-             
+
+
             //fs.Position = 0x2628;
             fs.Position = hzPosition;
-       
+
             while (true)
             {
                 try
@@ -166,23 +171,24 @@ namespace Studyzy.IMEWLConverter.IME
             //}
             //return sb.ToString();
         }
+
         private IList<WordLibrary> ReadAPinyinWord(FileStream fs)
         {
             var num = new byte[4];
             fs.Read(num, 0, 4);
-            var samePYcount = num[0] + num[1] * 256;
-            var count = num[2] + num[3] * 256;
+            int samePYcount = num[0] + num[1]*256;
+            int count = num[2] + num[3]*256;
             //接下来读拼音
             var str = new byte[256];
-            for (var i = 0; i < count; i++)
+            for (int i = 0; i < count; i++)
             {
-                str[i] = (byte)fs.ReadByte();
+                str[i] = (byte) fs.ReadByte();
             }
-            List<string> wordPY = new List<string>();
-            for (var i = 0; i < count / 2; i++)
+            var wordPY = new List<string>();
+            for (int i = 0; i < count/2; i++)
             {
-                int key = str[i * 2] + str[i * 2 + 1] * 256;
-                wordPY .Add(pyDic[key]);
+                int key = str[i*2] + str[i*2 + 1]*256;
+                wordPY.Add(pyDic[key]);
             }
             //wordPY = wordPY.Remove(wordPY.Length - 1); //移除最后一个单引号
             //接下来读词语
@@ -191,18 +197,18 @@ namespace Studyzy.IMEWLConverter.IME
             {
                 num = new byte[2];
                 fs.Read(num, 0, 2);
-                int hzBytecount = num[0] + num[1] * 256;
+                int hzBytecount = num[0] + num[1]*256;
                 str = new byte[hzBytecount];
                 fs.Read(str, 0, hzBytecount);
                 string word = Encoding.Unicode.GetString(str);
-                var wlcount = BinFileHelper.ReadInt16(fs);
-                pyAndWord.Add(new WordLibrary { Word = word, PinYin = wordPY.ToArray(), Count = wlcount });
+                short wlcount = BinFileHelper.ReadInt16(fs);
+                pyAndWord.Add(new WordLibrary {Word = word, PinYin = wordPY.ToArray(), Count = wlcount});
                 CurrentStatus++;
                 //接下来10个字节什么意思呢？暂时先忽略了
                 var temp = new byte[10];
-                for (var i = 0; i < 10; i++)
+                for (int i = 0; i < 10; i++)
                 {
-                    temp[i] = (byte)fs.ReadByte();
+                    temp[i] = (byte) fs.ReadByte();
                 }
             }
             return pyAndWord;

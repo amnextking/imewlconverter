@@ -7,14 +7,15 @@ namespace Studyzy.IMEWLConverter
 {
     public class WordLibraryStream
     {
+        private readonly Encoding encoding;
         private readonly IWordLibraryExport export;
         private readonly IWordLibraryImport import;
 
         private readonly string path;
         private readonly StreamWriter sw;
-        private Encoding encoding;
 
-        public WordLibraryStream(IWordLibraryImport import, IWordLibraryExport export, string path, Encoding encoding, StreamWriter sw)
+        public WordLibraryStream(IWordLibraryImport import, IWordLibraryExport export, string path, Encoding encoding,
+                                 StreamWriter sw)
         {
             this.import = import;
             this.export = export;
@@ -31,9 +32,8 @@ namespace Studyzy.IMEWLConverter
         public void ConvertWordLibrary(Predicate<WordLibrary> match)
         {
             int i = 0;
-            using (StreamReader sr = new StreamReader(path, encoding))
+            using (var sr = new StreamReader(path, encoding))
             {
-
                 try
                 {
                     while (sr.Peek() != -1)

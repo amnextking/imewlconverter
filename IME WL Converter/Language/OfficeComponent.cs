@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Reflection;
 using Microsoft.Office.Interop.Word;
-using System.Text;
 
 namespace Studyzy.IMEWLConverter.Language
 {
-    class OfficeComponent : IChineseConverter,IDisposable
+    internal class OfficeComponent : IChineseConverter, IDisposable
     {
         //public void Init()
         //{
@@ -21,12 +19,15 @@ namespace Studyzy.IMEWLConverter.Language
 
         //private Document doc;
         //private _Application appWord;
+
+        #region IChineseConverter Members
+
         public string ToChs(string cht)
         {
             var doc = new Document();
             doc.Content.Text = cht;
             doc.Content.TCSCConverter(WdTCSCConverterDirection.wdTCSCConverterDirectionTCSC, true, true);
-            var des = doc.Content.Text;
+            string des = doc.Content.Text;
             object saveChanges = false;
             object originalFormat = Missing.Value;
             object routeDocument = Missing.Value;
@@ -40,7 +41,7 @@ namespace Studyzy.IMEWLConverter.Language
             var doc = new Document();
             doc.Content.Text = chs;
             doc.Content.TCSCConverter(WdTCSCConverterDirection.wdTCSCConverterDirectionSCTC, true, true);
-            var des = doc.Content.Text;
+            string des = doc.Content.Text;
             object saveChanges = false;
             object originalFormat = Missing.Value;
             object routeDocument = Missing.Value;
@@ -48,6 +49,10 @@ namespace Studyzy.IMEWLConverter.Language
             GC.Collect();
             return des;
         }
+
+        #endregion
+
+        #region IDisposable Members
 
         public void Dispose()
         {
@@ -57,7 +62,9 @@ namespace Studyzy.IMEWLConverter.Language
             //appWord.Quit(ref saveChange, ref originalFormat, ref routeDocument);
             //doc = null;
             //appWord = null;
-            GC.Collect();//进程资源释放 
+            GC.Collect(); //进程资源释放 
         }
+
+        #endregion
     }
 }

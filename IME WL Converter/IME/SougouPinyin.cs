@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Text;
+using Studyzy.IMEWLConverter.Helpers;
 
 namespace Studyzy.IMEWLConverter.IME
 {
+    [ComboBoxShow(ConstantString.SOUGOU_PINYIN, ConstantString.SOUGOU_PINYIN_C, 10)]
     public class SougouPinyin : IWordLibraryExport, IWordLibraryTextImport
     {
-
         #region IWordLibraryExport 成员
+
         public string ExportLine(WordLibrary wl)
         {
             //StringBuilder sb = new StringBuilder();
@@ -15,6 +17,7 @@ namespace Studyzy.IMEWLConverter.IME
 
             return str;
         }
+
         public string Export(WordLibraryList wlList)
         {
             var sb = new StringBuilder();
@@ -37,8 +40,10 @@ namespace Studyzy.IMEWLConverter.IME
         #endregion
 
         #region IWordLibraryImport 成员
+
         public int CountWord { get; set; }
         public int CurrentStatus { get; set; }
+
         public bool IsText
         {
             get { return true; }
@@ -53,18 +58,20 @@ namespace Studyzy.IMEWLConverter.IME
                 var wl = new WordLibrary();
                 wl.Word = word;
                 wl.Count = 1;
-                wl.PinYin = py.Split(new[] { '\'' }, StringSplitOptions.RemoveEmptyEntries);
+                wl.PinYin = py.Split(new[] {'\''}, StringSplitOptions.RemoveEmptyEntries);
                 var wll = new WordLibraryList();
                 wll.Add(wl);
                 return wll;
             }
             return null;
         }
+
         public WordLibraryList Import(string path)
         {
-            var str = FileOperationHelper.ReadFile(path, Encoding);
+            string str = FileOperationHelper.ReadFile(path, Encoding);
             return ImportText(str);
         }
+
         public WordLibraryList ImportText(string str)
         {
             var wlList = new WordLibraryList();

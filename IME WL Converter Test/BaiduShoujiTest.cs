@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Studyzy.IMEWLConverter;
 using NUnit.Framework;
 using Studyzy.IMEWLConverter.IME;
 
@@ -10,12 +7,17 @@ namespace Studyzy.IMEWLConverter.Test
     [TestFixture]
     public class BaiduShoujiTest : BaseTest
     {
+        #region Setup/Teardown
+
         [SetUp]
         public override void InitData()
         {
             exporter = new BaiduShouji();
             importer = new BaiduShouji();
         }
+
+        #endregion
+
         protected override string StringData
         {
             get { throw new NotImplementedException(); }
@@ -24,7 +26,6 @@ namespace Studyzy.IMEWLConverter.Test
         [Test]
         public void TestExport()
         {
-
         }
     }
 }

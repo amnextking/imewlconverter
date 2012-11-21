@@ -1,12 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
+using Studyzy.IMEWLConverter.Helpers;
 
 namespace Studyzy.IMEWLConverter.IME
 {
+    [ComboBoxShow(ConstantString.RIME, ConstantString.RIME_C, 150)]
     public class Rime : IWordLibraryTextImport, IWordLibraryExport
     {
         #region IWordLibraryExport 成员
+
+        #region IWordLibraryExport Members
 
         public string ExportLine(WordLibrary wl)
         {
@@ -32,10 +35,16 @@ namespace Studyzy.IMEWLConverter.IME
             return sb.ToString();
         }
 
+        #endregion
+
+        #region IWordLibraryTextImport Members
+
         public Encoding Encoding
         {
             get { return new UTF8Encoding(false); }
         }
+
+        #endregion
 
         #endregion
 
@@ -48,16 +57,17 @@ namespace Studyzy.IMEWLConverter.IME
         {
             get { return true; }
         }
+
         public WordLibraryList Import(string path)
         {
-            var str = FileOperationHelper.ReadFile(path, Encoding);
+            string str = FileOperationHelper.ReadFile(path, Encoding);
             return ImportText(str);
         }
+
         public WordLibraryList ImportText(string str)
         {
-
             var wlList = new WordLibraryList();
-            string[] lines = str.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            string[] lines = str.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
             CountWord = lines.Length;
             for (int i = 0; i < lines.Length; i++)
             {
@@ -74,13 +84,13 @@ namespace Studyzy.IMEWLConverter.IME
 
         public WordLibraryList ImportLine(string line)
         {
-            var lineArray = line.Split('\t');
+            string[] lineArray = line.Split('\t');
             string py = lineArray[1];
             string word = lineArray[0];
             var wl = new WordLibrary();
             wl.Word = word;
-            wl.Count =Convert.ToInt32(lineArray[2]);
-            wl.PinYin = py.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            wl.Count = Convert.ToInt32(lineArray[2]);
+            wl.PinYin = py.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
             var wll = new WordLibraryList();
             wll.Add(wl);
             return wll;

@@ -1,26 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 using NUnit.Framework;
 using Studyzy.IMEWLConverter.IME;
 
 namespace Studyzy.IMEWLConverter.Test
 {
-    class Ld2ParseTest
+    [TestFixture]
+    internal class Ld2ParseTest : BaseTest
     {
-        [Test]
-       public void TestParseLd2()
-       {
-           var ld2File = AppDomain.CurrentDomain.BaseDirectory + "\\i.ld2";
-           IWordLibraryImport import=new LingoesLd2();
-           var reult= import.Import(ld2File);
-            
-           Assert.IsNotNull(reult);
-            foreach (WordLibrary wordLibrary in reult)
-            {
-                Debug.WriteLine(wordLibrary);
-            }
-       }
+        [TestCase("g.ld2")]
+        [TestCase("i.ld2")]
+        public void TestParseLd2(string file)
+        {
+            string ld2File = GetFullPath(file);
+
+            WordLibraryList reult = importer.Import(ld2File);
+
+            Assert.IsNotNull(reult);
+            Assert.Greater(reult.Count, 0);
+            //foreach (WordLibrary wordLibrary in reult)
+            //{
+            //    Debug.WriteLine(wordLibrary);
+            //}
+        }
+
+        protected override string StringData
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        [TestFixtureSetUp]
+        public override void InitData()
+        {
+            importer = new LingoesLd2();
+        }
     }
 }

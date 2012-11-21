@@ -1,23 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using NUnit.Framework;
 using Studyzy.IMEWLConverter.IME;
 
 namespace Studyzy.IMEWLConverter.Test
 {
     [TestFixture]
-    class QQPinyinTest : BaseTest
+    internal class QQPinyinTest : BaseTest
     {
-        [SetUp]
+        [TestFixtureSetUp]
         public override void InitData()
         {
             exporter = new QQPinyin();
             importer = new QQPinyin();
         }
+
         protected override string StringData
         {
             get { throw new NotImplementedException(); }
+        }
+
+        [Test]
+        public void TestImport()
+        {
+            WordLibraryList wll = importer.Import(GetFullPath("QQPinyin.txt"));
+            Assert.Greater(wll.Count, 0);
         }
     }
 }

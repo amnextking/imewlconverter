@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Text;
+using Studyzy.IMEWLConverter.Helpers;
 
 namespace Studyzy.IMEWLConverter.IME
 {
     /// <summary>
     /// 百度手机输入法支持单独的英语词库，格式“单词Tab词频”
     /// </summary>
+    [ComboBoxShow(ConstantString.BAIDU_SHOUJI_ENG, ConstantString.BAIDU_SHOUJI_ENG_C, 1010)]
     public class BaiduShoujiEng : IWordLibraryTextImport, IWordLibraryExport
     {
         #region IWordLibraryExport 成员
+
+        #region IWordLibraryExport Members
 
         public string ExportLine(WordLibrary wl)
         {
@@ -26,10 +30,16 @@ namespace Studyzy.IMEWLConverter.IME
             return sb.ToString();
         }
 
+        #endregion
+
+        #region IWordLibraryTextImport Members
+
         public Encoding Encoding
         {
             get { return Encoding.ASCII; }
         }
+
+        #endregion
 
         #endregion
 
@@ -42,16 +52,17 @@ namespace Studyzy.IMEWLConverter.IME
         {
             get { return true; }
         }
+
         public WordLibraryList Import(string path)
         {
-            var str = FileOperationHelper.ReadFile(path, Encoding);
+            string str = FileOperationHelper.ReadFile(path, Encoding);
             return ImportText(str);
         }
+
         public WordLibraryList ImportText(string str)
         {
-
             var wlList = new WordLibraryList();
-            string[] lines = str.Split(new[] { "\r","\n" }, StringSplitOptions.RemoveEmptyEntries);
+            string[] lines = str.Split(new[] {"\r", "\n"}, StringSplitOptions.RemoveEmptyEntries);
             CountWord = lines.Length;
             for (int i = 0; i < lines.Length; i++)
             {
@@ -65,13 +76,13 @@ namespace Studyzy.IMEWLConverter.IME
 
         public WordLibraryList ImportLine(string line)
         {
-            var wp = line.Split('\t');
-            
+            string[] wp = line.Split('\t');
+
             string word = wp[0];
             var wl = new WordLibrary();
             wl.Word = word;
-            wl.Count =Convert.ToInt32( wp[1]);
-            wl.PinYin = new string[]{};
+            wl.Count = Convert.ToInt32(wp[1]);
+            wl.PinYin = new string[] {};
             var wll = new WordLibraryList();
             wll.Add(wl);
             return wll;

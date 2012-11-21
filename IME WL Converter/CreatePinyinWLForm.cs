@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using Studyzy.IMEWLConverter.Helpers;
 
 namespace Studyzy.IMEWLConverter
 {
@@ -48,7 +50,6 @@ namespace Studyzy.IMEWLConverter
             var wls = new Dictionary<string, string>();
             for (int i = 0; i < count; i++)
             {
-
                 string line = lines[i];
                 if (line[0] == ';') //说明
                 {
@@ -91,7 +92,7 @@ namespace Studyzy.IMEWLConverter
 
 
             ShowTextMessage("去除重复完成，开始写入文件");
-            var sw = FileOperationHelper.WriteFile(ConstantString.PinyinLibPath, Encoding.Unicode); //清空注音库文件
+            StreamWriter sw = FileOperationHelper.WriteFile(ConstantString.PinyinLibPath, Encoding.Unicode); //清空注音库文件
             foreach (string key in rst.Keys)
             {
                 string line = rst[key] + " " + key;
@@ -171,7 +172,6 @@ namespace Studyzy.IMEWLConverter
         /// <param name="input"></param>
         private Dictionary<string, string> RemoveDuplicateWords(Dictionary<string, string> input)
         {
-            
             var wl = new Dictionary<string, string>();
             foreach (string key in input.Keys)
             {
@@ -188,7 +188,6 @@ namespace Studyzy.IMEWLConverter
                 processString = (i++) + "/" + count;
 
 
-
                 foreach (string p in wl.Keys)
                 {
                     if (p.Contains(key) && p != key)
@@ -199,7 +198,7 @@ namespace Studyzy.IMEWLConverter
             }
 
             //内置资源就不需要再生成了
-            var internalPyLib = PinyinDic.WordPinyin.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            string[] internalPyLib = Dictionaries.WordPinyin.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
 
             foreach (string line in internalPyLib)
             {

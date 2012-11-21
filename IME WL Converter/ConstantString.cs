@@ -30,16 +30,12 @@ namespace Studyzy.IMEWLConverter
         public const string SELF_DEFINING = "自定义";
         public const string IFLY_IME = "讯飞语音输入法";
         public const string ZHENGMA = "郑码";
-        public const string MS_PINYIN = "微软拼音2010";
+        public const string MS_PINYIN = "微软拼音";
         public const string XIAOXIAO = "小小输入法";
         public const string FIT = "FIT输入法";
         public const string RIME = "中州韵";
         public const string ENGKOO_PINYIN = "微软英库拼音";
         public const string LINGOES_LD2 = "灵格斯ld2";
-        /// <summary>
-        /// 注音文件的完整路径
-        /// </summary>
-        public static readonly string PinyinLibPath = Application.StartupPath + "\\注音.txt";
 
         //简码，控制台用
         public const string BAIDU_SHOUJI_C = "bdsj";
@@ -71,5 +67,10 @@ namespace Studyzy.IMEWLConverter
         public const string LINGOES_LD2_C = "ld2";
         public const string BAIDU_PINYIN_C = "bdpy";
         public const string QQ_PINYIN_ENG_C = "qqpye";
+
+        /// <summary>
+        /// 注音文件的完整路径
+        /// </summary>
+        public static readonly string PinyinLibPath = Application.StartupPath + "\\注音.txt";
     }
 }

@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Text;
+using Studyzy.IMEWLConverter.Helpers;
 
 namespace Studyzy.IMEWLConverter.IME
 {
-	/// <summary>
-	/// Google拼音输入法
-	/// </summary>
+    /// <summary>
+    /// Google拼音输入法
+    /// </summary>
+    [ComboBoxShow(ConstantString.GOOGLE_PINYIN, ConstantString.GOOGLE_PINYIN_C, 110)]
     public class GooglePinyin : IWordLibraryExport, IWordLibraryTextImport
     {
-
         #region IWordLibraryExport 成员
+
         public string ExportLine(WordLibrary wl)
         {
             var sb = new StringBuilder();
@@ -23,6 +25,7 @@ namespace Studyzy.IMEWLConverter.IME
 
             return sb.ToString();
         }
+
         public string Export(WordLibraryList wlList)
         {
             var sb = new StringBuilder();
@@ -42,15 +45,18 @@ namespace Studyzy.IMEWLConverter.IME
         #endregion
 
         #region IWordLibraryImport 成员
+
         public bool IsText
         {
             get { return true; }
         }
+
         public WordLibraryList Import(string path)
         {
-            var str = FileOperationHelper.ReadFile(path, Encoding);
+            string str = FileOperationHelper.ReadFile(path, Encoding);
             return ImportText(str);
         }
+
         public WordLibraryList ImportText(string str)
         {
             var wlList = new WordLibraryList();
@@ -64,6 +70,7 @@ namespace Studyzy.IMEWLConverter.IME
             }
             return wlList;
         }
+
         public int CountWord { get; set; }
         public int CurrentStatus { get; set; }
 
@@ -74,11 +81,12 @@ namespace Studyzy.IMEWLConverter.IME
             var wl = new WordLibrary();
             wl.Word = c[0];
             wl.Count = Convert.ToInt32(c[1]);
-            wl.PinYin = c[2].Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            wl.PinYin = c[2].Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
             var wll = new WordLibraryList();
             wll.Add(wl);
             return wll;
         }
+
         #endregion
     }
 }

@@ -1,29 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Studyzy.IMEWLConverter.Generaters;
+using Studyzy.IMEWLConverter.Helpers;
 
 namespace Studyzy.IMEWLConverter
 {
-    using System.Text;
-
     public partial class SelfDefiningConverterForm : Form
     {
         private readonly List<string> fromWords = new List<string>();
+
+        private bool isImport = true;
 
         public SelfDefiningConverterForm()
         {
             InitializeComponent();
         }
 
-        private bool isImport = true;
         public bool IsImport
         {
             get { return isImport; }
-            set { isImport = value;
-            
+            set
+            {
+                isImport = value;
+
                 btnParse.Visible = isImport;
                 btnConvertTest.Visible = !isImport;
-            
             }
         }
 
@@ -96,6 +98,7 @@ namespace Studyzy.IMEWLConverter
                 txbFilePath.Text = openFileDialog1.FileName;
             }
         }
+
         private void btnConvertTest_Click(object sender, EventArgs e)
         {
             if (SelectedParsePattern == null)
@@ -103,30 +106,28 @@ namespace Studyzy.IMEWLConverter
                 MessageBox.Show("请点击右上角按钮选择匹配规则");
                 return;
             }
-            PinYinFactory factory = null;
+            IWordCodeGenerater factory = null;
             if (string.IsNullOrEmpty(txbFilePath.Text))
             {
-                factory=new SinglePinyin();
+                factory = new WordPinyinGenerater();
             }
             else
             {
-                factory=new SelfDefiningCode();
+                factory = new SelfDefiningCodeGenerater();
                 UserCodingHelper.FilePath = txbFilePath.Text;
             }
             SelectedParsePattern.Factory = factory;
 
-          
+
             rtbTo.Clear();
-            string[] fromList = rtbFrom.Text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] fromList = rtbFrom.Text.Split(new[] {'\r', '\n'}, StringSplitOptions.RemoveEmptyEntries);
             foreach (string str in fromList)
             {
                 string s = str.Trim();
-                WordLibrary wl=new WordLibrary(){Word = s};
-                 var result = SelectedParsePattern.BuildWLString(wl);
+                var wl = new WordLibrary {Word = s};
+                string result = SelectedParsePattern.BuildWLString(wl);
                 rtbTo.AppendText(result + "\r\n");
             }
         }
-
-      
     }
 }

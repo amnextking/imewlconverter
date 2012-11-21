@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Text;
+using Studyzy.IMEWLConverter.Helpers;
 
 namespace Studyzy.IMEWLConverter.IME
 {
+    [ComboBoxShow(ConstantString.ZIGUANG_PINYIN, ConstantString.ZIGUANG_PINYIN_C, 170)]
     public class ZiGuangPinyin : IWordLibraryTextImport, IWordLibraryExport
     {
         #region IWordLibraryImport 成员
 
         public WordLibraryList Import(string path)
         {
-            var str = FileOperationHelper.ReadFile(path, Encoding);
+            string str = FileOperationHelper.ReadFile(path, Encoding);
             return ImportText(str);
         }
+
         public WordLibraryList ImportText(string str)
         {
             var wlList = new WordLibraryList();
@@ -28,6 +31,7 @@ namespace Studyzy.IMEWLConverter.IME
 
         public int CountWord { get; set; }
         public int CurrentStatus { get; set; }
+
         public bool IsText
         {
             get { return true; }
@@ -49,6 +53,9 @@ namespace Studyzy.IMEWLConverter.IME
         #endregion
 
         #region IWordLibraryExport 成员
+
+        #region IWordLibraryExport Members
+
         public string ExportLine(WordLibrary wl)
         {
             var sb = new StringBuilder();
@@ -60,6 +67,7 @@ namespace Studyzy.IMEWLConverter.IME
 
             return sb.ToString();
         }
+
         public string Export(WordLibraryList wlList)
         {
             var sb = new StringBuilder();
@@ -74,10 +82,16 @@ namespace Studyzy.IMEWLConverter.IME
             return sb.ToString();
         }
 
+        #endregion
+
+        #region IWordLibraryTextImport Members
+
         public Encoding Encoding
         {
             get { return Encoding.Unicode; }
         }
+
+        #endregion
 
         #endregion
     }
