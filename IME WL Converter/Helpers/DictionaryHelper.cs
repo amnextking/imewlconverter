@@ -25,7 +25,7 @@ namespace Studyzy.IMEWLConverter.Helpers
                                 Code = hzpy[0],
                                 Word = hzpy[1][0],
                                 Wubi86 = hzpy[2],
-                                Wubi98 = hzpy[3],
+                                Wubi98 = (hzpy[3] == "" ? hzpy[2] : hzpy[3]),
                                 Pinyins = hzpy[4]
                             });
                     }

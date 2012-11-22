@@ -52,7 +52,7 @@ namespace Studyzy.IMEWLConverter.Helpers
                         string pys = code.Pinyins;
                         if (!string.IsNullOrEmpty(pys))
                         {
-                            foreach (string s in pys.Split(';'))
+                            foreach (string s in pys.Split(','))
                             {
                                 string py = s.Remove(s.Length - 1); //remove tone
                                 if (pyDictionary.ContainsKey(hz))
