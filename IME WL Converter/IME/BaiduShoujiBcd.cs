@@ -7,7 +7,7 @@ using System.Text;
 namespace Studyzy.IMEWLConverter.IME
 {
     [ComboBoxShow(ConstantString.BAIDU_BCD, ConstantString.BAIDU_BCD_C, 1020)]
-    public class BaiduShoujiBcd : IWordLibraryImport
+    public class BaiduShoujiBcd : BaseImport, IWordLibraryImport
     {
         private readonly List<string> Shengmu = new List<string>
             {
@@ -76,10 +76,9 @@ namespace Studyzy.IMEWLConverter.IME
 
         #region IWordLibraryImport Members
 
-        public int CountWord { get; set; }
-        public int CurrentStatus { get; set; }
+    
 
-        public bool IsText
+        public override bool IsText
         {
             get { return false; }
         }

@@ -104,6 +104,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Dictionaries.resx</DependentUpon>
     </Compile>
+    <Compile Include="Filters\EnglishFilter.cs" />
+    <Compile Include="Filters\IBatchFilter.cs" />
+    <Compile Include="Filters\ISingleFilter.cs" />
+    <Compile Include="Filters\LengthFilter.cs" />
+    <Compile Include="Filters\SpaceFilter.cs" />
     <Compile Include="Generaters\SelfDefiningCodeGenerater.cs" />
     <Compile Include="Generaters\WordWubi98Generater.cs" />
     <Compile Include="Generaters\WordWubi86Generater.cs" />
@@ -144,6 +149,7 @@
     <Compile Include="IME\BaiduShouji.cs" />
     <Compile Include="IME\BaiduShoujiBcd.cs" />
     <Compile Include="IME\BaiduShoujiEng.cs" />
+    <Compile Include="IME\BaseImport.cs" />
     <Compile Include="IME\QQPinyinEng.cs" />
     <Compile Include="IME\EngkooPinyin.cs" />
     <Compile Include="IME\LingoesLd2.cs" />
@@ -171,6 +177,7 @@
     <Compile Include="Language\MsVbComponent.cs" />
     <Compile Include="Language\OfficeComponent.cs" />
     <Compile Include="Language\SystemKernel.cs" />
+    <Compile Include="MainBody.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

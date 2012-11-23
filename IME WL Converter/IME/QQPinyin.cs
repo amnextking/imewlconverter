@@ -5,7 +5,7 @@ using Studyzy.IMEWLConverter.Helpers;
 namespace Studyzy.IMEWLConverter.IME
 {
     [ComboBoxShow(ConstantString.QQ_PINYIN, ConstantString.QQ_PINYIN_C, 50)]
-    public class QQPinyin : IWordLibraryTextImport, IWordLibraryExport
+    public class QQPinyin : BaseImport, IWordLibraryTextImport, IWordLibraryExport
     {
         #region IWordLibraryExport 成员
 
@@ -56,13 +56,7 @@ namespace Studyzy.IMEWLConverter.IME
 
         #region IWordLibraryTextImport Members
 
-        public int CountWord { get; set; }
-        public int CurrentStatus { get; set; }
-
-        public bool IsText
-        {
-            get { return true; }
-        }
+      
 
         public WordLibraryList ImportLine(string line)
         {

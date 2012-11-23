@@ -8,7 +8,7 @@ namespace Studyzy.IMEWLConverter.IME
     /// QQ拼音支持单独的英语词库，使用“英文单词,词频”的格式
     /// </summary>
     [ComboBoxShow(ConstantString.QQ_PINYIN_ENG, ConstantString.QQ_PINYIN_ENG_C, 80)]
-    public class QQPinyinEng : IWordLibraryTextImport, IWordLibraryExport
+    public class QQPinyinEng : BaseImport, IWordLibraryTextImport, IWordLibraryExport
     {
         #region IWordLibraryExport 成员
 
@@ -45,14 +45,6 @@ namespace Studyzy.IMEWLConverter.IME
         #endregion
 
         #region IWordLibraryTextImport Members
-
-        public int CountWord { get; set; }
-        public int CurrentStatus { get; set; }
-
-        public bool IsText
-        {
-            get { return true; }
-        }
 
         public WordLibraryList ImportLine(string line)
         {

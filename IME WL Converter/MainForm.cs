@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Studyzy.IMEWLConverter.Filters;
 using Studyzy.IMEWLConverter.Helpers;
 using Studyzy.IMEWLConverter.IME;
 using Studyzy.IMEWLConverter.IME.TouchPal;
@@ -293,7 +294,9 @@ namespace Studyzy.IMEWLConverter
             //}
             try
             {
-                return imports[str];
+                var imp= imports[str];
+                imp.DefaultRank = defaultRank;
+                return imp;
             }
             catch
             {
@@ -303,14 +306,16 @@ namespace Studyzy.IMEWLConverter
 
         #endregion
 
-        private readonly Regex englishRegex = new Regex("[a-z]", RegexOptions.IgnoreCase);
-        private WordLibraryList allWlList = new WordLibraryList();
+private MainBody mainBody=new MainBody();
+        private bool filterEnglish = true;
+        private bool filterSpaceWord = true;
         private IWordLibraryExport export;
         private bool exportDirectly;
+        private int defaultRank = 10;
         protected string exportFileName;
         private string exportPath = "";
         private string fileContent;
-        private bool filterEnglish = true;
+
         private ParsePattern fromUserSetPattern;
         private bool ignoreLongWord;
         private bool ignoreSingleWord;
@@ -319,8 +324,6 @@ namespace Studyzy.IMEWLConverter
         private int maxLength = 9999;
         private bool mergeTo1File = true;
         private int minLength = 1;
-        private IChineseConverter selectedConverter = new SystemKernel();
-        private ChineseTranslate selectedTranslate = ChineseTranslate.NotTrans;
         private bool streamExport;
         private ParsePattern toUserSetPattern;
 
@@ -345,7 +348,7 @@ namespace Studyzy.IMEWLConverter
         private void btnConvert_Click(object sender, EventArgs e)
         {
             richTextBox1.Clear();
-            allWlList.Clear();
+
             ignoreWordLength = Convert.ToInt32(toolStripComboBoxIgnoreWordLength.Text);
 
             if (ignoreSingleWord) //过滤单个字
@@ -379,6 +382,9 @@ namespace Studyzy.IMEWLConverter
                         return;
                     }
                 }
+                mainBody.Import = import;
+                mainBody.Export = export;
+                mainBody.Filters = GetFilters();
                 timer1.Enabled = true;
                 backgroundWorker1.RunWorkerAsync();
             }
@@ -387,39 +393,31 @@ namespace Studyzy.IMEWLConverter
                 MessageBox.Show(ex.Message);
             }
         }
-
-        /// <summary>
-        /// 词库过滤
-        /// </summary>
-        /// <param name="wlList"></param>
-        /// <returns></returns>
-        private WordLibraryList Filter(WordLibraryList wlList)
+        private IList<ISingleFilter> GetFilters()
         {
-            var newList = new WordLibraryList();
-            newList.AddRange(wlList.FindAll(delegate(WordLibrary wl) { return WordFilterRetain(wl); }));
-            return newList;
-        }
-
-        /// <summary>
-        /// 判断经过过滤规则后是否保留
-        /// </summary>
-        /// <param name="wl"></param>
-        /// <returns></returns>
-        private bool WordFilterRetain(WordLibrary wl)
-        {
-            if (minLength != 1 || maxLength != 9999) //设置了长度过滤
+            var filters = new List<ISingleFilter>();
+            if (filterEnglish)
             {
-                if (wl.Word.Length > maxLength || wl.Word.Length < minLength)
-                {
-                    return false;
-                }
+                filters.Add(new EnglishFilter());
             }
-
-            if (filterEnglish && englishRegex.IsMatch(wl.Word)) //过滤英文单词
+            var lenFilter = new LengthFilter();
+            if (ignoreSingleWord)
             {
-                return false;
+                lenFilter.MinLength = 2;
             }
-            return true;
+            if (ignoreLongWord)
+            {
+                lenFilter.MaxLength = ignoreWordLength;
+            }
+            if (ignoreSingleWord || ignoreLongWord)
+            {
+                filters.Add(lenFilter);
+            }
+            if (filterSpaceWord)
+            {
+                filters.Add(new SpaceFilter());
+            }
+            return filters;
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -464,14 +462,7 @@ namespace Studyzy.IMEWLConverter
                 }
             }
 
-            //if (cbxFrom.Text == ConstantString.SOUGOU_XIBAO_SCEL)
-            //{
-            //    openFileDialog1.Filter = "细胞词库|*.scel|文本文件|*.txt|所有文件|*.*";
-            //}
-            //else
-            //{
-            //    openFileDialog1.Filter = "文本文件|*.txt|细胞词库|*.scel|所有文件|*.*";
-            //}
+         
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -496,60 +487,20 @@ namespace Studyzy.IMEWLConverter
                 string path = file.Trim();
                 if (streamExport && import.IsText) //流转换,只有文本类型的才支持。
                 {
-                    var textImport = (IWordLibraryTextImport) import;
-                    StreamWriter stream = FileOperationHelper.GetWriteFileStream(exportPath, export.Encoding);
-                    var wlStream = new WordLibraryStream(import, export, path, textImport.Encoding, stream);
-                    wlStream.ConvertWordLibrary(WordFilterRetain);
-                    stream.Close();
+                  mainBody.StreamConvert(files,exportFileName);
                 }
                 else
                 {
-                    WordLibraryList wlList = import.Import(path);
-                    wlList = Filter(wlList);
-                    allWlList.AddRange(wlList);
+                   fileContent= mainBody.Convert(files);
                 }
             }
             timer1.Enabled = false;
             //简繁体转换
 
-            if (selectedTranslate != ChineseTranslate.NotTrans)
-            {
-                ShowStatusMessage("词库解析完成，正在进行简繁转换...", false);
-                allWlList = ConvertChinese(allWlList);
-                ShowStatusMessage("简繁转换完成，正在进行目标词库生成...", false);
-            }
-            fileContent = export.Export(allWlList);
+           
         }
 
-        private WordLibraryList ConvertChinese(WordLibraryList wordLibraryList)
-        {
-            var sb = new StringBuilder();
-            int count = wordLibraryList.Count;
-            foreach (WordLibrary wordLibrary in wordLibraryList)
-            {
-                sb.Append(wordLibrary.Word + "\r");
-            }
-            string result = "";
-            if (selectedTranslate == ChineseTranslate.Trans2Chs)
-            {
-                result = selectedConverter.ToChs(sb.ToString());
-            }
-            else if (selectedTranslate == ChineseTranslate.Trans2Cht)
-            {
-                result = selectedConverter.ToCht(sb.ToString());
-            }
-            string[] newList = result.Split(new[] {'\r'}, StringSplitOptions.RemoveEmptyEntries);
-            if (newList.Length != count)
-            {
-                throw new Exception("简繁转换时转换失败，请更改简繁转换设置");
-            }
-            for (int i = 0; i < count; i++)
-            {
-                WordLibrary wordLibrary = wordLibraryList[i];
-                wordLibrary.Word = newList[i];
-            }
-            return wordLibraryList;
-        }
+       
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -572,7 +523,7 @@ namespace Studyzy.IMEWLConverter
             }
 
             if (
-                MessageBox.Show("是否将导入的" + allWlList.Count + "条词库保存到本地硬盘上？", "是否保存", MessageBoxButtons.YesNo,
+                MessageBox.Show("是否将导入的" + mainBody.Count + "条词库保存到本地硬盘上？", "是否保存", MessageBoxButtons.YesNo,
                                 MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 if (!string.IsNullOrEmpty(exportFileName))
@@ -681,8 +632,8 @@ namespace Studyzy.IMEWLConverter
             var form = new ChineseConverterSelectForm();
             if (form.ShowDialog() == DialogResult.OK)
             {
-                selectedTranslate = form.SelectedTranslate;
-                selectedConverter = form.SelectedConverter;
+                mainBody.SelectedTranslate = form.SelectedTranslate;
+                mainBody.SelectedConverter = form.SelectedConverter;
             }
         }
 
@@ -745,7 +696,12 @@ namespace Studyzy.IMEWLConverter
         {
             mergeTo1File = toolStripMenuItemMergeToOneFile.Checked;
         }
-
+        private void ToolStripMenuItemIgnoreSpaceWord_Click(object sender, EventArgs e)
+        {
+            filterSpaceWord = ToolStripMenuItemIgnoreSpaceWord.Checked;
+        }
         #endregion
+
+       
     }
 }

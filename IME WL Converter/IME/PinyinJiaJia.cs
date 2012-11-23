@@ -7,7 +7,7 @@ using Studyzy.IMEWLConverter.Helpers;
 namespace Studyzy.IMEWLConverter.IME
 {
     [ComboBoxShow(ConstantString.PINYIN_JIAJIA, ConstantString.PINYIN_JIAJIA_C, 120)]
-    public class PinyinJiaJia : IWordLibraryExport, IWordLibraryTextImport
+    public class PinyinJiaJia : BaseImport, IWordLibraryExport, IWordLibraryTextImport
     {
         #region IWordLibraryExport 成员
 
@@ -56,13 +56,7 @@ namespace Studyzy.IMEWLConverter.IME
         #region IWordLibraryImport 成员
 
         private readonly IWordCodeGenerater single = new WordPinyinGenerater();
-        public int CountWord { get; set; }
-        public int CurrentStatus { get; set; }
-
-        public bool IsText
-        {
-            get { return true; }
-        }
+     
 
         /// <summary>
         /// 形如：冷血xue动物

@@ -8,7 +8,7 @@ namespace Studyzy.IMEWLConverter.IME
     /// 百度PC输入法，中文词库和英文词库放在同一个文件，中文词库比如“跨年	kua'nian'	1”，英文词库比如“Jira	1”
     /// </summary>
     [ComboBoxShow(ConstantString.BAIDU_PINYIN, ConstantString.BAIDU_PINYIN_C, 90)]
-    internal class BaiduPinyin : IWordLibraryTextImport, IWordLibraryExport
+    internal class BaiduPinyin : BaseImport, IWordLibraryTextImport, IWordLibraryExport
     {
         #region IWordLibraryImport 成员
 
@@ -32,13 +32,7 @@ namespace Studyzy.IMEWLConverter.IME
             return wlList;
         }
 
-        public int CountWord { get; set; }
-        public int CurrentStatus { get; set; }
-
-        public bool IsText
-        {
-            get { return true; }
-        }
+      
 
         public WordLibraryList ImportLine(string line)
         {

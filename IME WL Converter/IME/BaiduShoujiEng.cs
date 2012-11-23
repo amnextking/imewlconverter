@@ -8,7 +8,7 @@ namespace Studyzy.IMEWLConverter.IME
     /// 百度手机输入法支持单独的英语词库，格式“单词Tab词频”
     /// </summary>
     [ComboBoxShow(ConstantString.BAIDU_SHOUJI_ENG, ConstantString.BAIDU_SHOUJI_ENG_C, 1010)]
-    public class BaiduShoujiEng : IWordLibraryTextImport, IWordLibraryExport
+    public class BaiduShoujiEng : BaseImport, IWordLibraryTextImport, IWordLibraryExport
     {
         #region IWordLibraryExport 成员
 
@@ -45,13 +45,7 @@ namespace Studyzy.IMEWLConverter.IME
 
         #region IWordLibraryImport 成员
 
-        public int CountWord { get; set; }
-        public int CurrentStatus { get; set; }
-
-        public bool IsText
-        {
-            get { return true; }
-        }
+     
 
         public WordLibraryList Import(string path)
         {

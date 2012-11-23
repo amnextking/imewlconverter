@@ -7,14 +7,13 @@ using Studyzy.IMEWLConverter.Helpers;
 namespace Studyzy.IMEWLConverter.IME
 {
     [ComboBoxShow(ConstantString.WORD_ONLY, ConstantString.WORD_ONLY_C, 2010)]
-    public class NoPinyinWordOnly : IWordLibraryTextImport, IWordLibraryExport
+    public class NoPinyinWordOnly : BaseImport, IWordLibraryTextImport, IWordLibraryExport
     {
         private IWordCodeGenerater pinyinFactory;
 
         #region IWordLibraryImport 成员
 
-        public int CountWord { get; set; }
-        public int CurrentStatus { get; set; }
+     
 
         /// <summary>
         /// 将一行纯文本转换为对象
@@ -101,13 +100,6 @@ namespace Studyzy.IMEWLConverter.IME
 
         #endregion
 
-        #region IWordLibraryTextImport Members
-
-        public bool IsText
-        {
-            get { return true; }
-        }
-
-        #endregion
+    
     }
 }

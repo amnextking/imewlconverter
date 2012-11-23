@@ -11,7 +11,7 @@ namespace Studyzy.IMEWLConverter.IME
     /// 搜狗细胞词库
     /// </summary>
     [ComboBoxShow(ConstantString.SOUGOU_XIBAO_SCEL, ConstantString.SOUGOU_XIBAO_SCEL_C, 20)]
-    public class SougouPinyinScel : IWordLibraryImport
+    public class SougouPinyinScel : BaseImport, IWordLibraryImport
     {
         #region IWordLibraryImport 成员
 
@@ -42,10 +42,9 @@ namespace Studyzy.IMEWLConverter.IME
 
         #region IWordLibraryImport Members
 
-        public int CountWord { get; set; }
-        public int CurrentStatus { get; set; }
+   
 
-        public bool IsText
+        public override bool IsText
         {
             get { return false; }
         }

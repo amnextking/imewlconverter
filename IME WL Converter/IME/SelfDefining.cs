@@ -5,7 +5,7 @@ using Studyzy.IMEWLConverter.Helpers;
 namespace Studyzy.IMEWLConverter.IME
 {
     [ComboBoxShow(ConstantString.SELF_DEFINING, ConstantString.SELF_DEFINING_C, 2000)]
-    public class SelfDefining : IWordLibraryTextImport, IWordLibraryExport
+    public class SelfDefining : BaseImport, IWordLibraryTextImport, IWordLibraryExport
     {
         public ParsePattern UserDefiningPattern { get; set; }
 
@@ -46,10 +46,7 @@ namespace Studyzy.IMEWLConverter.IME
             get { return Encoding.Default; }
         }
 
-        public bool IsText
-        {
-            get { return true; }
-        }
+      
 
         public WordLibraryList Import(string path)
         {
@@ -81,8 +78,7 @@ namespace Studyzy.IMEWLConverter.IME
             return wlList;
         }
 
-        public int CountWord { get; set; }
-        public int CurrentStatus { get; set; }
+  
 
         #endregion
 

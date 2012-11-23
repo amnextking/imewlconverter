@@ -72,16 +72,20 @@ namespace Studyzy.IMEWLConverter
             }
             if (importPaths.Count > 0 && exportPath != "")
             {
-                var wordLibraryList = new WordLibraryList();
+                MainBody mainBody=new MainBody();
+                mainBody.Export = wordLibraryExport;
+                mainBody.Import = wordLibraryImport;
+                
                 Console.WriteLine("转换开始...");
-                foreach (string importPath in importPaths)
-                {
-                    Console.WriteLine("开始转换文件：" + importPath);
-                    wordLibraryList.AddWordLibraryList(wordLibraryImport.Import(importPath));
-                }
-                string str = wordLibraryExport.Export(wordLibraryList);
+                //foreach (string importPath in importPaths)
+                //{
+                //    Console.WriteLine("开始转换文件：" + importPath);
+                //    wordLibraryList.AddWordLibraryList(wordLibraryImport.Import(importPath));
+                //}
+                //string str = wordLibraryExport.Export(wordLibraryList);
+                string str = mainBody.Convert(importPaths);
                 FileOperationHelper.WriteFile(exportPath, wordLibraryExport.Encoding, str);
-                Console.WriteLine("转换完成,共转换" + wordLibraryList.Count + "个");
+                Console.WriteLine("转换完成,共转换" + mainBody.Count + "个");
                 return;
             }
             else
@@ -141,37 +145,7 @@ namespace Studyzy.IMEWLConverter
                 pattern.ContainCipin = (format[8].ToString().ToLower() == "y");
                 return CommandType.Format;
             }
-            //if (command.StartsWith("-s:"))//split
-            //{
-            //    pattern.PinyinSplitString = command.Substring(3);
-            //    beginImportFile = false;
-            //    return CommandType.Format;
-            //}
-            //if (command.StartsWith("-S:"))//Split
-            //{
-            //    pattern.SplitString = command.Substring(3);
-            //    beginImportFile = false;
-            //    return CommandType.Format;
-            //}
-            //if (command.StartsWith("-t:"))//trim
-            //{
-            //    var t = command.Substring(3);
-            //    beginImportFile = false;
-            //    if (t == "l") pattern.PinyinSplitType = BuildType.LeftContain;
-            //    if (t == "r") pattern.PinyinSplitType = BuildType.RightContain;
-            //    if (t == "b") pattern.PinyinSplitType = BuildType.FullContain;
-            //    if (t == "n") pattern.PinyinSplitType = BuildType.None;
-
-            //    return CommandType.Format;
-            //}
-            //if (command.StartsWith("-d:"))//display
-            //{
-            //    var d = command.Substring(3);
-            //    beginImportFile = false;
-            //    pattern.ContainPinyin = (d[1].ToString().ToUpper() == "Y");
-            //    pattern.ContainCipin = (d[2].ToString().ToUpper() == "Y");
-            //    return CommandType.Format;
-            //}
+           
             if (beginImportFile)
             {
                 importPaths.Add(command);
@@ -220,46 +194,7 @@ namespace Studyzy.IMEWLConverter
 
         private IWordLibraryExport GetExportInterface(string str)
         {
-            //switch (str)
-            //{
-            //    case ConstantString.BAIDU_SHOUJI_C:
-            //        return new BaiduShouji();
-            //    case ConstantString.QQ_SHOUJI_C:
-            //        return new QQShouji();
-            //    case ConstantString.SOUGOU_PINYIN_C:
-            //        return new SougouPinyin();
-            //    case ConstantString.SOUGOU_WUBI_C:
-            //        return new SougouWubi();
-            //    case ConstantString.QQ_PINYIN_C:
-            //        return new QQPinyin();
-            //    case ConstantString.GOOGLE_PINYIN_C:
-            //        return new GooglePinyin();
-            //    case ConstantString.WORD_ONLY_C:
-            //        return new NoPinyinWordOnly();
-            //    case ConstantString.ZIGUANG_PINYIN_C:
-            //        return new ZiGuangPinyin();
-            //    case ConstantString.PINYIN_JIAJIA_C:
-            //        return new PinyinJiaJia();
-            //    case ConstantString.SINA_PINYIN_C:
-            //        return new SinaPinyin();
-            //    case ConstantString.TOUCH_PAL_C:
-            //        return new TouchPal();
-            //    case ConstantString.MS_PINYIN_C:
-            //        return new MsPinyin();
-            //    case ConstantString.XIAOXIAO_C:
-            //        return new Xiaoxiao();
-            //    case ConstantString.RIME_C:
-            //        return new Rime();
-            //    case ConstantString.FIT_C:
-            //        return new FitInput();
-            //    case ConstantString.ENGKOO_PINYIN_C:
-            //        return new EngkooPinyin();
-            //    case ConstantString.SELF_DEFINING_C:
-            //        return new SelfDefining();
-            //    default:
-            //        throw new ArgumentException("导出词库的输入法错误");
-            //}
-            try
+           try
             {
                 return exports[str];
             }
@@ -271,57 +206,7 @@ namespace Studyzy.IMEWLConverter
 
         private IWordLibraryImport GetImportInterface(string str)
         {
-            //switch (str)
-            //{
-            //    case ConstantString.BAIDU_SHOUJI_C:
-            //        return new BaiduShouji();
-            //    case ConstantString.BAIDU_BDICT_C:
-            //        return new BaiduPinyinBdict();
-            //    case ConstantString.BAIDU_BCD_C:
-            //        return new BaiduPinyinBdict();
-            //    case ConstantString.QQ_SHOUJI_C:
-            //        return new QQShouji();
-            //    case ConstantString.SOUGOU_PINYIN_C:
-            //        return new SougouPinyin();
-            //    case ConstantString.SOUGOU_PINYIN_BIN_C:
-            //        return new SougouPinyinBin();
-            //    case ConstantString.SOUGOU_WUBI_C:
-            //        return new SougouWubi();
-            //    case ConstantString.QQ_PINYIN_C:
-            //        return new QQPinyin();
-            //    case ConstantString.QQ_PINYIN_QPYD_C:
-            //        return new QQPinyinQpyd();
-            //    case ConstantString.QQ_WUBI_C:
-            //        return new QQWubi();
-            //    case ConstantString.GOOGLE_PINYIN_C:
-            //        return new GooglePinyin();
-            //    case ConstantString.ZIGUANG_PINYIN_C:
-            //        return new ZiGuangPinyin();
-            //    case ConstantString.PINYIN_JIAJIA_C:
-            //        return new PinyinJiaJia();
-            //    case ConstantString.WORD_ONLY_C:
-            //        return new NoPinyinWordOnly();
-            //    case ConstantString.SINA_PINYIN_C:
-            //        return new SinaPinyin();
-            //    case ConstantString.SOUGOU_XIBAO_SCEL_C:
-            //        return new SougouPinyinScel();
-            //    case ConstantString.ZHENGMA_C:
-            //        return new Zhengma();
-            //    case ConstantString.SELF_DEFINING_C:
-            //        return new SelfDefining();
-            //    case ConstantString.TOUCH_PAL_C:
-            //        return new TouchPal();
-            //    case ConstantString.MS_PINYIN_C:
-            //        return new MsPinyin();
-            //    case ConstantString.RIME_C:
-            //        return new Rime();
-            //    case ConstantString.ENGKOO_PINYIN_C:
-            //        return new EngkooPinyin();
-            //    case ConstantString.FIT_C:
-            //        return new FitInput();
-            //    default:
-            //        throw new ArgumentException("导入词库的输入法错误");
-            //}
+           
             try
             {
                 return imports[str];
@@ -342,28 +227,7 @@ namespace Studyzy.IMEWLConverter
             {
                 Console.WriteLine(comboBoxShowAttribute.ShortCode + "\t" + comboBoxShowAttribute.Name);
             }
-            //Console.WriteLine(ConstantString.SOUGOU_PINYIN_C + "\t" + ConstantString.SOUGOU_PINYIN);
-            //Console.WriteLine(ConstantString.SOUGOU_PINYIN_BIN_C + "\t" + ConstantString.SOUGOU_PINYIN_BIN);
-            //Console.WriteLine(ConstantString.GOOGLE_PINYIN_C+ "\t"+ConstantString.GOOGLE_PINYIN);
-            //Console.WriteLine(ConstantString.BAIDU_SHOUJI_C + "\t" + ConstantString.BAIDU_SHOUJI);
-            //Console.WriteLine(ConstantString.BAIDU_BDICT_C + "\t" + ConstantString.BAIDU_BDICT);
-            //Console.WriteLine(ConstantString.BAIDU_BCD_C + "\t" + ConstantString.BAIDU_BCD);
-            //Console.WriteLine(ConstantString.SOUGOU_XIBAO_SCEL_C + "\t" + ConstantString.SOUGOU_XIBAO_SCEL);
-            //Console.WriteLine(ConstantString.PINYIN_JIAJIA_C + "\t" + ConstantString.PINYIN_JIAJIA);
-            //Console.WriteLine(ConstantString.ZIGUANG_PINYIN_C + "\t" + ConstantString.ZIGUANG_PINYIN);
-            //Console.WriteLine(ConstantString.SINA_PINYIN_C + "\t" + ConstantString.SINA_PINYIN);
-            //Console.WriteLine(ConstantString.FIT_C + "\t" + ConstantString.FIT);
-            //Console.WriteLine(ConstantString.RIME_C + "\t" + ConstantString.RIME);
-            //Console.WriteLine(ConstantString.ENGKOO_PINYIN_C + "\t" + ConstantString.ENGKOO_PINYIN);
-            //Console.WriteLine(ConstantString.WORD_ONLY_C + "\t" + ConstantString.WORD_ONLY);
-            //Console.WriteLine(ConstantString.XIAOXIAO_C + "\t" + ConstantString.XIAOXIAO);
-            //Console.WriteLine(ConstantString.TOUCH_PAL_C + "\t" + ConstantString.TOUCH_PAL);
-            //Console.WriteLine(ConstantString.ZHENGMA_C + "\t" + ConstantString.ZHENGMA);
-            //Console.WriteLine(ConstantString.QQ_PINYIN_C + "\t" + ConstantString.QQ_PINYIN);
-            //Console.WriteLine(ConstantString.QQ_PINYIN_QPYD_C + "\t" + ConstantString.QQ_PINYIN_QPYD);
-            //Console.WriteLine(ConstantString.QQ_WUBI_C + "\t" + ConstantString.QQ_WUBI);
-            //Console.WriteLine(ConstantString.QQ_SHOUJI_C + "\t" + ConstantString.QQ_SHOUJI);
-            //Console.WriteLine(ConstantString.SELF_DEFINING_C + "\t" + ConstantString.SELF_DEFINING);
+           
             Console.WriteLine("");
             ConsoleColour.SetForeGroundColour(ConsoleColour.ForeGroundColour.White);
             Console.WriteLine("例如要将C:\\test.scel和C:\\a.scel的搜狗细胞词库转换为D:\\gg.txt的谷歌拼音词库，命令为：");

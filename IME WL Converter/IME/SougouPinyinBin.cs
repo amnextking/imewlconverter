@@ -10,7 +10,7 @@ namespace Studyzy.IMEWLConverter.IME
     /// 搜狗二进制备份词库
     /// </summary>
     [ComboBoxShow(ConstantString.SOUGOU_PINYIN_BIN, ConstantString.SOUGOU_PINYIN_BIN_C, 30)]
-    public class SougouPinyinBin : IWordLibraryImport
+    public class SougouPinyinBin : BaseImport,IWordLibraryImport
     {
         private readonly List<string> PinYinDic = new List<string>
             {
@@ -503,10 +503,8 @@ namespace Studyzy.IMEWLConverter.IME
             return pyAndWord;
         }
 
-        public int CountWord { get; set; }
-        public int CurrentStatus { get; set; }
 
-        public bool IsText
+        public override bool IsText
         {
             get { return false; }
         }

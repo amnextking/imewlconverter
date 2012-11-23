@@ -7,6 +7,7 @@ namespace Studyzy.IMEWLConverter
         int CountWord { get; set; }
         int CurrentStatus { get; set; }
         bool IsText { get; }
+        int DefaultRank { get; set; }
         WordLibraryList Import(string path);
         WordLibraryList ImportLine(string str);
     }

@@ -8,7 +8,7 @@ namespace Studyzy.IMEWLConverter.IME
     /// 
     /// </summary>
     [ComboBoxShow(ConstantString.SOUGOU_WUBI, ConstantString.SOUGOU_WUBI_C, 40)]
-    public class SougouWubi : IWordLibraryTextImport, IWordLibraryExport
+    public class SougouWubi : BaseImport, IWordLibraryTextImport, IWordLibraryExport
     {
         #region IWordLibraryExport 成员
 
@@ -51,14 +51,7 @@ namespace Studyzy.IMEWLConverter.IME
 
         #region IWordLibraryImport 成员
 
-        public int CountWord { get; set; }
-        public int CurrentStatus { get; set; }
-
-        public bool IsText
-        {
-            get { return true; }
-        }
-
+     
         public WordLibraryList ImportLine(string line)
         {
             string py = line.Split(' ')[0];

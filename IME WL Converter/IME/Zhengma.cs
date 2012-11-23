@@ -7,7 +7,7 @@ using Studyzy.IMEWLConverter.Helpers;
 namespace Studyzy.IMEWLConverter.IME
 {
     [ComboBoxShow(ConstantString.ZHENGMA, ConstantString.ZHENGMA_C, 190)]
-    public class Zhengma : IWordLibraryTextImport
+    public class Zhengma : BaseImport, IWordLibraryTextImport
     {
         #region IWordLibraryImport 成员
 
@@ -52,13 +52,7 @@ namespace Studyzy.IMEWLConverter.IME
             return wlList;
         }
 
-        public int CountWord { get; set; }
-        public int CurrentStatus { get; set; }
-
-        public bool IsText
-        {
-            get { return true; }
-        }
+     
 
         #endregion
 

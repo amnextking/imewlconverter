@@ -8,7 +8,7 @@ namespace Studyzy.IMEWLConverter.IME
     /// Google拼音输入法
     /// </summary>
     [ComboBoxShow(ConstantString.GOOGLE_PINYIN, ConstantString.GOOGLE_PINYIN_C, 110)]
-    public class GooglePinyin : IWordLibraryExport, IWordLibraryTextImport
+    public class GooglePinyin : BaseImport, IWordLibraryExport, IWordLibraryTextImport
     {
         #region IWordLibraryExport 成员
 
@@ -46,10 +46,7 @@ namespace Studyzy.IMEWLConverter.IME
 
         #region IWordLibraryImport 成员
 
-        public bool IsText
-        {
-            get { return true; }
-        }
+      
 
         public WordLibraryList Import(string path)
         {
@@ -71,8 +68,7 @@ namespace Studyzy.IMEWLConverter.IME
             return wlList;
         }
 
-        public int CountWord { get; set; }
-        public int CurrentStatus { get; set; }
+     
 
 
         public WordLibraryList ImportLine(string line)

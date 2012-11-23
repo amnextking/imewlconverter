@@ -10,7 +10,7 @@ namespace Studyzy.IMEWLConverter.IME.TouchPal
     /// 触宝输入法
     /// </summary>
     [ComboBoxShow(ConstantString.TOUCH_PAL, ConstantString.TOUCH_PAL_C, 1040)]
-    internal class TouchPal : IWordLibraryImport, IWordLibraryExport
+    internal class TouchPal :BaseImport, IWordLibraryImport, IWordLibraryExport
     {
         private int beginCharPosition;
 
@@ -244,19 +244,19 @@ namespace Studyzy.IMEWLConverter.IME.TouchPal
 
         #region IWordLibraryImport Members
 
-        public int CountWord
+        public override int CountWord
         {
             get { return 0; }
             set { throw new NotImplementedException(); }
         }
 
-        public int CurrentStatus
+        public override int CurrentStatus
         {
             get { return 0; }
             set { throw new NotImplementedException(); }
         }
 
-        public bool IsText
+        public override bool IsText
         {
             get { return false; }
         }

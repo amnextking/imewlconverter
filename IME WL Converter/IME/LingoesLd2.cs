@@ -12,7 +12,7 @@ using Studyzy.IMEWLConverter.Helpers;
 namespace Studyzy.IMEWLConverter.IME
 {
     [ComboBoxShow(ConstantString.LINGOES_LD2, ConstantString.LINGOES_LD2_C, 200)]
-    public class LingoesLd2 : IWordLibraryImport
+    public class LingoesLd2 : BaseImport, IWordLibraryImport
     {
         private readonly Encoding[] AVAIL_ENCODINGS = new[]
             {
@@ -26,9 +26,7 @@ namespace Studyzy.IMEWLConverter.IME
 
         #region IWordLibraryImport Members
 
-        public int CountWord { get; set; }
-
-        public int CurrentStatus { get; set; }
+      
 
         public WordLibraryList Import(string path)
         {
@@ -48,7 +46,7 @@ namespace Studyzy.IMEWLConverter.IME
                     wl.IsEnglish = true;
                 }
                 wl.Word = word;
-                wl.Count = 1;
+                wl.Count = DefaultRank;
                 wll.Add(wl);
             }
             return wll;
@@ -59,7 +57,7 @@ namespace Studyzy.IMEWLConverter.IME
             throw new NotImplementedException();
         }
 
-        public bool IsText
+        public override bool IsText
         {
             get { return false; }
         }

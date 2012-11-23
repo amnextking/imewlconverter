@@ -8,7 +8,7 @@ using Studyzy.IMEWLConverter.Helpers;
 namespace Studyzy.IMEWLConverter.IME
 {
     [ComboBoxShow(ConstantString.BAIDU_BDICT, ConstantString.BAIDU_BDICT_C, 100)]
-    public class BaiduPinyinBdict : IWordLibraryImport
+    public class BaiduPinyinBdict : BaseImport, IWordLibraryImport
     {
         private readonly List<string> Shengmu = new List<string>
             {
@@ -77,10 +77,9 @@ namespace Studyzy.IMEWLConverter.IME
 
         #region IWordLibraryImport Members
 
-        public int CountWord { get; set; }
-        public int CurrentStatus { get; set; }
+     
 
-        public bool IsText
+        public override bool IsText
         {
             get { return false; }
         }
