@@ -11,7 +11,6 @@ using Studyzy.IMEWLConverter.Filters;
 using Studyzy.IMEWLConverter.Helpers;
 using Studyzy.IMEWLConverter.IME;
 using Studyzy.IMEWLConverter.IME.TouchPal;
-using Studyzy.IMEWLConverter.Language;
 
 namespace Studyzy.IMEWLConverter
 {

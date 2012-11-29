@@ -150,6 +150,9 @@
     <Compile Include="IME\BaiduShoujiBcd.cs" />
     <Compile Include="IME\BaiduShoujiEng.cs" />
     <Compile Include="IME\BaseImport.cs" />
+    <Compile Include="IME\ZiGuangPinyinUwl.cs" />
+    <Compile Include="IME\JidianWubi.cs" />
+    <Compile Include="IME\Wubi98.cs" />
     <Compile Include="IME\QQPinyinEng.cs" />
     <Compile Include="IME\EngkooPinyin.cs" />
     <Compile Include="IME\LingoesLd2.cs" />
@@ -309,7 +312,7 @@
     <Compile Include="IME\QQPinyin.cs" />
     <Compile Include="IME\SougouPinyin.cs" />
     <Compile Include="IME\NoPinyinWordOnly.cs" />
-    <Compile Include="IME\SougouWubi.cs" />
+    <Compile Include="IME\Wubi86.cs" />
     <Compile Include="IME\QQShouji.cs" />
     <Compile Include="WordLibrary.cs" />
     <Compile Include="WordLibraryList.cs" />

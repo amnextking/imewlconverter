@@ -23,6 +23,10 @@ namespace Studyzy.IMEWLConverter.Helpers
             {
                 return ConstantString.TOUCH_PAL;
             }
+            if (ext == ".uwl")
+            {
+                return ConstantString.ZIGUANG_PINYIN_UWL;
+            }
             if (ext == ".bin")
             {
                 return ConstantString.SOUGOU_PINYIN_BIN;
