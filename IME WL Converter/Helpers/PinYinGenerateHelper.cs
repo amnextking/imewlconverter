@@ -60,7 +60,7 @@ namespace Studyzy.IMEWLConverter.Helpers
         /// </summary>
         /// <param name="word"></param>
         /// <returns></returns>
-        public static bool IsInWordPinYin(string word)
+        private static bool IsInWordPinYin(string word)
         {
             InitMutiPinYinWord();
             foreach (string key in mutiPinYinWord.Keys)
@@ -78,7 +78,7 @@ namespace Studyzy.IMEWLConverter.Helpers
         /// </summary>
         /// <param name="word"></param>
         /// <returns></returns>
-        public static List<string> GenerateMutiWordPinYin(string word)
+        private static List<string> GenerateMutiWordPinYin(string word)
         {
             InitMutiPinYinWord();
             var pinyin = new string[word.Length];
@@ -94,6 +94,22 @@ namespace Studyzy.IMEWLConverter.Helpers
                 }
             }
             return new List<string>(pinyin);
+        }
+
+        public static IList<string> GeneratePinYin(string word)
+        {
+            if (IsInWordPinYin(word))
+            {
+                return GenerateMutiWordPinYin(word);
+            }
+            try
+            {
+                return PinyinHelper.GetDefaultPinyin(word);
+            }
+            catch (Exception ex)
+            {
+                return new List<string>();
+            }
         }
     }
 }

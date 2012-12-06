@@ -20,9 +20,9 @@ namespace Studyzy.IMEWLConverter.Generaters
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public List<string> GetCodeOfString(string str)
+        public IList<string> GetCodeOfString(string str)
         {
-            return PinYinGenerateHelper.GenerateMutiWordPinYin(str);
+            return PinYinGenerateHelper.GeneratePinYin(str);
         }
 
         #endregion

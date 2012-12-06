@@ -12,7 +12,7 @@ namespace Studyzy.IMEWLConverter.Generaters
             return WubiHelper.GetWubi98Code(str);
         }
 
-        public List<string> GetCodeOfString(string str)
+        public IList<string> GetCodeOfString(string str)
         {
             return new List<string> {WubiHelper.GetStringWubi98Code(str)};
         }

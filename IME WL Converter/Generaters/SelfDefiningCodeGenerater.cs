@@ -13,7 +13,7 @@ namespace Studyzy.IMEWLConverter.Generaters
             return s;
         }
 
-        public List<string> GetCodeOfString(string str)
+        public IList<string> GetCodeOfString(string str)
         {
             var list = new List<string>();
             foreach (char c in str)

@@ -19,5 +19,14 @@ namespace Studyzy.IMEWLConverter.IME
         {
             get { return true; }
         }
+        protected string[] ToArray(IList<string> str)
+        {
+            string[] result=new string[str.Count];
+            for (int i = 0; i < str.Count; i++)
+            {
+                result[i] = str[i];
+            }
+            return result;
+        }
     }
 }

@@ -38,8 +38,8 @@ namespace Studyzy.IMEWLConverter.IME
                 var wl = new WordLibrary();
                 if (IsChinese(word)) //是中文就要进行注音
                 {
-                    List<string> list = pinyinFactory.GetCodeOfString(word);
-                    wl.PinYin = list.ToArray();
+                    var list = pinyinFactory.GetCodeOfString(word);
+                    wl.PinYin = ToArray(list);
                 }
                 else
                 {

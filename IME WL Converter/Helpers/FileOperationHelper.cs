@@ -104,7 +104,7 @@ namespace Studyzy.IMEWLConverter.Helpers
             reg = new Regex(@"^[a-z]{1,4}\s[\u4E00-\u9FA5]+$");
             if (reg.IsMatch(example))
             {
-                return ConstantString.ZHENGMA;
+                return ConstantString.JIDIAN;
             }
             reg = new Regex(@"^[a-z']+\s[\u4E00-\u9FA5]+$");
             if (reg.IsMatch(example))

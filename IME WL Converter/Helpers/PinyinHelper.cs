@@ -83,14 +83,29 @@ namespace Studyzy.IMEWLConverter.Helpers
         /// <returns></returns>
         public static string GetDefaultPinyin(char c)
         {
-            List<string> pys = PinYinDict[c];
-            if (pys != null && pys.Count > 0)
+            try
             {
-                return pys[0];
+                List<string> pys = PinYinDict[c];
+                if (pys != null && pys.Count > 0)
+                {
+                    return pys[0];
+                }
+                throw new Exception("找不到字：“" + c + "”的拼音");
             }
-            throw new Exception("找不到字：“" + c + "”的拼音");
+            catch
+            {
+                throw new Exception("找不到字：“" + c + "”的拼音");
+            }
         }
-
+        public static IList<string> GetDefaultPinyin(string word)
+        {
+            var result = new List<string>();
+            foreach (char c in word)
+            {
+                result.Add(GetDefaultPinyin(c));
+            }
+            return result;
+        }
 
         /// <summary>
         /// 获得单个字的拼音,不包括声调

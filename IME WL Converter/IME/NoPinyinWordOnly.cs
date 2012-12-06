@@ -22,10 +22,10 @@ namespace Studyzy.IMEWLConverter.IME
         /// <returns></returns>
         public virtual WordLibraryList ImportLine(string line)
         {
-            List<string> py = pinyinFactory.GetCodeOfString(line);
+            var py = pinyinFactory.GetCodeOfString(line);
             var wl = new WordLibrary();
             wl.Word = line;
-            wl.PinYin = py.ToArray();
+            wl.PinYin = ToArray(py);
             var wll = new WordLibraryList();
             wll.Add(wl);
             return wll;

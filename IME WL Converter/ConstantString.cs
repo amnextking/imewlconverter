@@ -19,7 +19,6 @@ namespace Studyzy.IMEWLConverter
         public const string SOUGOU_PINYIN = "搜狗拼音txt";
         public const string SOUGOU_PINYIN_BIN = "搜狗拼音备份词库bin";
         public const string WUBI86 = "五笔86版";
-        public const string JIDIAN_WUBI = "极点五笔";
         public const string WUBI98 = "五笔98版";
         public const string QQ_PINYIN = "QQ拼音";
         public const string QQ_PINYIN_QPYD = "QQ分类词库qpyd";
@@ -32,7 +31,8 @@ namespace Studyzy.IMEWLConverter
         public const string SINA_PINYIN = "新浪拼音";
         public const string SELF_DEFINING = "自定义";
         public const string IFLY_IME = "讯飞语音输入法";
-        public const string ZHENGMA = "郑码";
+        public const string JIDIAN = "极点（五笔、郑码）";
+        public const string XIAOYA_WUBI = "小鸭五笔";
         public const string MS_PINYIN = "微软拼音";
         public const string XIAOXIAO = "小小输入法";
         public const string FIT = "FIT输入法";
@@ -52,7 +52,6 @@ namespace Studyzy.IMEWLConverter
         public const string SOUGOU_PINYIN_BIN_C = "sgpybin";
         public const string WUBI86_C = "wb86";
         public const string WUBI98_C = "wb98";
-        public const string JIDIAN_WUBI_C = "jdwb";
         public const string QQ_PINYIN_C = "qqpy";
         public const string QQ_PINYIN_QPYD_C = "qpyd";
         public const string GOOGLE_PINYIN_C = "ggpy";
@@ -63,7 +62,7 @@ namespace Studyzy.IMEWLConverter
         public const string SOUGOU_XIBAO_SCEL_C = "scel";
         public const string SINA_PINYIN_C = "xlpy";
         public const string SELF_DEFINING_C = "self";
-        public const string ZHENGMA_C = "zm";
+        public const string JIDIAN_C = "jd";
         public const string IFLY_IME_C = "ifly";
         public const string MS_PINYIN_C = "mspy";
         public const string XIAOXIAO_C = "xxpy";
@@ -73,6 +72,7 @@ namespace Studyzy.IMEWLConverter
         public const string LINGOES_LD2_C = "ld2";
         public const string BAIDU_PINYIN_C = "bdpy";
         public const string QQ_PINYIN_ENG_C = "qqpye";
+        public const string XIAOYA_WUBI_C = "xywb";
 
         /// <summary>
         /// 注音文件的完整路径

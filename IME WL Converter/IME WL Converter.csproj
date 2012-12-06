@@ -150,8 +150,8 @@
     <Compile Include="IME\BaiduShoujiBcd.cs" />
     <Compile Include="IME\BaiduShoujiEng.cs" />
     <Compile Include="IME\BaseImport.cs" />
+    <Compile Include="IME\XiaoyaWubi.cs" />
     <Compile Include="IME\ZiGuangPinyinUwl.cs" />
-    <Compile Include="IME\JidianWubi.cs" />
     <Compile Include="IME\Wubi98.cs" />
     <Compile Include="IME\QQPinyinEng.cs" />
     <Compile Include="IME\EngkooPinyin.cs" />
@@ -169,7 +169,7 @@
     <Compile Include="IME\TouchPal\TouchPalChar.cs" />
     <Compile Include="IME\TouchPal\TouchPalWord.cs" />
     <Compile Include="IME\Xiaoxiao.cs" />
-    <Compile Include="IME\Zhengma.cs" />
+    <Compile Include="IME\Jidian.cs" />
     <Compile Include="IME\SinaPinyin.cs" />
     <Compile Include="IME\GooglePinyin.cs" />
     <Compile Include="IME\PinyinJiaJia.cs" />

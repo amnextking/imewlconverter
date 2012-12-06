@@ -8,6 +8,6 @@ namespace Studyzy.IMEWLConverter.Generaters
     public interface IWordCodeGenerater
     {
         string GetCodeOfChar(char str);
-        List<string> GetCodeOfString(string str);
+        IList<string> GetCodeOfString(string str);
     }
 }

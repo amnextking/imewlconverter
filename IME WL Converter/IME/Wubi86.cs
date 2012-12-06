@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using Studyzy.IMEWLConverter.Generaters;
 using Studyzy.IMEWLConverter.Helpers;
 
 namespace Studyzy.IMEWLConverter.IME
@@ -45,7 +46,7 @@ namespace Studyzy.IMEWLConverter.IME
 
 
         #endregion
-
+        private readonly IWordCodeGenerater pinyinFactory = new WordPinyinGenerater();
         #region IWordLibraryImport 成员
 
      
@@ -56,9 +57,12 @@ namespace Studyzy.IMEWLConverter.IME
             var wl = new WordLibrary();
             wl.Word = word;
             wl.Count = DefaultRank;
-            wl.PinYin = PinYinGenerateHelper.GenerateMutiWordPinYin(word).ToArray();
+            wl.PinYin = ToArray(pinyinFactory.GetCodeOfString(word));
             var wll = new WordLibraryList();
-            wll.Add(wl);
+            if(wl.PinYin.Length>0)
+            {
+                wll.Add(wl);
+            }
             return wll;
         }
 

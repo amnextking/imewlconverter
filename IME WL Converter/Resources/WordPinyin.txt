@@ -4,6 +4,7 @@
 'diao'cha 调查
 'mu'di 目的
 'ji'ou 奇偶
+'he'le 饸饹
 'xing'wei 行为
 'zhi'xing 执行
 'chong'qing 重庆
